@@ -85,8 +85,6 @@ func NewProductCreate(name string, price float32, currency string, taxCategory s
 	this.HasDigitalDelivery = &hasDigitalDelivery
 	var isTaxInclusive bool = false
 	this.IsTaxInclusive = &isTaxInclusive
-	var activationLimit int32 = null
-	this.ActivationLimit = &activationLimit
 	var payWhatYouWant bool = false
 	this.PayWhatYouWant = &payWhatYouWant
 	var isListed bool = true
@@ -107,8 +105,6 @@ func NewProductCreateWithDefaults() *ProductCreate {
 	this.HasDigitalDelivery = &hasDigitalDelivery
 	var isTaxInclusive bool = false
 	this.IsTaxInclusive = &isTaxInclusive
-	var activationLimit int32 = null
-	this.ActivationLimit = &activationLimit
 	var payWhatYouWant bool = false
 	this.PayWhatYouWant = &payWhatYouWant
 	var isListed bool = true

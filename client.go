@@ -49,25 +49,13 @@ type APIClient struct {
 
 	// API Services
 
-	AffiliateAPI *AffiliateAPIService
-
 	BalanceAPI *BalanceAPIService
-
-	BillingAPI *BillingAPIService
-
-	BrandsAPI *BrandsAPIService
-
-	BusinessesAPI *BusinessesAPIService
-
-	ChatAPI *ChatAPIService
 
 	CheckoutAPI *CheckoutAPIService
 
 	CheckoutLinksAPI *CheckoutLinksAPIService
 
 	CollectionsAPI *CollectionsAPIService
-
-	CommunityAPI *CommunityAPIService
 
 	CustomersAPI *CustomersAPIService
 
@@ -89,8 +77,6 @@ type APIClient struct {
 
 	OrdersAPI *OrdersAPIService
 
-	PartnerAPI *PartnerAPIService
-
 	PayoutsAPI *PayoutsAPIService
 
 	ProductAddOnsAPI *ProductAddOnsAPIService
@@ -100,10 +86,6 @@ type APIClient struct {
 	RefundsChargebacksAPI *RefundsChargebacksAPIService
 
 	SubscriptionsAPI *SubscriptionsAPIService
-
-	TicketAPI *TicketAPIService
-
-	UserProfileThemesAPI *UserProfileThemesAPIService
 
 	WebhookAPI *WebhookAPIService
 }
@@ -124,16 +106,10 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.common.client = c
 
 	// API Services
-	c.AffiliateAPI = (*AffiliateAPIService)(&c.common)
 	c.BalanceAPI = (*BalanceAPIService)(&c.common)
-	c.BillingAPI = (*BillingAPIService)(&c.common)
-	c.BrandsAPI = (*BrandsAPIService)(&c.common)
-	c.BusinessesAPI = (*BusinessesAPIService)(&c.common)
-	c.ChatAPI = (*ChatAPIService)(&c.common)
 	c.CheckoutAPI = (*CheckoutAPIService)(&c.common)
 	c.CheckoutLinksAPI = (*CheckoutLinksAPIService)(&c.common)
 	c.CollectionsAPI = (*CollectionsAPIService)(&c.common)
-	c.CommunityAPI = (*CommunityAPIService)(&c.common)
 	c.CustomersAPI = (*CustomersAPIService)(&c.common)
 	c.DeveloperAPI = (*DeveloperAPIService)(&c.common)
 	c.DigitalFileAPI = (*DigitalFileAPIService)(&c.common)
@@ -144,14 +120,11 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.LicenseKeysClientAPI = (*LicenseKeysClientAPIService)(&c.common)
 	c.MetersAPI = (*MetersAPIService)(&c.common)
 	c.OrdersAPI = (*OrdersAPIService)(&c.common)
-	c.PartnerAPI = (*PartnerAPIService)(&c.common)
 	c.PayoutsAPI = (*PayoutsAPIService)(&c.common)
 	c.ProductAddOnsAPI = (*ProductAddOnsAPIService)(&c.common)
 	c.ProductsAPI = (*ProductsAPIService)(&c.common)
 	c.RefundsChargebacksAPI = (*RefundsChargebacksAPIService)(&c.common)
 	c.SubscriptionsAPI = (*SubscriptionsAPIService)(&c.common)
-	c.TicketAPI = (*TicketAPIService)(&c.common)
-	c.UserProfileThemesAPI = (*UserProfileThemesAPIService)(&c.common)
 	c.WebhookAPI = (*WebhookAPIService)(&c.common)
 
 	return c
