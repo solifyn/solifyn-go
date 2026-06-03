@@ -27,6 +27,7 @@ Name | Type | Description | Notes
 **Stock** | **int32** | Available stock quantity, or null for unlimited inventory. | 
 **ActivationLimit** | **int32** | Maximum number of simultaneous active instances/devices allowed per issued license key (applicable if hasLicenseKey is true). | 
 **IsListed** | **bool** | Defines if the product is listed publicly on the merchant&#39;s storefront template. | 
+**IsFree** | **bool** | Whether the product is free. | 
 **CreatedAt** | **time.Time** | Timestamp indicating exactly when the product was created. | 
 **UpdatedAt** | **time.Time** | Timestamp indicating when the product was last modified. | 
 **IsPermanentlyDeleted** | **bool** | Indicates if the product has been permanently deleted. | 
@@ -41,7 +42,7 @@ Name | Type | Description | Notes
 
 ### NewProduct
 
-`func NewProduct(id string, name string, price float32, currency string, status string, imageUrl string, taxCategory string, pricingType string, discount float32, hasLicenseKey bool, hasDigitalDelivery bool, isTaxInclusive bool, billingPeriod int32, trialPeriodDays int32, expirationDays int32, statementDescriptor string, payWhatYouWant bool, metadata map[string]string, customFields []map[string]interface{}, stock int32, activationLimit int32, isListed bool, createdAt time.Time, updatedAt time.Time, isPermanentlyDeleted bool, brandId string, digitalLink string, instructions string, activationMessage string, expiryHours int32, businessId string, ) *Product`
+`func NewProduct(id string, name string, price float32, currency string, status string, imageUrl string, taxCategory string, pricingType string, discount float32, hasLicenseKey bool, hasDigitalDelivery bool, isTaxInclusive bool, billingPeriod int32, trialPeriodDays int32, expirationDays int32, statementDescriptor string, payWhatYouWant bool, metadata map[string]string, customFields []map[string]interface{}, stock int32, activationLimit int32, isListed bool, isFree bool, createdAt time.Time, updatedAt time.Time, isPermanentlyDeleted bool, brandId string, digitalLink string, instructions string, activationMessage string, expiryHours int32, businessId string, ) *Product`
 
 NewProduct instantiates a new Product object
 This constructor will assign default values to properties that have it defined,
@@ -519,6 +520,26 @@ and a boolean to check if the value has been set.
 `func (o *Product) SetIsListed(v bool)`
 
 SetIsListed sets IsListed field to given value.
+
+
+### GetIsFree
+
+`func (o *Product) GetIsFree() bool`
+
+GetIsFree returns the IsFree field if non-nil, zero value otherwise.
+
+### GetIsFreeOk
+
+`func (o *Product) GetIsFreeOk() (*bool, bool)`
+
+GetIsFreeOk returns a tuple with the IsFree field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsFree
+
+`func (o *Product) SetIsFree(v bool)`
+
+SetIsFree sets IsFree field to given value.
 
 
 ### GetCreatedAt

@@ -68,6 +68,8 @@ type Product struct {
 	ActivationLimit int32 `json:"activationLimit"`
 	// Defines if the product is listed publicly on the merchant's storefront template.
 	IsListed bool `json:"isListed"`
+	// Whether the product is free.
+	IsFree bool `json:"isFree"`
 	// Timestamp indicating exactly when the product was created.
 	CreatedAt time.Time `json:"createdAt"`
 	// Timestamp indicating when the product was last modified.
@@ -94,7 +96,7 @@ type _Product Product
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProduct(id string, name string, price float32, currency string, status string, imageUrl string, taxCategory string, pricingType string, discount float32, hasLicenseKey bool, hasDigitalDelivery bool, isTaxInclusive bool, billingPeriod int32, trialPeriodDays int32, expirationDays int32, statementDescriptor string, payWhatYouWant bool, metadata map[string]string, customFields []map[string]interface{}, stock int32, activationLimit int32, isListed bool, createdAt time.Time, updatedAt time.Time, isPermanentlyDeleted bool, brandId string, digitalLink string, instructions string, activationMessage string, expiryHours int32, businessId string) *Product {
+func NewProduct(id string, name string, price float32, currency string, status string, imageUrl string, taxCategory string, pricingType string, discount float32, hasLicenseKey bool, hasDigitalDelivery bool, isTaxInclusive bool, billingPeriod int32, trialPeriodDays int32, expirationDays int32, statementDescriptor string, payWhatYouWant bool, metadata map[string]string, customFields []map[string]interface{}, stock int32, activationLimit int32, isListed bool, isFree bool, createdAt time.Time, updatedAt time.Time, isPermanentlyDeleted bool, brandId string, digitalLink string, instructions string, activationMessage string, expiryHours int32, businessId string) *Product {
 	this := Product{}
 	this.Id = id
 	this.Name = name
@@ -118,6 +120,7 @@ func NewProduct(id string, name string, price float32, currency string, status s
 	this.Stock = stock
 	this.ActivationLimit = activationLimit
 	this.IsListed = isListed
+	this.IsFree = isFree
 	this.CreatedAt = createdAt
 	this.UpdatedAt = updatedAt
 	this.IsPermanentlyDeleted = isPermanentlyDeleted
@@ -698,6 +701,30 @@ func (o *Product) SetIsListed(v bool) {
 	o.IsListed = v
 }
 
+// GetIsFree returns the IsFree field value
+func (o *Product) GetIsFree() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.IsFree
+}
+
+// GetIsFreeOk returns a tuple with the IsFree field value
+// and a boolean to check if the value has been set.
+func (o *Product) GetIsFreeOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.IsFree, true
+}
+
+// SetIsFree sets field value
+func (o *Product) SetIsFree(v bool) {
+	o.IsFree = v
+}
+
 // GetCreatedAt returns the CreatedAt field value
 func (o *Product) GetCreatedAt() time.Time {
 	if o == nil {
@@ -949,6 +976,7 @@ func (o Product) ToMap() (map[string]interface{}, error) {
 	toSerialize["stock"] = o.Stock
 	toSerialize["activationLimit"] = o.ActivationLimit
 	toSerialize["isListed"] = o.IsListed
+	toSerialize["isFree"] = o.IsFree
 	toSerialize["createdAt"] = o.CreatedAt
 	toSerialize["updatedAt"] = o.UpdatedAt
 	toSerialize["isPermanentlyDeleted"] = o.IsPermanentlyDeleted
@@ -988,6 +1016,7 @@ func (o *Product) UnmarshalJSON(data []byte) (err error) {
 		"stock",
 		"activationLimit",
 		"isListed",
+		"isFree",
 		"createdAt",
 		"updatedAt",
 		"isPermanentlyDeleted",

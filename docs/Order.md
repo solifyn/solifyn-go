@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Customer** | [**OrderCustomer**](OrderCustomer.md) | Customer details. | 
 **TotalAmount** | **int32** | Total paid amount in cents. | 
 **Subtotal** | **int32** | Subtotal amount in cents. | 
+**UsdTotal** | Pointer to **float32** | Total paid amount converted to USD. | [optional] 
 **TaxAmount** | **int32** | Tax amount in cents. | 
 **ApplicationFee** | **int32** | Application fee in cents. | 
 **AmountAfterFees** | **int32** | Net amount after fees in cents. | 
@@ -148,6 +149,31 @@ and a boolean to check if the value has been set.
 
 SetSubtotal sets Subtotal field to given value.
 
+
+### GetUsdTotal
+
+`func (o *Order) GetUsdTotal() float32`
+
+GetUsdTotal returns the UsdTotal field if non-nil, zero value otherwise.
+
+### GetUsdTotalOk
+
+`func (o *Order) GetUsdTotalOk() (*float32, bool)`
+
+GetUsdTotalOk returns a tuple with the UsdTotal field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUsdTotal
+
+`func (o *Order) SetUsdTotal(v float32)`
+
+SetUsdTotal sets UsdTotal field to given value.
+
+### HasUsdTotal
+
+`func (o *Order) HasUsdTotal() bool`
+
+HasUsdTotal returns a boolean if a field has been set.
 
 ### GetTaxAmount
 

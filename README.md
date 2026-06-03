@@ -83,6 +83,7 @@ Class | Method | HTTP request | Description
 *BalanceAPI* | [**BalanceControllerGetSummary**](docs/BalanceAPI.md#balancecontrollergetsummary) | **Get** /v1/balances/summary | 
 *CheckoutAPI* | [**CheckoutCreate**](docs/CheckoutAPI.md#checkoutcreate) | **Post** /v1/checkout/create | Create Checkout Session
 *CheckoutAPI* | [**CheckoutCreateCollection**](docs/CheckoutAPI.md#checkoutcreatecollection) | **Post** /v1/checkout/collection/create | Create Collection Checkout Session
+*CheckoutAPI* | [**CheckoutCreateSetup**](docs/CheckoutAPI.md#checkoutcreatesetup) | **Post** /v1/checkout/setup-configuration | Create Setup Checkout Configuration
 *CheckoutAPI* | [**CheckoutGetSession**](docs/CheckoutAPI.md#checkoutgetsession) | **Get** /v1/checkout/session/{id} | Get Checkout Session Details
 *CheckoutAPI* | [**CheckoutPricePreview**](docs/CheckoutAPI.md#checkoutpricepreview) | **Get** /v1/checkout/price-preview | Get Converted Price Preview
 *CheckoutAPI* | [**CheckoutSupportedCurrencies**](docs/CheckoutAPI.md#checkoutsupportedcurrencies) | **Get** /v1/checkout/supported-currencies | Get Supported Currencies
@@ -106,15 +107,16 @@ Class | Method | HTTP request | Description
 *CustomersAPI* | [**CustomersGet**](docs/CustomersAPI.md#customersget) | **Get** /v1/customers/{id} | Retrieve Customer
 *CustomersAPI* | [**CustomersList**](docs/CustomersAPI.md#customerslist) | **Get** /v1/customers | List Customers
 *CustomersAPI* | [**CustomersUpdate**](docs/CustomersAPI.md#customersupdate) | **Patch** /v1/customers/{id} | Update Customer
-*DeveloperAPI* | [**DeveloperControllerCreateApiKey**](docs/DeveloperAPI.md#developercontrollercreateapikey) | **Post** /v1/developer/api-keys | 
-*DeveloperAPI* | [**DeveloperControllerCreateWebhookEndpoint**](docs/DeveloperAPI.md#developercontrollercreatewebhookendpoint) | **Post** /v1/developer/webhooks | 
-*DeveloperAPI* | [**DeveloperControllerDeleteApiKey**](docs/DeveloperAPI.md#developercontrollerdeleteapikey) | **Delete** /v1/developer/api-keys/{id} | 
-*DeveloperAPI* | [**DeveloperControllerDeleteWebhookEndpoint**](docs/DeveloperAPI.md#developercontrollerdeletewebhookendpoint) | **Delete** /v1/developer/webhooks/{id} | 
-*DeveloperAPI* | [**DeveloperControllerGetApiKeys**](docs/DeveloperAPI.md#developercontrollergetapikeys) | **Get** /v1/developer/api-keys | 
-*DeveloperAPI* | [**DeveloperControllerGetAppPortalUrl**](docs/DeveloperAPI.md#developercontrollergetappportalurl) | **Get** /v1/developer/webhooks/app-portal | 
-*DeveloperAPI* | [**DeveloperControllerGetWebhookDeliveries**](docs/DeveloperAPI.md#developercontrollergetwebhookdeliveries) | **Get** /v1/developer/webhooks/{id}/deliveries | 
-*DeveloperAPI* | [**DeveloperControllerGetWebhookEndpoints**](docs/DeveloperAPI.md#developercontrollergetwebhookendpoints) | **Get** /v1/developer/webhooks | 
-*DeveloperAPI* | [**DeveloperControllerUpdateWebhookEndpoint**](docs/DeveloperAPI.md#developercontrollerupdatewebhookendpoint) | **Patch** /v1/developer/webhooks/{id} | 
+*DeveloperAPI* | [**DeveloperCreateApiKey**](docs/DeveloperAPI.md#developercreateapikey) | **Post** /v1/developer/api-keys | Create Developer API Key
+*DeveloperAPI* | [**DeveloperCreateWebhook**](docs/DeveloperAPI.md#developercreatewebhook) | **Post** /v1/developer/webhooks | Create Webhook Endpoint
+*DeveloperAPI* | [**DeveloperDeleteWebhook**](docs/DeveloperAPI.md#developerdeletewebhook) | **Delete** /v1/developer/webhooks/{id} | Delete Webhook Endpoint
+*DeveloperAPI* | [**DeveloperGetAppPortal**](docs/DeveloperAPI.md#developergetappportal) | **Get** /v1/developer/webhooks/app-portal | Retrieve Hosted Webhooks Portal URL
+*DeveloperAPI* | [**DeveloperGetWebhook**](docs/DeveloperAPI.md#developergetwebhook) | **Get** /v1/developer/webhooks/{id} | Retrieve Webhook Endpoint Details
+*DeveloperAPI* | [**DeveloperListApiKeys**](docs/DeveloperAPI.md#developerlistapikeys) | **Get** /v1/developer/api-keys | List Developer API Keys
+*DeveloperAPI* | [**DeveloperListWebhookDeliveries**](docs/DeveloperAPI.md#developerlistwebhookdeliveries) | **Get** /v1/developer/webhooks/{id}/deliveries | Retrieve Webhook Delivery Logs
+*DeveloperAPI* | [**DeveloperListWebhooks**](docs/DeveloperAPI.md#developerlistwebhooks) | **Get** /v1/developer/webhooks | List Webhook Endpoints
+*DeveloperAPI* | [**DeveloperRevokeApiKey**](docs/DeveloperAPI.md#developerrevokeapikey) | **Delete** /v1/developer/api-keys/{id} | Revoke API Key
+*DeveloperAPI* | [**DeveloperUpdateWebhook**](docs/DeveloperAPI.md#developerupdatewebhook) | **Patch** /v1/developer/webhooks/{id} | Update Webhook Endpoint
 *DigitalFileAPI* | [**DigitalFileControllerCreate**](docs/DigitalFileAPI.md#digitalfilecontrollercreate) | **Post** /v1/digital-files | 
 *DigitalFileAPI* | [**DigitalFileControllerFindAll**](docs/DigitalFileAPI.md#digitalfilecontrollerfindall) | **Get** /v1/digital-files | 
 *DigitalFileAPI* | [**DigitalFileControllerRemove**](docs/DigitalFileAPI.md#digitalfilecontrollerremove) | **Delete** /v1/digital-files/{id} | 
@@ -166,14 +168,6 @@ Class | Method | HTTP request | Description
 *OrdersAPI* | [**OrdersList**](docs/OrdersAPI.md#orderslist) | **Get** /v1/orders | List Orders
 *OrdersAPI* | [**OrdersUpdate**](docs/OrdersAPI.md#ordersupdate) | **Patch** /v1/orders/{id} | Update Order Billing Address
 *OrdersAPI* | [**RefundsCreate**](docs/OrdersAPI.md#refundscreate) | **Post** /v1/orders/{id}/refund | Create Refund
-*PayoutsAPI* | [**PayoutsCreateWithdrawal**](docs/PayoutsAPI.md#payoutscreatewithdrawal) | **Post** /v1/payouts/withdrawals | Create Withdrawal
-*PayoutsAPI* | [**PayoutsGetAccount**](docs/PayoutsAPI.md#payoutsgetaccount) | **Get** /v1/payouts/account | Retrieve Payout Account
-*PayoutsAPI* | [**PayoutsGetAccountLink**](docs/PayoutsAPI.md#payoutsgetaccountlink) | **Get** /v1/payouts/account-link | Create Account Link
-*PayoutsAPI* | [**PayoutsGetToken**](docs/PayoutsAPI.md#payoutsgettoken) | **Get** /v1/payouts/token | Generate Portal Access Token
-*PayoutsAPI* | [**PayoutsGetWithdrawals**](docs/PayoutsAPI.md#payoutsgetwithdrawals) | **Get** /v1/payouts/withdrawals | Get Withdrawals List
-*PayoutsAPI* | [**PayoutsListMethods**](docs/PayoutsAPI.md#payoutslistmethods) | **Get** /v1/payouts/methods | List Payout Methods
-*PayoutsAPI* | [**PayoutsListVerifications**](docs/PayoutsAPI.md#payoutslistverifications) | **Get** /v1/payouts/verifications | List Verifications
-*PayoutsAPI* | [**PayoutsListWithdrawals**](docs/PayoutsAPI.md#payoutslistwithdrawals) | **Get** /v1/payouts | List Withdrawals
 *ProductAddOnsAPI* | [**ProductsCreateAddon**](docs/ProductAddOnsAPI.md#productscreateaddon) | **Post** /v1/products/{id}/addons | Create Product Add-on
 *ProductAddOnsAPI* | [**ProductsDeleteAddon**](docs/ProductAddOnsAPI.md#productsdeleteaddon) | **Delete** /v1/products/{id}/addons/{addonId} | Delete Product Add-on
 *ProductAddOnsAPI* | [**ProductsGetAddon**](docs/ProductAddOnsAPI.md#productsgetaddon) | **Get** /v1/products/{id}/addons/{addonId} | Retrieve Product Add-on
@@ -186,6 +180,11 @@ Class | Method | HTTP request | Description
 *ProductsAPI* | [**ProductsList**](docs/ProductsAPI.md#productslist) | **Get** /v1/products | List Products
 *ProductsAPI* | [**ProductsUnarchive**](docs/ProductsAPI.md#productsunarchive) | **Post** /v1/products/{id}/unarchive | Unarchive Product
 *ProductsAPI* | [**ProductsUpdate**](docs/ProductsAPI.md#productsupdate) | **Patch** /v1/products/{id} | Update Product
+*RefundRequestsAPI* | [**RefundRequestsList**](docs/RefundRequestsAPI.md#refundrequestslist) | **Get** /v1/refund-requests | List Refund Requests (Merchant)
+*RefundRequestsAPI* | [**RefundRequestsListMessages**](docs/RefundRequestsAPI.md#refundrequestslistmessages) | **Get** /v1/refund-requests/{id}/messages | List Messages for Refund Request (Merchant)
+*RefundRequestsAPI* | [**RefundRequestsSendMessage**](docs/RefundRequestsAPI.md#refundrequestssendmessage) | **Post** /v1/refund-requests/{id}/messages | Send Refund Request Message (Merchant)
+*RefundRequestsAPI* | [**RefundRequestsUpdateStatus**](docs/RefundRequestsAPI.md#refundrequestsupdatestatus) | **Patch** /v1/refund-requests/{id}/status | Update Refund Request Status (Merchant)
+*RefundRequestsAPI* | [**RefundRequestsUploadEvidence**](docs/RefundRequestsAPI.md#refundrequestsuploadevidence) | **Post** /v1/refund-requests/upload-evidence | Upload Dispute Evidence File (Merchant)
 *RefundsChargebacksAPI* | [**RefundsCreate**](docs/RefundsChargebacksAPI.md#refundscreate) | **Post** /v1/orders/{id}/refund | Create Refund
 *RefundsChargebacksAPI* | [**RefundsGet**](docs/RefundsChargebacksAPI.md#refundsget) | **Get** /v1/refunds/{id} | Retrieve Refund details
 *RefundsChargebacksAPI* | [**RefundsList**](docs/RefundsChargebacksAPI.md#refundslist) | **Get** /v1/refunds | List Refunds
@@ -194,6 +193,15 @@ Class | Method | HTTP request | Description
 *SubscriptionsAPI* | [**SubscriptionsList**](docs/SubscriptionsAPI.md#subscriptionslist) | **Get** /v1/subscriptions | List Subscriptions
 *WebhookAPI* | [**WebhookControllerHandleSvixWebhook**](docs/WebhookAPI.md#webhookcontrollerhandlesvixwebhook) | **Post** /v1/webhook/svix | 
 *WebhookAPI* | [**WebhookControllerHandleWebhook**](docs/WebhookAPI.md#webhookcontrollerhandlewebhook) | **Post** /v1/webhook | 
+*WebhookEndpointAPI* | [**OperationalWebhookControllerCreate**](docs/WebhookEndpointAPI.md#operationalwebhookcontrollercreate) | **Post** /v1/operational-webhook/endpoint | Create Operational Webhook Endpoint
+*WebhookEndpointAPI* | [**OperationalWebhookControllerDelete**](docs/WebhookEndpointAPI.md#operationalwebhookcontrollerdelete) | **Delete** /v1/operational-webhook/endpoint/{id} | Delete Operational Webhook Endpoint
+*WebhookEndpointAPI* | [**OperationalWebhookControllerGet**](docs/WebhookEndpointAPI.md#operationalwebhookcontrollerget) | **Get** /v1/operational-webhook/endpoint/{id} | Get Operational Webhook Endpoint
+*WebhookEndpointAPI* | [**OperationalWebhookControllerGetHeaders**](docs/WebhookEndpointAPI.md#operationalwebhookcontrollergetheaders) | **Get** /v1/operational-webhook/endpoint/{id}/headers | Get Operational Webhook Endpoint Headers
+*WebhookEndpointAPI* | [**OperationalWebhookControllerGetSecret**](docs/WebhookEndpointAPI.md#operationalwebhookcontrollergetsecret) | **Get** /v1/operational-webhook/endpoint/{id}/secret | Get Operational Webhook Endpoint Secret
+*WebhookEndpointAPI* | [**OperationalWebhookControllerList**](docs/WebhookEndpointAPI.md#operationalwebhookcontrollerlist) | **Get** /v1/operational-webhook/endpoint | List Operational Webhook Endpoints
+*WebhookEndpointAPI* | [**OperationalWebhookControllerRotateSecret**](docs/WebhookEndpointAPI.md#operationalwebhookcontrollerrotatesecret) | **Post** /v1/operational-webhook/endpoint/{id}/secret/rotate | Rotate Operational Webhook Endpoint Secret
+*WebhookEndpointAPI* | [**OperationalWebhookControllerUpdate**](docs/WebhookEndpointAPI.md#operationalwebhookcontrollerupdate) | **Put** /v1/operational-webhook/endpoint/{id} | Update Operational Webhook Endpoint
+*WebhookEndpointAPI* | [**OperationalWebhookControllerUpdateHeaders**](docs/WebhookEndpointAPI.md#operationalwebhookcontrollerupdateheaders) | **Put** /v1/operational-webhook/endpoint/{id}/headers | Set Operational Webhook Endpoint Headers
 
 
 ## Documentation For Models
@@ -202,13 +210,11 @@ Class | Method | HTTP request | Description
  - [Addon](docs/Addon.md)
  - [AddonCreate](docs/AddonCreate.md)
  - [AddonUpdate](docs/AddonUpdate.md)
+ - [ApiKeyResponseDto](docs/ApiKeyResponseDto.md)
+ - [AppPortalUrlResponseDto](docs/AppPortalUrlResponseDto.md)
  - [Brand](docs/Brand.md)
  - [BrandCreate](docs/BrandCreate.md)
  - [BrandUpdate](docs/BrandUpdate.md)
- - [Business](docs/Business.md)
- - [BusinessCreate](docs/BusinessCreate.md)
- - [BusinessFullCreate](docs/BusinessFullCreate.md)
- - [BusinessFullCreateResponse](docs/BusinessFullCreateResponse.md)
  - [CheckoutLinkMessageResponseDto](docs/CheckoutLinkMessageResponseDto.md)
  - [CheckoutLinkResponseDto](docs/CheckoutLinkResponseDto.md)
  - [CheckoutResponseDto](docs/CheckoutResponseDto.md)
@@ -223,12 +229,15 @@ Class | Method | HTTP request | Description
  - [CollectionResponseDto](docs/CollectionResponseDto.md)
  - [CollectionUnarchivedResponseDto](docs/CollectionUnarchivedResponseDto.md)
  - [CollectionUpdatedResponseDto](docs/CollectionUpdatedResponseDto.md)
+ - [CreateApiKeyDto](docs/CreateApiKeyDto.md)
  - [CreateCheckoutDto](docs/CreateCheckoutDto.md)
  - [CreateCheckoutLinkDto](docs/CreateCheckoutLinkDto.md)
  - [CreateCollectionCheckoutDto](docs/CreateCollectionCheckoutDto.md)
  - [CreateCollectionDto](docs/CreateCollectionDto.md)
  - [CreateCustomerDto](docs/CreateCustomerDto.md)
  - [CreateMeterDto](docs/CreateMeterDto.md)
+ - [CreateSetupCheckoutDto](docs/CreateSetupCheckoutDto.md)
+ - [CreateWebhookEndpointDto](docs/CreateWebhookEndpointDto.md)
  - [CustomerListResponseDto](docs/CustomerListResponseDto.md)
  - [CustomerMessageResponseDto](docs/CustomerMessageResponseDto.md)
  - [CustomerResponseDto](docs/CustomerResponseDto.md)
@@ -267,6 +276,14 @@ Class | Method | HTTP request | Description
  - [MeterQuantitiesResponseDto](docs/MeterQuantitiesResponseDto.md)
  - [MeterResponseDto](docs/MeterResponseDto.md)
  - [MeterUsageEventDto](docs/MeterUsageEventDto.md)
+ - [OperationalWebhookEndpointHeadersInDto](docs/OperationalWebhookEndpointHeadersInDto.md)
+ - [OperationalWebhookEndpointHeadersResponseDto](docs/OperationalWebhookEndpointHeadersResponseDto.md)
+ - [OperationalWebhookEndpointInDto](docs/OperationalWebhookEndpointInDto.md)
+ - [OperationalWebhookEndpointListResponseDto](docs/OperationalWebhookEndpointListResponseDto.md)
+ - [OperationalWebhookEndpointResponseDto](docs/OperationalWebhookEndpointResponseDto.md)
+ - [OperationalWebhookEndpointSecretInDto](docs/OperationalWebhookEndpointSecretInDto.md)
+ - [OperationalWebhookEndpointSecretResponseDto](docs/OperationalWebhookEndpointSecretResponseDto.md)
+ - [OperationalWebhookEndpointUpdateDto](docs/OperationalWebhookEndpointUpdateDto.md)
  - [Order](docs/Order.md)
  - [OrderBilling](docs/OrderBilling.md)
  - [OrderBillingUpdate](docs/OrderBillingUpdate.md)
@@ -277,13 +294,6 @@ Class | Method | HTTP request | Description
  - [OrderRefund](docs/OrderRefund.md)
  - [OrderRefundCreate](docs/OrderRefundCreate.md)
  - [OrderUpdate](docs/OrderUpdate.md)
- - [PayoutAccessToken](docs/PayoutAccessToken.md)
- - [PayoutAccount](docs/PayoutAccount.md)
- - [PayoutAccountLink](docs/PayoutAccountLink.md)
- - [PayoutMethod](docs/PayoutMethod.md)
- - [PayoutMethodList](docs/PayoutMethodList.md)
- - [PayoutVerification](docs/PayoutVerification.md)
- - [PayoutVerificationList](docs/PayoutVerificationList.md)
  - [PricePreviewResponseDto](docs/PricePreviewResponseDto.md)
  - [Product](docs/Product.md)
  - [ProductCreate](docs/ProductCreate.md)
@@ -318,16 +328,15 @@ Class | Method | HTTP request | Description
  - [UpdateCustomerDto](docs/UpdateCustomerDto.md)
  - [UpdateInstanceDto](docs/UpdateInstanceDto.md)
  - [UpdateMeterDto](docs/UpdateMeterDto.md)
- - [UserPage](docs/UserPage.md)
- - [UserSettings](docs/UserSettings.md)
- - [UserSettingsUpdate](docs/UserSettingsUpdate.md)
- - [UserStats](docs/UserStats.md)
- - [UserTheme](docs/UserTheme.md)
- - [UserThemeUpdate](docs/UserThemeUpdate.md)
- - [WhopApiKeysRotation](docs/WhopApiKeysRotation.md)
- - [Withdrawal](docs/Withdrawal.md)
- - [WithdrawalCreate](docs/WithdrawalCreate.md)
- - [WithdrawalList](docs/WithdrawalList.md)
+ - [UpdateWebhookEndpointDto](docs/UpdateWebhookEndpointDto.md)
+ - [WebhookDeliveryResponseDto](docs/WebhookDeliveryResponseDto.md)
+ - [WebhookDisputePayload](docs/WebhookDisputePayload.md)
+ - [WebhookEndpointResponseDto](docs/WebhookEndpointResponseDto.md)
+ - [WebhookLicensePayload](docs/WebhookLicensePayload.md)
+ - [WebhookPaymentPayload](docs/WebhookPaymentPayload.md)
+ - [WebhookPaymentPayloadBillingAddress](docs/WebhookPaymentPayloadBillingAddress.md)
+ - [WebhookRefundPayload](docs/WebhookRefundPayload.md)
+ - [WebhookSubscriptionPayload](docs/WebhookSubscriptionPayload.md)
 
 
 ## Documentation For Authorization

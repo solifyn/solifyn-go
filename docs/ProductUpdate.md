@@ -25,6 +25,7 @@ Name | Type | Description | Notes
 **CustomFields** | Pointer to [**[]ProductCreateCustomFieldsInner**](ProductCreateCustomFieldsInner.md) | Form field configurations to gather during checkout. | [optional] 
 **Stock** | Pointer to **int32** | Initial stock quantity limit. | [optional] 
 **IsListed** | Pointer to **bool** | Whether the product is publicly visible. | [optional] [default to true]
+**IsFree** | Pointer to **bool** | Whether the product is free of charge. | [optional] [default to false]
 **Addons** | Pointer to [**[]ProductCreateAddonsInner**](ProductCreateAddonsInner.md) | Product addons configurations. | [optional] 
 
 ## Methods
@@ -570,6 +571,31 @@ SetIsListed sets IsListed field to given value.
 `func (o *ProductUpdate) HasIsListed() bool`
 
 HasIsListed returns a boolean if a field has been set.
+
+### GetIsFree
+
+`func (o *ProductUpdate) GetIsFree() bool`
+
+GetIsFree returns the IsFree field if non-nil, zero value otherwise.
+
+### GetIsFreeOk
+
+`func (o *ProductUpdate) GetIsFreeOk() (*bool, bool)`
+
+GetIsFreeOk returns a tuple with the IsFree field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsFree
+
+`func (o *ProductUpdate) SetIsFree(v bool)`
+
+SetIsFree sets IsFree field to given value.
+
+### HasIsFree
+
+`func (o *ProductUpdate) HasIsFree() bool`
+
+HasIsFree returns a boolean if a field has been set.
 
 ### GetAddons
 

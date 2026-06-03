@@ -77,17 +77,19 @@ type APIClient struct {
 
 	OrdersAPI *OrdersAPIService
 
-	PayoutsAPI *PayoutsAPIService
-
 	ProductAddOnsAPI *ProductAddOnsAPIService
 
 	ProductsAPI *ProductsAPIService
+
+	RefundRequestsAPI *RefundRequestsAPIService
 
 	RefundsChargebacksAPI *RefundsChargebacksAPIService
 
 	SubscriptionsAPI *SubscriptionsAPIService
 
 	WebhookAPI *WebhookAPIService
+
+	WebhookEndpointAPI *WebhookEndpointAPIService
 }
 
 type service struct {
@@ -120,12 +122,13 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.LicenseKeysClientAPI = (*LicenseKeysClientAPIService)(&c.common)
 	c.MetersAPI = (*MetersAPIService)(&c.common)
 	c.OrdersAPI = (*OrdersAPIService)(&c.common)
-	c.PayoutsAPI = (*PayoutsAPIService)(&c.common)
 	c.ProductAddOnsAPI = (*ProductAddOnsAPIService)(&c.common)
 	c.ProductsAPI = (*ProductsAPIService)(&c.common)
+	c.RefundRequestsAPI = (*RefundRequestsAPIService)(&c.common)
 	c.RefundsChargebacksAPI = (*RefundsChargebacksAPIService)(&c.common)
 	c.SubscriptionsAPI = (*SubscriptionsAPIService)(&c.common)
 	c.WebhookAPI = (*WebhookAPIService)(&c.common)
+	c.WebhookEndpointAPI = (*WebhookEndpointAPIService)(&c.common)
 
 	return c
 }

@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CheckoutCreate**](CheckoutAPI.md#CheckoutCreate) | **Post** /v1/checkout/create | Create Checkout Session
 [**CheckoutCreateCollection**](CheckoutAPI.md#CheckoutCreateCollection) | **Post** /v1/checkout/collection/create | Create Collection Checkout Session
+[**CheckoutCreateSetup**](CheckoutAPI.md#CheckoutCreateSetup) | **Post** /v1/checkout/setup-configuration | Create Setup Checkout Configuration
 [**CheckoutGetSession**](CheckoutAPI.md#CheckoutGetSession) | **Get** /v1/checkout/session/{id} | Get Checkout Session Details
 [**CheckoutPricePreview**](CheckoutAPI.md#CheckoutPricePreview) | **Get** /v1/checkout/price-preview | Get Converted Price Preview
 [**CheckoutSupportedCurrencies**](CheckoutAPI.md#CheckoutSupportedCurrencies) | **Get** /v1/checkout/supported-currencies | Get Supported Currencies
@@ -138,6 +139,70 @@ No authorization required
 
 - **Content-Type**: application/json
 - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CheckoutCreateSetup
+
+> CheckoutCreateSetup(ctx).CreateSetupCheckoutDto(createSetupCheckoutDto).Execute()
+
+Create Setup Checkout Configuration
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	createSetupCheckoutDto := *openapiclient.NewCreateSetupCheckoutDto("biz_xxxxxxxxxxxxxx") // CreateSetupCheckoutDto | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.CheckoutAPI.CheckoutCreateSetup(context.Background()).CreateSetupCheckoutDto(createSetupCheckoutDto).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CheckoutAPI.CheckoutCreateSetup``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCheckoutCreateSetupRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createSetupCheckoutDto** | [**CreateSetupCheckoutDto**](CreateSetupCheckoutDto.md) |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

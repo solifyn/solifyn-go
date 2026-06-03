@@ -61,6 +61,8 @@ type ProductUpdate struct {
 	Stock *int32 `json:"stock,omitempty"`
 	// Whether the product is publicly visible.
 	IsListed *bool `json:"isListed,omitempty"`
+	// Whether the product is free of charge.
+	IsFree *bool `json:"isFree,omitempty"`
 	// Product addons configurations.
 	Addons []ProductCreateAddonsInner `json:"addons,omitempty"`
 }
@@ -83,6 +85,8 @@ func NewProductUpdate() *ProductUpdate {
 	this.PayWhatYouWant = &payWhatYouWant
 	var isListed bool = true
 	this.IsListed = &isListed
+	var isFree bool = false
+	this.IsFree = &isFree
 	return &this
 }
 
@@ -103,6 +107,8 @@ func NewProductUpdateWithDefaults() *ProductUpdate {
 	this.PayWhatYouWant = &payWhatYouWant
 	var isListed bool = true
 	this.IsListed = &isListed
+	var isFree bool = false
+	this.IsFree = &isFree
 	return &this
 }
 
@@ -778,6 +784,38 @@ func (o *ProductUpdate) SetIsListed(v bool) {
 	o.IsListed = &v
 }
 
+// GetIsFree returns the IsFree field value if set, zero value otherwise.
+func (o *ProductUpdate) GetIsFree() bool {
+	if o == nil || IsNil(o.IsFree) {
+		var ret bool
+		return ret
+	}
+	return *o.IsFree
+}
+
+// GetIsFreeOk returns a tuple with the IsFree field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductUpdate) GetIsFreeOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsFree) {
+		return nil, false
+	}
+	return o.IsFree, true
+}
+
+// HasIsFree returns a boolean if a field has been set.
+func (o *ProductUpdate) HasIsFree() bool {
+	if o != nil && !IsNil(o.IsFree) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsFree gets a reference to the given bool and assigns it to the IsFree field.
+func (o *ProductUpdate) SetIsFree(v bool) {
+	o.IsFree = &v
+}
+
 // GetAddons returns the Addons field value if set, zero value otherwise.
 func (o *ProductUpdate) GetAddons() []ProductCreateAddonsInner {
 	if o == nil || IsNil(o.Addons) {
@@ -882,6 +920,9 @@ func (o ProductUpdate) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.IsListed) {
 		toSerialize["isListed"] = o.IsListed
+	}
+	if !IsNil(o.IsFree) {
+		toSerialize["isFree"] = o.IsFree
 	}
 	if !IsNil(o.Addons) {
 		toSerialize["addons"] = o.Addons

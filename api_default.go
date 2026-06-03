@@ -25,11 +25,11 @@ type DefaultAPIService service
 type ApiDisputeCreatedPostRequest struct {
 	ctx context.Context
 	ApiService *DefaultAPIService
-	uNKNOWNBASETYPE *UNKNOWN_BASE_TYPE
+	webhookDisputePayload *WebhookDisputePayload
 }
 
-func (r ApiDisputeCreatedPostRequest) UNKNOWNBASETYPE(uNKNOWNBASETYPE UNKNOWN_BASE_TYPE) ApiDisputeCreatedPostRequest {
-	r.uNKNOWNBASETYPE = &uNKNOWNBASETYPE
+func (r ApiDisputeCreatedPostRequest) WebhookDisputePayload(webhookDisputePayload WebhookDisputePayload) ApiDisputeCreatedPostRequest {
+	r.webhookDisputePayload = &webhookDisputePayload
 	return r
 }
 
@@ -89,7 +89,7 @@ func (a *DefaultAPIService) DisputeCreatedPostExecute(r ApiDisputeCreatedPostReq
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.uNKNOWNBASETYPE
+	localVarPostBody = r.webhookDisputePayload
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -121,11 +121,11 @@ func (a *DefaultAPIService) DisputeCreatedPostExecute(r ApiDisputeCreatedPostReq
 type ApiDisputeLostPostRequest struct {
 	ctx context.Context
 	ApiService *DefaultAPIService
-	uNKNOWNBASETYPE *UNKNOWN_BASE_TYPE
+	webhookDisputePayload *WebhookDisputePayload
 }
 
-func (r ApiDisputeLostPostRequest) UNKNOWNBASETYPE(uNKNOWNBASETYPE UNKNOWN_BASE_TYPE) ApiDisputeLostPostRequest {
-	r.uNKNOWNBASETYPE = &uNKNOWNBASETYPE
+func (r ApiDisputeLostPostRequest) WebhookDisputePayload(webhookDisputePayload WebhookDisputePayload) ApiDisputeLostPostRequest {
+	r.webhookDisputePayload = &webhookDisputePayload
 	return r
 }
 
@@ -185,7 +185,7 @@ func (a *DefaultAPIService) DisputeLostPostExecute(r ApiDisputeLostPostRequest) 
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.uNKNOWNBASETYPE
+	localVarPostBody = r.webhookDisputePayload
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -217,11 +217,11 @@ func (a *DefaultAPIService) DisputeLostPostExecute(r ApiDisputeLostPostRequest) 
 type ApiDisputeWonPostRequest struct {
 	ctx context.Context
 	ApiService *DefaultAPIService
-	uNKNOWNBASETYPE *UNKNOWN_BASE_TYPE
+	webhookDisputePayload *WebhookDisputePayload
 }
 
-func (r ApiDisputeWonPostRequest) UNKNOWNBASETYPE(uNKNOWNBASETYPE UNKNOWN_BASE_TYPE) ApiDisputeWonPostRequest {
-	r.uNKNOWNBASETYPE = &uNKNOWNBASETYPE
+func (r ApiDisputeWonPostRequest) WebhookDisputePayload(webhookDisputePayload WebhookDisputePayload) ApiDisputeWonPostRequest {
+	r.webhookDisputePayload = &webhookDisputePayload
 	return r
 }
 
@@ -281,7 +281,7 @@ func (a *DefaultAPIService) DisputeWonPostExecute(r ApiDisputeWonPostRequest) (*
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.uNKNOWNBASETYPE
+	localVarPostBody = r.webhookDisputePayload
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -313,11 +313,11 @@ func (a *DefaultAPIService) DisputeWonPostExecute(r ApiDisputeWonPostRequest) (*
 type ApiLicenseCreatedPostRequest struct {
 	ctx context.Context
 	ApiService *DefaultAPIService
-	license *License
+	webhookLicensePayload *WebhookLicensePayload
 }
 
-func (r ApiLicenseCreatedPostRequest) License(license License) ApiLicenseCreatedPostRequest {
-	r.license = &license
+func (r ApiLicenseCreatedPostRequest) WebhookLicensePayload(webhookLicensePayload WebhookLicensePayload) ApiLicenseCreatedPostRequest {
+	r.webhookLicensePayload = &webhookLicensePayload
 	return r
 }
 
@@ -377,7 +377,7 @@ func (a *DefaultAPIService) LicenseCreatedPostExecute(r ApiLicenseCreatedPostReq
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.license
+	localVarPostBody = r.webhookLicensePayload
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -409,11 +409,11 @@ func (a *DefaultAPIService) LicenseCreatedPostExecute(r ApiLicenseCreatedPostReq
 type ApiLicenseRevokedPostRequest struct {
 	ctx context.Context
 	ApiService *DefaultAPIService
-	license *License
+	webhookLicensePayload *WebhookLicensePayload
 }
 
-func (r ApiLicenseRevokedPostRequest) License(license License) ApiLicenseRevokedPostRequest {
-	r.license = &license
+func (r ApiLicenseRevokedPostRequest) WebhookLicensePayload(webhookLicensePayload WebhookLicensePayload) ApiLicenseRevokedPostRequest {
+	r.webhookLicensePayload = &webhookLicensePayload
 	return r
 }
 
@@ -473,7 +473,7 @@ func (a *DefaultAPIService) LicenseRevokedPostExecute(r ApiLicenseRevokedPostReq
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.license
+	localVarPostBody = r.webhookLicensePayload
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -505,11 +505,11 @@ func (a *DefaultAPIService) LicenseRevokedPostExecute(r ApiLicenseRevokedPostReq
 type ApiPaymentCreatedPostRequest struct {
 	ctx context.Context
 	ApiService *DefaultAPIService
-	uNKNOWNBASETYPE *UNKNOWN_BASE_TYPE
+	webhookPaymentPayload *WebhookPaymentPayload
 }
 
-func (r ApiPaymentCreatedPostRequest) UNKNOWNBASETYPE(uNKNOWNBASETYPE UNKNOWN_BASE_TYPE) ApiPaymentCreatedPostRequest {
-	r.uNKNOWNBASETYPE = &uNKNOWNBASETYPE
+func (r ApiPaymentCreatedPostRequest) WebhookPaymentPayload(webhookPaymentPayload WebhookPaymentPayload) ApiPaymentCreatedPostRequest {
+	r.webhookPaymentPayload = &webhookPaymentPayload
 	return r
 }
 
@@ -569,7 +569,7 @@ func (a *DefaultAPIService) PaymentCreatedPostExecute(r ApiPaymentCreatedPostReq
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.uNKNOWNBASETYPE
+	localVarPostBody = r.webhookPaymentPayload
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -793,11 +793,11 @@ func (a *DefaultAPIService) PaymentSucceededPostExecute(r ApiPaymentSucceededPos
 type ApiRefundFailedPostRequest struct {
 	ctx context.Context
 	ApiService *DefaultAPIService
-	uNKNOWNBASETYPE *UNKNOWN_BASE_TYPE
+	webhookRefundPayload *WebhookRefundPayload
 }
 
-func (r ApiRefundFailedPostRequest) UNKNOWNBASETYPE(uNKNOWNBASETYPE UNKNOWN_BASE_TYPE) ApiRefundFailedPostRequest {
-	r.uNKNOWNBASETYPE = &uNKNOWNBASETYPE
+func (r ApiRefundFailedPostRequest) WebhookRefundPayload(webhookRefundPayload WebhookRefundPayload) ApiRefundFailedPostRequest {
+	r.webhookRefundPayload = &webhookRefundPayload
 	return r
 }
 
@@ -857,7 +857,7 @@ func (a *DefaultAPIService) RefundFailedPostExecute(r ApiRefundFailedPostRequest
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.uNKNOWNBASETYPE
+	localVarPostBody = r.webhookRefundPayload
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -889,11 +889,11 @@ func (a *DefaultAPIService) RefundFailedPostExecute(r ApiRefundFailedPostRequest
 type ApiRefundSucceededPostRequest struct {
 	ctx context.Context
 	ApiService *DefaultAPIService
-	uNKNOWNBASETYPE *UNKNOWN_BASE_TYPE
+	webhookRefundPayload *WebhookRefundPayload
 }
 
-func (r ApiRefundSucceededPostRequest) UNKNOWNBASETYPE(uNKNOWNBASETYPE UNKNOWN_BASE_TYPE) ApiRefundSucceededPostRequest {
-	r.uNKNOWNBASETYPE = &uNKNOWNBASETYPE
+func (r ApiRefundSucceededPostRequest) WebhookRefundPayload(webhookRefundPayload WebhookRefundPayload) ApiRefundSucceededPostRequest {
+	r.webhookRefundPayload = &webhookRefundPayload
 	return r
 }
 
@@ -953,7 +953,7 @@ func (a *DefaultAPIService) RefundSucceededPostExecute(r ApiRefundSucceededPostR
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.uNKNOWNBASETYPE
+	localVarPostBody = r.webhookRefundPayload
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -985,11 +985,11 @@ func (a *DefaultAPIService) RefundSucceededPostExecute(r ApiRefundSucceededPostR
 type ApiSubscriptionCreatedPostRequest struct {
 	ctx context.Context
 	ApiService *DefaultAPIService
-	uNKNOWNBASETYPE *UNKNOWN_BASE_TYPE
+	webhookSubscriptionPayload *WebhookSubscriptionPayload
 }
 
-func (r ApiSubscriptionCreatedPostRequest) UNKNOWNBASETYPE(uNKNOWNBASETYPE UNKNOWN_BASE_TYPE) ApiSubscriptionCreatedPostRequest {
-	r.uNKNOWNBASETYPE = &uNKNOWNBASETYPE
+func (r ApiSubscriptionCreatedPostRequest) WebhookSubscriptionPayload(webhookSubscriptionPayload WebhookSubscriptionPayload) ApiSubscriptionCreatedPostRequest {
+	r.webhookSubscriptionPayload = &webhookSubscriptionPayload
 	return r
 }
 
@@ -1049,7 +1049,7 @@ func (a *DefaultAPIService) SubscriptionCreatedPostExecute(r ApiSubscriptionCrea
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.uNKNOWNBASETYPE
+	localVarPostBody = r.webhookSubscriptionPayload
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -1081,11 +1081,11 @@ func (a *DefaultAPIService) SubscriptionCreatedPostExecute(r ApiSubscriptionCrea
 type ApiSubscriptionDeactivatedPostRequest struct {
 	ctx context.Context
 	ApiService *DefaultAPIService
-	uNKNOWNBASETYPE *UNKNOWN_BASE_TYPE
+	webhookSubscriptionPayload *WebhookSubscriptionPayload
 }
 
-func (r ApiSubscriptionDeactivatedPostRequest) UNKNOWNBASETYPE(uNKNOWNBASETYPE UNKNOWN_BASE_TYPE) ApiSubscriptionDeactivatedPostRequest {
-	r.uNKNOWNBASETYPE = &uNKNOWNBASETYPE
+func (r ApiSubscriptionDeactivatedPostRequest) WebhookSubscriptionPayload(webhookSubscriptionPayload WebhookSubscriptionPayload) ApiSubscriptionDeactivatedPostRequest {
+	r.webhookSubscriptionPayload = &webhookSubscriptionPayload
 	return r
 }
 
@@ -1145,7 +1145,7 @@ func (a *DefaultAPIService) SubscriptionDeactivatedPostExecute(r ApiSubscription
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.uNKNOWNBASETYPE
+	localVarPostBody = r.webhookSubscriptionPayload
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -1177,11 +1177,11 @@ func (a *DefaultAPIService) SubscriptionDeactivatedPostExecute(r ApiSubscription
 type ApiSubscriptionUpdatedPostRequest struct {
 	ctx context.Context
 	ApiService *DefaultAPIService
-	uNKNOWNBASETYPE *UNKNOWN_BASE_TYPE
+	webhookSubscriptionPayload *WebhookSubscriptionPayload
 }
 
-func (r ApiSubscriptionUpdatedPostRequest) UNKNOWNBASETYPE(uNKNOWNBASETYPE UNKNOWN_BASE_TYPE) ApiSubscriptionUpdatedPostRequest {
-	r.uNKNOWNBASETYPE = &uNKNOWNBASETYPE
+func (r ApiSubscriptionUpdatedPostRequest) WebhookSubscriptionPayload(webhookSubscriptionPayload WebhookSubscriptionPayload) ApiSubscriptionUpdatedPostRequest {
+	r.webhookSubscriptionPayload = &webhookSubscriptionPayload
 	return r
 }
 
@@ -1241,7 +1241,7 @@ func (a *DefaultAPIService) SubscriptionUpdatedPostExecute(r ApiSubscriptionUpda
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.uNKNOWNBASETYPE
+	localVarPostBody = r.webhookSubscriptionPayload
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err

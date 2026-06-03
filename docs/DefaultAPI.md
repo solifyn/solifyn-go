@@ -22,7 +22,7 @@ Method | HTTP request | Description
 
 ## DisputeCreatedPost
 
-> DisputeCreatedPost(ctx).UNKNOWNBASETYPE(uNKNOWNBASETYPE).Execute()
+> DisputeCreatedPost(ctx).WebhookDisputePayload(webhookDisputePayload).Execute()
 
 Dispute Created
 
@@ -41,11 +41,11 @@ import (
 )
 
 func main() {
-	uNKNOWNBASETYPE :=  // UNKNOWN_BASE_TYPE |  (optional)
+	webhookDisputePayload :=  // WebhookDisputePayload |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.DefaultAPI.DisputeCreatedPost(context.Background()).UNKNOWNBASETYPE(uNKNOWNBASETYPE).Execute()
+	r, err := apiClient.DefaultAPI.DisputeCreatedPost(context.Background()).WebhookDisputePayload(webhookDisputePayload).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.DisputeCreatedPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -64,7 +64,7 @@ Other parameters are passed through a pointer to a apiDisputeCreatedPostRequest 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **uNKNOWNBASETYPE** | [**UNKNOWN_BASE_TYPE**](UNKNOWN_BASE_TYPE.md) |  | 
+ **webhookDisputePayload** | [**WebhookDisputePayload**](WebhookDisputePayload.md) |  | 
 
 ### Return type
 
@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 
 ## DisputeLostPost
 
-> DisputeLostPost(ctx).UNKNOWNBASETYPE(uNKNOWNBASETYPE).Execute()
+> DisputeLostPost(ctx).WebhookDisputePayload(webhookDisputePayload).Execute()
 
 Dispute Lost
 
@@ -105,11 +105,11 @@ import (
 )
 
 func main() {
-	uNKNOWNBASETYPE :=  // UNKNOWN_BASE_TYPE |  (optional)
+	webhookDisputePayload :=  // WebhookDisputePayload |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.DefaultAPI.DisputeLostPost(context.Background()).UNKNOWNBASETYPE(uNKNOWNBASETYPE).Execute()
+	r, err := apiClient.DefaultAPI.DisputeLostPost(context.Background()).WebhookDisputePayload(webhookDisputePayload).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.DisputeLostPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -128,7 +128,7 @@ Other parameters are passed through a pointer to a apiDisputeLostPostRequest str
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **uNKNOWNBASETYPE** | [**UNKNOWN_BASE_TYPE**](UNKNOWN_BASE_TYPE.md) |  | 
+ **webhookDisputePayload** | [**WebhookDisputePayload**](WebhookDisputePayload.md) |  | 
 
 ### Return type
 
@@ -150,7 +150,7 @@ Name | Type | Description  | Notes
 
 ## DisputeWonPost
 
-> DisputeWonPost(ctx).UNKNOWNBASETYPE(uNKNOWNBASETYPE).Execute()
+> DisputeWonPost(ctx).WebhookDisputePayload(webhookDisputePayload).Execute()
 
 Dispute Won
 
@@ -169,11 +169,11 @@ import (
 )
 
 func main() {
-	uNKNOWNBASETYPE :=  // UNKNOWN_BASE_TYPE |  (optional)
+	webhookDisputePayload :=  // WebhookDisputePayload |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.DefaultAPI.DisputeWonPost(context.Background()).UNKNOWNBASETYPE(uNKNOWNBASETYPE).Execute()
+	r, err := apiClient.DefaultAPI.DisputeWonPost(context.Background()).WebhookDisputePayload(webhookDisputePayload).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.DisputeWonPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -192,7 +192,7 @@ Other parameters are passed through a pointer to a apiDisputeWonPostRequest stru
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **uNKNOWNBASETYPE** | [**UNKNOWN_BASE_TYPE**](UNKNOWN_BASE_TYPE.md) |  | 
+ **webhookDisputePayload** | [**WebhookDisputePayload**](WebhookDisputePayload.md) |  | 
 
 ### Return type
 
@@ -214,7 +214,7 @@ Name | Type | Description  | Notes
 
 ## LicenseCreatedPost
 
-> LicenseCreatedPost(ctx).License(license).Execute()
+> LicenseCreatedPost(ctx).WebhookLicensePayload(webhookLicensePayload).Execute()
 
 License Created
 
@@ -233,11 +233,11 @@ import (
 )
 
 func main() {
-	license :=  // License |  (optional)
+	webhookLicensePayload :=  // WebhookLicensePayload |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.DefaultAPI.LicenseCreatedPost(context.Background()).License(license).Execute()
+	r, err := apiClient.DefaultAPI.LicenseCreatedPost(context.Background()).WebhookLicensePayload(webhookLicensePayload).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.LicenseCreatedPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -256,7 +256,7 @@ Other parameters are passed through a pointer to a apiLicenseCreatedPostRequest 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **license** | [**License**](License.md) |  | 
+ **webhookLicensePayload** | [**WebhookLicensePayload**](WebhookLicensePayload.md) |  | 
 
 ### Return type
 
@@ -278,7 +278,7 @@ Name | Type | Description  | Notes
 
 ## LicenseRevokedPost
 
-> LicenseRevokedPost(ctx).License(license).Execute()
+> LicenseRevokedPost(ctx).WebhookLicensePayload(webhookLicensePayload).Execute()
 
 License Revoked
 
@@ -297,11 +297,11 @@ import (
 )
 
 func main() {
-	license :=  // License |  (optional)
+	webhookLicensePayload :=  // WebhookLicensePayload |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.DefaultAPI.LicenseRevokedPost(context.Background()).License(license).Execute()
+	r, err := apiClient.DefaultAPI.LicenseRevokedPost(context.Background()).WebhookLicensePayload(webhookLicensePayload).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.LicenseRevokedPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -320,7 +320,7 @@ Other parameters are passed through a pointer to a apiLicenseRevokedPostRequest 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **license** | [**License**](License.md) |  | 
+ **webhookLicensePayload** | [**WebhookLicensePayload**](WebhookLicensePayload.md) |  | 
 
 ### Return type
 
@@ -342,7 +342,7 @@ Name | Type | Description  | Notes
 
 ## PaymentCreatedPost
 
-> PaymentCreatedPost(ctx).UNKNOWNBASETYPE(uNKNOWNBASETYPE).Execute()
+> PaymentCreatedPost(ctx).WebhookPaymentPayload(webhookPaymentPayload).Execute()
 
 Payment Created
 
@@ -361,11 +361,11 @@ import (
 )
 
 func main() {
-	uNKNOWNBASETYPE :=  // UNKNOWN_BASE_TYPE |  (optional)
+	webhookPaymentPayload :=  // WebhookPaymentPayload |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.DefaultAPI.PaymentCreatedPost(context.Background()).UNKNOWNBASETYPE(uNKNOWNBASETYPE).Execute()
+	r, err := apiClient.DefaultAPI.PaymentCreatedPost(context.Background()).WebhookPaymentPayload(webhookPaymentPayload).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.PaymentCreatedPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -384,7 +384,7 @@ Other parameters are passed through a pointer to a apiPaymentCreatedPostRequest 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **uNKNOWNBASETYPE** | [**UNKNOWN_BASE_TYPE**](UNKNOWN_BASE_TYPE.md) |  | 
+ **webhookPaymentPayload** | [**WebhookPaymentPayload**](WebhookPaymentPayload.md) |  | 
 
 ### Return type
 
@@ -534,7 +534,7 @@ Name | Type | Description  | Notes
 
 ## RefundFailedPost
 
-> RefundFailedPost(ctx).UNKNOWNBASETYPE(uNKNOWNBASETYPE).Execute()
+> RefundFailedPost(ctx).WebhookRefundPayload(webhookRefundPayload).Execute()
 
 Refund Failed
 
@@ -553,11 +553,11 @@ import (
 )
 
 func main() {
-	uNKNOWNBASETYPE :=  // UNKNOWN_BASE_TYPE |  (optional)
+	webhookRefundPayload :=  // WebhookRefundPayload |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.DefaultAPI.RefundFailedPost(context.Background()).UNKNOWNBASETYPE(uNKNOWNBASETYPE).Execute()
+	r, err := apiClient.DefaultAPI.RefundFailedPost(context.Background()).WebhookRefundPayload(webhookRefundPayload).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.RefundFailedPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -576,7 +576,7 @@ Other parameters are passed through a pointer to a apiRefundFailedPostRequest st
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **uNKNOWNBASETYPE** | [**UNKNOWN_BASE_TYPE**](UNKNOWN_BASE_TYPE.md) |  | 
+ **webhookRefundPayload** | [**WebhookRefundPayload**](WebhookRefundPayload.md) |  | 
 
 ### Return type
 
@@ -598,7 +598,7 @@ Name | Type | Description  | Notes
 
 ## RefundSucceededPost
 
-> RefundSucceededPost(ctx).UNKNOWNBASETYPE(uNKNOWNBASETYPE).Execute()
+> RefundSucceededPost(ctx).WebhookRefundPayload(webhookRefundPayload).Execute()
 
 Refund Succeeded
 
@@ -617,11 +617,11 @@ import (
 )
 
 func main() {
-	uNKNOWNBASETYPE :=  // UNKNOWN_BASE_TYPE |  (optional)
+	webhookRefundPayload :=  // WebhookRefundPayload |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.DefaultAPI.RefundSucceededPost(context.Background()).UNKNOWNBASETYPE(uNKNOWNBASETYPE).Execute()
+	r, err := apiClient.DefaultAPI.RefundSucceededPost(context.Background()).WebhookRefundPayload(webhookRefundPayload).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.RefundSucceededPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -640,7 +640,7 @@ Other parameters are passed through a pointer to a apiRefundSucceededPostRequest
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **uNKNOWNBASETYPE** | [**UNKNOWN_BASE_TYPE**](UNKNOWN_BASE_TYPE.md) |  | 
+ **webhookRefundPayload** | [**WebhookRefundPayload**](WebhookRefundPayload.md) |  | 
 
 ### Return type
 
@@ -662,7 +662,7 @@ Name | Type | Description  | Notes
 
 ## SubscriptionCreatedPost
 
-> SubscriptionCreatedPost(ctx).UNKNOWNBASETYPE(uNKNOWNBASETYPE).Execute()
+> SubscriptionCreatedPost(ctx).WebhookSubscriptionPayload(webhookSubscriptionPayload).Execute()
 
 Subscription Created
 
@@ -681,11 +681,11 @@ import (
 )
 
 func main() {
-	uNKNOWNBASETYPE :=  // UNKNOWN_BASE_TYPE |  (optional)
+	webhookSubscriptionPayload :=  // WebhookSubscriptionPayload |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.DefaultAPI.SubscriptionCreatedPost(context.Background()).UNKNOWNBASETYPE(uNKNOWNBASETYPE).Execute()
+	r, err := apiClient.DefaultAPI.SubscriptionCreatedPost(context.Background()).WebhookSubscriptionPayload(webhookSubscriptionPayload).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.SubscriptionCreatedPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -704,7 +704,7 @@ Other parameters are passed through a pointer to a apiSubscriptionCreatedPostReq
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **uNKNOWNBASETYPE** | [**UNKNOWN_BASE_TYPE**](UNKNOWN_BASE_TYPE.md) |  | 
+ **webhookSubscriptionPayload** | [**WebhookSubscriptionPayload**](WebhookSubscriptionPayload.md) |  | 
 
 ### Return type
 
@@ -726,7 +726,7 @@ Name | Type | Description  | Notes
 
 ## SubscriptionDeactivatedPost
 
-> SubscriptionDeactivatedPost(ctx).UNKNOWNBASETYPE(uNKNOWNBASETYPE).Execute()
+> SubscriptionDeactivatedPost(ctx).WebhookSubscriptionPayload(webhookSubscriptionPayload).Execute()
 
 Subscription Deactivated
 
@@ -745,11 +745,11 @@ import (
 )
 
 func main() {
-	uNKNOWNBASETYPE :=  // UNKNOWN_BASE_TYPE |  (optional)
+	webhookSubscriptionPayload :=  // WebhookSubscriptionPayload |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.DefaultAPI.SubscriptionDeactivatedPost(context.Background()).UNKNOWNBASETYPE(uNKNOWNBASETYPE).Execute()
+	r, err := apiClient.DefaultAPI.SubscriptionDeactivatedPost(context.Background()).WebhookSubscriptionPayload(webhookSubscriptionPayload).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.SubscriptionDeactivatedPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -768,7 +768,7 @@ Other parameters are passed through a pointer to a apiSubscriptionDeactivatedPos
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **uNKNOWNBASETYPE** | [**UNKNOWN_BASE_TYPE**](UNKNOWN_BASE_TYPE.md) |  | 
+ **webhookSubscriptionPayload** | [**WebhookSubscriptionPayload**](WebhookSubscriptionPayload.md) |  | 
 
 ### Return type
 
@@ -790,7 +790,7 @@ Name | Type | Description  | Notes
 
 ## SubscriptionUpdatedPost
 
-> SubscriptionUpdatedPost(ctx).UNKNOWNBASETYPE(uNKNOWNBASETYPE).Execute()
+> SubscriptionUpdatedPost(ctx).WebhookSubscriptionPayload(webhookSubscriptionPayload).Execute()
 
 Subscription Updated
 
@@ -809,11 +809,11 @@ import (
 )
 
 func main() {
-	uNKNOWNBASETYPE :=  // UNKNOWN_BASE_TYPE |  (optional)
+	webhookSubscriptionPayload :=  // WebhookSubscriptionPayload |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.DefaultAPI.SubscriptionUpdatedPost(context.Background()).UNKNOWNBASETYPE(uNKNOWNBASETYPE).Execute()
+	r, err := apiClient.DefaultAPI.SubscriptionUpdatedPost(context.Background()).WebhookSubscriptionPayload(webhookSubscriptionPayload).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.SubscriptionUpdatedPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -832,7 +832,7 @@ Other parameters are passed through a pointer to a apiSubscriptionUpdatedPostReq
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **uNKNOWNBASETYPE** | [**UNKNOWN_BASE_TYPE**](UNKNOWN_BASE_TYPE.md) |  | 
+ **webhookSubscriptionPayload** | [**WebhookSubscriptionPayload**](WebhookSubscriptionPayload.md) |  | 
 
 ### Return type
 

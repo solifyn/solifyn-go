@@ -32,6 +32,8 @@ type Order struct {
 	TotalAmount int32 `json:"total_amount"`
 	// Subtotal amount in cents.
 	Subtotal int32 `json:"subtotal"`
+	// Total paid amount converted to USD.
+	UsdTotal *float32 `json:"usdTotal,omitempty"`
 	// Tax amount in cents.
 	TaxAmount int32 `json:"tax_amount"`
 	// Application fee in cents.
@@ -227,6 +229,38 @@ func (o *Order) GetSubtotalOk() (*int32, bool) {
 // SetSubtotal sets field value
 func (o *Order) SetSubtotal(v int32) {
 	o.Subtotal = v
+}
+
+// GetUsdTotal returns the UsdTotal field value if set, zero value otherwise.
+func (o *Order) GetUsdTotal() float32 {
+	if o == nil || IsNil(o.UsdTotal) {
+		var ret float32
+		return ret
+	}
+	return *o.UsdTotal
+}
+
+// GetUsdTotalOk returns a tuple with the UsdTotal field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Order) GetUsdTotalOk() (*float32, bool) {
+	if o == nil || IsNil(o.UsdTotal) {
+		return nil, false
+	}
+	return o.UsdTotal, true
+}
+
+// HasUsdTotal returns a boolean if a field has been set.
+func (o *Order) HasUsdTotal() bool {
+	if o != nil && !IsNil(o.UsdTotal) {
+		return true
+	}
+
+	return false
+}
+
+// SetUsdTotal gets a reference to the given float32 and assigns it to the UsdTotal field.
+func (o *Order) SetUsdTotal(v float32) {
+	o.UsdTotal = &v
 }
 
 // GetTaxAmount returns the TaxAmount field value
@@ -796,6 +830,9 @@ func (o Order) ToMap() (map[string]interface{}, error) {
 	toSerialize["customer"] = o.Customer
 	toSerialize["total_amount"] = o.TotalAmount
 	toSerialize["subtotal"] = o.Subtotal
+	if !IsNil(o.UsdTotal) {
+		toSerialize["usdTotal"] = o.UsdTotal
+	}
 	toSerialize["tax_amount"] = o.TaxAmount
 	toSerialize["application_fee"] = o.ApplicationFee
 	toSerialize["amount_after_fees"] = o.AmountAfterFees
