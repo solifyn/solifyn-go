@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **PaymentId** | Pointer to **string** | Database payment transaction ID | [optional] 
 **CheckoutUrl** | Pointer to **string** | Checkout session redirect URL if loaded in link mode | [optional] 
 **Product** | Pointer to [**Product**](Product.md) | The details of the product being purchased | [optional] 
+**EntitlementGrants** | Pointer to **[]map[string]interface{}** | List of entitlement grants (e.g. GitHub repo invites) associated with this checkout. | [optional] 
 
 ## Methods
 
@@ -284,6 +285,31 @@ SetProduct sets Product field to given value.
 `func (o *CheckoutSessionDetailsDto) HasProduct() bool`
 
 HasProduct returns a boolean if a field has been set.
+
+### GetEntitlementGrants
+
+`func (o *CheckoutSessionDetailsDto) GetEntitlementGrants() []map[string]interface{}`
+
+GetEntitlementGrants returns the EntitlementGrants field if non-nil, zero value otherwise.
+
+### GetEntitlementGrantsOk
+
+`func (o *CheckoutSessionDetailsDto) GetEntitlementGrantsOk() (*[]map[string]interface{}, bool)`
+
+GetEntitlementGrantsOk returns a tuple with the EntitlementGrants field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEntitlementGrants
+
+`func (o *CheckoutSessionDetailsDto) SetEntitlementGrants(v []map[string]interface{})`
+
+SetEntitlementGrants sets EntitlementGrants field to given value.
+
+### HasEntitlementGrants
+
+`func (o *CheckoutSessionDetailsDto) HasEntitlementGrants() bool`
+
+HasEntitlementGrants returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

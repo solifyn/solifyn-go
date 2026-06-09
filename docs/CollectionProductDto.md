@@ -16,6 +16,9 @@ Name | Type | Description | Notes
 **Discount** | **float32** | Discount value as a percentage or fixed amount. | 
 **HasLicenseKey** | **bool** | Indicates if the product issues a cryptographically secure software license key upon checkout completion. | 
 **HasDigitalDelivery** | **bool** | Whether the product includes digital file downloads upon purchase. | 
+**HasGithubAccess** | **bool** | Whether the product includes GitHub repository access. | 
+**GithubRepo** | **string** | GitHub repository to grant access to (format: owner/repo). | 
+**GithubPermission** | **string** | GitHub collaborator permission level. | 
 **IsTaxInclusive** | **bool** | Whether the product price already includes applicable sales taxes. | 
 **BillingPeriod** | **int32** | The subscription billing cycle interval in days (for subscription products). | 
 **TrialPeriodDays** | **int32** | Trial duration in days for subscription products. | 
@@ -43,7 +46,7 @@ Name | Type | Description | Notes
 
 ### NewCollectionProductDto
 
-`func NewCollectionProductDto(id string, name string, price float32, currency string, status string, imageUrl string, taxCategory string, pricingType string, discount float32, hasLicenseKey bool, hasDigitalDelivery bool, isTaxInclusive bool, billingPeriod int32, trialPeriodDays int32, expirationDays int32, statementDescriptor string, payWhatYouWant bool, metadata map[string]string, customFields []map[string]interface{}, stock int32, activationLimit int32, isListed bool, isFree bool, createdAt time.Time, updatedAt time.Time, isPermanentlyDeleted bool, brandId string, digitalLink string, instructions string, activationMessage string, expiryHours int32, businessId string, quantity float32, ) *CollectionProductDto`
+`func NewCollectionProductDto(id string, name string, price float32, currency string, status string, imageUrl string, taxCategory string, pricingType string, discount float32, hasLicenseKey bool, hasDigitalDelivery bool, hasGithubAccess bool, githubRepo string, githubPermission string, isTaxInclusive bool, billingPeriod int32, trialPeriodDays int32, expirationDays int32, statementDescriptor string, payWhatYouWant bool, metadata map[string]string, customFields []map[string]interface{}, stock int32, activationLimit int32, isListed bool, isFree bool, createdAt time.Time, updatedAt time.Time, isPermanentlyDeleted bool, brandId string, digitalLink string, instructions string, activationMessage string, expiryHours int32, businessId string, quantity float32, ) *CollectionProductDto`
 
 NewCollectionProductDto instantiates a new CollectionProductDto object
 This constructor will assign default values to properties that have it defined,
@@ -301,6 +304,66 @@ and a boolean to check if the value has been set.
 `func (o *CollectionProductDto) SetHasDigitalDelivery(v bool)`
 
 SetHasDigitalDelivery sets HasDigitalDelivery field to given value.
+
+
+### GetHasGithubAccess
+
+`func (o *CollectionProductDto) GetHasGithubAccess() bool`
+
+GetHasGithubAccess returns the HasGithubAccess field if non-nil, zero value otherwise.
+
+### GetHasGithubAccessOk
+
+`func (o *CollectionProductDto) GetHasGithubAccessOk() (*bool, bool)`
+
+GetHasGithubAccessOk returns a tuple with the HasGithubAccess field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHasGithubAccess
+
+`func (o *CollectionProductDto) SetHasGithubAccess(v bool)`
+
+SetHasGithubAccess sets HasGithubAccess field to given value.
+
+
+### GetGithubRepo
+
+`func (o *CollectionProductDto) GetGithubRepo() string`
+
+GetGithubRepo returns the GithubRepo field if non-nil, zero value otherwise.
+
+### GetGithubRepoOk
+
+`func (o *CollectionProductDto) GetGithubRepoOk() (*string, bool)`
+
+GetGithubRepoOk returns a tuple with the GithubRepo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGithubRepo
+
+`func (o *CollectionProductDto) SetGithubRepo(v string)`
+
+SetGithubRepo sets GithubRepo field to given value.
+
+
+### GetGithubPermission
+
+`func (o *CollectionProductDto) GetGithubPermission() string`
+
+GetGithubPermission returns the GithubPermission field if non-nil, zero value otherwise.
+
+### GetGithubPermissionOk
+
+`func (o *CollectionProductDto) GetGithubPermissionOk() (*string, bool)`
+
+GetGithubPermissionOk returns a tuple with the GithubPermission field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGithubPermission
+
+`func (o *CollectionProductDto) SetGithubPermission(v string)`
+
+SetGithubPermission sets GithubPermission field to given value.
 
 
 ### GetIsTaxInclusive

@@ -13,6 +13,9 @@ Name | Type | Description | Notes
 **Discount** | Pointer to **float32** | Percentage or flat rate discount. | [optional] 
 **HasLicenseKey** | Pointer to **bool** | Whether to automatically issue license keys upon successful orders. | [optional] [default to false]
 **HasDigitalDelivery** | Pointer to **bool** | Whether the purchase includes downloadable files. | [optional] [default to false]
+**HasGithubAccess** | Pointer to **bool** | Whether the purchase includes GitHub repository access. | [optional] [default to false]
+**GithubRepo** | Pointer to **string** | GitHub repository to grant access to (format: owner/repo). | [optional] 
+**GithubPermission** | Pointer to **string** | GitHub collaborator permission level. | [optional] 
 **IsTaxInclusive** | Pointer to **bool** | Whether tax is included in the base price. | [optional] [default to false]
 **ActivationLimit** | Pointer to **int32** | Maximum concurrent activated instances allowed per license key. | [optional] 
 **BrandId** | Pointer to **string** | Brand id for the product, if not provided will default to primary brand. | [optional] 
@@ -271,6 +274,81 @@ SetHasDigitalDelivery sets HasDigitalDelivery field to given value.
 `func (o *ProductUpdate) HasHasDigitalDelivery() bool`
 
 HasHasDigitalDelivery returns a boolean if a field has been set.
+
+### GetHasGithubAccess
+
+`func (o *ProductUpdate) GetHasGithubAccess() bool`
+
+GetHasGithubAccess returns the HasGithubAccess field if non-nil, zero value otherwise.
+
+### GetHasGithubAccessOk
+
+`func (o *ProductUpdate) GetHasGithubAccessOk() (*bool, bool)`
+
+GetHasGithubAccessOk returns a tuple with the HasGithubAccess field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHasGithubAccess
+
+`func (o *ProductUpdate) SetHasGithubAccess(v bool)`
+
+SetHasGithubAccess sets HasGithubAccess field to given value.
+
+### HasHasGithubAccess
+
+`func (o *ProductUpdate) HasHasGithubAccess() bool`
+
+HasHasGithubAccess returns a boolean if a field has been set.
+
+### GetGithubRepo
+
+`func (o *ProductUpdate) GetGithubRepo() string`
+
+GetGithubRepo returns the GithubRepo field if non-nil, zero value otherwise.
+
+### GetGithubRepoOk
+
+`func (o *ProductUpdate) GetGithubRepoOk() (*string, bool)`
+
+GetGithubRepoOk returns a tuple with the GithubRepo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGithubRepo
+
+`func (o *ProductUpdate) SetGithubRepo(v string)`
+
+SetGithubRepo sets GithubRepo field to given value.
+
+### HasGithubRepo
+
+`func (o *ProductUpdate) HasGithubRepo() bool`
+
+HasGithubRepo returns a boolean if a field has been set.
+
+### GetGithubPermission
+
+`func (o *ProductUpdate) GetGithubPermission() string`
+
+GetGithubPermission returns the GithubPermission field if non-nil, zero value otherwise.
+
+### GetGithubPermissionOk
+
+`func (o *ProductUpdate) GetGithubPermissionOk() (*string, bool)`
+
+GetGithubPermissionOk returns a tuple with the GithubPermission field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGithubPermission
+
+`func (o *ProductUpdate) SetGithubPermission(v string)`
+
+SetGithubPermission sets GithubPermission field to given value.
+
+### HasGithubPermission
+
+`func (o *ProductUpdate) HasGithubPermission() bool`
+
+HasGithubPermission returns a boolean if a field has been set.
 
 ### GetIsTaxInclusive
 

@@ -43,6 +43,8 @@ type CheckoutSessionDetailsDto struct {
 	CheckoutUrl *string `json:"checkoutUrl,omitempty"`
 	// The details of the product being purchased
 	Product *Product `json:"product,omitempty"`
+	// List of entitlement grants (e.g. GitHub repo invites) associated with this checkout.
+	EntitlementGrants []map[string]interface{} `json:"entitlementGrants,omitempty"`
 }
 
 type _CheckoutSessionDetailsDto CheckoutSessionDetailsDto
@@ -381,6 +383,38 @@ func (o *CheckoutSessionDetailsDto) SetProduct(v Product) {
 	o.Product = &v
 }
 
+// GetEntitlementGrants returns the EntitlementGrants field value if set, zero value otherwise.
+func (o *CheckoutSessionDetailsDto) GetEntitlementGrants() []map[string]interface{} {
+	if o == nil || IsNil(o.EntitlementGrants) {
+		var ret []map[string]interface{}
+		return ret
+	}
+	return o.EntitlementGrants
+}
+
+// GetEntitlementGrantsOk returns a tuple with the EntitlementGrants field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CheckoutSessionDetailsDto) GetEntitlementGrantsOk() ([]map[string]interface{}, bool) {
+	if o == nil || IsNil(o.EntitlementGrants) {
+		return nil, false
+	}
+	return o.EntitlementGrants, true
+}
+
+// HasEntitlementGrants returns a boolean if a field has been set.
+func (o *CheckoutSessionDetailsDto) HasEntitlementGrants() bool {
+	if o != nil && !IsNil(o.EntitlementGrants) {
+		return true
+	}
+
+	return false
+}
+
+// SetEntitlementGrants gets a reference to the given []map[string]interface{} and assigns it to the EntitlementGrants field.
+func (o *CheckoutSessionDetailsDto) SetEntitlementGrants(v []map[string]interface{}) {
+	o.EntitlementGrants = v
+}
+
 func (o CheckoutSessionDetailsDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -413,6 +447,9 @@ func (o CheckoutSessionDetailsDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Product) {
 		toSerialize["product"] = o.Product
+	}
+	if !IsNil(o.EntitlementGrants) {
+		toSerialize["entitlementGrants"] = o.EntitlementGrants
 	}
 	return toSerialize, nil
 }

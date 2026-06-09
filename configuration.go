@@ -93,11 +93,11 @@ func NewConfiguration() *Configuration {
 		Debug:            false,
 		Servers:          ServerConfigurations{
 			{
-				URL: "http://localhost:8000",
+				URL: "https://api.solifyn.com",
 				Description: "Live environment",
 			},
 			{
-				URL: "http://localhost:8001",
+				URL: "https://sandbox-api.solifyn.com",
 				Description: "Test environment",
 			},
 		},

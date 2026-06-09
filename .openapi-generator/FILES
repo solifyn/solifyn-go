@@ -12,6 +12,8 @@ api_developer.go
 api_digital_file.go
 api_discounts.go
 api_disputes.go
+api_entitlement_grants.go
+api_git_hub_integration.go
 api_license.go
 api_license_keys.go
 api_license_keys_client.go
@@ -85,6 +87,10 @@ docs/DisputeFileUpload.md
 docs/DisputeList.md
 docs/DisputeListMetaDto.md
 docs/DisputesAPI.md
+docs/EntitlementGrantResponseDto.md
+docs/EntitlementGrantsAPI.md
+docs/GitHubIntegrationAPI.md
+docs/GithubReposResponseDto.md
 docs/Instance.md
 docs/Invoice.md
 docs/License.md
@@ -162,6 +168,7 @@ docs/SubscriptionUserDto.md
 docs/SubscriptionsAPI.md
 docs/SubscriptionsAction201Response.md
 docs/SupportedCurrenciesResponseDto.md
+docs/SyncLoginDto.md
 docs/UpdateCheckoutLinkDto.md
 docs/UpdateCollectionDto.md
 docs/UpdateCollectionProductDto.md
@@ -231,6 +238,8 @@ model_dispute_evidence_update.go
 model_dispute_file_upload.go
 model_dispute_list.go
 model_dispute_list_meta_dto.go
+model_entitlement_grant_response_dto.go
+model_github_repos_response_dto.go
 model_instance.go
 model_invoice.go
 model_license.go
@@ -298,6 +307,7 @@ model_subscription_seat_adjustment.go
 model_subscription_user_dto.go
 model_subscriptions_action_201_response.go
 model_supported_currencies_response_dto.go
+model_sync_login_dto.go
 model_update_checkout_link_dto.go
 model_update_collection_dto.go
 model_update_collection_product_dto.go
@@ -314,5 +324,4 @@ model_webhook_payment_payload_billing_address.go
 model_webhook_refund_payload.go
 model_webhook_subscription_payload.go
 response.go
-test/api_refund_requests_test.go
 utils.go

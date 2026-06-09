@@ -74,7 +74,7 @@ ctx = context.WithValue(context.Background(), solifyn.ContextOperationServerVari
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://localhost:8000*
+All URIs are relative to *https://api.solifyn.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -132,6 +132,12 @@ Class | Method | HTTP request | Description
 *DisputesAPI* | [**DisputesSubmitEvidence**](docs/DisputesAPI.md#disputessubmitevidence) | **Post** /v1/transactions/disputes/{id}/submit | Submit Dispute Evidence
 *DisputesAPI* | [**DisputesUpdateEvidence**](docs/DisputesAPI.md#disputesupdateevidence) | **Patch** /v1/transactions/disputes/{id}/evidence | Update Dispute Evidence
 *DisputesAPI* | [**DisputesUploadEvidenceFile**](docs/DisputesAPI.md#disputesuploadevidencefile) | **Post** /v1/transactions/disputes/upload | Upload Evidence File
+*EntitlementGrantsAPI* | [**EntitlementGrantsGet**](docs/EntitlementGrantsAPI.md#entitlementgrantsget) | **Get** /v1/entitlement-grants/{id} | Retrieve Entitlement Grant
+*EntitlementGrantsAPI* | [**EntitlementGrantsList**](docs/EntitlementGrantsAPI.md#entitlementgrantslist) | **Get** /v1/entitlement-grants | List Entitlement Grants
+*EntitlementGrantsAPI* | [**EntitlementGrantsRetry**](docs/EntitlementGrantsAPI.md#entitlementgrantsretry) | **Post** /v1/entitlement-grants/{id}/retry | Retry Entitlement Grant Delivery
+*EntitlementGrantsAPI* | [**EntitlementGrantsRevoke**](docs/EntitlementGrantsAPI.md#entitlementgrantsrevoke) | **Post** /v1/entitlement-grants/{id}/revoke | Manually Revoke Entitlement Grant
+*GitHubIntegrationAPI* | [**GithubGetInstallUrl**](docs/GitHubIntegrationAPI.md#githubgetinstallurl) | **Get** /v1/github/install | Get GitHub App Installation URL
+*GitHubIntegrationAPI* | [**GithubListRepos**](docs/GitHubIntegrationAPI.md#githublistrepos) | **Get** /v1/github/repos | List Available GitHub Repositories
 *LicenseAPI* | [**LicensesCreate**](docs/LicenseAPI.md#licensescreate) | **Post** /v1/licenses | Create License Key
 *LicenseAPI* | [**LicensesDeleteInstance**](docs/LicenseAPI.md#licensesdeleteinstance) | **Delete** /v1/licenses/instances/{instanceId} | Force Delete Instance
 *LicenseAPI* | [**LicensesGet**](docs/LicenseAPI.md#licensesget) | **Get** /v1/licenses/{id} | Get License Key
@@ -255,6 +261,8 @@ Class | Method | HTTP request | Description
  - [DisputeFileUpload](docs/DisputeFileUpload.md)
  - [DisputeList](docs/DisputeList.md)
  - [DisputeListMetaDto](docs/DisputeListMetaDto.md)
+ - [EntitlementGrantResponseDto](docs/EntitlementGrantResponseDto.md)
+ - [GithubReposResponseDto](docs/GithubReposResponseDto.md)
  - [Instance](docs/Instance.md)
  - [Invoice](docs/Invoice.md)
  - [License](docs/License.md)
@@ -322,6 +330,7 @@ Class | Method | HTTP request | Description
  - [SubscriptionUserDto](docs/SubscriptionUserDto.md)
  - [SubscriptionsAction201Response](docs/SubscriptionsAction201Response.md)
  - [SupportedCurrenciesResponseDto](docs/SupportedCurrenciesResponseDto.md)
+ - [SyncLoginDto](docs/SyncLoginDto.md)
  - [UpdateCheckoutLinkDto](docs/UpdateCheckoutLinkDto.md)
  - [UpdateCollectionDto](docs/UpdateCollectionDto.md)
  - [UpdateCollectionProductDto](docs/UpdateCollectionProductDto.md)

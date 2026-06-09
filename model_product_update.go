@@ -37,6 +37,12 @@ type ProductUpdate struct {
 	HasLicenseKey *bool `json:"hasLicenseKey,omitempty"`
 	// Whether the purchase includes downloadable files.
 	HasDigitalDelivery *bool `json:"hasDigitalDelivery,omitempty"`
+	// Whether the purchase includes GitHub repository access.
+	HasGithubAccess *bool `json:"hasGithubAccess,omitempty"`
+	// GitHub repository to grant access to (format: owner/repo).
+	GithubRepo *string `json:"githubRepo,omitempty"`
+	// GitHub collaborator permission level.
+	GithubPermission *string `json:"githubPermission,omitempty"`
 	// Whether tax is included in the base price.
 	IsTaxInclusive *bool `json:"isTaxInclusive,omitempty"`
 	// Maximum concurrent activated instances allowed per license key.
@@ -79,6 +85,8 @@ func NewProductUpdate() *ProductUpdate {
 	this.HasLicenseKey = &hasLicenseKey
 	var hasDigitalDelivery bool = false
 	this.HasDigitalDelivery = &hasDigitalDelivery
+	var hasGithubAccess bool = false
+	this.HasGithubAccess = &hasGithubAccess
 	var isTaxInclusive bool = false
 	this.IsTaxInclusive = &isTaxInclusive
 	var payWhatYouWant bool = false
@@ -101,6 +109,8 @@ func NewProductUpdateWithDefaults() *ProductUpdate {
 	this.HasLicenseKey = &hasLicenseKey
 	var hasDigitalDelivery bool = false
 	this.HasDigitalDelivery = &hasDigitalDelivery
+	var hasGithubAccess bool = false
+	this.HasGithubAccess = &hasGithubAccess
 	var isTaxInclusive bool = false
 	this.IsTaxInclusive = &isTaxInclusive
 	var payWhatYouWant bool = false
@@ -398,6 +408,102 @@ func (o *ProductUpdate) HasHasDigitalDelivery() bool {
 // SetHasDigitalDelivery gets a reference to the given bool and assigns it to the HasDigitalDelivery field.
 func (o *ProductUpdate) SetHasDigitalDelivery(v bool) {
 	o.HasDigitalDelivery = &v
+}
+
+// GetHasGithubAccess returns the HasGithubAccess field value if set, zero value otherwise.
+func (o *ProductUpdate) GetHasGithubAccess() bool {
+	if o == nil || IsNil(o.HasGithubAccess) {
+		var ret bool
+		return ret
+	}
+	return *o.HasGithubAccess
+}
+
+// GetHasGithubAccessOk returns a tuple with the HasGithubAccess field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductUpdate) GetHasGithubAccessOk() (*bool, bool) {
+	if o == nil || IsNil(o.HasGithubAccess) {
+		return nil, false
+	}
+	return o.HasGithubAccess, true
+}
+
+// HasHasGithubAccess returns a boolean if a field has been set.
+func (o *ProductUpdate) HasHasGithubAccess() bool {
+	if o != nil && !IsNil(o.HasGithubAccess) {
+		return true
+	}
+
+	return false
+}
+
+// SetHasGithubAccess gets a reference to the given bool and assigns it to the HasGithubAccess field.
+func (o *ProductUpdate) SetHasGithubAccess(v bool) {
+	o.HasGithubAccess = &v
+}
+
+// GetGithubRepo returns the GithubRepo field value if set, zero value otherwise.
+func (o *ProductUpdate) GetGithubRepo() string {
+	if o == nil || IsNil(o.GithubRepo) {
+		var ret string
+		return ret
+	}
+	return *o.GithubRepo
+}
+
+// GetGithubRepoOk returns a tuple with the GithubRepo field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductUpdate) GetGithubRepoOk() (*string, bool) {
+	if o == nil || IsNil(o.GithubRepo) {
+		return nil, false
+	}
+	return o.GithubRepo, true
+}
+
+// HasGithubRepo returns a boolean if a field has been set.
+func (o *ProductUpdate) HasGithubRepo() bool {
+	if o != nil && !IsNil(o.GithubRepo) {
+		return true
+	}
+
+	return false
+}
+
+// SetGithubRepo gets a reference to the given string and assigns it to the GithubRepo field.
+func (o *ProductUpdate) SetGithubRepo(v string) {
+	o.GithubRepo = &v
+}
+
+// GetGithubPermission returns the GithubPermission field value if set, zero value otherwise.
+func (o *ProductUpdate) GetGithubPermission() string {
+	if o == nil || IsNil(o.GithubPermission) {
+		var ret string
+		return ret
+	}
+	return *o.GithubPermission
+}
+
+// GetGithubPermissionOk returns a tuple with the GithubPermission field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductUpdate) GetGithubPermissionOk() (*string, bool) {
+	if o == nil || IsNil(o.GithubPermission) {
+		return nil, false
+	}
+	return o.GithubPermission, true
+}
+
+// HasGithubPermission returns a boolean if a field has been set.
+func (o *ProductUpdate) HasGithubPermission() bool {
+	if o != nil && !IsNil(o.GithubPermission) {
+		return true
+	}
+
+	return false
+}
+
+// SetGithubPermission gets a reference to the given string and assigns it to the GithubPermission field.
+func (o *ProductUpdate) SetGithubPermission(v string) {
+	o.GithubPermission = &v
 }
 
 // GetIsTaxInclusive returns the IsTaxInclusive field value if set, zero value otherwise.
@@ -884,6 +990,15 @@ func (o ProductUpdate) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.HasDigitalDelivery) {
 		toSerialize["hasDigitalDelivery"] = o.HasDigitalDelivery
+	}
+	if !IsNil(o.HasGithubAccess) {
+		toSerialize["hasGithubAccess"] = o.HasGithubAccess
+	}
+	if !IsNil(o.GithubRepo) {
+		toSerialize["githubRepo"] = o.GithubRepo
+	}
+	if !IsNil(o.GithubPermission) {
+		toSerialize["githubPermission"] = o.GithubPermission
 	}
 	if !IsNil(o.IsTaxInclusive) {
 		toSerialize["isTaxInclusive"] = o.IsTaxInclusive

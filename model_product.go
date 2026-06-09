@@ -46,6 +46,12 @@ type Product struct {
 	HasLicenseKey bool `json:"hasLicenseKey"`
 	// Whether the product includes digital file downloads upon purchase.
 	HasDigitalDelivery bool `json:"hasDigitalDelivery"`
+	// Whether the product includes GitHub repository access.
+	HasGithubAccess bool `json:"hasGithubAccess"`
+	// GitHub repository to grant access to (format: owner/repo).
+	GithubRepo string `json:"githubRepo"`
+	// GitHub collaborator permission level.
+	GithubPermission string `json:"githubPermission"`
 	// Whether the product price already includes applicable sales taxes.
 	IsTaxInclusive bool `json:"isTaxInclusive"`
 	// The subscription billing cycle interval in days (for subscription products).
@@ -96,7 +102,7 @@ type _Product Product
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProduct(id string, name string, price float32, currency string, status string, imageUrl string, taxCategory string, pricingType string, discount float32, hasLicenseKey bool, hasDigitalDelivery bool, isTaxInclusive bool, billingPeriod int32, trialPeriodDays int32, expirationDays int32, statementDescriptor string, payWhatYouWant bool, metadata map[string]string, customFields []map[string]interface{}, stock int32, activationLimit int32, isListed bool, isFree bool, createdAt time.Time, updatedAt time.Time, isPermanentlyDeleted bool, brandId string, digitalLink string, instructions string, activationMessage string, expiryHours int32, businessId string) *Product {
+func NewProduct(id string, name string, price float32, currency string, status string, imageUrl string, taxCategory string, pricingType string, discount float32, hasLicenseKey bool, hasDigitalDelivery bool, hasGithubAccess bool, githubRepo string, githubPermission string, isTaxInclusive bool, billingPeriod int32, trialPeriodDays int32, expirationDays int32, statementDescriptor string, payWhatYouWant bool, metadata map[string]string, customFields []map[string]interface{}, stock int32, activationLimit int32, isListed bool, isFree bool, createdAt time.Time, updatedAt time.Time, isPermanentlyDeleted bool, brandId string, digitalLink string, instructions string, activationMessage string, expiryHours int32, businessId string) *Product {
 	this := Product{}
 	this.Id = id
 	this.Name = name
@@ -109,6 +115,9 @@ func NewProduct(id string, name string, price float32, currency string, status s
 	this.Discount = discount
 	this.HasLicenseKey = hasLicenseKey
 	this.HasDigitalDelivery = hasDigitalDelivery
+	this.HasGithubAccess = hasGithubAccess
+	this.GithubRepo = githubRepo
+	this.GithubPermission = githubPermission
 	this.IsTaxInclusive = isTaxInclusive
 	this.BillingPeriod = billingPeriod
 	this.TrialPeriodDays = trialPeriodDays
@@ -435,6 +444,78 @@ func (o *Product) GetHasDigitalDeliveryOk() (*bool, bool) {
 // SetHasDigitalDelivery sets field value
 func (o *Product) SetHasDigitalDelivery(v bool) {
 	o.HasDigitalDelivery = v
+}
+
+// GetHasGithubAccess returns the HasGithubAccess field value
+func (o *Product) GetHasGithubAccess() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.HasGithubAccess
+}
+
+// GetHasGithubAccessOk returns a tuple with the HasGithubAccess field value
+// and a boolean to check if the value has been set.
+func (o *Product) GetHasGithubAccessOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.HasGithubAccess, true
+}
+
+// SetHasGithubAccess sets field value
+func (o *Product) SetHasGithubAccess(v bool) {
+	o.HasGithubAccess = v
+}
+
+// GetGithubRepo returns the GithubRepo field value
+func (o *Product) GetGithubRepo() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.GithubRepo
+}
+
+// GetGithubRepoOk returns a tuple with the GithubRepo field value
+// and a boolean to check if the value has been set.
+func (o *Product) GetGithubRepoOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.GithubRepo, true
+}
+
+// SetGithubRepo sets field value
+func (o *Product) SetGithubRepo(v string) {
+	o.GithubRepo = v
+}
+
+// GetGithubPermission returns the GithubPermission field value
+func (o *Product) GetGithubPermission() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.GithubPermission
+}
+
+// GetGithubPermissionOk returns a tuple with the GithubPermission field value
+// and a boolean to check if the value has been set.
+func (o *Product) GetGithubPermissionOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.GithubPermission, true
+}
+
+// SetGithubPermission sets field value
+func (o *Product) SetGithubPermission(v string) {
+	o.GithubPermission = v
 }
 
 // GetIsTaxInclusive returns the IsTaxInclusive field value
@@ -965,6 +1046,9 @@ func (o Product) ToMap() (map[string]interface{}, error) {
 	toSerialize["discount"] = o.Discount
 	toSerialize["hasLicenseKey"] = o.HasLicenseKey
 	toSerialize["hasDigitalDelivery"] = o.HasDigitalDelivery
+	toSerialize["hasGithubAccess"] = o.HasGithubAccess
+	toSerialize["githubRepo"] = o.GithubRepo
+	toSerialize["githubPermission"] = o.GithubPermission
 	toSerialize["isTaxInclusive"] = o.IsTaxInclusive
 	toSerialize["billingPeriod"] = o.BillingPeriod
 	toSerialize["trialPeriodDays"] = o.TrialPeriodDays
@@ -1005,6 +1089,9 @@ func (o *Product) UnmarshalJSON(data []byte) (err error) {
 		"discount",
 		"hasLicenseKey",
 		"hasDigitalDelivery",
+		"hasGithubAccess",
+		"githubRepo",
+		"githubPermission",
 		"isTaxInclusive",
 		"billingPeriod",
 		"trialPeriodDays",
