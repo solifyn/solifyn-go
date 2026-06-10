@@ -35,11 +35,11 @@ type Discount struct {
 	// The discount value. For percentage type, it is in basis points (e.g. 1000 = 10.00%). For fixed_amount type, it is in cents (e.g. 1000 = $10.00).
 	Amount int32 `json:"amount"`
 	// Maximum number of times this discount code can be redeemed. Null represents unlimited usage.
-	UsageLimit NullableInt32 `json:"usageLimit"`
+	UsageLimit int32 `json:"usageLimit"`
 	// The number of times this discount code has been successfully redeemed.
 	TimesUsed int32 `json:"timesUsed"`
 	// The expiration timestamp after which the discount code is no longer valid.
-	ExpiresAt NullableTime `json:"expiresAt"`
+	ExpiresAt time.Time `json:"expiresAt"`
 	// The current status of the discount.
 	Status string `json:"status"`
 	// The unique identifier associated with the business this discount belongs to.
@@ -56,7 +56,7 @@ type _Discount Discount
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDiscount(id string, discountId string, code string, type_ string, amount int32, usageLimit NullableInt32, timesUsed int32, expiresAt NullableTime, status string, businessId string, createdAt time.Time, updatedAt time.Time) *Discount {
+func NewDiscount(id string, discountId string, code string, type_ string, amount int32, usageLimit int32, timesUsed int32, expiresAt time.Time, status string, businessId string, createdAt time.Time, updatedAt time.Time) *Discount {
 	this := Discount{}
 	this.Id = id
 	this.DiscountId = discountId
@@ -234,29 +234,27 @@ func (o *Discount) SetAmount(v int32) {
 }
 
 // GetUsageLimit returns the UsageLimit field value
-// If the value is explicit nil, the zero value for int32 will be returned
 func (o *Discount) GetUsageLimit() int32 {
-	if o == nil || o.UsageLimit.Get() == nil {
+	if o == nil {
 		var ret int32
 		return ret
 	}
 
-	return *o.UsageLimit.Get()
+	return o.UsageLimit
 }
 
 // GetUsageLimitOk returns a tuple with the UsageLimit field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Discount) GetUsageLimitOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.UsageLimit.Get(), o.UsageLimit.IsSet()
+	return &o.UsageLimit, true
 }
 
 // SetUsageLimit sets field value
 func (o *Discount) SetUsageLimit(v int32) {
-	o.UsageLimit.Set(&v)
+	o.UsageLimit = v
 }
 
 // GetTimesUsed returns the TimesUsed field value
@@ -284,29 +282,27 @@ func (o *Discount) SetTimesUsed(v int32) {
 }
 
 // GetExpiresAt returns the ExpiresAt field value
-// If the value is explicit nil, the zero value for time.Time will be returned
 func (o *Discount) GetExpiresAt() time.Time {
-	if o == nil || o.ExpiresAt.Get() == nil {
+	if o == nil {
 		var ret time.Time
 		return ret
 	}
 
-	return *o.ExpiresAt.Get()
+	return o.ExpiresAt
 }
 
 // GetExpiresAtOk returns a tuple with the ExpiresAt field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Discount) GetExpiresAtOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.ExpiresAt.Get(), o.ExpiresAt.IsSet()
+	return &o.ExpiresAt, true
 }
 
 // SetExpiresAt sets field value
 func (o *Discount) SetExpiresAt(v time.Time) {
-	o.ExpiresAt.Set(&v)
+	o.ExpiresAt = v
 }
 
 // GetStatus returns the Status field value
@@ -423,9 +419,9 @@ func (o Discount) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["type"] = o.Type
 	toSerialize["amount"] = o.Amount
-	toSerialize["usageLimit"] = o.UsageLimit.Get()
+	toSerialize["usageLimit"] = o.UsageLimit
 	toSerialize["timesUsed"] = o.TimesUsed
-	toSerialize["expiresAt"] = o.ExpiresAt.Get()
+	toSerialize["expiresAt"] = o.ExpiresAt
 	toSerialize["status"] = o.Status
 	toSerialize["businessId"] = o.BusinessId
 	toSerialize["createdAt"] = o.CreatedAt

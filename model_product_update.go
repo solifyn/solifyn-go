@@ -43,12 +43,18 @@ type ProductUpdate struct {
 	GithubRepo *string `json:"githubRepo,omitempty"`
 	// GitHub collaborator permission level.
 	GithubPermission *string `json:"githubPermission,omitempty"`
+	// Whether the purchase includes Discord server role access.
+	HasDiscordAccess *bool `json:"hasDiscordAccess,omitempty"`
+	// Discord Guild (Server) ID to grant access to.
+	DiscordGuildId *string `json:"discordGuildId,omitempty"`
+	// Discord Role ID to assign to the user.
+	DiscordRoleId *string `json:"discordRoleId,omitempty"`
 	// Whether tax is included in the base price.
 	IsTaxInclusive *bool `json:"isTaxInclusive,omitempty"`
 	// Maximum concurrent activated instances allowed per license key.
-	ActivationLimit NullableInt32 `json:"activationLimit,omitempty"`
+	ActivationLimit *int32 `json:"activationLimit,omitempty"`
 	// Brand id for the product, if not provided will default to primary brand.
-	BrandId NullableString `json:"brandId,omitempty"`
+	BrandId *string `json:"brandId,omitempty"`
 	// Billing period in days (for Subscription products).
 	BillingPeriod *int32 `json:"billingPeriod,omitempty"`
 	// Trial duration in days.
@@ -60,7 +66,7 @@ type ProductUpdate struct {
 	// Allow pay-what-you-want pricing.
 	PayWhatYouWant *bool `json:"payWhatYouWant,omitempty"`
 	// Developer key-value metadata pairs.
-	Metadata *map[string]string `json:"metadata,omitempty"`
+	Metadata map[string]string `json:"metadata,omitempty"`
 	// Form field configurations to gather during checkout.
 	CustomFields []ProductCreateCustomFieldsInner `json:"customFields,omitempty"`
 	// Initial stock quantity limit.
@@ -87,6 +93,8 @@ func NewProductUpdate() *ProductUpdate {
 	this.HasDigitalDelivery = &hasDigitalDelivery
 	var hasGithubAccess bool = false
 	this.HasGithubAccess = &hasGithubAccess
+	var hasDiscordAccess bool = false
+	this.HasDiscordAccess = &hasDiscordAccess
 	var isTaxInclusive bool = false
 	this.IsTaxInclusive = &isTaxInclusive
 	var payWhatYouWant bool = false
@@ -111,6 +119,8 @@ func NewProductUpdateWithDefaults() *ProductUpdate {
 	this.HasDigitalDelivery = &hasDigitalDelivery
 	var hasGithubAccess bool = false
 	this.HasGithubAccess = &hasGithubAccess
+	var hasDiscordAccess bool = false
+	this.HasDiscordAccess = &hasDiscordAccess
 	var isTaxInclusive bool = false
 	this.IsTaxInclusive = &isTaxInclusive
 	var payWhatYouWant bool = false
@@ -506,6 +516,102 @@ func (o *ProductUpdate) SetGithubPermission(v string) {
 	o.GithubPermission = &v
 }
 
+// GetHasDiscordAccess returns the HasDiscordAccess field value if set, zero value otherwise.
+func (o *ProductUpdate) GetHasDiscordAccess() bool {
+	if o == nil || IsNil(o.HasDiscordAccess) {
+		var ret bool
+		return ret
+	}
+	return *o.HasDiscordAccess
+}
+
+// GetHasDiscordAccessOk returns a tuple with the HasDiscordAccess field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductUpdate) GetHasDiscordAccessOk() (*bool, bool) {
+	if o == nil || IsNil(o.HasDiscordAccess) {
+		return nil, false
+	}
+	return o.HasDiscordAccess, true
+}
+
+// HasHasDiscordAccess returns a boolean if a field has been set.
+func (o *ProductUpdate) HasHasDiscordAccess() bool {
+	if o != nil && !IsNil(o.HasDiscordAccess) {
+		return true
+	}
+
+	return false
+}
+
+// SetHasDiscordAccess gets a reference to the given bool and assigns it to the HasDiscordAccess field.
+func (o *ProductUpdate) SetHasDiscordAccess(v bool) {
+	o.HasDiscordAccess = &v
+}
+
+// GetDiscordGuildId returns the DiscordGuildId field value if set, zero value otherwise.
+func (o *ProductUpdate) GetDiscordGuildId() string {
+	if o == nil || IsNil(o.DiscordGuildId) {
+		var ret string
+		return ret
+	}
+	return *o.DiscordGuildId
+}
+
+// GetDiscordGuildIdOk returns a tuple with the DiscordGuildId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductUpdate) GetDiscordGuildIdOk() (*string, bool) {
+	if o == nil || IsNil(o.DiscordGuildId) {
+		return nil, false
+	}
+	return o.DiscordGuildId, true
+}
+
+// HasDiscordGuildId returns a boolean if a field has been set.
+func (o *ProductUpdate) HasDiscordGuildId() bool {
+	if o != nil && !IsNil(o.DiscordGuildId) {
+		return true
+	}
+
+	return false
+}
+
+// SetDiscordGuildId gets a reference to the given string and assigns it to the DiscordGuildId field.
+func (o *ProductUpdate) SetDiscordGuildId(v string) {
+	o.DiscordGuildId = &v
+}
+
+// GetDiscordRoleId returns the DiscordRoleId field value if set, zero value otherwise.
+func (o *ProductUpdate) GetDiscordRoleId() string {
+	if o == nil || IsNil(o.DiscordRoleId) {
+		var ret string
+		return ret
+	}
+	return *o.DiscordRoleId
+}
+
+// GetDiscordRoleIdOk returns a tuple with the DiscordRoleId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductUpdate) GetDiscordRoleIdOk() (*string, bool) {
+	if o == nil || IsNil(o.DiscordRoleId) {
+		return nil, false
+	}
+	return o.DiscordRoleId, true
+}
+
+// HasDiscordRoleId returns a boolean if a field has been set.
+func (o *ProductUpdate) HasDiscordRoleId() bool {
+	if o != nil && !IsNil(o.DiscordRoleId) {
+		return true
+	}
+
+	return false
+}
+
+// SetDiscordRoleId gets a reference to the given string and assigns it to the DiscordRoleId field.
+func (o *ProductUpdate) SetDiscordRoleId(v string) {
+	o.DiscordRoleId = &v
+}
+
 // GetIsTaxInclusive returns the IsTaxInclusive field value if set, zero value otherwise.
 func (o *ProductUpdate) GetIsTaxInclusive() bool {
 	if o == nil || IsNil(o.IsTaxInclusive) {
@@ -538,88 +644,68 @@ func (o *ProductUpdate) SetIsTaxInclusive(v bool) {
 	o.IsTaxInclusive = &v
 }
 
-// GetActivationLimit returns the ActivationLimit field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetActivationLimit returns the ActivationLimit field value if set, zero value otherwise.
 func (o *ProductUpdate) GetActivationLimit() int32 {
-	if o == nil || IsNil(o.ActivationLimit.Get()) {
+	if o == nil || IsNil(o.ActivationLimit) {
 		var ret int32
 		return ret
 	}
-	return *o.ActivationLimit.Get()
+	return *o.ActivationLimit
 }
 
 // GetActivationLimitOk returns a tuple with the ActivationLimit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProductUpdate) GetActivationLimitOk() (*int32, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ActivationLimit) {
 		return nil, false
 	}
-	return o.ActivationLimit.Get(), o.ActivationLimit.IsSet()
+	return o.ActivationLimit, true
 }
 
 // HasActivationLimit returns a boolean if a field has been set.
 func (o *ProductUpdate) HasActivationLimit() bool {
-	if o != nil && o.ActivationLimit.IsSet() {
+	if o != nil && !IsNil(o.ActivationLimit) {
 		return true
 	}
 
 	return false
 }
 
-// SetActivationLimit gets a reference to the given NullableInt32 and assigns it to the ActivationLimit field.
+// SetActivationLimit gets a reference to the given int32 and assigns it to the ActivationLimit field.
 func (o *ProductUpdate) SetActivationLimit(v int32) {
-	o.ActivationLimit.Set(&v)
-}
-// SetActivationLimitNil sets the value for ActivationLimit to be an explicit nil
-func (o *ProductUpdate) SetActivationLimitNil() {
-	o.ActivationLimit.Set(nil)
+	o.ActivationLimit = &v
 }
 
-// UnsetActivationLimit ensures that no value is present for ActivationLimit, not even an explicit nil
-func (o *ProductUpdate) UnsetActivationLimit() {
-	o.ActivationLimit.Unset()
-}
-
-// GetBrandId returns the BrandId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetBrandId returns the BrandId field value if set, zero value otherwise.
 func (o *ProductUpdate) GetBrandId() string {
-	if o == nil || IsNil(o.BrandId.Get()) {
+	if o == nil || IsNil(o.BrandId) {
 		var ret string
 		return ret
 	}
-	return *o.BrandId.Get()
+	return *o.BrandId
 }
 
 // GetBrandIdOk returns a tuple with the BrandId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProductUpdate) GetBrandIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.BrandId) {
 		return nil, false
 	}
-	return o.BrandId.Get(), o.BrandId.IsSet()
+	return o.BrandId, true
 }
 
 // HasBrandId returns a boolean if a field has been set.
 func (o *ProductUpdate) HasBrandId() bool {
-	if o != nil && o.BrandId.IsSet() {
+	if o != nil && !IsNil(o.BrandId) {
 		return true
 	}
 
 	return false
 }
 
-// SetBrandId gets a reference to the given NullableString and assigns it to the BrandId field.
+// SetBrandId gets a reference to the given string and assigns it to the BrandId field.
 func (o *ProductUpdate) SetBrandId(v string) {
-	o.BrandId.Set(&v)
-}
-// SetBrandIdNil sets the value for BrandId to be an explicit nil
-func (o *ProductUpdate) SetBrandIdNil() {
-	o.BrandId.Set(nil)
-}
-
-// UnsetBrandId ensures that no value is present for BrandId, not even an explicit nil
-func (o *ProductUpdate) UnsetBrandId() {
-	o.BrandId.Unset()
+	o.BrandId = &v
 }
 
 // GetBillingPeriod returns the BillingPeriod field value if set, zero value otherwise.
@@ -788,14 +874,14 @@ func (o *ProductUpdate) GetMetadata() map[string]string {
 		var ret map[string]string
 		return ret
 	}
-	return *o.Metadata
+	return o.Metadata
 }
 
 // GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProductUpdate) GetMetadataOk() (*map[string]string, bool) {
+func (o *ProductUpdate) GetMetadataOk() (map[string]string, bool) {
 	if o == nil || IsNil(o.Metadata) {
-		return nil, false
+		return map[string]string{}, false
 	}
 	return o.Metadata, true
 }
@@ -811,7 +897,7 @@ func (o *ProductUpdate) HasMetadata() bool {
 
 // SetMetadata gets a reference to the given map[string]string and assigns it to the Metadata field.
 func (o *ProductUpdate) SetMetadata(v map[string]string) {
-	o.Metadata = &v
+	o.Metadata = v
 }
 
 // GetCustomFields returns the CustomFields field value if set, zero value otherwise.
@@ -1020,14 +1106,23 @@ func (o ProductUpdate) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.GithubPermission) {
 		toSerialize["githubPermission"] = o.GithubPermission
 	}
+	if !IsNil(o.HasDiscordAccess) {
+		toSerialize["hasDiscordAccess"] = o.HasDiscordAccess
+	}
+	if !IsNil(o.DiscordGuildId) {
+		toSerialize["discordGuildId"] = o.DiscordGuildId
+	}
+	if !IsNil(o.DiscordRoleId) {
+		toSerialize["discordRoleId"] = o.DiscordRoleId
+	}
 	if !IsNil(o.IsTaxInclusive) {
 		toSerialize["isTaxInclusive"] = o.IsTaxInclusive
 	}
-	if o.ActivationLimit.IsSet() {
-		toSerialize["activationLimit"] = o.ActivationLimit.Get()
+	if !IsNil(o.ActivationLimit) {
+		toSerialize["activationLimit"] = o.ActivationLimit
 	}
-	if o.BrandId.IsSet() {
-		toSerialize["brandId"] = o.BrandId.Get()
+	if !IsNil(o.BrandId) {
+		toSerialize["brandId"] = o.BrandId
 	}
 	if !IsNil(o.BillingPeriod) {
 		toSerialize["billingPeriod"] = o.BillingPeriod

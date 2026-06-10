@@ -6,8 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | The collection ID | 
 **Name** | **string** | The name of the collection | 
-**Description** | Pointer to **NullableString** | A brief description of the collection | [optional] 
-**ImageUrl** | Pointer to **NullableString** | URL of the collection image | [optional] 
+**Description** | Pointer to **string** | A brief description of the collection | [optional] 
+**ImageUrl** | Pointer to **string** | URL of the collection image | [optional] 
 **Status** | **string** | Status of the collection | 
 **BusinessId** | **string** | The unique identifier of the business owning this collection. | 
 **IsPermanentlyDeleted** | **bool** | Indicates if the collection has been permanently deleted. | 
@@ -99,16 +99,6 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
-### SetDescriptionNil
-
-`func (o *CollectionResponseDto) SetDescriptionNil(b bool)`
-
- SetDescriptionNil sets the value for Description to be an explicit nil
-
-### UnsetDescription
-`func (o *CollectionResponseDto) UnsetDescription()`
-
-UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetImageUrl
 
 `func (o *CollectionResponseDto) GetImageUrl() string`
@@ -134,16 +124,6 @@ SetImageUrl sets ImageUrl field to given value.
 
 HasImageUrl returns a boolean if a field has been set.
 
-### SetImageUrlNil
-
-`func (o *CollectionResponseDto) SetImageUrlNil(b bool)`
-
- SetImageUrlNil sets the value for ImageUrl to be an explicit nil
-
-### UnsetImageUrl
-`func (o *CollectionResponseDto) UnsetImageUrl()`
-
-UnsetImageUrl ensures that no value is present for ImageUrl, not even an explicit nil
 ### GetStatus
 
 `func (o *CollectionResponseDto) GetStatus() string`

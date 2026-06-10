@@ -39,6 +39,14 @@ type EntitlementGrantResponseDto struct {
 	GithubPermission *string `json:"githubPermission,omitempty"`
 	// The connected customer GitHub username.
 	GithubUsername *string `json:"githubUsername,omitempty"`
+	// Target Discord Guild ID if type is DISCORD.
+	DiscordGuildId *string `json:"discordGuildId,omitempty"`
+	// Target Discord Role ID if type is DISCORD.
+	DiscordRoleId *string `json:"discordRoleId,omitempty"`
+	// The connected customer Discord username.
+	DiscordUsername *string `json:"discordUsername,omitempty"`
+	// The connected customer Discord user ID.
+	DiscordUserId *string `json:"discordUserId,omitempty"`
 	// Delivery status of the collaborator invite (PENDING, DELIVERED, FAILED, REVOKED).
 	Status string `json:"status"`
 	// OAuth URL to redirect the customer to.
@@ -328,6 +336,134 @@ func (o *EntitlementGrantResponseDto) SetGithubUsername(v string) {
 	o.GithubUsername = &v
 }
 
+// GetDiscordGuildId returns the DiscordGuildId field value if set, zero value otherwise.
+func (o *EntitlementGrantResponseDto) GetDiscordGuildId() string {
+	if o == nil || IsNil(o.DiscordGuildId) {
+		var ret string
+		return ret
+	}
+	return *o.DiscordGuildId
+}
+
+// GetDiscordGuildIdOk returns a tuple with the DiscordGuildId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntitlementGrantResponseDto) GetDiscordGuildIdOk() (*string, bool) {
+	if o == nil || IsNil(o.DiscordGuildId) {
+		return nil, false
+	}
+	return o.DiscordGuildId, true
+}
+
+// HasDiscordGuildId returns a boolean if a field has been set.
+func (o *EntitlementGrantResponseDto) HasDiscordGuildId() bool {
+	if o != nil && !IsNil(o.DiscordGuildId) {
+		return true
+	}
+
+	return false
+}
+
+// SetDiscordGuildId gets a reference to the given string and assigns it to the DiscordGuildId field.
+func (o *EntitlementGrantResponseDto) SetDiscordGuildId(v string) {
+	o.DiscordGuildId = &v
+}
+
+// GetDiscordRoleId returns the DiscordRoleId field value if set, zero value otherwise.
+func (o *EntitlementGrantResponseDto) GetDiscordRoleId() string {
+	if o == nil || IsNil(o.DiscordRoleId) {
+		var ret string
+		return ret
+	}
+	return *o.DiscordRoleId
+}
+
+// GetDiscordRoleIdOk returns a tuple with the DiscordRoleId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntitlementGrantResponseDto) GetDiscordRoleIdOk() (*string, bool) {
+	if o == nil || IsNil(o.DiscordRoleId) {
+		return nil, false
+	}
+	return o.DiscordRoleId, true
+}
+
+// HasDiscordRoleId returns a boolean if a field has been set.
+func (o *EntitlementGrantResponseDto) HasDiscordRoleId() bool {
+	if o != nil && !IsNil(o.DiscordRoleId) {
+		return true
+	}
+
+	return false
+}
+
+// SetDiscordRoleId gets a reference to the given string and assigns it to the DiscordRoleId field.
+func (o *EntitlementGrantResponseDto) SetDiscordRoleId(v string) {
+	o.DiscordRoleId = &v
+}
+
+// GetDiscordUsername returns the DiscordUsername field value if set, zero value otherwise.
+func (o *EntitlementGrantResponseDto) GetDiscordUsername() string {
+	if o == nil || IsNil(o.DiscordUsername) {
+		var ret string
+		return ret
+	}
+	return *o.DiscordUsername
+}
+
+// GetDiscordUsernameOk returns a tuple with the DiscordUsername field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntitlementGrantResponseDto) GetDiscordUsernameOk() (*string, bool) {
+	if o == nil || IsNil(o.DiscordUsername) {
+		return nil, false
+	}
+	return o.DiscordUsername, true
+}
+
+// HasDiscordUsername returns a boolean if a field has been set.
+func (o *EntitlementGrantResponseDto) HasDiscordUsername() bool {
+	if o != nil && !IsNil(o.DiscordUsername) {
+		return true
+	}
+
+	return false
+}
+
+// SetDiscordUsername gets a reference to the given string and assigns it to the DiscordUsername field.
+func (o *EntitlementGrantResponseDto) SetDiscordUsername(v string) {
+	o.DiscordUsername = &v
+}
+
+// GetDiscordUserId returns the DiscordUserId field value if set, zero value otherwise.
+func (o *EntitlementGrantResponseDto) GetDiscordUserId() string {
+	if o == nil || IsNil(o.DiscordUserId) {
+		var ret string
+		return ret
+	}
+	return *o.DiscordUserId
+}
+
+// GetDiscordUserIdOk returns a tuple with the DiscordUserId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntitlementGrantResponseDto) GetDiscordUserIdOk() (*string, bool) {
+	if o == nil || IsNil(o.DiscordUserId) {
+		return nil, false
+	}
+	return o.DiscordUserId, true
+}
+
+// HasDiscordUserId returns a boolean if a field has been set.
+func (o *EntitlementGrantResponseDto) HasDiscordUserId() bool {
+	if o != nil && !IsNil(o.DiscordUserId) {
+		return true
+	}
+
+	return false
+}
+
+// SetDiscordUserId gets a reference to the given string and assigns it to the DiscordUserId field.
+func (o *EntitlementGrantResponseDto) SetDiscordUserId(v string) {
+	o.DiscordUserId = &v
+}
+
 // GetStatus returns the Status field value
 func (o *EntitlementGrantResponseDto) GetStatus() string {
 	if o == nil {
@@ -522,6 +658,18 @@ func (o EntitlementGrantResponseDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.GithubUsername) {
 		toSerialize["githubUsername"] = o.GithubUsername
+	}
+	if !IsNil(o.DiscordGuildId) {
+		toSerialize["discordGuildId"] = o.DiscordGuildId
+	}
+	if !IsNil(o.DiscordRoleId) {
+		toSerialize["discordRoleId"] = o.DiscordRoleId
+	}
+	if !IsNil(o.DiscordUsername) {
+		toSerialize["discordUsername"] = o.DiscordUsername
+	}
+	if !IsNil(o.DiscordUserId) {
+		toSerialize["discordUserId"] = o.DiscordUserId
 	}
 	toSerialize["status"] = o.Status
 	if !IsNil(o.OauthUrl) {

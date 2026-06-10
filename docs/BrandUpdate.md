@@ -5,11 +5,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** | Name of the brand | [optional] 
-**WebsiteUrl** | Pointer to **NullableString** | The website URL associated with the brand | [optional] 
-**SupportEmail** | Pointer to **NullableString** | Support email address for customer service | [optional] 
-**Description** | Pointer to **NullableString** | Short description of the brand | [optional] 
-**LogoUrl** | Pointer to **NullableString** | Brand logo image URL | [optional] 
-**StatementDescriptor** | Pointer to **NullableString** | Credit card statement descriptor (Max 22 chars) | [optional] 
+**WebsiteUrl** | Pointer to **string** | The website URL associated with the brand | [optional] 
+**SupportEmail** | Pointer to **string** | Support email address for customer service | [optional] 
+**Description** | Pointer to **string** | Short description of the brand | [optional] 
+**LogoUrl** | Pointer to **string** | Brand logo image URL | [optional] 
+**StatementDescriptor** | Pointer to **string** | Credit card statement descriptor (Max 22 chars) | [optional] 
 
 ## Methods
 
@@ -80,16 +80,6 @@ SetWebsiteUrl sets WebsiteUrl field to given value.
 
 HasWebsiteUrl returns a boolean if a field has been set.
 
-### SetWebsiteUrlNil
-
-`func (o *BrandUpdate) SetWebsiteUrlNil(b bool)`
-
- SetWebsiteUrlNil sets the value for WebsiteUrl to be an explicit nil
-
-### UnsetWebsiteUrl
-`func (o *BrandUpdate) UnsetWebsiteUrl()`
-
-UnsetWebsiteUrl ensures that no value is present for WebsiteUrl, not even an explicit nil
 ### GetSupportEmail
 
 `func (o *BrandUpdate) GetSupportEmail() string`
@@ -115,16 +105,6 @@ SetSupportEmail sets SupportEmail field to given value.
 
 HasSupportEmail returns a boolean if a field has been set.
 
-### SetSupportEmailNil
-
-`func (o *BrandUpdate) SetSupportEmailNil(b bool)`
-
- SetSupportEmailNil sets the value for SupportEmail to be an explicit nil
-
-### UnsetSupportEmail
-`func (o *BrandUpdate) UnsetSupportEmail()`
-
-UnsetSupportEmail ensures that no value is present for SupportEmail, not even an explicit nil
 ### GetDescription
 
 `func (o *BrandUpdate) GetDescription() string`
@@ -150,16 +130,6 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
-### SetDescriptionNil
-
-`func (o *BrandUpdate) SetDescriptionNil(b bool)`
-
- SetDescriptionNil sets the value for Description to be an explicit nil
-
-### UnsetDescription
-`func (o *BrandUpdate) UnsetDescription()`
-
-UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetLogoUrl
 
 `func (o *BrandUpdate) GetLogoUrl() string`
@@ -185,16 +155,6 @@ SetLogoUrl sets LogoUrl field to given value.
 
 HasLogoUrl returns a boolean if a field has been set.
 
-### SetLogoUrlNil
-
-`func (o *BrandUpdate) SetLogoUrlNil(b bool)`
-
- SetLogoUrlNil sets the value for LogoUrl to be an explicit nil
-
-### UnsetLogoUrl
-`func (o *BrandUpdate) UnsetLogoUrl()`
-
-UnsetLogoUrl ensures that no value is present for LogoUrl, not even an explicit nil
 ### GetStatementDescriptor
 
 `func (o *BrandUpdate) GetStatementDescriptor() string`
@@ -220,16 +180,6 @@ SetStatementDescriptor sets StatementDescriptor field to given value.
 
 HasStatementDescriptor returns a boolean if a field has been set.
 
-### SetStatementDescriptorNil
-
-`func (o *BrandUpdate) SetStatementDescriptorNil(b bool)`
-
- SetStatementDescriptorNil sets the value for StatementDescriptor to be an explicit nil
-
-### UnsetStatementDescriptor
-`func (o *BrandUpdate) UnsetStatementDescriptor()`
-
-UnsetStatementDescriptor ensures that no value is present for StatementDescriptor, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -27,21 +27,21 @@ type Brand struct {
 	// The brand name
 	Name string `json:"name"`
 	// The website URL associated with the brand
-	WebsiteUrl NullableString `json:"websiteUrl,omitempty"`
+	WebsiteUrl *string `json:"websiteUrl,omitempty"`
 	// Support email address for customer service
-	SupportEmail NullableString `json:"supportEmail,omitempty"`
+	SupportEmail *string `json:"supportEmail,omitempty"`
 	// Short description of the brand
-	Description NullableString `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 	// Brand logo image URL
-	LogoUrl NullableString `json:"logoUrl,omitempty"`
+	LogoUrl *string `json:"logoUrl,omitempty"`
 	// Whether this is the primary brand for the merchant business
 	IsPrimary bool `json:"isPrimary"`
 	// Credit card statement descriptor
-	StatementDescriptor NullableString `json:"statementDescriptor,omitempty"`
+	StatementDescriptor *string `json:"statementDescriptor,omitempty"`
 	// The merchant ID owning the brand
 	MerchantId string `json:"merchantId"`
 	// The business ID linked to the brand
-	BusinessId NullableString `json:"businessId,omitempty"`
+	BusinessId *string `json:"businessId,omitempty"`
 	// Timestamp when the brand was created
 	CreatedAt time.Time `json:"createdAt"`
 	// Timestamp when the brand was last updated
@@ -121,172 +121,132 @@ func (o *Brand) SetName(v string) {
 	o.Name = v
 }
 
-// GetWebsiteUrl returns the WebsiteUrl field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetWebsiteUrl returns the WebsiteUrl field value if set, zero value otherwise.
 func (o *Brand) GetWebsiteUrl() string {
-	if o == nil || IsNil(o.WebsiteUrl.Get()) {
+	if o == nil || IsNil(o.WebsiteUrl) {
 		var ret string
 		return ret
 	}
-	return *o.WebsiteUrl.Get()
+	return *o.WebsiteUrl
 }
 
 // GetWebsiteUrlOk returns a tuple with the WebsiteUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Brand) GetWebsiteUrlOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.WebsiteUrl) {
 		return nil, false
 	}
-	return o.WebsiteUrl.Get(), o.WebsiteUrl.IsSet()
+	return o.WebsiteUrl, true
 }
 
 // HasWebsiteUrl returns a boolean if a field has been set.
 func (o *Brand) HasWebsiteUrl() bool {
-	if o != nil && o.WebsiteUrl.IsSet() {
+	if o != nil && !IsNil(o.WebsiteUrl) {
 		return true
 	}
 
 	return false
 }
 
-// SetWebsiteUrl gets a reference to the given NullableString and assigns it to the WebsiteUrl field.
+// SetWebsiteUrl gets a reference to the given string and assigns it to the WebsiteUrl field.
 func (o *Brand) SetWebsiteUrl(v string) {
-	o.WebsiteUrl.Set(&v)
-}
-// SetWebsiteUrlNil sets the value for WebsiteUrl to be an explicit nil
-func (o *Brand) SetWebsiteUrlNil() {
-	o.WebsiteUrl.Set(nil)
+	o.WebsiteUrl = &v
 }
 
-// UnsetWebsiteUrl ensures that no value is present for WebsiteUrl, not even an explicit nil
-func (o *Brand) UnsetWebsiteUrl() {
-	o.WebsiteUrl.Unset()
-}
-
-// GetSupportEmail returns the SupportEmail field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetSupportEmail returns the SupportEmail field value if set, zero value otherwise.
 func (o *Brand) GetSupportEmail() string {
-	if o == nil || IsNil(o.SupportEmail.Get()) {
+	if o == nil || IsNil(o.SupportEmail) {
 		var ret string
 		return ret
 	}
-	return *o.SupportEmail.Get()
+	return *o.SupportEmail
 }
 
 // GetSupportEmailOk returns a tuple with the SupportEmail field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Brand) GetSupportEmailOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.SupportEmail) {
 		return nil, false
 	}
-	return o.SupportEmail.Get(), o.SupportEmail.IsSet()
+	return o.SupportEmail, true
 }
 
 // HasSupportEmail returns a boolean if a field has been set.
 func (o *Brand) HasSupportEmail() bool {
-	if o != nil && o.SupportEmail.IsSet() {
+	if o != nil && !IsNil(o.SupportEmail) {
 		return true
 	}
 
 	return false
 }
 
-// SetSupportEmail gets a reference to the given NullableString and assigns it to the SupportEmail field.
+// SetSupportEmail gets a reference to the given string and assigns it to the SupportEmail field.
 func (o *Brand) SetSupportEmail(v string) {
-	o.SupportEmail.Set(&v)
-}
-// SetSupportEmailNil sets the value for SupportEmail to be an explicit nil
-func (o *Brand) SetSupportEmailNil() {
-	o.SupportEmail.Set(nil)
+	o.SupportEmail = &v
 }
 
-// UnsetSupportEmail ensures that no value is present for SupportEmail, not even an explicit nil
-func (o *Brand) UnsetSupportEmail() {
-	o.SupportEmail.Unset()
-}
-
-// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetDescription returns the Description field value if set, zero value otherwise.
 func (o *Brand) GetDescription() string {
-	if o == nil || IsNil(o.Description.Get()) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
-	return *o.Description.Get()
+	return *o.Description
 }
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Brand) GetDescriptionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
-	return o.Description.Get(), o.Description.IsSet()
+	return o.Description, true
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *Brand) HasDescription() bool {
-	if o != nil && o.Description.IsSet() {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
 	return false
 }
 
-// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
+// SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *Brand) SetDescription(v string) {
-	o.Description.Set(&v)
-}
-// SetDescriptionNil sets the value for Description to be an explicit nil
-func (o *Brand) SetDescriptionNil() {
-	o.Description.Set(nil)
+	o.Description = &v
 }
 
-// UnsetDescription ensures that no value is present for Description, not even an explicit nil
-func (o *Brand) UnsetDescription() {
-	o.Description.Unset()
-}
-
-// GetLogoUrl returns the LogoUrl field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetLogoUrl returns the LogoUrl field value if set, zero value otherwise.
 func (o *Brand) GetLogoUrl() string {
-	if o == nil || IsNil(o.LogoUrl.Get()) {
+	if o == nil || IsNil(o.LogoUrl) {
 		var ret string
 		return ret
 	}
-	return *o.LogoUrl.Get()
+	return *o.LogoUrl
 }
 
 // GetLogoUrlOk returns a tuple with the LogoUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Brand) GetLogoUrlOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.LogoUrl) {
 		return nil, false
 	}
-	return o.LogoUrl.Get(), o.LogoUrl.IsSet()
+	return o.LogoUrl, true
 }
 
 // HasLogoUrl returns a boolean if a field has been set.
 func (o *Brand) HasLogoUrl() bool {
-	if o != nil && o.LogoUrl.IsSet() {
+	if o != nil && !IsNil(o.LogoUrl) {
 		return true
 	}
 
 	return false
 }
 
-// SetLogoUrl gets a reference to the given NullableString and assigns it to the LogoUrl field.
+// SetLogoUrl gets a reference to the given string and assigns it to the LogoUrl field.
 func (o *Brand) SetLogoUrl(v string) {
-	o.LogoUrl.Set(&v)
-}
-// SetLogoUrlNil sets the value for LogoUrl to be an explicit nil
-func (o *Brand) SetLogoUrlNil() {
-	o.LogoUrl.Set(nil)
-}
-
-// UnsetLogoUrl ensures that no value is present for LogoUrl, not even an explicit nil
-func (o *Brand) UnsetLogoUrl() {
-	o.LogoUrl.Unset()
+	o.LogoUrl = &v
 }
 
 // GetIsPrimary returns the IsPrimary field value
@@ -313,46 +273,36 @@ func (o *Brand) SetIsPrimary(v bool) {
 	o.IsPrimary = v
 }
 
-// GetStatementDescriptor returns the StatementDescriptor field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetStatementDescriptor returns the StatementDescriptor field value if set, zero value otherwise.
 func (o *Brand) GetStatementDescriptor() string {
-	if o == nil || IsNil(o.StatementDescriptor.Get()) {
+	if o == nil || IsNil(o.StatementDescriptor) {
 		var ret string
 		return ret
 	}
-	return *o.StatementDescriptor.Get()
+	return *o.StatementDescriptor
 }
 
 // GetStatementDescriptorOk returns a tuple with the StatementDescriptor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Brand) GetStatementDescriptorOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.StatementDescriptor) {
 		return nil, false
 	}
-	return o.StatementDescriptor.Get(), o.StatementDescriptor.IsSet()
+	return o.StatementDescriptor, true
 }
 
 // HasStatementDescriptor returns a boolean if a field has been set.
 func (o *Brand) HasStatementDescriptor() bool {
-	if o != nil && o.StatementDescriptor.IsSet() {
+	if o != nil && !IsNil(o.StatementDescriptor) {
 		return true
 	}
 
 	return false
 }
 
-// SetStatementDescriptor gets a reference to the given NullableString and assigns it to the StatementDescriptor field.
+// SetStatementDescriptor gets a reference to the given string and assigns it to the StatementDescriptor field.
 func (o *Brand) SetStatementDescriptor(v string) {
-	o.StatementDescriptor.Set(&v)
-}
-// SetStatementDescriptorNil sets the value for StatementDescriptor to be an explicit nil
-func (o *Brand) SetStatementDescriptorNil() {
-	o.StatementDescriptor.Set(nil)
-}
-
-// UnsetStatementDescriptor ensures that no value is present for StatementDescriptor, not even an explicit nil
-func (o *Brand) UnsetStatementDescriptor() {
-	o.StatementDescriptor.Unset()
+	o.StatementDescriptor = &v
 }
 
 // GetMerchantId returns the MerchantId field value
@@ -379,46 +329,36 @@ func (o *Brand) SetMerchantId(v string) {
 	o.MerchantId = v
 }
 
-// GetBusinessId returns the BusinessId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetBusinessId returns the BusinessId field value if set, zero value otherwise.
 func (o *Brand) GetBusinessId() string {
-	if o == nil || IsNil(o.BusinessId.Get()) {
+	if o == nil || IsNil(o.BusinessId) {
 		var ret string
 		return ret
 	}
-	return *o.BusinessId.Get()
+	return *o.BusinessId
 }
 
 // GetBusinessIdOk returns a tuple with the BusinessId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Brand) GetBusinessIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.BusinessId) {
 		return nil, false
 	}
-	return o.BusinessId.Get(), o.BusinessId.IsSet()
+	return o.BusinessId, true
 }
 
 // HasBusinessId returns a boolean if a field has been set.
 func (o *Brand) HasBusinessId() bool {
-	if o != nil && o.BusinessId.IsSet() {
+	if o != nil && !IsNil(o.BusinessId) {
 		return true
 	}
 
 	return false
 }
 
-// SetBusinessId gets a reference to the given NullableString and assigns it to the BusinessId field.
+// SetBusinessId gets a reference to the given string and assigns it to the BusinessId field.
 func (o *Brand) SetBusinessId(v string) {
-	o.BusinessId.Set(&v)
-}
-// SetBusinessIdNil sets the value for BusinessId to be an explicit nil
-func (o *Brand) SetBusinessIdNil() {
-	o.BusinessId.Set(nil)
-}
-
-// UnsetBusinessId ensures that no value is present for BusinessId, not even an explicit nil
-func (o *Brand) UnsetBusinessId() {
-	o.BusinessId.Unset()
+	o.BusinessId = &v
 }
 
 // GetCreatedAt returns the CreatedAt field value
@@ -481,25 +421,25 @@ func (o Brand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	toSerialize["name"] = o.Name
-	if o.WebsiteUrl.IsSet() {
-		toSerialize["websiteUrl"] = o.WebsiteUrl.Get()
+	if !IsNil(o.WebsiteUrl) {
+		toSerialize["websiteUrl"] = o.WebsiteUrl
 	}
-	if o.SupportEmail.IsSet() {
-		toSerialize["supportEmail"] = o.SupportEmail.Get()
+	if !IsNil(o.SupportEmail) {
+		toSerialize["supportEmail"] = o.SupportEmail
 	}
-	if o.Description.IsSet() {
-		toSerialize["description"] = o.Description.Get()
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
 	}
-	if o.LogoUrl.IsSet() {
-		toSerialize["logoUrl"] = o.LogoUrl.Get()
+	if !IsNil(o.LogoUrl) {
+		toSerialize["logoUrl"] = o.LogoUrl
 	}
 	toSerialize["isPrimary"] = o.IsPrimary
-	if o.StatementDescriptor.IsSet() {
-		toSerialize["statementDescriptor"] = o.StatementDescriptor.Get()
+	if !IsNil(o.StatementDescriptor) {
+		toSerialize["statementDescriptor"] = o.StatementDescriptor
 	}
 	toSerialize["merchantId"] = o.MerchantId
-	if o.BusinessId.IsSet() {
-		toSerialize["businessId"] = o.BusinessId.Get()
+	if !IsNil(o.BusinessId) {
+		toSerialize["businessId"] = o.BusinessId
 	}
 	toSerialize["createdAt"] = o.CreatedAt
 	toSerialize["updatedAt"] = o.UpdatedAt

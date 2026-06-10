@@ -567,7 +567,7 @@ import (
 
 func main() {
 	id := "id_example" // string | The endpoint ID or UID
-	operationalWebhookEndpointHeadersInDto := *openapiclient.NewOperationalWebhookEndpointHeadersInDto(map[string]interface{}({"X-Example":"123","X-Foobar":"Bar"})) // OperationalWebhookEndpointHeadersInDto | 
+	operationalWebhookEndpointHeadersInDto := *openapiclient.NewOperationalWebhookEndpointHeadersInDto(map[string]interface{}({X-Example=123, X-Foobar=Bar})) // OperationalWebhookEndpointHeadersInDto | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

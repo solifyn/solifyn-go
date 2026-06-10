@@ -8,37 +8,40 @@ Name | Type | Description | Notes
 **Name** | **string** | The display name of the product. | 
 **Price** | **float32** | The price amount of the product (e.g. 29.00). | 
 **Currency** | **string** | The three-letter ISO currency code (e.g. USD, VND, EUR). | 
-**Description** | Pointer to **NullableString** | A comprehensive rich text description of the product. | [optional] 
+**Description** | Pointer to **string** | A comprehensive rich text description of the product. | [optional] 
 **Status** | **string** | The lifecycle status of the product (e.g. ACTIVE, ARCHIVED). | 
-**ImageUrl** | **NullableString** | URL of the product cover image. | 
+**ImageUrl** | **string** | URL of the product cover image. | 
 **TaxCategory** | **string** | The tax classification for the product. | 
 **PricingType** | **string** | Pricing model of the product. | 
-**Discount** | **NullableFloat32** | Discount value as a percentage or fixed amount. | 
+**Discount** | **float32** | Discount value as a percentage or fixed amount. | 
 **HasLicenseKey** | **bool** | Indicates if the product issues a cryptographically secure software license key upon checkout completion. | 
 **HasDigitalDelivery** | **bool** | Whether the product includes digital file downloads upon purchase. | 
 **HasGithubAccess** | **bool** | Whether the product includes GitHub repository access. | 
-**GithubRepo** | **NullableString** | GitHub repository to grant access to (format: owner/repo). | 
-**GithubPermission** | **NullableString** | GitHub collaborator permission level. | 
+**GithubRepo** | **string** | GitHub repository to grant access to (format: owner/repo). | 
+**GithubPermission** | **string** | GitHub collaborator permission level. | 
+**HasDiscordAccess** | **bool** | Whether the product includes Discord role access. | 
+**DiscordGuildId** | **string** | Discord Guild (Server) ID to grant access to. | 
+**DiscordRoleId** | **string** | Discord Role ID to assign to the user. | 
 **IsTaxInclusive** | **bool** | Whether the product price already includes applicable sales taxes. | 
-**BillingPeriod** | **NullableInt32** | The subscription billing cycle interval in days (for subscription products). | 
-**TrialPeriodDays** | **NullableInt32** | Trial duration in days for subscription products. | 
-**ExpirationDays** | **NullableInt32** | Automatic expiration period in days for the subscription entitlement. | 
-**StatementDescriptor** | **NullableString** | Custom text displayed on customer credit card statements for purchases of this product. | 
+**BillingPeriod** | **int32** | The subscription billing cycle interval in days (for subscription products). | 
+**TrialPeriodDays** | **int32** | Trial duration in days for subscription products. | 
+**ExpirationDays** | **int32** | Automatic expiration period in days for the subscription entitlement. | 
+**StatementDescriptor** | **string** | Custom text displayed on customer credit card statements for purchases of this product. | 
 **PayWhatYouWant** | **bool** | Indicates if customers are allowed to enter a custom pricing amount at checkout. | 
 **Metadata** | **map[string]string** | Custom developer metadata key-value pairs associated with the product. | 
 **CustomFields** | **[]map[string]interface{}** | Custom form field questions to ask the customer during checkout. | 
-**Stock** | **NullableInt32** | Available stock quantity, or null for unlimited inventory. | 
+**Stock** | **int32** | Available stock quantity, or null for unlimited inventory. | 
 **ActivationLimit** | **int32** | Maximum number of simultaneous active instances/devices allowed per issued license key (applicable if hasLicenseKey is true). | 
 **IsListed** | **bool** | Defines if the product is listed publicly on the merchant&#39;s storefront template. | 
 **IsFree** | **bool** | Whether the product is free. | 
 **CreatedAt** | **time.Time** | Timestamp indicating exactly when the product was created. | 
 **UpdatedAt** | **time.Time** | Timestamp indicating when the product was last modified. | 
 **IsPermanentlyDeleted** | **bool** | Indicates if the product has been permanently deleted. | 
-**BrandId** | **NullableString** | Optional brand identifier. | 
-**DigitalLink** | **NullableString** | Secure link for digital delivery. | 
-**Instructions** | **NullableString** | Special instructions provided upon purchase. | 
-**ActivationMessage** | **NullableString** | Custom message displayed when a license key is activated. | 
-**ExpiryHours** | **NullableInt32** | Number of hours until the license key expires. | 
+**BrandId** | **string** | Optional brand identifier. | 
+**DigitalLink** | **string** | Secure link for digital delivery. | 
+**Instructions** | **string** | Special instructions provided upon purchase. | 
+**ActivationMessage** | **string** | Custom message displayed when a license key is activated. | 
+**ExpiryHours** | **int32** | Number of hours until the license key expires. | 
 **BusinessId** | **string** | The unique identifier of the business owning this product. | 
 **Quantity** | **float32** | Quantity of the product in the collection | 
 
@@ -46,7 +49,7 @@ Name | Type | Description | Notes
 
 ### NewCollectionProductDto
 
-`func NewCollectionProductDto(id string, name string, price float32, currency string, status string, imageUrl NullableString, taxCategory string, pricingType string, discount NullableFloat32, hasLicenseKey bool, hasDigitalDelivery bool, hasGithubAccess bool, githubRepo NullableString, githubPermission NullableString, isTaxInclusive bool, billingPeriod NullableInt32, trialPeriodDays NullableInt32, expirationDays NullableInt32, statementDescriptor NullableString, payWhatYouWant bool, metadata map[string]string, customFields []map[string]interface{}, stock NullableInt32, activationLimit int32, isListed bool, isFree bool, createdAt time.Time, updatedAt time.Time, isPermanentlyDeleted bool, brandId NullableString, digitalLink NullableString, instructions NullableString, activationMessage NullableString, expiryHours NullableInt32, businessId string, quantity float32, ) *CollectionProductDto`
+`func NewCollectionProductDto(id string, name string, price float32, currency string, status string, imageUrl string, taxCategory string, pricingType string, discount float32, hasLicenseKey bool, hasDigitalDelivery bool, hasGithubAccess bool, githubRepo string, githubPermission string, hasDiscordAccess bool, discordGuildId string, discordRoleId string, isTaxInclusive bool, billingPeriod int32, trialPeriodDays int32, expirationDays int32, statementDescriptor string, payWhatYouWant bool, metadata map[string]string, customFields []map[string]interface{}, stock int32, activationLimit int32, isListed bool, isFree bool, createdAt time.Time, updatedAt time.Time, isPermanentlyDeleted bool, brandId string, digitalLink string, instructions string, activationMessage string, expiryHours int32, businessId string, quantity float32, ) *CollectionProductDto`
 
 NewCollectionProductDto instantiates a new CollectionProductDto object
 This constructor will assign default values to properties that have it defined,
@@ -166,16 +169,6 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
-### SetDescriptionNil
-
-`func (o *CollectionProductDto) SetDescriptionNil(b bool)`
-
- SetDescriptionNil sets the value for Description to be an explicit nil
-
-### UnsetDescription
-`func (o *CollectionProductDto) UnsetDescription()`
-
-UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetStatus
 
 `func (o *CollectionProductDto) GetStatus() string`
@@ -216,16 +209,6 @@ and a boolean to check if the value has been set.
 SetImageUrl sets ImageUrl field to given value.
 
 
-### SetImageUrlNil
-
-`func (o *CollectionProductDto) SetImageUrlNil(b bool)`
-
- SetImageUrlNil sets the value for ImageUrl to be an explicit nil
-
-### UnsetImageUrl
-`func (o *CollectionProductDto) UnsetImageUrl()`
-
-UnsetImageUrl ensures that no value is present for ImageUrl, not even an explicit nil
 ### GetTaxCategory
 
 `func (o *CollectionProductDto) GetTaxCategory() string`
@@ -286,16 +269,6 @@ and a boolean to check if the value has been set.
 SetDiscount sets Discount field to given value.
 
 
-### SetDiscountNil
-
-`func (o *CollectionProductDto) SetDiscountNil(b bool)`
-
- SetDiscountNil sets the value for Discount to be an explicit nil
-
-### UnsetDiscount
-`func (o *CollectionProductDto) UnsetDiscount()`
-
-UnsetDiscount ensures that no value is present for Discount, not even an explicit nil
 ### GetHasLicenseKey
 
 `func (o *CollectionProductDto) GetHasLicenseKey() bool`
@@ -376,16 +349,6 @@ and a boolean to check if the value has been set.
 SetGithubRepo sets GithubRepo field to given value.
 
 
-### SetGithubRepoNil
-
-`func (o *CollectionProductDto) SetGithubRepoNil(b bool)`
-
- SetGithubRepoNil sets the value for GithubRepo to be an explicit nil
-
-### UnsetGithubRepo
-`func (o *CollectionProductDto) UnsetGithubRepo()`
-
-UnsetGithubRepo ensures that no value is present for GithubRepo, not even an explicit nil
 ### GetGithubPermission
 
 `func (o *CollectionProductDto) GetGithubPermission() string`
@@ -406,16 +369,66 @@ and a boolean to check if the value has been set.
 SetGithubPermission sets GithubPermission field to given value.
 
 
-### SetGithubPermissionNil
+### GetHasDiscordAccess
 
-`func (o *CollectionProductDto) SetGithubPermissionNil(b bool)`
+`func (o *CollectionProductDto) GetHasDiscordAccess() bool`
 
- SetGithubPermissionNil sets the value for GithubPermission to be an explicit nil
+GetHasDiscordAccess returns the HasDiscordAccess field if non-nil, zero value otherwise.
 
-### UnsetGithubPermission
-`func (o *CollectionProductDto) UnsetGithubPermission()`
+### GetHasDiscordAccessOk
 
-UnsetGithubPermission ensures that no value is present for GithubPermission, not even an explicit nil
+`func (o *CollectionProductDto) GetHasDiscordAccessOk() (*bool, bool)`
+
+GetHasDiscordAccessOk returns a tuple with the HasDiscordAccess field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHasDiscordAccess
+
+`func (o *CollectionProductDto) SetHasDiscordAccess(v bool)`
+
+SetHasDiscordAccess sets HasDiscordAccess field to given value.
+
+
+### GetDiscordGuildId
+
+`func (o *CollectionProductDto) GetDiscordGuildId() string`
+
+GetDiscordGuildId returns the DiscordGuildId field if non-nil, zero value otherwise.
+
+### GetDiscordGuildIdOk
+
+`func (o *CollectionProductDto) GetDiscordGuildIdOk() (*string, bool)`
+
+GetDiscordGuildIdOk returns a tuple with the DiscordGuildId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDiscordGuildId
+
+`func (o *CollectionProductDto) SetDiscordGuildId(v string)`
+
+SetDiscordGuildId sets DiscordGuildId field to given value.
+
+
+### GetDiscordRoleId
+
+`func (o *CollectionProductDto) GetDiscordRoleId() string`
+
+GetDiscordRoleId returns the DiscordRoleId field if non-nil, zero value otherwise.
+
+### GetDiscordRoleIdOk
+
+`func (o *CollectionProductDto) GetDiscordRoleIdOk() (*string, bool)`
+
+GetDiscordRoleIdOk returns a tuple with the DiscordRoleId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDiscordRoleId
+
+`func (o *CollectionProductDto) SetDiscordRoleId(v string)`
+
+SetDiscordRoleId sets DiscordRoleId field to given value.
+
+
 ### GetIsTaxInclusive
 
 `func (o *CollectionProductDto) GetIsTaxInclusive() bool`
@@ -456,16 +469,6 @@ and a boolean to check if the value has been set.
 SetBillingPeriod sets BillingPeriod field to given value.
 
 
-### SetBillingPeriodNil
-
-`func (o *CollectionProductDto) SetBillingPeriodNil(b bool)`
-
- SetBillingPeriodNil sets the value for BillingPeriod to be an explicit nil
-
-### UnsetBillingPeriod
-`func (o *CollectionProductDto) UnsetBillingPeriod()`
-
-UnsetBillingPeriod ensures that no value is present for BillingPeriod, not even an explicit nil
 ### GetTrialPeriodDays
 
 `func (o *CollectionProductDto) GetTrialPeriodDays() int32`
@@ -486,16 +489,6 @@ and a boolean to check if the value has been set.
 SetTrialPeriodDays sets TrialPeriodDays field to given value.
 
 
-### SetTrialPeriodDaysNil
-
-`func (o *CollectionProductDto) SetTrialPeriodDaysNil(b bool)`
-
- SetTrialPeriodDaysNil sets the value for TrialPeriodDays to be an explicit nil
-
-### UnsetTrialPeriodDays
-`func (o *CollectionProductDto) UnsetTrialPeriodDays()`
-
-UnsetTrialPeriodDays ensures that no value is present for TrialPeriodDays, not even an explicit nil
 ### GetExpirationDays
 
 `func (o *CollectionProductDto) GetExpirationDays() int32`
@@ -516,16 +509,6 @@ and a boolean to check if the value has been set.
 SetExpirationDays sets ExpirationDays field to given value.
 
 
-### SetExpirationDaysNil
-
-`func (o *CollectionProductDto) SetExpirationDaysNil(b bool)`
-
- SetExpirationDaysNil sets the value for ExpirationDays to be an explicit nil
-
-### UnsetExpirationDays
-`func (o *CollectionProductDto) UnsetExpirationDays()`
-
-UnsetExpirationDays ensures that no value is present for ExpirationDays, not even an explicit nil
 ### GetStatementDescriptor
 
 `func (o *CollectionProductDto) GetStatementDescriptor() string`
@@ -546,16 +529,6 @@ and a boolean to check if the value has been set.
 SetStatementDescriptor sets StatementDescriptor field to given value.
 
 
-### SetStatementDescriptorNil
-
-`func (o *CollectionProductDto) SetStatementDescriptorNil(b bool)`
-
- SetStatementDescriptorNil sets the value for StatementDescriptor to be an explicit nil
-
-### UnsetStatementDescriptor
-`func (o *CollectionProductDto) UnsetStatementDescriptor()`
-
-UnsetStatementDescriptor ensures that no value is present for StatementDescriptor, not even an explicit nil
 ### GetPayWhatYouWant
 
 `func (o *CollectionProductDto) GetPayWhatYouWant() bool`
@@ -596,16 +569,6 @@ and a boolean to check if the value has been set.
 SetMetadata sets Metadata field to given value.
 
 
-### SetMetadataNil
-
-`func (o *CollectionProductDto) SetMetadataNil(b bool)`
-
- SetMetadataNil sets the value for Metadata to be an explicit nil
-
-### UnsetMetadata
-`func (o *CollectionProductDto) UnsetMetadata()`
-
-UnsetMetadata ensures that no value is present for Metadata, not even an explicit nil
 ### GetCustomFields
 
 `func (o *CollectionProductDto) GetCustomFields() []map[string]interface{}`
@@ -626,16 +589,6 @@ and a boolean to check if the value has been set.
 SetCustomFields sets CustomFields field to given value.
 
 
-### SetCustomFieldsNil
-
-`func (o *CollectionProductDto) SetCustomFieldsNil(b bool)`
-
- SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
-
-### UnsetCustomFields
-`func (o *CollectionProductDto) UnsetCustomFields()`
-
-UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 ### GetStock
 
 `func (o *CollectionProductDto) GetStock() int32`
@@ -656,16 +609,6 @@ and a boolean to check if the value has been set.
 SetStock sets Stock field to given value.
 
 
-### SetStockNil
-
-`func (o *CollectionProductDto) SetStockNil(b bool)`
-
- SetStockNil sets the value for Stock to be an explicit nil
-
-### UnsetStock
-`func (o *CollectionProductDto) UnsetStock()`
-
-UnsetStock ensures that no value is present for Stock, not even an explicit nil
 ### GetActivationLimit
 
 `func (o *CollectionProductDto) GetActivationLimit() int32`
@@ -806,16 +749,6 @@ and a boolean to check if the value has been set.
 SetBrandId sets BrandId field to given value.
 
 
-### SetBrandIdNil
-
-`func (o *CollectionProductDto) SetBrandIdNil(b bool)`
-
- SetBrandIdNil sets the value for BrandId to be an explicit nil
-
-### UnsetBrandId
-`func (o *CollectionProductDto) UnsetBrandId()`
-
-UnsetBrandId ensures that no value is present for BrandId, not even an explicit nil
 ### GetDigitalLink
 
 `func (o *CollectionProductDto) GetDigitalLink() string`
@@ -836,16 +769,6 @@ and a boolean to check if the value has been set.
 SetDigitalLink sets DigitalLink field to given value.
 
 
-### SetDigitalLinkNil
-
-`func (o *CollectionProductDto) SetDigitalLinkNil(b bool)`
-
- SetDigitalLinkNil sets the value for DigitalLink to be an explicit nil
-
-### UnsetDigitalLink
-`func (o *CollectionProductDto) UnsetDigitalLink()`
-
-UnsetDigitalLink ensures that no value is present for DigitalLink, not even an explicit nil
 ### GetInstructions
 
 `func (o *CollectionProductDto) GetInstructions() string`
@@ -866,16 +789,6 @@ and a boolean to check if the value has been set.
 SetInstructions sets Instructions field to given value.
 
 
-### SetInstructionsNil
-
-`func (o *CollectionProductDto) SetInstructionsNil(b bool)`
-
- SetInstructionsNil sets the value for Instructions to be an explicit nil
-
-### UnsetInstructions
-`func (o *CollectionProductDto) UnsetInstructions()`
-
-UnsetInstructions ensures that no value is present for Instructions, not even an explicit nil
 ### GetActivationMessage
 
 `func (o *CollectionProductDto) GetActivationMessage() string`
@@ -896,16 +809,6 @@ and a boolean to check if the value has been set.
 SetActivationMessage sets ActivationMessage field to given value.
 
 
-### SetActivationMessageNil
-
-`func (o *CollectionProductDto) SetActivationMessageNil(b bool)`
-
- SetActivationMessageNil sets the value for ActivationMessage to be an explicit nil
-
-### UnsetActivationMessage
-`func (o *CollectionProductDto) UnsetActivationMessage()`
-
-UnsetActivationMessage ensures that no value is present for ActivationMessage, not even an explicit nil
 ### GetExpiryHours
 
 `func (o *CollectionProductDto) GetExpiryHours() int32`
@@ -926,16 +829,6 @@ and a boolean to check if the value has been set.
 SetExpiryHours sets ExpiryHours field to given value.
 
 
-### SetExpiryHoursNil
-
-`func (o *CollectionProductDto) SetExpiryHoursNil(b bool)`
-
- SetExpiryHoursNil sets the value for ExpiryHours to be an explicit nil
-
-### UnsetExpiryHours
-`func (o *CollectionProductDto) UnsetExpiryHours()`
-
-UnsetExpiryHours ensures that no value is present for ExpiryHours, not even an explicit nil
 ### GetBusinessId
 
 `func (o *CollectionProductDto) GetBusinessId() string`

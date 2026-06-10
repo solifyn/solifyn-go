@@ -7,15 +7,15 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | The unique entitlement grant ID. | [optional] 
 **BusinessId** | Pointer to **string** | The business ID context. | [optional] 
 **CustomerId** | Pointer to **string** | The customer ID. | [optional] 
-**PaymentId** | Pointer to **NullableString** | Associated payment transaction ID. | [optional] 
+**PaymentId** | Pointer to **string** | Associated payment transaction ID. | [optional] 
 **ProductId** | Pointer to **string** | The purchased product ID. | [optional] 
 **Type** | Pointer to **string** | The type of entitlement (e.g. GITHUB). | [optional] 
-**GithubRepo** | Pointer to **NullableString** | Target GitHub repository (owner/repo) if type is GITHUB. | [optional] 
-**GithubPermission** | Pointer to **NullableString** | GitHub access permission level if type is GITHUB. | [optional] 
-**GithubUsername** | Pointer to **NullableString** | The connected customer GitHub username. | [optional] 
+**GithubRepo** | Pointer to **string** | Target GitHub repository (owner/repo) if type is GITHUB. | [optional] 
+**GithubPermission** | Pointer to **string** | GitHub access permission level if type is GITHUB. | [optional] 
+**GithubUsername** | Pointer to **string** | The connected customer GitHub username. | [optional] 
 **Status** | Pointer to **string** | Delivery status of the collaborator invite (PENDING, DELIVERED, FAILED, REVOKED). | [optional] 
-**OauthUrl** | Pointer to **NullableString** | OAuth URL to redirect the customer to. | [optional] 
-**ErrorDetails** | Pointer to **NullableString** | Error message if invitation delivery failed. | [optional] 
+**OauthUrl** | Pointer to **string** | OAuth URL to redirect the customer to. | [optional] 
+**ErrorDetails** | Pointer to **string** | Error message if invitation delivery failed. | [optional] 
 **CreatedAt** | Pointer to **time.Time** |  | [optional] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] 
 
@@ -138,16 +138,6 @@ SetPaymentId sets PaymentId field to given value.
 
 HasPaymentId returns a boolean if a field has been set.
 
-### SetPaymentIdNil
-
-`func (o *WebhookEntitlementGrantPayload) SetPaymentIdNil(b bool)`
-
- SetPaymentIdNil sets the value for PaymentId to be an explicit nil
-
-### UnsetPaymentId
-`func (o *WebhookEntitlementGrantPayload) UnsetPaymentId()`
-
-UnsetPaymentId ensures that no value is present for PaymentId, not even an explicit nil
 ### GetProductId
 
 `func (o *WebhookEntitlementGrantPayload) GetProductId() string`
@@ -223,16 +213,6 @@ SetGithubRepo sets GithubRepo field to given value.
 
 HasGithubRepo returns a boolean if a field has been set.
 
-### SetGithubRepoNil
-
-`func (o *WebhookEntitlementGrantPayload) SetGithubRepoNil(b bool)`
-
- SetGithubRepoNil sets the value for GithubRepo to be an explicit nil
-
-### UnsetGithubRepo
-`func (o *WebhookEntitlementGrantPayload) UnsetGithubRepo()`
-
-UnsetGithubRepo ensures that no value is present for GithubRepo, not even an explicit nil
 ### GetGithubPermission
 
 `func (o *WebhookEntitlementGrantPayload) GetGithubPermission() string`
@@ -258,16 +238,6 @@ SetGithubPermission sets GithubPermission field to given value.
 
 HasGithubPermission returns a boolean if a field has been set.
 
-### SetGithubPermissionNil
-
-`func (o *WebhookEntitlementGrantPayload) SetGithubPermissionNil(b bool)`
-
- SetGithubPermissionNil sets the value for GithubPermission to be an explicit nil
-
-### UnsetGithubPermission
-`func (o *WebhookEntitlementGrantPayload) UnsetGithubPermission()`
-
-UnsetGithubPermission ensures that no value is present for GithubPermission, not even an explicit nil
 ### GetGithubUsername
 
 `func (o *WebhookEntitlementGrantPayload) GetGithubUsername() string`
@@ -293,16 +263,6 @@ SetGithubUsername sets GithubUsername field to given value.
 
 HasGithubUsername returns a boolean if a field has been set.
 
-### SetGithubUsernameNil
-
-`func (o *WebhookEntitlementGrantPayload) SetGithubUsernameNil(b bool)`
-
- SetGithubUsernameNil sets the value for GithubUsername to be an explicit nil
-
-### UnsetGithubUsername
-`func (o *WebhookEntitlementGrantPayload) UnsetGithubUsername()`
-
-UnsetGithubUsername ensures that no value is present for GithubUsername, not even an explicit nil
 ### GetStatus
 
 `func (o *WebhookEntitlementGrantPayload) GetStatus() string`
@@ -353,16 +313,6 @@ SetOauthUrl sets OauthUrl field to given value.
 
 HasOauthUrl returns a boolean if a field has been set.
 
-### SetOauthUrlNil
-
-`func (o *WebhookEntitlementGrantPayload) SetOauthUrlNil(b bool)`
-
- SetOauthUrlNil sets the value for OauthUrl to be an explicit nil
-
-### UnsetOauthUrl
-`func (o *WebhookEntitlementGrantPayload) UnsetOauthUrl()`
-
-UnsetOauthUrl ensures that no value is present for OauthUrl, not even an explicit nil
 ### GetErrorDetails
 
 `func (o *WebhookEntitlementGrantPayload) GetErrorDetails() string`
@@ -388,16 +338,6 @@ SetErrorDetails sets ErrorDetails field to given value.
 
 HasErrorDetails returns a boolean if a field has been set.
 
-### SetErrorDetailsNil
-
-`func (o *WebhookEntitlementGrantPayload) SetErrorDetailsNil(b bool)`
-
- SetErrorDetailsNil sets the value for ErrorDetails to be an explicit nil
-
-### UnsetErrorDetails
-`func (o *WebhookEntitlementGrantPayload) UnsetErrorDetails()`
-
-UnsetErrorDetails ensures that no value is present for ErrorDetails, not even an explicit nil
 ### GetCreatedAt
 
 `func (o *WebhookEntitlementGrantPayload) GetCreatedAt() time.Time`

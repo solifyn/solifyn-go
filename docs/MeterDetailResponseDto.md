@@ -123,16 +123,6 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
-### SetDescriptionNil
-
-`func (o *MeterDetailResponseDto) SetDescriptionNil(b bool)`
-
- SetDescriptionNil sets the value for Description to be an explicit nil
-
-### UnsetDescription
-`func (o *MeterDetailResponseDto) UnsetDescription()`
-
-UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetEventName
 
 `func (o *MeterDetailResponseDto) GetEventName() string`
@@ -198,16 +188,6 @@ SetAggregationKey sets AggregationKey field to given value.
 
 HasAggregationKey returns a boolean if a field has been set.
 
-### SetAggregationKeyNil
-
-`func (o *MeterDetailResponseDto) SetAggregationKeyNil(b bool)`
-
- SetAggregationKeyNil sets the value for AggregationKey to be an explicit nil
-
-### UnsetAggregationKey
-`func (o *MeterDetailResponseDto) UnsetAggregationKey()`
-
-UnsetAggregationKey ensures that no value is present for AggregationKey, not even an explicit nil
 ### GetUnit
 
 `func (o *MeterDetailResponseDto) GetUnit() map[string]interface{}`
@@ -233,16 +213,6 @@ SetUnit sets Unit field to given value.
 
 HasUnit returns a boolean if a field has been set.
 
-### SetUnitNil
-
-`func (o *MeterDetailResponseDto) SetUnitNil(b bool)`
-
- SetUnitNil sets the value for Unit to be an explicit nil
-
-### UnsetUnit
-`func (o *MeterDetailResponseDto) UnsetUnit()`
-
-UnsetUnit ensures that no value is present for Unit, not even an explicit nil
 ### GetFilters
 
 `func (o *MeterDetailResponseDto) GetFilters() map[string]interface{}`
@@ -268,16 +238,6 @@ SetFilters sets Filters field to given value.
 
 HasFilters returns a boolean if a field has been set.
 
-### SetFiltersNil
-
-`func (o *MeterDetailResponseDto) SetFiltersNil(b bool)`
-
- SetFiltersNil sets the value for Filters to be an explicit nil
-
-### UnsetFilters
-`func (o *MeterDetailResponseDto) UnsetFilters()`
-
-UnsetFilters ensures that no value is present for Filters, not even an explicit nil
 ### GetArchived
 
 `func (o *MeterDetailResponseDto) GetArchived() bool`

@@ -7,17 +7,17 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | The subscription ID. | [optional] 
 **Status** | Pointer to **string** | Current status of the subscription. | [optional] 
 **CancelAtPeriodEnd** | Pointer to **bool** |  | [optional] 
-**RenewalPeriodStart** | Pointer to **NullableTime** |  | [optional] 
-**RenewalPeriodEnd** | Pointer to **NullableTime** |  | [optional] 
+**RenewalPeriodStart** | Pointer to **time.Time** |  | [optional] 
+**RenewalPeriodEnd** | Pointer to **time.Time** |  | [optional] 
 **Currency** | Pointer to **string** |  | [optional] 
 **Amount** | Pointer to **float32** |  | [optional] 
-**CustomerId** | Pointer to **NullableString** |  | [optional] 
-**CustomerEmail** | Pointer to **NullableString** |  | [optional] 
-**CustomerName** | Pointer to **NullableString** |  | [optional] 
-**ProductId** | Pointer to **NullableString** |  | [optional] 
-**ProductTitle** | Pointer to **NullableString** |  | [optional] 
-**CreatedAt** | Pointer to **NullableTime** |  | [optional] 
-**UpdatedAt** | Pointer to **NullableTime** |  | [optional] 
+**CustomerId** | Pointer to **string** |  | [optional] 
+**CustomerEmail** | Pointer to **string** |  | [optional] 
+**CustomerName** | Pointer to **string** |  | [optional] 
+**ProductId** | Pointer to **string** |  | [optional] 
+**ProductTitle** | Pointer to **string** |  | [optional] 
+**CreatedAt** | Pointer to **time.Time** |  | [optional] 
+**UpdatedAt** | Pointer to **time.Time** |  | [optional] 
 
 ## Methods
 
@@ -138,16 +138,6 @@ SetRenewalPeriodStart sets RenewalPeriodStart field to given value.
 
 HasRenewalPeriodStart returns a boolean if a field has been set.
 
-### SetRenewalPeriodStartNil
-
-`func (o *WebhookSubscriptionPayload) SetRenewalPeriodStartNil(b bool)`
-
- SetRenewalPeriodStartNil sets the value for RenewalPeriodStart to be an explicit nil
-
-### UnsetRenewalPeriodStart
-`func (o *WebhookSubscriptionPayload) UnsetRenewalPeriodStart()`
-
-UnsetRenewalPeriodStart ensures that no value is present for RenewalPeriodStart, not even an explicit nil
 ### GetRenewalPeriodEnd
 
 `func (o *WebhookSubscriptionPayload) GetRenewalPeriodEnd() time.Time`
@@ -173,16 +163,6 @@ SetRenewalPeriodEnd sets RenewalPeriodEnd field to given value.
 
 HasRenewalPeriodEnd returns a boolean if a field has been set.
 
-### SetRenewalPeriodEndNil
-
-`func (o *WebhookSubscriptionPayload) SetRenewalPeriodEndNil(b bool)`
-
- SetRenewalPeriodEndNil sets the value for RenewalPeriodEnd to be an explicit nil
-
-### UnsetRenewalPeriodEnd
-`func (o *WebhookSubscriptionPayload) UnsetRenewalPeriodEnd()`
-
-UnsetRenewalPeriodEnd ensures that no value is present for RenewalPeriodEnd, not even an explicit nil
 ### GetCurrency
 
 `func (o *WebhookSubscriptionPayload) GetCurrency() string`
@@ -258,16 +238,6 @@ SetCustomerId sets CustomerId field to given value.
 
 HasCustomerId returns a boolean if a field has been set.
 
-### SetCustomerIdNil
-
-`func (o *WebhookSubscriptionPayload) SetCustomerIdNil(b bool)`
-
- SetCustomerIdNil sets the value for CustomerId to be an explicit nil
-
-### UnsetCustomerId
-`func (o *WebhookSubscriptionPayload) UnsetCustomerId()`
-
-UnsetCustomerId ensures that no value is present for CustomerId, not even an explicit nil
 ### GetCustomerEmail
 
 `func (o *WebhookSubscriptionPayload) GetCustomerEmail() string`
@@ -293,16 +263,6 @@ SetCustomerEmail sets CustomerEmail field to given value.
 
 HasCustomerEmail returns a boolean if a field has been set.
 
-### SetCustomerEmailNil
-
-`func (o *WebhookSubscriptionPayload) SetCustomerEmailNil(b bool)`
-
- SetCustomerEmailNil sets the value for CustomerEmail to be an explicit nil
-
-### UnsetCustomerEmail
-`func (o *WebhookSubscriptionPayload) UnsetCustomerEmail()`
-
-UnsetCustomerEmail ensures that no value is present for CustomerEmail, not even an explicit nil
 ### GetCustomerName
 
 `func (o *WebhookSubscriptionPayload) GetCustomerName() string`
@@ -328,16 +288,6 @@ SetCustomerName sets CustomerName field to given value.
 
 HasCustomerName returns a boolean if a field has been set.
 
-### SetCustomerNameNil
-
-`func (o *WebhookSubscriptionPayload) SetCustomerNameNil(b bool)`
-
- SetCustomerNameNil sets the value for CustomerName to be an explicit nil
-
-### UnsetCustomerName
-`func (o *WebhookSubscriptionPayload) UnsetCustomerName()`
-
-UnsetCustomerName ensures that no value is present for CustomerName, not even an explicit nil
 ### GetProductId
 
 `func (o *WebhookSubscriptionPayload) GetProductId() string`
@@ -363,16 +313,6 @@ SetProductId sets ProductId field to given value.
 
 HasProductId returns a boolean if a field has been set.
 
-### SetProductIdNil
-
-`func (o *WebhookSubscriptionPayload) SetProductIdNil(b bool)`
-
- SetProductIdNil sets the value for ProductId to be an explicit nil
-
-### UnsetProductId
-`func (o *WebhookSubscriptionPayload) UnsetProductId()`
-
-UnsetProductId ensures that no value is present for ProductId, not even an explicit nil
 ### GetProductTitle
 
 `func (o *WebhookSubscriptionPayload) GetProductTitle() string`
@@ -398,16 +338,6 @@ SetProductTitle sets ProductTitle field to given value.
 
 HasProductTitle returns a boolean if a field has been set.
 
-### SetProductTitleNil
-
-`func (o *WebhookSubscriptionPayload) SetProductTitleNil(b bool)`
-
- SetProductTitleNil sets the value for ProductTitle to be an explicit nil
-
-### UnsetProductTitle
-`func (o *WebhookSubscriptionPayload) UnsetProductTitle()`
-
-UnsetProductTitle ensures that no value is present for ProductTitle, not even an explicit nil
 ### GetCreatedAt
 
 `func (o *WebhookSubscriptionPayload) GetCreatedAt() time.Time`
@@ -433,16 +363,6 @@ SetCreatedAt sets CreatedAt field to given value.
 
 HasCreatedAt returns a boolean if a field has been set.
 
-### SetCreatedAtNil
-
-`func (o *WebhookSubscriptionPayload) SetCreatedAtNil(b bool)`
-
- SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
-
-### UnsetCreatedAt
-`func (o *WebhookSubscriptionPayload) UnsetCreatedAt()`
-
-UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
 ### GetUpdatedAt
 
 `func (o *WebhookSubscriptionPayload) GetUpdatedAt() time.Time`
@@ -468,16 +388,6 @@ SetUpdatedAt sets UpdatedAt field to given value.
 
 HasUpdatedAt returns a boolean if a field has been set.
 
-### SetUpdatedAtNil
-
-`func (o *WebhookSubscriptionPayload) SetUpdatedAtNil(b bool)`
-
- SetUpdatedAtNil sets the value for UpdatedAt to be an explicit nil
-
-### UnsetUpdatedAt
-`func (o *WebhookSubscriptionPayload) UnsetUpdatedAt()`
-
-UnsetUpdatedAt ensures that no value is present for UpdatedAt, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

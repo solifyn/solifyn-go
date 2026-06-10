@@ -23,7 +23,7 @@ var _ MappedNullable = &ProductSubDto{}
 type ProductSubDto struct {
 	Id string `json:"id"`
 	Name string `json:"name"`
-	DigitalLink NullableString `json:"digitalLink"`
+	DigitalLink string `json:"digitalLink"`
 }
 
 type _ProductSubDto ProductSubDto
@@ -32,7 +32,7 @@ type _ProductSubDto ProductSubDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProductSubDto(id string, name string, digitalLink NullableString) *ProductSubDto {
+func NewProductSubDto(id string, name string, digitalLink string) *ProductSubDto {
 	this := ProductSubDto{}
 	this.Id = id
 	this.Name = name
@@ -97,29 +97,27 @@ func (o *ProductSubDto) SetName(v string) {
 }
 
 // GetDigitalLink returns the DigitalLink field value
-// If the value is explicit nil, the zero value for string will be returned
 func (o *ProductSubDto) GetDigitalLink() string {
-	if o == nil || o.DigitalLink.Get() == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.DigitalLink.Get()
+	return o.DigitalLink
 }
 
 // GetDigitalLinkOk returns a tuple with the DigitalLink field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProductSubDto) GetDigitalLinkOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.DigitalLink.Get(), o.DigitalLink.IsSet()
+	return &o.DigitalLink, true
 }
 
 // SetDigitalLink sets field value
 func (o *ProductSubDto) SetDigitalLink(v string) {
-	o.DigitalLink.Set(&v)
+	o.DigitalLink = v
 }
 
 func (o ProductSubDto) MarshalJSON() ([]byte, error) {
@@ -134,7 +132,7 @@ func (o ProductSubDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	toSerialize["name"] = o.Name
-	toSerialize["digitalLink"] = o.DigitalLink.Get()
+	toSerialize["digitalLink"] = o.DigitalLink
 	return toSerialize, nil
 }
 

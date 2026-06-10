@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CancellationPolicy** | Pointer to **NullableString** | Cancellation policy attachment ID | [optional] 
-**CustomerCommunication** | Pointer to **NullableString** | Customer communication attachment ID | [optional] 
-**RefundPolicy** | Pointer to **NullableString** | Refund policy attachment ID | [optional] 
-**Uncategorized** | Pointer to **NullableString** | Uncategorized attachment ID | [optional] 
+**CancellationPolicy** | Pointer to **string** | Cancellation policy attachment ID | [optional] 
+**CustomerCommunication** | Pointer to **string** | Customer communication attachment ID | [optional] 
+**RefundPolicy** | Pointer to **string** | Refund policy attachment ID | [optional] 
+**Uncategorized** | Pointer to **string** | Uncategorized attachment ID | [optional] 
 
 ## Methods
 
@@ -53,16 +53,6 @@ SetCancellationPolicy sets CancellationPolicy field to given value.
 
 HasCancellationPolicy returns a boolean if a field has been set.
 
-### SetCancellationPolicyNil
-
-`func (o *DisputeEvidenceDto) SetCancellationPolicyNil(b bool)`
-
- SetCancellationPolicyNil sets the value for CancellationPolicy to be an explicit nil
-
-### UnsetCancellationPolicy
-`func (o *DisputeEvidenceDto) UnsetCancellationPolicy()`
-
-UnsetCancellationPolicy ensures that no value is present for CancellationPolicy, not even an explicit nil
 ### GetCustomerCommunication
 
 `func (o *DisputeEvidenceDto) GetCustomerCommunication() string`
@@ -88,16 +78,6 @@ SetCustomerCommunication sets CustomerCommunication field to given value.
 
 HasCustomerCommunication returns a boolean if a field has been set.
 
-### SetCustomerCommunicationNil
-
-`func (o *DisputeEvidenceDto) SetCustomerCommunicationNil(b bool)`
-
- SetCustomerCommunicationNil sets the value for CustomerCommunication to be an explicit nil
-
-### UnsetCustomerCommunication
-`func (o *DisputeEvidenceDto) UnsetCustomerCommunication()`
-
-UnsetCustomerCommunication ensures that no value is present for CustomerCommunication, not even an explicit nil
 ### GetRefundPolicy
 
 `func (o *DisputeEvidenceDto) GetRefundPolicy() string`
@@ -123,16 +103,6 @@ SetRefundPolicy sets RefundPolicy field to given value.
 
 HasRefundPolicy returns a boolean if a field has been set.
 
-### SetRefundPolicyNil
-
-`func (o *DisputeEvidenceDto) SetRefundPolicyNil(b bool)`
-
- SetRefundPolicyNil sets the value for RefundPolicy to be an explicit nil
-
-### UnsetRefundPolicy
-`func (o *DisputeEvidenceDto) UnsetRefundPolicy()`
-
-UnsetRefundPolicy ensures that no value is present for RefundPolicy, not even an explicit nil
 ### GetUncategorized
 
 `func (o *DisputeEvidenceDto) GetUncategorized() string`
@@ -158,16 +128,6 @@ SetUncategorized sets Uncategorized field to given value.
 
 HasUncategorized returns a boolean if a field has been set.
 
-### SetUncategorizedNil
-
-`func (o *DisputeEvidenceDto) SetUncategorizedNil(b bool)`
-
- SetUncategorizedNil sets the value for Uncategorized to be an explicit nil
-
-### UnsetUncategorized
-`func (o *DisputeEvidenceDto) UnsetUncategorized()`
-
-UnsetUncategorized ensures that no value is present for Uncategorized, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

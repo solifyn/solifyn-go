@@ -89,16 +89,6 @@ and a boolean to check if the value has been set.
 SetMaxQuantity sets MaxQuantity field to given value.
 
 
-### SetMaxQuantityNil
-
-`func (o *Addon) SetMaxQuantityNil(b bool)`
-
- SetMaxQuantityNil sets the value for MaxQuantity to be an explicit nil
-
-### UnsetMaxQuantity
-`func (o *Addon) UnsetMaxQuantity()`
-
-UnsetMaxQuantity ensures that no value is present for MaxQuantity, not even an explicit nil
 ### GetPriceOverride
 
 `func (o *Addon) GetPriceOverride() map[string]interface{}`
@@ -119,16 +109,6 @@ and a boolean to check if the value has been set.
 SetPriceOverride sets PriceOverride field to given value.
 
 
-### SetPriceOverrideNil
-
-`func (o *Addon) SetPriceOverrideNil(b bool)`
-
- SetPriceOverrideNil sets the value for PriceOverride to be an explicit nil
-
-### UnsetPriceOverride
-`func (o *Addon) UnsetPriceOverride()`
-
-UnsetPriceOverride ensures that no value is present for PriceOverride, not even an explicit nil
 ### GetIsSeatAddon
 
 `func (o *Addon) GetIsSeatAddon() bool`

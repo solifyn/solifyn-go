@@ -106,7 +106,6 @@ func (o *Addon) SetMinQuantity(v float32) {
 }
 
 // GetMaxQuantity returns the MaxQuantity field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
 func (o *Addon) GetMaxQuantity() map[string]interface{} {
 	if o == nil {
 		var ret map[string]interface{}
@@ -118,9 +117,8 @@ func (o *Addon) GetMaxQuantity() map[string]interface{} {
 
 // GetMaxQuantityOk returns a tuple with the MaxQuantity field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Addon) GetMaxQuantityOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.MaxQuantity) {
+	if o == nil {
 		return map[string]interface{}{}, false
 	}
 	return o.MaxQuantity, true
@@ -132,7 +130,6 @@ func (o *Addon) SetMaxQuantity(v map[string]interface{}) {
 }
 
 // GetPriceOverride returns the PriceOverride field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
 func (o *Addon) GetPriceOverride() map[string]interface{} {
 	if o == nil {
 		var ret map[string]interface{}
@@ -144,9 +141,8 @@ func (o *Addon) GetPriceOverride() map[string]interface{} {
 
 // GetPriceOverrideOk returns a tuple with the PriceOverride field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Addon) GetPriceOverrideOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.PriceOverride) {
+	if o == nil {
 		return map[string]interface{}{}, false
 	}
 	return o.PriceOverride, true
@@ -193,12 +189,8 @@ func (o Addon) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["productId"] = o.ProductId
 	toSerialize["minQuantity"] = o.MinQuantity
-	if o.MaxQuantity != nil {
-		toSerialize["maxQuantity"] = o.MaxQuantity
-	}
-	if o.PriceOverride != nil {
-		toSerialize["priceOverride"] = o.PriceOverride
-	}
+	toSerialize["maxQuantity"] = o.MaxQuantity
+	toSerialize["priceOverride"] = o.PriceOverride
 	toSerialize["isSeatAddon"] = o.IsSeatAddon
 	return toSerialize, nil
 }

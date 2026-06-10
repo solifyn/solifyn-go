@@ -6,14 +6,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | The unique brand ID | 
 **Name** | **string** | The brand name | 
-**WebsiteUrl** | Pointer to **NullableString** | The website URL associated with the brand | [optional] 
-**SupportEmail** | Pointer to **NullableString** | Support email address for customer service | [optional] 
-**Description** | Pointer to **NullableString** | Short description of the brand | [optional] 
-**LogoUrl** | Pointer to **NullableString** | Brand logo image URL | [optional] 
+**WebsiteUrl** | Pointer to **string** | The website URL associated with the brand | [optional] 
+**SupportEmail** | Pointer to **string** | Support email address for customer service | [optional] 
+**Description** | Pointer to **string** | Short description of the brand | [optional] 
+**LogoUrl** | Pointer to **string** | Brand logo image URL | [optional] 
 **IsPrimary** | **bool** | Whether this is the primary brand for the merchant business | 
-**StatementDescriptor** | Pointer to **NullableString** | Credit card statement descriptor | [optional] 
+**StatementDescriptor** | Pointer to **string** | Credit card statement descriptor | [optional] 
 **MerchantId** | **string** | The merchant ID owning the brand | 
-**BusinessId** | Pointer to **NullableString** | The business ID linked to the brand | [optional] 
+**BusinessId** | Pointer to **string** | The business ID linked to the brand | [optional] 
 **CreatedAt** | **time.Time** | Timestamp when the brand was created | 
 **UpdatedAt** | **time.Time** | Timestamp when the brand was last updated | 
 
@@ -101,16 +101,6 @@ SetWebsiteUrl sets WebsiteUrl field to given value.
 
 HasWebsiteUrl returns a boolean if a field has been set.
 
-### SetWebsiteUrlNil
-
-`func (o *Brand) SetWebsiteUrlNil(b bool)`
-
- SetWebsiteUrlNil sets the value for WebsiteUrl to be an explicit nil
-
-### UnsetWebsiteUrl
-`func (o *Brand) UnsetWebsiteUrl()`
-
-UnsetWebsiteUrl ensures that no value is present for WebsiteUrl, not even an explicit nil
 ### GetSupportEmail
 
 `func (o *Brand) GetSupportEmail() string`
@@ -136,16 +126,6 @@ SetSupportEmail sets SupportEmail field to given value.
 
 HasSupportEmail returns a boolean if a field has been set.
 
-### SetSupportEmailNil
-
-`func (o *Brand) SetSupportEmailNil(b bool)`
-
- SetSupportEmailNil sets the value for SupportEmail to be an explicit nil
-
-### UnsetSupportEmail
-`func (o *Brand) UnsetSupportEmail()`
-
-UnsetSupportEmail ensures that no value is present for SupportEmail, not even an explicit nil
 ### GetDescription
 
 `func (o *Brand) GetDescription() string`
@@ -171,16 +151,6 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
-### SetDescriptionNil
-
-`func (o *Brand) SetDescriptionNil(b bool)`
-
- SetDescriptionNil sets the value for Description to be an explicit nil
-
-### UnsetDescription
-`func (o *Brand) UnsetDescription()`
-
-UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetLogoUrl
 
 `func (o *Brand) GetLogoUrl() string`
@@ -206,16 +176,6 @@ SetLogoUrl sets LogoUrl field to given value.
 
 HasLogoUrl returns a boolean if a field has been set.
 
-### SetLogoUrlNil
-
-`func (o *Brand) SetLogoUrlNil(b bool)`
-
- SetLogoUrlNil sets the value for LogoUrl to be an explicit nil
-
-### UnsetLogoUrl
-`func (o *Brand) UnsetLogoUrl()`
-
-UnsetLogoUrl ensures that no value is present for LogoUrl, not even an explicit nil
 ### GetIsPrimary
 
 `func (o *Brand) GetIsPrimary() bool`
@@ -261,16 +221,6 @@ SetStatementDescriptor sets StatementDescriptor field to given value.
 
 HasStatementDescriptor returns a boolean if a field has been set.
 
-### SetStatementDescriptorNil
-
-`func (o *Brand) SetStatementDescriptorNil(b bool)`
-
- SetStatementDescriptorNil sets the value for StatementDescriptor to be an explicit nil
-
-### UnsetStatementDescriptor
-`func (o *Brand) UnsetStatementDescriptor()`
-
-UnsetStatementDescriptor ensures that no value is present for StatementDescriptor, not even an explicit nil
 ### GetMerchantId
 
 `func (o *Brand) GetMerchantId() string`
@@ -316,16 +266,6 @@ SetBusinessId sets BusinessId field to given value.
 
 HasBusinessId returns a boolean if a field has been set.
 
-### SetBusinessIdNil
-
-`func (o *Brand) SetBusinessIdNil(b bool)`
-
- SetBusinessIdNil sets the value for BusinessId to be an explicit nil
-
-### UnsetBusinessId
-`func (o *Brand) UnsetBusinessId()`
-
-UnsetBusinessId ensures that no value is present for BusinessId, not even an explicit nil
 ### GetCreatedAt
 
 `func (o *Brand) GetCreatedAt() time.Time`

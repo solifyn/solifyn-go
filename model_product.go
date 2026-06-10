@@ -31,17 +31,17 @@ type Product struct {
 	// The three-letter ISO currency code (e.g. USD, VND, EUR).
 	Currency string `json:"currency"`
 	// A comprehensive rich text description of the product.
-	Description NullableString `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 	// The lifecycle status of the product (e.g. ACTIVE, ARCHIVED).
 	Status string `json:"status"`
 	// URL of the product cover image.
-	ImageUrl NullableString `json:"imageUrl"`
+	ImageUrl string `json:"imageUrl"`
 	// The tax classification for the product.
 	TaxCategory string `json:"taxCategory"`
 	// Pricing model of the product.
 	PricingType string `json:"pricingType"`
 	// Discount value as a percentage or fixed amount.
-	Discount NullableFloat32 `json:"discount"`
+	Discount float32 `json:"discount"`
 	// Indicates if the product issues a cryptographically secure software license key upon checkout completion.
 	HasLicenseKey bool `json:"hasLicenseKey"`
 	// Whether the product includes digital file downloads upon purchase.
@@ -49,19 +49,25 @@ type Product struct {
 	// Whether the product includes GitHub repository access.
 	HasGithubAccess bool `json:"hasGithubAccess"`
 	// GitHub repository to grant access to (format: owner/repo).
-	GithubRepo NullableString `json:"githubRepo"`
+	GithubRepo string `json:"githubRepo"`
 	// GitHub collaborator permission level.
-	GithubPermission NullableString `json:"githubPermission"`
+	GithubPermission string `json:"githubPermission"`
+	// Whether the product includes Discord role access.
+	HasDiscordAccess bool `json:"hasDiscordAccess"`
+	// Discord Guild (Server) ID to grant access to.
+	DiscordGuildId string `json:"discordGuildId"`
+	// Discord Role ID to assign to the user.
+	DiscordRoleId string `json:"discordRoleId"`
 	// Whether the product price already includes applicable sales taxes.
 	IsTaxInclusive bool `json:"isTaxInclusive"`
 	// The subscription billing cycle interval in days (for subscription products).
-	BillingPeriod NullableInt32 `json:"billingPeriod"`
+	BillingPeriod int32 `json:"billingPeriod"`
 	// Trial duration in days for subscription products.
-	TrialPeriodDays NullableInt32 `json:"trialPeriodDays"`
+	TrialPeriodDays int32 `json:"trialPeriodDays"`
 	// Automatic expiration period in days for the subscription entitlement.
-	ExpirationDays NullableInt32 `json:"expirationDays"`
+	ExpirationDays int32 `json:"expirationDays"`
 	// Custom text displayed on customer credit card statements for purchases of this product.
-	StatementDescriptor NullableString `json:"statementDescriptor"`
+	StatementDescriptor string `json:"statementDescriptor"`
 	// Indicates if customers are allowed to enter a custom pricing amount at checkout.
 	PayWhatYouWant bool `json:"payWhatYouWant"`
 	// Custom developer metadata key-value pairs associated with the product.
@@ -69,7 +75,7 @@ type Product struct {
 	// Custom form field questions to ask the customer during checkout.
 	CustomFields []map[string]interface{} `json:"customFields"`
 	// Available stock quantity, or null for unlimited inventory.
-	Stock NullableInt32 `json:"stock"`
+	Stock int32 `json:"stock"`
 	// Maximum number of simultaneous active instances/devices allowed per issued license key (applicable if hasLicenseKey is true).
 	ActivationLimit int32 `json:"activationLimit"`
 	// Defines if the product is listed publicly on the merchant's storefront template.
@@ -83,15 +89,15 @@ type Product struct {
 	// Indicates if the product has been permanently deleted.
 	IsPermanentlyDeleted bool `json:"isPermanentlyDeleted"`
 	// Optional brand identifier.
-	BrandId NullableString `json:"brandId"`
+	BrandId string `json:"brandId"`
 	// Secure link for digital delivery.
-	DigitalLink NullableString `json:"digitalLink"`
+	DigitalLink string `json:"digitalLink"`
 	// Special instructions provided upon purchase.
-	Instructions NullableString `json:"instructions"`
+	Instructions string `json:"instructions"`
 	// Custom message displayed when a license key is activated.
-	ActivationMessage NullableString `json:"activationMessage"`
+	ActivationMessage string `json:"activationMessage"`
 	// Number of hours until the license key expires.
-	ExpiryHours NullableInt32 `json:"expiryHours"`
+	ExpiryHours int32 `json:"expiryHours"`
 	// The unique identifier of the business owning this product.
 	BusinessId string `json:"businessId"`
 }
@@ -102,7 +108,7 @@ type _Product Product
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProduct(id string, name string, price float32, currency string, status string, imageUrl NullableString, taxCategory string, pricingType string, discount NullableFloat32, hasLicenseKey bool, hasDigitalDelivery bool, hasGithubAccess bool, githubRepo NullableString, githubPermission NullableString, isTaxInclusive bool, billingPeriod NullableInt32, trialPeriodDays NullableInt32, expirationDays NullableInt32, statementDescriptor NullableString, payWhatYouWant bool, metadata map[string]string, customFields []map[string]interface{}, stock NullableInt32, activationLimit int32, isListed bool, isFree bool, createdAt time.Time, updatedAt time.Time, isPermanentlyDeleted bool, brandId NullableString, digitalLink NullableString, instructions NullableString, activationMessage NullableString, expiryHours NullableInt32, businessId string) *Product {
+func NewProduct(id string, name string, price float32, currency string, status string, imageUrl string, taxCategory string, pricingType string, discount float32, hasLicenseKey bool, hasDigitalDelivery bool, hasGithubAccess bool, githubRepo string, githubPermission string, hasDiscordAccess bool, discordGuildId string, discordRoleId string, isTaxInclusive bool, billingPeriod int32, trialPeriodDays int32, expirationDays int32, statementDescriptor string, payWhatYouWant bool, metadata map[string]string, customFields []map[string]interface{}, stock int32, activationLimit int32, isListed bool, isFree bool, createdAt time.Time, updatedAt time.Time, isPermanentlyDeleted bool, brandId string, digitalLink string, instructions string, activationMessage string, expiryHours int32, businessId string) *Product {
 	this := Product{}
 	this.Id = id
 	this.Name = name
@@ -118,6 +124,9 @@ func NewProduct(id string, name string, price float32, currency string, status s
 	this.HasGithubAccess = hasGithubAccess
 	this.GithubRepo = githubRepo
 	this.GithubPermission = githubPermission
+	this.HasDiscordAccess = hasDiscordAccess
+	this.DiscordGuildId = discordGuildId
+	this.DiscordRoleId = discordRoleId
 	this.IsTaxInclusive = isTaxInclusive
 	this.BillingPeriod = billingPeriod
 	this.TrialPeriodDays = trialPeriodDays
@@ -246,46 +255,36 @@ func (o *Product) SetCurrency(v string) {
 	o.Currency = v
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetDescription returns the Description field value if set, zero value otherwise.
 func (o *Product) GetDescription() string {
-	if o == nil || IsNil(o.Description.Get()) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
-	return *o.Description.Get()
+	return *o.Description
 }
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Product) GetDescriptionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
-	return o.Description.Get(), o.Description.IsSet()
+	return o.Description, true
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *Product) HasDescription() bool {
-	if o != nil && o.Description.IsSet() {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
 	return false
 }
 
-// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
+// SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *Product) SetDescription(v string) {
-	o.Description.Set(&v)
-}
-// SetDescriptionNil sets the value for Description to be an explicit nil
-func (o *Product) SetDescriptionNil() {
-	o.Description.Set(nil)
-}
-
-// UnsetDescription ensures that no value is present for Description, not even an explicit nil
-func (o *Product) UnsetDescription() {
-	o.Description.Unset()
+	o.Description = &v
 }
 
 // GetStatus returns the Status field value
@@ -313,29 +312,27 @@ func (o *Product) SetStatus(v string) {
 }
 
 // GetImageUrl returns the ImageUrl field value
-// If the value is explicit nil, the zero value for string will be returned
 func (o *Product) GetImageUrl() string {
-	if o == nil || o.ImageUrl.Get() == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.ImageUrl.Get()
+	return o.ImageUrl
 }
 
 // GetImageUrlOk returns a tuple with the ImageUrl field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Product) GetImageUrlOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.ImageUrl.Get(), o.ImageUrl.IsSet()
+	return &o.ImageUrl, true
 }
 
 // SetImageUrl sets field value
 func (o *Product) SetImageUrl(v string) {
-	o.ImageUrl.Set(&v)
+	o.ImageUrl = v
 }
 
 // GetTaxCategory returns the TaxCategory field value
@@ -387,29 +384,27 @@ func (o *Product) SetPricingType(v string) {
 }
 
 // GetDiscount returns the Discount field value
-// If the value is explicit nil, the zero value for float32 will be returned
 func (o *Product) GetDiscount() float32 {
-	if o == nil || o.Discount.Get() == nil {
+	if o == nil {
 		var ret float32
 		return ret
 	}
 
-	return *o.Discount.Get()
+	return o.Discount
 }
 
 // GetDiscountOk returns a tuple with the Discount field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Product) GetDiscountOk() (*float32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Discount.Get(), o.Discount.IsSet()
+	return &o.Discount, true
 }
 
 // SetDiscount sets field value
 func (o *Product) SetDiscount(v float32) {
-	o.Discount.Set(&v)
+	o.Discount = v
 }
 
 // GetHasLicenseKey returns the HasLicenseKey field value
@@ -485,55 +480,123 @@ func (o *Product) SetHasGithubAccess(v bool) {
 }
 
 // GetGithubRepo returns the GithubRepo field value
-// If the value is explicit nil, the zero value for string will be returned
 func (o *Product) GetGithubRepo() string {
-	if o == nil || o.GithubRepo.Get() == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.GithubRepo.Get()
+	return o.GithubRepo
 }
 
 // GetGithubRepoOk returns a tuple with the GithubRepo field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Product) GetGithubRepoOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.GithubRepo.Get(), o.GithubRepo.IsSet()
+	return &o.GithubRepo, true
 }
 
 // SetGithubRepo sets field value
 func (o *Product) SetGithubRepo(v string) {
-	o.GithubRepo.Set(&v)
+	o.GithubRepo = v
 }
 
 // GetGithubPermission returns the GithubPermission field value
-// If the value is explicit nil, the zero value for string will be returned
 func (o *Product) GetGithubPermission() string {
-	if o == nil || o.GithubPermission.Get() == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.GithubPermission.Get()
+	return o.GithubPermission
 }
 
 // GetGithubPermissionOk returns a tuple with the GithubPermission field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Product) GetGithubPermissionOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.GithubPermission.Get(), o.GithubPermission.IsSet()
+	return &o.GithubPermission, true
 }
 
 // SetGithubPermission sets field value
 func (o *Product) SetGithubPermission(v string) {
-	o.GithubPermission.Set(&v)
+	o.GithubPermission = v
+}
+
+// GetHasDiscordAccess returns the HasDiscordAccess field value
+func (o *Product) GetHasDiscordAccess() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.HasDiscordAccess
+}
+
+// GetHasDiscordAccessOk returns a tuple with the HasDiscordAccess field value
+// and a boolean to check if the value has been set.
+func (o *Product) GetHasDiscordAccessOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.HasDiscordAccess, true
+}
+
+// SetHasDiscordAccess sets field value
+func (o *Product) SetHasDiscordAccess(v bool) {
+	o.HasDiscordAccess = v
+}
+
+// GetDiscordGuildId returns the DiscordGuildId field value
+func (o *Product) GetDiscordGuildId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.DiscordGuildId
+}
+
+// GetDiscordGuildIdOk returns a tuple with the DiscordGuildId field value
+// and a boolean to check if the value has been set.
+func (o *Product) GetDiscordGuildIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.DiscordGuildId, true
+}
+
+// SetDiscordGuildId sets field value
+func (o *Product) SetDiscordGuildId(v string) {
+	o.DiscordGuildId = v
+}
+
+// GetDiscordRoleId returns the DiscordRoleId field value
+func (o *Product) GetDiscordRoleId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.DiscordRoleId
+}
+
+// GetDiscordRoleIdOk returns a tuple with the DiscordRoleId field value
+// and a boolean to check if the value has been set.
+func (o *Product) GetDiscordRoleIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.DiscordRoleId, true
+}
+
+// SetDiscordRoleId sets field value
+func (o *Product) SetDiscordRoleId(v string) {
+	o.DiscordRoleId = v
 }
 
 // GetIsTaxInclusive returns the IsTaxInclusive field value
@@ -561,107 +624,99 @@ func (o *Product) SetIsTaxInclusive(v bool) {
 }
 
 // GetBillingPeriod returns the BillingPeriod field value
-// If the value is explicit nil, the zero value for int32 will be returned
 func (o *Product) GetBillingPeriod() int32 {
-	if o == nil || o.BillingPeriod.Get() == nil {
+	if o == nil {
 		var ret int32
 		return ret
 	}
 
-	return *o.BillingPeriod.Get()
+	return o.BillingPeriod
 }
 
 // GetBillingPeriodOk returns a tuple with the BillingPeriod field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Product) GetBillingPeriodOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.BillingPeriod.Get(), o.BillingPeriod.IsSet()
+	return &o.BillingPeriod, true
 }
 
 // SetBillingPeriod sets field value
 func (o *Product) SetBillingPeriod(v int32) {
-	o.BillingPeriod.Set(&v)
+	o.BillingPeriod = v
 }
 
 // GetTrialPeriodDays returns the TrialPeriodDays field value
-// If the value is explicit nil, the zero value for int32 will be returned
 func (o *Product) GetTrialPeriodDays() int32 {
-	if o == nil || o.TrialPeriodDays.Get() == nil {
+	if o == nil {
 		var ret int32
 		return ret
 	}
 
-	return *o.TrialPeriodDays.Get()
+	return o.TrialPeriodDays
 }
 
 // GetTrialPeriodDaysOk returns a tuple with the TrialPeriodDays field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Product) GetTrialPeriodDaysOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.TrialPeriodDays.Get(), o.TrialPeriodDays.IsSet()
+	return &o.TrialPeriodDays, true
 }
 
 // SetTrialPeriodDays sets field value
 func (o *Product) SetTrialPeriodDays(v int32) {
-	o.TrialPeriodDays.Set(&v)
+	o.TrialPeriodDays = v
 }
 
 // GetExpirationDays returns the ExpirationDays field value
-// If the value is explicit nil, the zero value for int32 will be returned
 func (o *Product) GetExpirationDays() int32 {
-	if o == nil || o.ExpirationDays.Get() == nil {
+	if o == nil {
 		var ret int32
 		return ret
 	}
 
-	return *o.ExpirationDays.Get()
+	return o.ExpirationDays
 }
 
 // GetExpirationDaysOk returns a tuple with the ExpirationDays field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Product) GetExpirationDaysOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.ExpirationDays.Get(), o.ExpirationDays.IsSet()
+	return &o.ExpirationDays, true
 }
 
 // SetExpirationDays sets field value
 func (o *Product) SetExpirationDays(v int32) {
-	o.ExpirationDays.Set(&v)
+	o.ExpirationDays = v
 }
 
 // GetStatementDescriptor returns the StatementDescriptor field value
-// If the value is explicit nil, the zero value for string will be returned
 func (o *Product) GetStatementDescriptor() string {
-	if o == nil || o.StatementDescriptor.Get() == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.StatementDescriptor.Get()
+	return o.StatementDescriptor
 }
 
 // GetStatementDescriptorOk returns a tuple with the StatementDescriptor field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Product) GetStatementDescriptorOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.StatementDescriptor.Get(), o.StatementDescriptor.IsSet()
+	return &o.StatementDescriptor, true
 }
 
 // SetStatementDescriptor sets field value
 func (o *Product) SetStatementDescriptor(v string) {
-	o.StatementDescriptor.Set(&v)
+	o.StatementDescriptor = v
 }
 
 // GetPayWhatYouWant returns the PayWhatYouWant field value
@@ -689,7 +744,6 @@ func (o *Product) SetPayWhatYouWant(v bool) {
 }
 
 // GetMetadata returns the Metadata field value
-// If the value is explicit nil, the zero value for map[string]string will be returned
 func (o *Product) GetMetadata() map[string]string {
 	if o == nil {
 		var ret map[string]string
@@ -701,12 +755,11 @@ func (o *Product) GetMetadata() map[string]string {
 
 // GetMetadataOk returns a tuple with the Metadata field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Product) GetMetadataOk() (*map[string]string, bool) {
-	if o == nil || IsNil(o.Metadata) {
-		return nil, false
+func (o *Product) GetMetadataOk() (map[string]string, bool) {
+	if o == nil {
+		return map[string]string{}, false
 	}
-	return &o.Metadata, true
+	return o.Metadata, true
 }
 
 // SetMetadata sets field value
@@ -715,7 +768,6 @@ func (o *Product) SetMetadata(v map[string]string) {
 }
 
 // GetCustomFields returns the CustomFields field value
-// If the value is explicit nil, the zero value for []map[string]interface{} will be returned
 func (o *Product) GetCustomFields() []map[string]interface{} {
 	if o == nil {
 		var ret []map[string]interface{}
@@ -727,9 +779,8 @@ func (o *Product) GetCustomFields() []map[string]interface{} {
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Product) GetCustomFieldsOk() ([]map[string]interface{}, bool) {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		return nil, false
 	}
 	return o.CustomFields, true
@@ -741,29 +792,27 @@ func (o *Product) SetCustomFields(v []map[string]interface{}) {
 }
 
 // GetStock returns the Stock field value
-// If the value is explicit nil, the zero value for int32 will be returned
 func (o *Product) GetStock() int32 {
-	if o == nil || o.Stock.Get() == nil {
+	if o == nil {
 		var ret int32
 		return ret
 	}
 
-	return *o.Stock.Get()
+	return o.Stock
 }
 
 // GetStockOk returns a tuple with the Stock field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Product) GetStockOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Stock.Get(), o.Stock.IsSet()
+	return &o.Stock, true
 }
 
 // SetStock sets field value
 func (o *Product) SetStock(v int32) {
-	o.Stock.Set(&v)
+	o.Stock = v
 }
 
 // GetActivationLimit returns the ActivationLimit field value
@@ -911,133 +960,123 @@ func (o *Product) SetIsPermanentlyDeleted(v bool) {
 }
 
 // GetBrandId returns the BrandId field value
-// If the value is explicit nil, the zero value for string will be returned
 func (o *Product) GetBrandId() string {
-	if o == nil || o.BrandId.Get() == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.BrandId.Get()
+	return o.BrandId
 }
 
 // GetBrandIdOk returns a tuple with the BrandId field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Product) GetBrandIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.BrandId.Get(), o.BrandId.IsSet()
+	return &o.BrandId, true
 }
 
 // SetBrandId sets field value
 func (o *Product) SetBrandId(v string) {
-	o.BrandId.Set(&v)
+	o.BrandId = v
 }
 
 // GetDigitalLink returns the DigitalLink field value
-// If the value is explicit nil, the zero value for string will be returned
 func (o *Product) GetDigitalLink() string {
-	if o == nil || o.DigitalLink.Get() == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.DigitalLink.Get()
+	return o.DigitalLink
 }
 
 // GetDigitalLinkOk returns a tuple with the DigitalLink field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Product) GetDigitalLinkOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.DigitalLink.Get(), o.DigitalLink.IsSet()
+	return &o.DigitalLink, true
 }
 
 // SetDigitalLink sets field value
 func (o *Product) SetDigitalLink(v string) {
-	o.DigitalLink.Set(&v)
+	o.DigitalLink = v
 }
 
 // GetInstructions returns the Instructions field value
-// If the value is explicit nil, the zero value for string will be returned
 func (o *Product) GetInstructions() string {
-	if o == nil || o.Instructions.Get() == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.Instructions.Get()
+	return o.Instructions
 }
 
 // GetInstructionsOk returns a tuple with the Instructions field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Product) GetInstructionsOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Instructions.Get(), o.Instructions.IsSet()
+	return &o.Instructions, true
 }
 
 // SetInstructions sets field value
 func (o *Product) SetInstructions(v string) {
-	o.Instructions.Set(&v)
+	o.Instructions = v
 }
 
 // GetActivationMessage returns the ActivationMessage field value
-// If the value is explicit nil, the zero value for string will be returned
 func (o *Product) GetActivationMessage() string {
-	if o == nil || o.ActivationMessage.Get() == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.ActivationMessage.Get()
+	return o.ActivationMessage
 }
 
 // GetActivationMessageOk returns a tuple with the ActivationMessage field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Product) GetActivationMessageOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.ActivationMessage.Get(), o.ActivationMessage.IsSet()
+	return &o.ActivationMessage, true
 }
 
 // SetActivationMessage sets field value
 func (o *Product) SetActivationMessage(v string) {
-	o.ActivationMessage.Set(&v)
+	o.ActivationMessage = v
 }
 
 // GetExpiryHours returns the ExpiryHours field value
-// If the value is explicit nil, the zero value for int32 will be returned
 func (o *Product) GetExpiryHours() int32 {
-	if o == nil || o.ExpiryHours.Get() == nil {
+	if o == nil {
 		var ret int32
 		return ret
 	}
 
-	return *o.ExpiryHours.Get()
+	return o.ExpiryHours
 }
 
 // GetExpiryHoursOk returns a tuple with the ExpiryHours field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Product) GetExpiryHoursOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.ExpiryHours.Get(), o.ExpiryHours.IsSet()
+	return &o.ExpiryHours, true
 }
 
 // SetExpiryHours sets field value
 func (o *Product) SetExpiryHours(v int32) {
-	o.ExpiryHours.Set(&v)
+	o.ExpiryHours = v
 }
 
 // GetBusinessId returns the BusinessId field value
@@ -1078,43 +1117,42 @@ func (o Product) ToMap() (map[string]interface{}, error) {
 	toSerialize["name"] = o.Name
 	toSerialize["price"] = o.Price
 	toSerialize["currency"] = o.Currency
-	if o.Description.IsSet() {
-		toSerialize["description"] = o.Description.Get()
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
 	}
 	toSerialize["status"] = o.Status
-	toSerialize["imageUrl"] = o.ImageUrl.Get()
+	toSerialize["imageUrl"] = o.ImageUrl
 	toSerialize["taxCategory"] = o.TaxCategory
 	toSerialize["pricingType"] = o.PricingType
-	toSerialize["discount"] = o.Discount.Get()
+	toSerialize["discount"] = o.Discount
 	toSerialize["hasLicenseKey"] = o.HasLicenseKey
 	toSerialize["hasDigitalDelivery"] = o.HasDigitalDelivery
 	toSerialize["hasGithubAccess"] = o.HasGithubAccess
-	toSerialize["githubRepo"] = o.GithubRepo.Get()
-	toSerialize["githubPermission"] = o.GithubPermission.Get()
+	toSerialize["githubRepo"] = o.GithubRepo
+	toSerialize["githubPermission"] = o.GithubPermission
+	toSerialize["hasDiscordAccess"] = o.HasDiscordAccess
+	toSerialize["discordGuildId"] = o.DiscordGuildId
+	toSerialize["discordRoleId"] = o.DiscordRoleId
 	toSerialize["isTaxInclusive"] = o.IsTaxInclusive
-	toSerialize["billingPeriod"] = o.BillingPeriod.Get()
-	toSerialize["trialPeriodDays"] = o.TrialPeriodDays.Get()
-	toSerialize["expirationDays"] = o.ExpirationDays.Get()
-	toSerialize["statementDescriptor"] = o.StatementDescriptor.Get()
+	toSerialize["billingPeriod"] = o.BillingPeriod
+	toSerialize["trialPeriodDays"] = o.TrialPeriodDays
+	toSerialize["expirationDays"] = o.ExpirationDays
+	toSerialize["statementDescriptor"] = o.StatementDescriptor
 	toSerialize["payWhatYouWant"] = o.PayWhatYouWant
-	if o.Metadata != nil {
-		toSerialize["metadata"] = o.Metadata
-	}
-	if o.CustomFields != nil {
-		toSerialize["customFields"] = o.CustomFields
-	}
-	toSerialize["stock"] = o.Stock.Get()
+	toSerialize["metadata"] = o.Metadata
+	toSerialize["customFields"] = o.CustomFields
+	toSerialize["stock"] = o.Stock
 	toSerialize["activationLimit"] = o.ActivationLimit
 	toSerialize["isListed"] = o.IsListed
 	toSerialize["isFree"] = o.IsFree
 	toSerialize["createdAt"] = o.CreatedAt
 	toSerialize["updatedAt"] = o.UpdatedAt
 	toSerialize["isPermanentlyDeleted"] = o.IsPermanentlyDeleted
-	toSerialize["brandId"] = o.BrandId.Get()
-	toSerialize["digitalLink"] = o.DigitalLink.Get()
-	toSerialize["instructions"] = o.Instructions.Get()
-	toSerialize["activationMessage"] = o.ActivationMessage.Get()
-	toSerialize["expiryHours"] = o.ExpiryHours.Get()
+	toSerialize["brandId"] = o.BrandId
+	toSerialize["digitalLink"] = o.DigitalLink
+	toSerialize["instructions"] = o.Instructions
+	toSerialize["activationMessage"] = o.ActivationMessage
+	toSerialize["expiryHours"] = o.ExpiryHours
 	toSerialize["businessId"] = o.BusinessId
 	return toSerialize, nil
 }
@@ -1138,6 +1176,9 @@ func (o *Product) UnmarshalJSON(data []byte) (err error) {
 		"hasGithubAccess",
 		"githubRepo",
 		"githubPermission",
+		"hasDiscordAccess",
+		"discordGuildId",
+		"discordRoleId",
 		"isTaxInclusive",
 		"billingPeriod",
 		"trialPeriodDays",

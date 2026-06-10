@@ -6,53 +6,53 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | Internal payment ID. | [optional] 
 **Status** | Pointer to **string** |  | [optional] 
-**Substatus** | Pointer to **NullableString** |  | [optional] 
-**CustomerId** | Pointer to **NullableString** |  | [optional] 
-**CustomerEmail** | Pointer to **NullableString** |  | [optional] 
-**CustomerName** | Pointer to **NullableString** |  | [optional] 
-**CustomerUsername** | Pointer to **NullableString** |  | [optional] 
-**ProductTitle** | Pointer to **NullableString** |  | [optional] 
-**ProductRoute** | Pointer to **NullableString** |  | [optional] 
-**PlanId** | Pointer to **NullableString** |  | [optional] 
-**MembershipId** | Pointer to **NullableString** |  | [optional] 
-**MembershipStatus** | Pointer to **NullableString** |  | [optional] 
-**BillingReason** | Pointer to **NullableString** |  | [optional] 
-**Amount** | Pointer to **NullableString** | Dollar value, 2 d.p. | [optional] 
-**Subtotal** | Pointer to **NullableString** |  | [optional] 
-**UsdTotal** | Pointer to **NullableString** |  | [optional] 
-**FeeAmount** | Pointer to **NullableString** |  | [optional] 
-**AmountAfterFees** | Pointer to **NullableString** |  | [optional] 
-**TaxAmount** | Pointer to **NullableString** |  | [optional] 
-**TaxBehavior** | Pointer to **NullableString** |  | [optional] 
-**TaxRefundedAmount** | Pointer to **NullableString** |  | [optional] 
+**Substatus** | Pointer to **string** |  | [optional] 
+**CustomerId** | Pointer to **string** |  | [optional] 
+**CustomerEmail** | Pointer to **string** |  | [optional] 
+**CustomerName** | Pointer to **string** |  | [optional] 
+**CustomerUsername** | Pointer to **string** |  | [optional] 
+**ProductTitle** | Pointer to **string** |  | [optional] 
+**ProductRoute** | Pointer to **string** |  | [optional] 
+**PlanId** | Pointer to **string** |  | [optional] 
+**MembershipId** | Pointer to **string** |  | [optional] 
+**MembershipStatus** | Pointer to **string** |  | [optional] 
+**BillingReason** | Pointer to **string** |  | [optional] 
+**Amount** | Pointer to **string** | Dollar value, 2 d.p. | [optional] 
+**Subtotal** | Pointer to **string** |  | [optional] 
+**UsdTotal** | Pointer to **string** |  | [optional] 
+**FeeAmount** | Pointer to **string** |  | [optional] 
+**AmountAfterFees** | Pointer to **string** |  | [optional] 
+**TaxAmount** | Pointer to **string** |  | [optional] 
+**TaxBehavior** | Pointer to **string** |  | [optional] 
+**TaxRefundedAmount** | Pointer to **string** |  | [optional] 
 **RefundedAmount** | Pointer to **string** |  | [optional] 
-**SettlementAmount** | Pointer to **NullableString** |  | [optional] 
-**SettlementCurrency** | Pointer to **NullableString** |  | [optional] 
-**SettlementExchangeRate** | Pointer to **NullableString** |  | [optional] 
+**SettlementAmount** | Pointer to **string** |  | [optional] 
+**SettlementCurrency** | Pointer to **string** |  | [optional] 
+**SettlementExchangeRate** | Pointer to **string** |  | [optional] 
 **Currency** | Pointer to **string** |  | [optional] 
 **Refundable** | Pointer to **bool** |  | [optional] 
 **Retryable** | Pointer to **bool** |  | [optional] 
 **AutoRefunded** | Pointer to **bool** |  | [optional] 
-**PaymentMethod** | Pointer to **NullableString** |  | [optional] 
-**CardBrand** | Pointer to **NullableString** |  | [optional] 
-**CardLast4** | Pointer to **NullableString** |  | [optional] 
-**CardExpMonth** | Pointer to **NullableInt32** |  | [optional] 
-**CardExpYear** | Pointer to **NullableInt32** |  | [optional] 
-**BillingAddress** | Pointer to [**NullableWebhookPaymentPayloadBillingAddress**](WebhookPaymentPayloadBillingAddress.md) |  | [optional] 
-**LicenseKey** | Pointer to **NullableString** |  | [optional] 
+**PaymentMethod** | Pointer to **string** |  | [optional] 
+**CardBrand** | Pointer to **string** |  | [optional] 
+**CardLast4** | Pointer to **string** |  | [optional] 
+**CardExpMonth** | Pointer to **int32** |  | [optional] 
+**CardExpYear** | Pointer to **int32** |  | [optional] 
+**BillingAddress** | Pointer to [**WebhookPaymentPayloadBillingAddress**](WebhookPaymentPayloadBillingAddress.md) |  | [optional] 
+**LicenseKey** | Pointer to **string** |  | [optional] 
 **FilesSnapshot** | Pointer to **[]map[string]interface{}** |  | [optional] 
-**CheckoutId** | Pointer to **NullableString** |  | [optional] 
-**DiscountCode** | Pointer to **NullableString** |  | [optional] 
-**FailureMessage** | Pointer to **NullableString** |  | [optional] 
-**PaidAt** | Pointer to **NullableTime** |  | [optional] 
-**RefundedAt** | Pointer to **NullableTime** |  | [optional] 
-**DisputeAlertedAt** | Pointer to **NullableTime** |  | [optional] 
-**LastPaymentAttempt** | Pointer to **NullableTime** |  | [optional] 
-**NextPaymentAttempt** | Pointer to **NullableTime** |  | [optional] 
+**CheckoutId** | Pointer to **string** |  | [optional] 
+**DiscountCode** | Pointer to **string** |  | [optional] 
+**FailureMessage** | Pointer to **string** |  | [optional] 
+**PaidAt** | Pointer to **time.Time** |  | [optional] 
+**RefundedAt** | Pointer to **time.Time** |  | [optional] 
+**DisputeAlertedAt** | Pointer to **time.Time** |  | [optional] 
+**LastPaymentAttempt** | Pointer to **time.Time** |  | [optional] 
+**NextPaymentAttempt** | Pointer to **time.Time** |  | [optional] 
 **CreatedAt** | Pointer to **time.Time** |  | [optional] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] 
-**PaymentEventType** | Pointer to **NullableString** |  | [optional] 
-**LastEventType** | Pointer to **NullableString** |  | [optional] 
+**PaymentEventType** | Pointer to **string** |  | [optional] 
+**LastEventType** | Pointer to **string** |  | [optional] 
 **BusinessId** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -149,16 +149,6 @@ SetSubstatus sets Substatus field to given value.
 
 HasSubstatus returns a boolean if a field has been set.
 
-### SetSubstatusNil
-
-`func (o *WebhookPaymentPayload) SetSubstatusNil(b bool)`
-
- SetSubstatusNil sets the value for Substatus to be an explicit nil
-
-### UnsetSubstatus
-`func (o *WebhookPaymentPayload) UnsetSubstatus()`
-
-UnsetSubstatus ensures that no value is present for Substatus, not even an explicit nil
 ### GetCustomerId
 
 `func (o *WebhookPaymentPayload) GetCustomerId() string`
@@ -184,16 +174,6 @@ SetCustomerId sets CustomerId field to given value.
 
 HasCustomerId returns a boolean if a field has been set.
 
-### SetCustomerIdNil
-
-`func (o *WebhookPaymentPayload) SetCustomerIdNil(b bool)`
-
- SetCustomerIdNil sets the value for CustomerId to be an explicit nil
-
-### UnsetCustomerId
-`func (o *WebhookPaymentPayload) UnsetCustomerId()`
-
-UnsetCustomerId ensures that no value is present for CustomerId, not even an explicit nil
 ### GetCustomerEmail
 
 `func (o *WebhookPaymentPayload) GetCustomerEmail() string`
@@ -219,16 +199,6 @@ SetCustomerEmail sets CustomerEmail field to given value.
 
 HasCustomerEmail returns a boolean if a field has been set.
 
-### SetCustomerEmailNil
-
-`func (o *WebhookPaymentPayload) SetCustomerEmailNil(b bool)`
-
- SetCustomerEmailNil sets the value for CustomerEmail to be an explicit nil
-
-### UnsetCustomerEmail
-`func (o *WebhookPaymentPayload) UnsetCustomerEmail()`
-
-UnsetCustomerEmail ensures that no value is present for CustomerEmail, not even an explicit nil
 ### GetCustomerName
 
 `func (o *WebhookPaymentPayload) GetCustomerName() string`
@@ -254,16 +224,6 @@ SetCustomerName sets CustomerName field to given value.
 
 HasCustomerName returns a boolean if a field has been set.
 
-### SetCustomerNameNil
-
-`func (o *WebhookPaymentPayload) SetCustomerNameNil(b bool)`
-
- SetCustomerNameNil sets the value for CustomerName to be an explicit nil
-
-### UnsetCustomerName
-`func (o *WebhookPaymentPayload) UnsetCustomerName()`
-
-UnsetCustomerName ensures that no value is present for CustomerName, not even an explicit nil
 ### GetCustomerUsername
 
 `func (o *WebhookPaymentPayload) GetCustomerUsername() string`
@@ -289,16 +249,6 @@ SetCustomerUsername sets CustomerUsername field to given value.
 
 HasCustomerUsername returns a boolean if a field has been set.
 
-### SetCustomerUsernameNil
-
-`func (o *WebhookPaymentPayload) SetCustomerUsernameNil(b bool)`
-
- SetCustomerUsernameNil sets the value for CustomerUsername to be an explicit nil
-
-### UnsetCustomerUsername
-`func (o *WebhookPaymentPayload) UnsetCustomerUsername()`
-
-UnsetCustomerUsername ensures that no value is present for CustomerUsername, not even an explicit nil
 ### GetProductTitle
 
 `func (o *WebhookPaymentPayload) GetProductTitle() string`
@@ -324,16 +274,6 @@ SetProductTitle sets ProductTitle field to given value.
 
 HasProductTitle returns a boolean if a field has been set.
 
-### SetProductTitleNil
-
-`func (o *WebhookPaymentPayload) SetProductTitleNil(b bool)`
-
- SetProductTitleNil sets the value for ProductTitle to be an explicit nil
-
-### UnsetProductTitle
-`func (o *WebhookPaymentPayload) UnsetProductTitle()`
-
-UnsetProductTitle ensures that no value is present for ProductTitle, not even an explicit nil
 ### GetProductRoute
 
 `func (o *WebhookPaymentPayload) GetProductRoute() string`
@@ -359,16 +299,6 @@ SetProductRoute sets ProductRoute field to given value.
 
 HasProductRoute returns a boolean if a field has been set.
 
-### SetProductRouteNil
-
-`func (o *WebhookPaymentPayload) SetProductRouteNil(b bool)`
-
- SetProductRouteNil sets the value for ProductRoute to be an explicit nil
-
-### UnsetProductRoute
-`func (o *WebhookPaymentPayload) UnsetProductRoute()`
-
-UnsetProductRoute ensures that no value is present for ProductRoute, not even an explicit nil
 ### GetPlanId
 
 `func (o *WebhookPaymentPayload) GetPlanId() string`
@@ -394,16 +324,6 @@ SetPlanId sets PlanId field to given value.
 
 HasPlanId returns a boolean if a field has been set.
 
-### SetPlanIdNil
-
-`func (o *WebhookPaymentPayload) SetPlanIdNil(b bool)`
-
- SetPlanIdNil sets the value for PlanId to be an explicit nil
-
-### UnsetPlanId
-`func (o *WebhookPaymentPayload) UnsetPlanId()`
-
-UnsetPlanId ensures that no value is present for PlanId, not even an explicit nil
 ### GetMembershipId
 
 `func (o *WebhookPaymentPayload) GetMembershipId() string`
@@ -429,16 +349,6 @@ SetMembershipId sets MembershipId field to given value.
 
 HasMembershipId returns a boolean if a field has been set.
 
-### SetMembershipIdNil
-
-`func (o *WebhookPaymentPayload) SetMembershipIdNil(b bool)`
-
- SetMembershipIdNil sets the value for MembershipId to be an explicit nil
-
-### UnsetMembershipId
-`func (o *WebhookPaymentPayload) UnsetMembershipId()`
-
-UnsetMembershipId ensures that no value is present for MembershipId, not even an explicit nil
 ### GetMembershipStatus
 
 `func (o *WebhookPaymentPayload) GetMembershipStatus() string`
@@ -464,16 +374,6 @@ SetMembershipStatus sets MembershipStatus field to given value.
 
 HasMembershipStatus returns a boolean if a field has been set.
 
-### SetMembershipStatusNil
-
-`func (o *WebhookPaymentPayload) SetMembershipStatusNil(b bool)`
-
- SetMembershipStatusNil sets the value for MembershipStatus to be an explicit nil
-
-### UnsetMembershipStatus
-`func (o *WebhookPaymentPayload) UnsetMembershipStatus()`
-
-UnsetMembershipStatus ensures that no value is present for MembershipStatus, not even an explicit nil
 ### GetBillingReason
 
 `func (o *WebhookPaymentPayload) GetBillingReason() string`
@@ -499,16 +399,6 @@ SetBillingReason sets BillingReason field to given value.
 
 HasBillingReason returns a boolean if a field has been set.
 
-### SetBillingReasonNil
-
-`func (o *WebhookPaymentPayload) SetBillingReasonNil(b bool)`
-
- SetBillingReasonNil sets the value for BillingReason to be an explicit nil
-
-### UnsetBillingReason
-`func (o *WebhookPaymentPayload) UnsetBillingReason()`
-
-UnsetBillingReason ensures that no value is present for BillingReason, not even an explicit nil
 ### GetAmount
 
 `func (o *WebhookPaymentPayload) GetAmount() string`
@@ -534,16 +424,6 @@ SetAmount sets Amount field to given value.
 
 HasAmount returns a boolean if a field has been set.
 
-### SetAmountNil
-
-`func (o *WebhookPaymentPayload) SetAmountNil(b bool)`
-
- SetAmountNil sets the value for Amount to be an explicit nil
-
-### UnsetAmount
-`func (o *WebhookPaymentPayload) UnsetAmount()`
-
-UnsetAmount ensures that no value is present for Amount, not even an explicit nil
 ### GetSubtotal
 
 `func (o *WebhookPaymentPayload) GetSubtotal() string`
@@ -569,16 +449,6 @@ SetSubtotal sets Subtotal field to given value.
 
 HasSubtotal returns a boolean if a field has been set.
 
-### SetSubtotalNil
-
-`func (o *WebhookPaymentPayload) SetSubtotalNil(b bool)`
-
- SetSubtotalNil sets the value for Subtotal to be an explicit nil
-
-### UnsetSubtotal
-`func (o *WebhookPaymentPayload) UnsetSubtotal()`
-
-UnsetSubtotal ensures that no value is present for Subtotal, not even an explicit nil
 ### GetUsdTotal
 
 `func (o *WebhookPaymentPayload) GetUsdTotal() string`
@@ -604,16 +474,6 @@ SetUsdTotal sets UsdTotal field to given value.
 
 HasUsdTotal returns a boolean if a field has been set.
 
-### SetUsdTotalNil
-
-`func (o *WebhookPaymentPayload) SetUsdTotalNil(b bool)`
-
- SetUsdTotalNil sets the value for UsdTotal to be an explicit nil
-
-### UnsetUsdTotal
-`func (o *WebhookPaymentPayload) UnsetUsdTotal()`
-
-UnsetUsdTotal ensures that no value is present for UsdTotal, not even an explicit nil
 ### GetFeeAmount
 
 `func (o *WebhookPaymentPayload) GetFeeAmount() string`
@@ -639,16 +499,6 @@ SetFeeAmount sets FeeAmount field to given value.
 
 HasFeeAmount returns a boolean if a field has been set.
 
-### SetFeeAmountNil
-
-`func (o *WebhookPaymentPayload) SetFeeAmountNil(b bool)`
-
- SetFeeAmountNil sets the value for FeeAmount to be an explicit nil
-
-### UnsetFeeAmount
-`func (o *WebhookPaymentPayload) UnsetFeeAmount()`
-
-UnsetFeeAmount ensures that no value is present for FeeAmount, not even an explicit nil
 ### GetAmountAfterFees
 
 `func (o *WebhookPaymentPayload) GetAmountAfterFees() string`
@@ -674,16 +524,6 @@ SetAmountAfterFees sets AmountAfterFees field to given value.
 
 HasAmountAfterFees returns a boolean if a field has been set.
 
-### SetAmountAfterFeesNil
-
-`func (o *WebhookPaymentPayload) SetAmountAfterFeesNil(b bool)`
-
- SetAmountAfterFeesNil sets the value for AmountAfterFees to be an explicit nil
-
-### UnsetAmountAfterFees
-`func (o *WebhookPaymentPayload) UnsetAmountAfterFees()`
-
-UnsetAmountAfterFees ensures that no value is present for AmountAfterFees, not even an explicit nil
 ### GetTaxAmount
 
 `func (o *WebhookPaymentPayload) GetTaxAmount() string`
@@ -709,16 +549,6 @@ SetTaxAmount sets TaxAmount field to given value.
 
 HasTaxAmount returns a boolean if a field has been set.
 
-### SetTaxAmountNil
-
-`func (o *WebhookPaymentPayload) SetTaxAmountNil(b bool)`
-
- SetTaxAmountNil sets the value for TaxAmount to be an explicit nil
-
-### UnsetTaxAmount
-`func (o *WebhookPaymentPayload) UnsetTaxAmount()`
-
-UnsetTaxAmount ensures that no value is present for TaxAmount, not even an explicit nil
 ### GetTaxBehavior
 
 `func (o *WebhookPaymentPayload) GetTaxBehavior() string`
@@ -744,16 +574,6 @@ SetTaxBehavior sets TaxBehavior field to given value.
 
 HasTaxBehavior returns a boolean if a field has been set.
 
-### SetTaxBehaviorNil
-
-`func (o *WebhookPaymentPayload) SetTaxBehaviorNil(b bool)`
-
- SetTaxBehaviorNil sets the value for TaxBehavior to be an explicit nil
-
-### UnsetTaxBehavior
-`func (o *WebhookPaymentPayload) UnsetTaxBehavior()`
-
-UnsetTaxBehavior ensures that no value is present for TaxBehavior, not even an explicit nil
 ### GetTaxRefundedAmount
 
 `func (o *WebhookPaymentPayload) GetTaxRefundedAmount() string`
@@ -779,16 +599,6 @@ SetTaxRefundedAmount sets TaxRefundedAmount field to given value.
 
 HasTaxRefundedAmount returns a boolean if a field has been set.
 
-### SetTaxRefundedAmountNil
-
-`func (o *WebhookPaymentPayload) SetTaxRefundedAmountNil(b bool)`
-
- SetTaxRefundedAmountNil sets the value for TaxRefundedAmount to be an explicit nil
-
-### UnsetTaxRefundedAmount
-`func (o *WebhookPaymentPayload) UnsetTaxRefundedAmount()`
-
-UnsetTaxRefundedAmount ensures that no value is present for TaxRefundedAmount, not even an explicit nil
 ### GetRefundedAmount
 
 `func (o *WebhookPaymentPayload) GetRefundedAmount() string`
@@ -839,16 +649,6 @@ SetSettlementAmount sets SettlementAmount field to given value.
 
 HasSettlementAmount returns a boolean if a field has been set.
 
-### SetSettlementAmountNil
-
-`func (o *WebhookPaymentPayload) SetSettlementAmountNil(b bool)`
-
- SetSettlementAmountNil sets the value for SettlementAmount to be an explicit nil
-
-### UnsetSettlementAmount
-`func (o *WebhookPaymentPayload) UnsetSettlementAmount()`
-
-UnsetSettlementAmount ensures that no value is present for SettlementAmount, not even an explicit nil
 ### GetSettlementCurrency
 
 `func (o *WebhookPaymentPayload) GetSettlementCurrency() string`
@@ -874,16 +674,6 @@ SetSettlementCurrency sets SettlementCurrency field to given value.
 
 HasSettlementCurrency returns a boolean if a field has been set.
 
-### SetSettlementCurrencyNil
-
-`func (o *WebhookPaymentPayload) SetSettlementCurrencyNil(b bool)`
-
- SetSettlementCurrencyNil sets the value for SettlementCurrency to be an explicit nil
-
-### UnsetSettlementCurrency
-`func (o *WebhookPaymentPayload) UnsetSettlementCurrency()`
-
-UnsetSettlementCurrency ensures that no value is present for SettlementCurrency, not even an explicit nil
 ### GetSettlementExchangeRate
 
 `func (o *WebhookPaymentPayload) GetSettlementExchangeRate() string`
@@ -909,16 +699,6 @@ SetSettlementExchangeRate sets SettlementExchangeRate field to given value.
 
 HasSettlementExchangeRate returns a boolean if a field has been set.
 
-### SetSettlementExchangeRateNil
-
-`func (o *WebhookPaymentPayload) SetSettlementExchangeRateNil(b bool)`
-
- SetSettlementExchangeRateNil sets the value for SettlementExchangeRate to be an explicit nil
-
-### UnsetSettlementExchangeRate
-`func (o *WebhookPaymentPayload) UnsetSettlementExchangeRate()`
-
-UnsetSettlementExchangeRate ensures that no value is present for SettlementExchangeRate, not even an explicit nil
 ### GetCurrency
 
 `func (o *WebhookPaymentPayload) GetCurrency() string`
@@ -1044,16 +824,6 @@ SetPaymentMethod sets PaymentMethod field to given value.
 
 HasPaymentMethod returns a boolean if a field has been set.
 
-### SetPaymentMethodNil
-
-`func (o *WebhookPaymentPayload) SetPaymentMethodNil(b bool)`
-
- SetPaymentMethodNil sets the value for PaymentMethod to be an explicit nil
-
-### UnsetPaymentMethod
-`func (o *WebhookPaymentPayload) UnsetPaymentMethod()`
-
-UnsetPaymentMethod ensures that no value is present for PaymentMethod, not even an explicit nil
 ### GetCardBrand
 
 `func (o *WebhookPaymentPayload) GetCardBrand() string`
@@ -1079,16 +849,6 @@ SetCardBrand sets CardBrand field to given value.
 
 HasCardBrand returns a boolean if a field has been set.
 
-### SetCardBrandNil
-
-`func (o *WebhookPaymentPayload) SetCardBrandNil(b bool)`
-
- SetCardBrandNil sets the value for CardBrand to be an explicit nil
-
-### UnsetCardBrand
-`func (o *WebhookPaymentPayload) UnsetCardBrand()`
-
-UnsetCardBrand ensures that no value is present for CardBrand, not even an explicit nil
 ### GetCardLast4
 
 `func (o *WebhookPaymentPayload) GetCardLast4() string`
@@ -1114,16 +874,6 @@ SetCardLast4 sets CardLast4 field to given value.
 
 HasCardLast4 returns a boolean if a field has been set.
 
-### SetCardLast4Nil
-
-`func (o *WebhookPaymentPayload) SetCardLast4Nil(b bool)`
-
- SetCardLast4Nil sets the value for CardLast4 to be an explicit nil
-
-### UnsetCardLast4
-`func (o *WebhookPaymentPayload) UnsetCardLast4()`
-
-UnsetCardLast4 ensures that no value is present for CardLast4, not even an explicit nil
 ### GetCardExpMonth
 
 `func (o *WebhookPaymentPayload) GetCardExpMonth() int32`
@@ -1149,16 +899,6 @@ SetCardExpMonth sets CardExpMonth field to given value.
 
 HasCardExpMonth returns a boolean if a field has been set.
 
-### SetCardExpMonthNil
-
-`func (o *WebhookPaymentPayload) SetCardExpMonthNil(b bool)`
-
- SetCardExpMonthNil sets the value for CardExpMonth to be an explicit nil
-
-### UnsetCardExpMonth
-`func (o *WebhookPaymentPayload) UnsetCardExpMonth()`
-
-UnsetCardExpMonth ensures that no value is present for CardExpMonth, not even an explicit nil
 ### GetCardExpYear
 
 `func (o *WebhookPaymentPayload) GetCardExpYear() int32`
@@ -1184,16 +924,6 @@ SetCardExpYear sets CardExpYear field to given value.
 
 HasCardExpYear returns a boolean if a field has been set.
 
-### SetCardExpYearNil
-
-`func (o *WebhookPaymentPayload) SetCardExpYearNil(b bool)`
-
- SetCardExpYearNil sets the value for CardExpYear to be an explicit nil
-
-### UnsetCardExpYear
-`func (o *WebhookPaymentPayload) UnsetCardExpYear()`
-
-UnsetCardExpYear ensures that no value is present for CardExpYear, not even an explicit nil
 ### GetBillingAddress
 
 `func (o *WebhookPaymentPayload) GetBillingAddress() WebhookPaymentPayloadBillingAddress`
@@ -1219,16 +949,6 @@ SetBillingAddress sets BillingAddress field to given value.
 
 HasBillingAddress returns a boolean if a field has been set.
 
-### SetBillingAddressNil
-
-`func (o *WebhookPaymentPayload) SetBillingAddressNil(b bool)`
-
- SetBillingAddressNil sets the value for BillingAddress to be an explicit nil
-
-### UnsetBillingAddress
-`func (o *WebhookPaymentPayload) UnsetBillingAddress()`
-
-UnsetBillingAddress ensures that no value is present for BillingAddress, not even an explicit nil
 ### GetLicenseKey
 
 `func (o *WebhookPaymentPayload) GetLicenseKey() string`
@@ -1254,16 +974,6 @@ SetLicenseKey sets LicenseKey field to given value.
 
 HasLicenseKey returns a boolean if a field has been set.
 
-### SetLicenseKeyNil
-
-`func (o *WebhookPaymentPayload) SetLicenseKeyNil(b bool)`
-
- SetLicenseKeyNil sets the value for LicenseKey to be an explicit nil
-
-### UnsetLicenseKey
-`func (o *WebhookPaymentPayload) UnsetLicenseKey()`
-
-UnsetLicenseKey ensures that no value is present for LicenseKey, not even an explicit nil
 ### GetFilesSnapshot
 
 `func (o *WebhookPaymentPayload) GetFilesSnapshot() []map[string]interface{}`
@@ -1289,16 +999,6 @@ SetFilesSnapshot sets FilesSnapshot field to given value.
 
 HasFilesSnapshot returns a boolean if a field has been set.
 
-### SetFilesSnapshotNil
-
-`func (o *WebhookPaymentPayload) SetFilesSnapshotNil(b bool)`
-
- SetFilesSnapshotNil sets the value for FilesSnapshot to be an explicit nil
-
-### UnsetFilesSnapshot
-`func (o *WebhookPaymentPayload) UnsetFilesSnapshot()`
-
-UnsetFilesSnapshot ensures that no value is present for FilesSnapshot, not even an explicit nil
 ### GetCheckoutId
 
 `func (o *WebhookPaymentPayload) GetCheckoutId() string`
@@ -1324,16 +1024,6 @@ SetCheckoutId sets CheckoutId field to given value.
 
 HasCheckoutId returns a boolean if a field has been set.
 
-### SetCheckoutIdNil
-
-`func (o *WebhookPaymentPayload) SetCheckoutIdNil(b bool)`
-
- SetCheckoutIdNil sets the value for CheckoutId to be an explicit nil
-
-### UnsetCheckoutId
-`func (o *WebhookPaymentPayload) UnsetCheckoutId()`
-
-UnsetCheckoutId ensures that no value is present for CheckoutId, not even an explicit nil
 ### GetDiscountCode
 
 `func (o *WebhookPaymentPayload) GetDiscountCode() string`
@@ -1359,16 +1049,6 @@ SetDiscountCode sets DiscountCode field to given value.
 
 HasDiscountCode returns a boolean if a field has been set.
 
-### SetDiscountCodeNil
-
-`func (o *WebhookPaymentPayload) SetDiscountCodeNil(b bool)`
-
- SetDiscountCodeNil sets the value for DiscountCode to be an explicit nil
-
-### UnsetDiscountCode
-`func (o *WebhookPaymentPayload) UnsetDiscountCode()`
-
-UnsetDiscountCode ensures that no value is present for DiscountCode, not even an explicit nil
 ### GetFailureMessage
 
 `func (o *WebhookPaymentPayload) GetFailureMessage() string`
@@ -1394,16 +1074,6 @@ SetFailureMessage sets FailureMessage field to given value.
 
 HasFailureMessage returns a boolean if a field has been set.
 
-### SetFailureMessageNil
-
-`func (o *WebhookPaymentPayload) SetFailureMessageNil(b bool)`
-
- SetFailureMessageNil sets the value for FailureMessage to be an explicit nil
-
-### UnsetFailureMessage
-`func (o *WebhookPaymentPayload) UnsetFailureMessage()`
-
-UnsetFailureMessage ensures that no value is present for FailureMessage, not even an explicit nil
 ### GetPaidAt
 
 `func (o *WebhookPaymentPayload) GetPaidAt() time.Time`
@@ -1429,16 +1099,6 @@ SetPaidAt sets PaidAt field to given value.
 
 HasPaidAt returns a boolean if a field has been set.
 
-### SetPaidAtNil
-
-`func (o *WebhookPaymentPayload) SetPaidAtNil(b bool)`
-
- SetPaidAtNil sets the value for PaidAt to be an explicit nil
-
-### UnsetPaidAt
-`func (o *WebhookPaymentPayload) UnsetPaidAt()`
-
-UnsetPaidAt ensures that no value is present for PaidAt, not even an explicit nil
 ### GetRefundedAt
 
 `func (o *WebhookPaymentPayload) GetRefundedAt() time.Time`
@@ -1464,16 +1124,6 @@ SetRefundedAt sets RefundedAt field to given value.
 
 HasRefundedAt returns a boolean if a field has been set.
 
-### SetRefundedAtNil
-
-`func (o *WebhookPaymentPayload) SetRefundedAtNil(b bool)`
-
- SetRefundedAtNil sets the value for RefundedAt to be an explicit nil
-
-### UnsetRefundedAt
-`func (o *WebhookPaymentPayload) UnsetRefundedAt()`
-
-UnsetRefundedAt ensures that no value is present for RefundedAt, not even an explicit nil
 ### GetDisputeAlertedAt
 
 `func (o *WebhookPaymentPayload) GetDisputeAlertedAt() time.Time`
@@ -1499,16 +1149,6 @@ SetDisputeAlertedAt sets DisputeAlertedAt field to given value.
 
 HasDisputeAlertedAt returns a boolean if a field has been set.
 
-### SetDisputeAlertedAtNil
-
-`func (o *WebhookPaymentPayload) SetDisputeAlertedAtNil(b bool)`
-
- SetDisputeAlertedAtNil sets the value for DisputeAlertedAt to be an explicit nil
-
-### UnsetDisputeAlertedAt
-`func (o *WebhookPaymentPayload) UnsetDisputeAlertedAt()`
-
-UnsetDisputeAlertedAt ensures that no value is present for DisputeAlertedAt, not even an explicit nil
 ### GetLastPaymentAttempt
 
 `func (o *WebhookPaymentPayload) GetLastPaymentAttempt() time.Time`
@@ -1534,16 +1174,6 @@ SetLastPaymentAttempt sets LastPaymentAttempt field to given value.
 
 HasLastPaymentAttempt returns a boolean if a field has been set.
 
-### SetLastPaymentAttemptNil
-
-`func (o *WebhookPaymentPayload) SetLastPaymentAttemptNil(b bool)`
-
- SetLastPaymentAttemptNil sets the value for LastPaymentAttempt to be an explicit nil
-
-### UnsetLastPaymentAttempt
-`func (o *WebhookPaymentPayload) UnsetLastPaymentAttempt()`
-
-UnsetLastPaymentAttempt ensures that no value is present for LastPaymentAttempt, not even an explicit nil
 ### GetNextPaymentAttempt
 
 `func (o *WebhookPaymentPayload) GetNextPaymentAttempt() time.Time`
@@ -1569,16 +1199,6 @@ SetNextPaymentAttempt sets NextPaymentAttempt field to given value.
 
 HasNextPaymentAttempt returns a boolean if a field has been set.
 
-### SetNextPaymentAttemptNil
-
-`func (o *WebhookPaymentPayload) SetNextPaymentAttemptNil(b bool)`
-
- SetNextPaymentAttemptNil sets the value for NextPaymentAttempt to be an explicit nil
-
-### UnsetNextPaymentAttempt
-`func (o *WebhookPaymentPayload) UnsetNextPaymentAttempt()`
-
-UnsetNextPaymentAttempt ensures that no value is present for NextPaymentAttempt, not even an explicit nil
 ### GetCreatedAt
 
 `func (o *WebhookPaymentPayload) GetCreatedAt() time.Time`
@@ -1654,16 +1274,6 @@ SetPaymentEventType sets PaymentEventType field to given value.
 
 HasPaymentEventType returns a boolean if a field has been set.
 
-### SetPaymentEventTypeNil
-
-`func (o *WebhookPaymentPayload) SetPaymentEventTypeNil(b bool)`
-
- SetPaymentEventTypeNil sets the value for PaymentEventType to be an explicit nil
-
-### UnsetPaymentEventType
-`func (o *WebhookPaymentPayload) UnsetPaymentEventType()`
-
-UnsetPaymentEventType ensures that no value is present for PaymentEventType, not even an explicit nil
 ### GetLastEventType
 
 `func (o *WebhookPaymentPayload) GetLastEventType() string`
@@ -1689,16 +1299,6 @@ SetLastEventType sets LastEventType field to given value.
 
 HasLastEventType returns a boolean if a field has been set.
 
-### SetLastEventTypeNil
-
-`func (o *WebhookPaymentPayload) SetLastEventTypeNil(b bool)`
-
- SetLastEventTypeNil sets the value for LastEventType to be an explicit nil
-
-### UnsetLastEventType
-`func (o *WebhookPaymentPayload) UnsetLastEventType()`
-
-UnsetLastEventType ensures that no value is present for LastEventType, not even an explicit nil
 ### GetBusinessId
 
 `func (o *WebhookPaymentPayload) GetBusinessId() string`

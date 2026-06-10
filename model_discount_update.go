@@ -27,11 +27,11 @@ type DiscountUpdate struct {
 	// The discount value.
 	Amount *float32 `json:"amount,omitempty"`
 	// Maximum number of redemptions allowed.
-	UsageLimit NullableInt32 `json:"usage_limit,omitempty"`
+	UsageLimit *int32 `json:"usage_limit,omitempty"`
 	// Expiration timestamp for the discount.
-	ExpiresAt NullableTime `json:"expires_at,omitempty"`
+	ExpiresAt *time.Time `json:"expires_at,omitempty"`
 	// Number of subscription cycles this discount applies to.
-	SubscriptionCycles NullableInt32 `json:"subscription_cycles,omitempty"`
+	SubscriptionCycles *int32 `json:"subscription_cycles,omitempty"`
 	// List of product IDs this discount is restricted to.
 	RestrictedTo []string `json:"restricted_to,omitempty"`
 	// Whether to preserve the discount when subscription plan changes.
@@ -153,130 +153,100 @@ func (o *DiscountUpdate) SetAmount(v float32) {
 	o.Amount = &v
 }
 
-// GetUsageLimit returns the UsageLimit field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetUsageLimit returns the UsageLimit field value if set, zero value otherwise.
 func (o *DiscountUpdate) GetUsageLimit() int32 {
-	if o == nil || IsNil(o.UsageLimit.Get()) {
+	if o == nil || IsNil(o.UsageLimit) {
 		var ret int32
 		return ret
 	}
-	return *o.UsageLimit.Get()
+	return *o.UsageLimit
 }
 
 // GetUsageLimitOk returns a tuple with the UsageLimit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DiscountUpdate) GetUsageLimitOk() (*int32, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.UsageLimit) {
 		return nil, false
 	}
-	return o.UsageLimit.Get(), o.UsageLimit.IsSet()
+	return o.UsageLimit, true
 }
 
 // HasUsageLimit returns a boolean if a field has been set.
 func (o *DiscountUpdate) HasUsageLimit() bool {
-	if o != nil && o.UsageLimit.IsSet() {
+	if o != nil && !IsNil(o.UsageLimit) {
 		return true
 	}
 
 	return false
 }
 
-// SetUsageLimit gets a reference to the given NullableInt32 and assigns it to the UsageLimit field.
+// SetUsageLimit gets a reference to the given int32 and assigns it to the UsageLimit field.
 func (o *DiscountUpdate) SetUsageLimit(v int32) {
-	o.UsageLimit.Set(&v)
-}
-// SetUsageLimitNil sets the value for UsageLimit to be an explicit nil
-func (o *DiscountUpdate) SetUsageLimitNil() {
-	o.UsageLimit.Set(nil)
+	o.UsageLimit = &v
 }
 
-// UnsetUsageLimit ensures that no value is present for UsageLimit, not even an explicit nil
-func (o *DiscountUpdate) UnsetUsageLimit() {
-	o.UsageLimit.Unset()
-}
-
-// GetExpiresAt returns the ExpiresAt field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetExpiresAt returns the ExpiresAt field value if set, zero value otherwise.
 func (o *DiscountUpdate) GetExpiresAt() time.Time {
-	if o == nil || IsNil(o.ExpiresAt.Get()) {
+	if o == nil || IsNil(o.ExpiresAt) {
 		var ret time.Time
 		return ret
 	}
-	return *o.ExpiresAt.Get()
+	return *o.ExpiresAt
 }
 
 // GetExpiresAtOk returns a tuple with the ExpiresAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DiscountUpdate) GetExpiresAtOk() (*time.Time, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ExpiresAt) {
 		return nil, false
 	}
-	return o.ExpiresAt.Get(), o.ExpiresAt.IsSet()
+	return o.ExpiresAt, true
 }
 
 // HasExpiresAt returns a boolean if a field has been set.
 func (o *DiscountUpdate) HasExpiresAt() bool {
-	if o != nil && o.ExpiresAt.IsSet() {
+	if o != nil && !IsNil(o.ExpiresAt) {
 		return true
 	}
 
 	return false
 }
 
-// SetExpiresAt gets a reference to the given NullableTime and assigns it to the ExpiresAt field.
+// SetExpiresAt gets a reference to the given time.Time and assigns it to the ExpiresAt field.
 func (o *DiscountUpdate) SetExpiresAt(v time.Time) {
-	o.ExpiresAt.Set(&v)
-}
-// SetExpiresAtNil sets the value for ExpiresAt to be an explicit nil
-func (o *DiscountUpdate) SetExpiresAtNil() {
-	o.ExpiresAt.Set(nil)
+	o.ExpiresAt = &v
 }
 
-// UnsetExpiresAt ensures that no value is present for ExpiresAt, not even an explicit nil
-func (o *DiscountUpdate) UnsetExpiresAt() {
-	o.ExpiresAt.Unset()
-}
-
-// GetSubscriptionCycles returns the SubscriptionCycles field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetSubscriptionCycles returns the SubscriptionCycles field value if set, zero value otherwise.
 func (o *DiscountUpdate) GetSubscriptionCycles() int32 {
-	if o == nil || IsNil(o.SubscriptionCycles.Get()) {
+	if o == nil || IsNil(o.SubscriptionCycles) {
 		var ret int32
 		return ret
 	}
-	return *o.SubscriptionCycles.Get()
+	return *o.SubscriptionCycles
 }
 
 // GetSubscriptionCyclesOk returns a tuple with the SubscriptionCycles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DiscountUpdate) GetSubscriptionCyclesOk() (*int32, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.SubscriptionCycles) {
 		return nil, false
 	}
-	return o.SubscriptionCycles.Get(), o.SubscriptionCycles.IsSet()
+	return o.SubscriptionCycles, true
 }
 
 // HasSubscriptionCycles returns a boolean if a field has been set.
 func (o *DiscountUpdate) HasSubscriptionCycles() bool {
-	if o != nil && o.SubscriptionCycles.IsSet() {
+	if o != nil && !IsNil(o.SubscriptionCycles) {
 		return true
 	}
 
 	return false
 }
 
-// SetSubscriptionCycles gets a reference to the given NullableInt32 and assigns it to the SubscriptionCycles field.
+// SetSubscriptionCycles gets a reference to the given int32 and assigns it to the SubscriptionCycles field.
 func (o *DiscountUpdate) SetSubscriptionCycles(v int32) {
-	o.SubscriptionCycles.Set(&v)
-}
-// SetSubscriptionCyclesNil sets the value for SubscriptionCycles to be an explicit nil
-func (o *DiscountUpdate) SetSubscriptionCyclesNil() {
-	o.SubscriptionCycles.Set(nil)
-}
-
-// UnsetSubscriptionCycles ensures that no value is present for SubscriptionCycles, not even an explicit nil
-func (o *DiscountUpdate) UnsetSubscriptionCycles() {
-	o.SubscriptionCycles.Unset()
+	o.SubscriptionCycles = &v
 }
 
 // GetRestrictedTo returns the RestrictedTo field value if set, zero value otherwise.
@@ -394,14 +364,14 @@ func (o DiscountUpdate) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Amount) {
 		toSerialize["amount"] = o.Amount
 	}
-	if o.UsageLimit.IsSet() {
-		toSerialize["usage_limit"] = o.UsageLimit.Get()
+	if !IsNil(o.UsageLimit) {
+		toSerialize["usage_limit"] = o.UsageLimit
 	}
-	if o.ExpiresAt.IsSet() {
-		toSerialize["expires_at"] = o.ExpiresAt.Get()
+	if !IsNil(o.ExpiresAt) {
+		toSerialize["expires_at"] = o.ExpiresAt
 	}
-	if o.SubscriptionCycles.IsSet() {
-		toSerialize["subscription_cycles"] = o.SubscriptionCycles.Get()
+	if !IsNil(o.SubscriptionCycles) {
+		toSerialize["subscription_cycles"] = o.SubscriptionCycles
 	}
 	if !IsNil(o.RestrictedTo) {
 		toSerialize["restricted_to"] = o.RestrictedTo

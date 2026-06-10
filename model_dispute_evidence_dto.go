@@ -20,13 +20,13 @@ var _ MappedNullable = &DisputeEvidenceDto{}
 // DisputeEvidenceDto struct for DisputeEvidenceDto
 type DisputeEvidenceDto struct {
 	// Cancellation policy attachment ID
-	CancellationPolicy NullableString `json:"cancellation_policy,omitempty"`
+	CancellationPolicy *string `json:"cancellation_policy,omitempty"`
 	// Customer communication attachment ID
-	CustomerCommunication NullableString `json:"customer_communication,omitempty"`
+	CustomerCommunication *string `json:"customer_communication,omitempty"`
 	// Refund policy attachment ID
-	RefundPolicy NullableString `json:"refund_policy,omitempty"`
+	RefundPolicy *string `json:"refund_policy,omitempty"`
 	// Uncategorized attachment ID
-	Uncategorized NullableString `json:"uncategorized,omitempty"`
+	Uncategorized *string `json:"uncategorized,omitempty"`
 }
 
 // NewDisputeEvidenceDto instantiates a new DisputeEvidenceDto object
@@ -46,172 +46,132 @@ func NewDisputeEvidenceDtoWithDefaults() *DisputeEvidenceDto {
 	return &this
 }
 
-// GetCancellationPolicy returns the CancellationPolicy field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCancellationPolicy returns the CancellationPolicy field value if set, zero value otherwise.
 func (o *DisputeEvidenceDto) GetCancellationPolicy() string {
-	if o == nil || IsNil(o.CancellationPolicy.Get()) {
+	if o == nil || IsNil(o.CancellationPolicy) {
 		var ret string
 		return ret
 	}
-	return *o.CancellationPolicy.Get()
+	return *o.CancellationPolicy
 }
 
 // GetCancellationPolicyOk returns a tuple with the CancellationPolicy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DisputeEvidenceDto) GetCancellationPolicyOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CancellationPolicy) {
 		return nil, false
 	}
-	return o.CancellationPolicy.Get(), o.CancellationPolicy.IsSet()
+	return o.CancellationPolicy, true
 }
 
 // HasCancellationPolicy returns a boolean if a field has been set.
 func (o *DisputeEvidenceDto) HasCancellationPolicy() bool {
-	if o != nil && o.CancellationPolicy.IsSet() {
+	if o != nil && !IsNil(o.CancellationPolicy) {
 		return true
 	}
 
 	return false
 }
 
-// SetCancellationPolicy gets a reference to the given NullableString and assigns it to the CancellationPolicy field.
+// SetCancellationPolicy gets a reference to the given string and assigns it to the CancellationPolicy field.
 func (o *DisputeEvidenceDto) SetCancellationPolicy(v string) {
-	o.CancellationPolicy.Set(&v)
-}
-// SetCancellationPolicyNil sets the value for CancellationPolicy to be an explicit nil
-func (o *DisputeEvidenceDto) SetCancellationPolicyNil() {
-	o.CancellationPolicy.Set(nil)
+	o.CancellationPolicy = &v
 }
 
-// UnsetCancellationPolicy ensures that no value is present for CancellationPolicy, not even an explicit nil
-func (o *DisputeEvidenceDto) UnsetCancellationPolicy() {
-	o.CancellationPolicy.Unset()
-}
-
-// GetCustomerCommunication returns the CustomerCommunication field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCustomerCommunication returns the CustomerCommunication field value if set, zero value otherwise.
 func (o *DisputeEvidenceDto) GetCustomerCommunication() string {
-	if o == nil || IsNil(o.CustomerCommunication.Get()) {
+	if o == nil || IsNil(o.CustomerCommunication) {
 		var ret string
 		return ret
 	}
-	return *o.CustomerCommunication.Get()
+	return *o.CustomerCommunication
 }
 
 // GetCustomerCommunicationOk returns a tuple with the CustomerCommunication field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DisputeEvidenceDto) GetCustomerCommunicationOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CustomerCommunication) {
 		return nil, false
 	}
-	return o.CustomerCommunication.Get(), o.CustomerCommunication.IsSet()
+	return o.CustomerCommunication, true
 }
 
 // HasCustomerCommunication returns a boolean if a field has been set.
 func (o *DisputeEvidenceDto) HasCustomerCommunication() bool {
-	if o != nil && o.CustomerCommunication.IsSet() {
+	if o != nil && !IsNil(o.CustomerCommunication) {
 		return true
 	}
 
 	return false
 }
 
-// SetCustomerCommunication gets a reference to the given NullableString and assigns it to the CustomerCommunication field.
+// SetCustomerCommunication gets a reference to the given string and assigns it to the CustomerCommunication field.
 func (o *DisputeEvidenceDto) SetCustomerCommunication(v string) {
-	o.CustomerCommunication.Set(&v)
-}
-// SetCustomerCommunicationNil sets the value for CustomerCommunication to be an explicit nil
-func (o *DisputeEvidenceDto) SetCustomerCommunicationNil() {
-	o.CustomerCommunication.Set(nil)
+	o.CustomerCommunication = &v
 }
 
-// UnsetCustomerCommunication ensures that no value is present for CustomerCommunication, not even an explicit nil
-func (o *DisputeEvidenceDto) UnsetCustomerCommunication() {
-	o.CustomerCommunication.Unset()
-}
-
-// GetRefundPolicy returns the RefundPolicy field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetRefundPolicy returns the RefundPolicy field value if set, zero value otherwise.
 func (o *DisputeEvidenceDto) GetRefundPolicy() string {
-	if o == nil || IsNil(o.RefundPolicy.Get()) {
+	if o == nil || IsNil(o.RefundPolicy) {
 		var ret string
 		return ret
 	}
-	return *o.RefundPolicy.Get()
+	return *o.RefundPolicy
 }
 
 // GetRefundPolicyOk returns a tuple with the RefundPolicy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DisputeEvidenceDto) GetRefundPolicyOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.RefundPolicy) {
 		return nil, false
 	}
-	return o.RefundPolicy.Get(), o.RefundPolicy.IsSet()
+	return o.RefundPolicy, true
 }
 
 // HasRefundPolicy returns a boolean if a field has been set.
 func (o *DisputeEvidenceDto) HasRefundPolicy() bool {
-	if o != nil && o.RefundPolicy.IsSet() {
+	if o != nil && !IsNil(o.RefundPolicy) {
 		return true
 	}
 
 	return false
 }
 
-// SetRefundPolicy gets a reference to the given NullableString and assigns it to the RefundPolicy field.
+// SetRefundPolicy gets a reference to the given string and assigns it to the RefundPolicy field.
 func (o *DisputeEvidenceDto) SetRefundPolicy(v string) {
-	o.RefundPolicy.Set(&v)
-}
-// SetRefundPolicyNil sets the value for RefundPolicy to be an explicit nil
-func (o *DisputeEvidenceDto) SetRefundPolicyNil() {
-	o.RefundPolicy.Set(nil)
+	o.RefundPolicy = &v
 }
 
-// UnsetRefundPolicy ensures that no value is present for RefundPolicy, not even an explicit nil
-func (o *DisputeEvidenceDto) UnsetRefundPolicy() {
-	o.RefundPolicy.Unset()
-}
-
-// GetUncategorized returns the Uncategorized field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetUncategorized returns the Uncategorized field value if set, zero value otherwise.
 func (o *DisputeEvidenceDto) GetUncategorized() string {
-	if o == nil || IsNil(o.Uncategorized.Get()) {
+	if o == nil || IsNil(o.Uncategorized) {
 		var ret string
 		return ret
 	}
-	return *o.Uncategorized.Get()
+	return *o.Uncategorized
 }
 
 // GetUncategorizedOk returns a tuple with the Uncategorized field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DisputeEvidenceDto) GetUncategorizedOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Uncategorized) {
 		return nil, false
 	}
-	return o.Uncategorized.Get(), o.Uncategorized.IsSet()
+	return o.Uncategorized, true
 }
 
 // HasUncategorized returns a boolean if a field has been set.
 func (o *DisputeEvidenceDto) HasUncategorized() bool {
-	if o != nil && o.Uncategorized.IsSet() {
+	if o != nil && !IsNil(o.Uncategorized) {
 		return true
 	}
 
 	return false
 }
 
-// SetUncategorized gets a reference to the given NullableString and assigns it to the Uncategorized field.
+// SetUncategorized gets a reference to the given string and assigns it to the Uncategorized field.
 func (o *DisputeEvidenceDto) SetUncategorized(v string) {
-	o.Uncategorized.Set(&v)
-}
-// SetUncategorizedNil sets the value for Uncategorized to be an explicit nil
-func (o *DisputeEvidenceDto) SetUncategorizedNil() {
-	o.Uncategorized.Set(nil)
-}
-
-// UnsetUncategorized ensures that no value is present for Uncategorized, not even an explicit nil
-func (o *DisputeEvidenceDto) UnsetUncategorized() {
-	o.Uncategorized.Unset()
+	o.Uncategorized = &v
 }
 
 func (o DisputeEvidenceDto) MarshalJSON() ([]byte, error) {
@@ -224,17 +184,17 @@ func (o DisputeEvidenceDto) MarshalJSON() ([]byte, error) {
 
 func (o DisputeEvidenceDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.CancellationPolicy.IsSet() {
-		toSerialize["cancellation_policy"] = o.CancellationPolicy.Get()
+	if !IsNil(o.CancellationPolicy) {
+		toSerialize["cancellation_policy"] = o.CancellationPolicy
 	}
-	if o.CustomerCommunication.IsSet() {
-		toSerialize["customer_communication"] = o.CustomerCommunication.Get()
+	if !IsNil(o.CustomerCommunication) {
+		toSerialize["customer_communication"] = o.CustomerCommunication
 	}
-	if o.RefundPolicy.IsSet() {
-		toSerialize["refund_policy"] = o.RefundPolicy.Get()
+	if !IsNil(o.RefundPolicy) {
+		toSerialize["refund_policy"] = o.RefundPolicy
 	}
-	if o.Uncategorized.IsSet() {
-		toSerialize["uncategorized"] = o.Uncategorized.Get()
+	if !IsNil(o.Uncategorized) {
+		toSerialize["uncategorized"] = o.Uncategorized
 	}
 	return toSerialize, nil
 }

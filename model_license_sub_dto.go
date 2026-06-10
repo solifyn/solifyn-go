@@ -24,9 +24,9 @@ type LicenseSubDto struct {
 	Id string `json:"id"`
 	Key string `json:"key"`
 	Status string `json:"status"`
-	ActivationLimit NullableFloat32 `json:"activationLimit"`
-	ActivationMessage NullableString `json:"activationMessage"`
-	ExpiresAt NullableString `json:"expiresAt"`
+	ActivationLimit float32 `json:"activationLimit"`
+	ActivationMessage string `json:"activationMessage"`
+	ExpiresAt string `json:"expiresAt"`
 	Product *ProductSubDto `json:"product,omitempty"`
 }
 
@@ -36,7 +36,7 @@ type _LicenseSubDto LicenseSubDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLicenseSubDto(id string, key string, status string, activationLimit NullableFloat32, activationMessage NullableString, expiresAt NullableString) *LicenseSubDto {
+func NewLicenseSubDto(id string, key string, status string, activationLimit float32, activationMessage string, expiresAt string) *LicenseSubDto {
 	this := LicenseSubDto{}
 	this.Id = id
 	this.Key = key
@@ -128,81 +128,75 @@ func (o *LicenseSubDto) SetStatus(v string) {
 }
 
 // GetActivationLimit returns the ActivationLimit field value
-// If the value is explicit nil, the zero value for float32 will be returned
 func (o *LicenseSubDto) GetActivationLimit() float32 {
-	if o == nil || o.ActivationLimit.Get() == nil {
+	if o == nil {
 		var ret float32
 		return ret
 	}
 
-	return *o.ActivationLimit.Get()
+	return o.ActivationLimit
 }
 
 // GetActivationLimitOk returns a tuple with the ActivationLimit field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *LicenseSubDto) GetActivationLimitOk() (*float32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.ActivationLimit.Get(), o.ActivationLimit.IsSet()
+	return &o.ActivationLimit, true
 }
 
 // SetActivationLimit sets field value
 func (o *LicenseSubDto) SetActivationLimit(v float32) {
-	o.ActivationLimit.Set(&v)
+	o.ActivationLimit = v
 }
 
 // GetActivationMessage returns the ActivationMessage field value
-// If the value is explicit nil, the zero value for string will be returned
 func (o *LicenseSubDto) GetActivationMessage() string {
-	if o == nil || o.ActivationMessage.Get() == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.ActivationMessage.Get()
+	return o.ActivationMessage
 }
 
 // GetActivationMessageOk returns a tuple with the ActivationMessage field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *LicenseSubDto) GetActivationMessageOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.ActivationMessage.Get(), o.ActivationMessage.IsSet()
+	return &o.ActivationMessage, true
 }
 
 // SetActivationMessage sets field value
 func (o *LicenseSubDto) SetActivationMessage(v string) {
-	o.ActivationMessage.Set(&v)
+	o.ActivationMessage = v
 }
 
 // GetExpiresAt returns the ExpiresAt field value
-// If the value is explicit nil, the zero value for string will be returned
 func (o *LicenseSubDto) GetExpiresAt() string {
-	if o == nil || o.ExpiresAt.Get() == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.ExpiresAt.Get()
+	return o.ExpiresAt
 }
 
 // GetExpiresAtOk returns a tuple with the ExpiresAt field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *LicenseSubDto) GetExpiresAtOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.ExpiresAt.Get(), o.ExpiresAt.IsSet()
+	return &o.ExpiresAt, true
 }
 
 // SetExpiresAt sets field value
 func (o *LicenseSubDto) SetExpiresAt(v string) {
-	o.ExpiresAt.Set(&v)
+	o.ExpiresAt = v
 }
 
 // GetProduct returns the Product field value if set, zero value otherwise.
@@ -250,9 +244,9 @@ func (o LicenseSubDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["id"] = o.Id
 	toSerialize["key"] = o.Key
 	toSerialize["status"] = o.Status
-	toSerialize["activationLimit"] = o.ActivationLimit.Get()
-	toSerialize["activationMessage"] = o.ActivationMessage.Get()
-	toSerialize["expiresAt"] = o.ExpiresAt.Get()
+	toSerialize["activationLimit"] = o.ActivationLimit
+	toSerialize["activationMessage"] = o.ActivationMessage
+	toSerialize["expiresAt"] = o.ExpiresAt
 	if !IsNil(o.Product) {
 		toSerialize["product"] = o.Product
 	}

@@ -5,12 +5,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | The customer ID | 
-**MemberId** | Pointer to **NullableString** | The Membership ID associated with this customer | [optional] 
+**MemberId** | Pointer to **string** | The Membership ID associated with this customer | [optional] 
 **Email** | **string** | The email address of the customer | 
-**Name** | Pointer to **NullableString** | The name of the customer | [optional] 
-**Username** | Pointer to **NullableString** | The username of the customer | [optional] 
-**Phone** | Pointer to **NullableString** | The phone number of the customer | [optional] 
-**PhoneNumber** | Pointer to **NullableString** | The phone number of the customer | [optional] 
+**Name** | Pointer to **string** | The name of the customer | [optional] 
+**Username** | Pointer to **string** | The username of the customer | [optional] 
+**Phone** | Pointer to **string** | The phone number of the customer | [optional] 
+**PhoneNumber** | Pointer to **string** | The phone number of the customer | [optional] 
 **Metadata** | Pointer to **map[string]interface{}** | Additional metadata associated with the customer | [optional] 
 **CreatedAt** | **time.Time** | Timestamp when the customer was created | 
 **UpdatedAt** | **time.Time** | Timestamp when the customer was last updated | 
@@ -80,16 +80,6 @@ SetMemberId sets MemberId field to given value.
 
 HasMemberId returns a boolean if a field has been set.
 
-### SetMemberIdNil
-
-`func (o *CustomerResponseDto) SetMemberIdNil(b bool)`
-
- SetMemberIdNil sets the value for MemberId to be an explicit nil
-
-### UnsetMemberId
-`func (o *CustomerResponseDto) UnsetMemberId()`
-
-UnsetMemberId ensures that no value is present for MemberId, not even an explicit nil
 ### GetEmail
 
 `func (o *CustomerResponseDto) GetEmail() string`
@@ -135,16 +125,6 @@ SetName sets Name field to given value.
 
 HasName returns a boolean if a field has been set.
 
-### SetNameNil
-
-`func (o *CustomerResponseDto) SetNameNil(b bool)`
-
- SetNameNil sets the value for Name to be an explicit nil
-
-### UnsetName
-`func (o *CustomerResponseDto) UnsetName()`
-
-UnsetName ensures that no value is present for Name, not even an explicit nil
 ### GetUsername
 
 `func (o *CustomerResponseDto) GetUsername() string`
@@ -170,16 +150,6 @@ SetUsername sets Username field to given value.
 
 HasUsername returns a boolean if a field has been set.
 
-### SetUsernameNil
-
-`func (o *CustomerResponseDto) SetUsernameNil(b bool)`
-
- SetUsernameNil sets the value for Username to be an explicit nil
-
-### UnsetUsername
-`func (o *CustomerResponseDto) UnsetUsername()`
-
-UnsetUsername ensures that no value is present for Username, not even an explicit nil
 ### GetPhone
 
 `func (o *CustomerResponseDto) GetPhone() string`
@@ -205,16 +175,6 @@ SetPhone sets Phone field to given value.
 
 HasPhone returns a boolean if a field has been set.
 
-### SetPhoneNil
-
-`func (o *CustomerResponseDto) SetPhoneNil(b bool)`
-
- SetPhoneNil sets the value for Phone to be an explicit nil
-
-### UnsetPhone
-`func (o *CustomerResponseDto) UnsetPhone()`
-
-UnsetPhone ensures that no value is present for Phone, not even an explicit nil
 ### GetPhoneNumber
 
 `func (o *CustomerResponseDto) GetPhoneNumber() string`
@@ -240,16 +200,6 @@ SetPhoneNumber sets PhoneNumber field to given value.
 
 HasPhoneNumber returns a boolean if a field has been set.
 
-### SetPhoneNumberNil
-
-`func (o *CustomerResponseDto) SetPhoneNumberNil(b bool)`
-
- SetPhoneNumberNil sets the value for PhoneNumber to be an explicit nil
-
-### UnsetPhoneNumber
-`func (o *CustomerResponseDto) UnsetPhoneNumber()`
-
-UnsetPhoneNumber ensures that no value is present for PhoneNumber, not even an explicit nil
 ### GetMetadata
 
 `func (o *CustomerResponseDto) GetMetadata() map[string]interface{}`
@@ -275,16 +225,6 @@ SetMetadata sets Metadata field to given value.
 
 HasMetadata returns a boolean if a field has been set.
 
-### SetMetadataNil
-
-`func (o *CustomerResponseDto) SetMetadataNil(b bool)`
-
- SetMetadataNil sets the value for Metadata to be an explicit nil
-
-### UnsetMetadata
-`func (o *CustomerResponseDto) UnsetMetadata()`
-
-UnsetMetadata ensures that no value is present for Metadata, not even an explicit nil
 ### GetCreatedAt
 
 `func (o *CustomerResponseDto) GetCreatedAt() time.Time`

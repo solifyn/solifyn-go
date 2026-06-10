@@ -27,12 +27,12 @@ type WebhookDisputePayload struct {
 	Amount *string `json:"amount,omitempty"`
 	Currency *string `json:"currency,omitempty"`
 	Status *string `json:"status,omitempty"`
-	Reason NullableString `json:"reason,omitempty"`
+	Reason *string `json:"reason,omitempty"`
 	Editable *bool `json:"editable,omitempty"`
-	NeedsResponseBy NullableTime `json:"needsResponseBy,omitempty"`
-	CustomerName NullableString `json:"customerName,omitempty"`
-	CustomerEmail NullableString `json:"customerEmail,omitempty"`
-	Notes NullableString `json:"notes,omitempty"`
+	NeedsResponseBy *time.Time `json:"needsResponseBy,omitempty"`
+	CustomerName *string `json:"customerName,omitempty"`
+	CustomerEmail *string `json:"customerEmail,omitempty"`
+	Notes *string `json:"notes,omitempty"`
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
 }
@@ -214,46 +214,36 @@ func (o *WebhookDisputePayload) SetStatus(v string) {
 	o.Status = &v
 }
 
-// GetReason returns the Reason field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetReason returns the Reason field value if set, zero value otherwise.
 func (o *WebhookDisputePayload) GetReason() string {
-	if o == nil || IsNil(o.Reason.Get()) {
+	if o == nil || IsNil(o.Reason) {
 		var ret string
 		return ret
 	}
-	return *o.Reason.Get()
+	return *o.Reason
 }
 
 // GetReasonOk returns a tuple with the Reason field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookDisputePayload) GetReasonOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Reason) {
 		return nil, false
 	}
-	return o.Reason.Get(), o.Reason.IsSet()
+	return o.Reason, true
 }
 
 // HasReason returns a boolean if a field has been set.
 func (o *WebhookDisputePayload) HasReason() bool {
-	if o != nil && o.Reason.IsSet() {
+	if o != nil && !IsNil(o.Reason) {
 		return true
 	}
 
 	return false
 }
 
-// SetReason gets a reference to the given NullableString and assigns it to the Reason field.
+// SetReason gets a reference to the given string and assigns it to the Reason field.
 func (o *WebhookDisputePayload) SetReason(v string) {
-	o.Reason.Set(&v)
-}
-// SetReasonNil sets the value for Reason to be an explicit nil
-func (o *WebhookDisputePayload) SetReasonNil() {
-	o.Reason.Set(nil)
-}
-
-// UnsetReason ensures that no value is present for Reason, not even an explicit nil
-func (o *WebhookDisputePayload) UnsetReason() {
-	o.Reason.Unset()
+	o.Reason = &v
 }
 
 // GetEditable returns the Editable field value if set, zero value otherwise.
@@ -288,172 +278,132 @@ func (o *WebhookDisputePayload) SetEditable(v bool) {
 	o.Editable = &v
 }
 
-// GetNeedsResponseBy returns the NeedsResponseBy field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetNeedsResponseBy returns the NeedsResponseBy field value if set, zero value otherwise.
 func (o *WebhookDisputePayload) GetNeedsResponseBy() time.Time {
-	if o == nil || IsNil(o.NeedsResponseBy.Get()) {
+	if o == nil || IsNil(o.NeedsResponseBy) {
 		var ret time.Time
 		return ret
 	}
-	return *o.NeedsResponseBy.Get()
+	return *o.NeedsResponseBy
 }
 
 // GetNeedsResponseByOk returns a tuple with the NeedsResponseBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookDisputePayload) GetNeedsResponseByOk() (*time.Time, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.NeedsResponseBy) {
 		return nil, false
 	}
-	return o.NeedsResponseBy.Get(), o.NeedsResponseBy.IsSet()
+	return o.NeedsResponseBy, true
 }
 
 // HasNeedsResponseBy returns a boolean if a field has been set.
 func (o *WebhookDisputePayload) HasNeedsResponseBy() bool {
-	if o != nil && o.NeedsResponseBy.IsSet() {
+	if o != nil && !IsNil(o.NeedsResponseBy) {
 		return true
 	}
 
 	return false
 }
 
-// SetNeedsResponseBy gets a reference to the given NullableTime and assigns it to the NeedsResponseBy field.
+// SetNeedsResponseBy gets a reference to the given time.Time and assigns it to the NeedsResponseBy field.
 func (o *WebhookDisputePayload) SetNeedsResponseBy(v time.Time) {
-	o.NeedsResponseBy.Set(&v)
-}
-// SetNeedsResponseByNil sets the value for NeedsResponseBy to be an explicit nil
-func (o *WebhookDisputePayload) SetNeedsResponseByNil() {
-	o.NeedsResponseBy.Set(nil)
+	o.NeedsResponseBy = &v
 }
 
-// UnsetNeedsResponseBy ensures that no value is present for NeedsResponseBy, not even an explicit nil
-func (o *WebhookDisputePayload) UnsetNeedsResponseBy() {
-	o.NeedsResponseBy.Unset()
-}
-
-// GetCustomerName returns the CustomerName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCustomerName returns the CustomerName field value if set, zero value otherwise.
 func (o *WebhookDisputePayload) GetCustomerName() string {
-	if o == nil || IsNil(o.CustomerName.Get()) {
+	if o == nil || IsNil(o.CustomerName) {
 		var ret string
 		return ret
 	}
-	return *o.CustomerName.Get()
+	return *o.CustomerName
 }
 
 // GetCustomerNameOk returns a tuple with the CustomerName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookDisputePayload) GetCustomerNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CustomerName) {
 		return nil, false
 	}
-	return o.CustomerName.Get(), o.CustomerName.IsSet()
+	return o.CustomerName, true
 }
 
 // HasCustomerName returns a boolean if a field has been set.
 func (o *WebhookDisputePayload) HasCustomerName() bool {
-	if o != nil && o.CustomerName.IsSet() {
+	if o != nil && !IsNil(o.CustomerName) {
 		return true
 	}
 
 	return false
 }
 
-// SetCustomerName gets a reference to the given NullableString and assigns it to the CustomerName field.
+// SetCustomerName gets a reference to the given string and assigns it to the CustomerName field.
 func (o *WebhookDisputePayload) SetCustomerName(v string) {
-	o.CustomerName.Set(&v)
-}
-// SetCustomerNameNil sets the value for CustomerName to be an explicit nil
-func (o *WebhookDisputePayload) SetCustomerNameNil() {
-	o.CustomerName.Set(nil)
+	o.CustomerName = &v
 }
 
-// UnsetCustomerName ensures that no value is present for CustomerName, not even an explicit nil
-func (o *WebhookDisputePayload) UnsetCustomerName() {
-	o.CustomerName.Unset()
-}
-
-// GetCustomerEmail returns the CustomerEmail field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCustomerEmail returns the CustomerEmail field value if set, zero value otherwise.
 func (o *WebhookDisputePayload) GetCustomerEmail() string {
-	if o == nil || IsNil(o.CustomerEmail.Get()) {
+	if o == nil || IsNil(o.CustomerEmail) {
 		var ret string
 		return ret
 	}
-	return *o.CustomerEmail.Get()
+	return *o.CustomerEmail
 }
 
 // GetCustomerEmailOk returns a tuple with the CustomerEmail field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookDisputePayload) GetCustomerEmailOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CustomerEmail) {
 		return nil, false
 	}
-	return o.CustomerEmail.Get(), o.CustomerEmail.IsSet()
+	return o.CustomerEmail, true
 }
 
 // HasCustomerEmail returns a boolean if a field has been set.
 func (o *WebhookDisputePayload) HasCustomerEmail() bool {
-	if o != nil && o.CustomerEmail.IsSet() {
+	if o != nil && !IsNil(o.CustomerEmail) {
 		return true
 	}
 
 	return false
 }
 
-// SetCustomerEmail gets a reference to the given NullableString and assigns it to the CustomerEmail field.
+// SetCustomerEmail gets a reference to the given string and assigns it to the CustomerEmail field.
 func (o *WebhookDisputePayload) SetCustomerEmail(v string) {
-	o.CustomerEmail.Set(&v)
-}
-// SetCustomerEmailNil sets the value for CustomerEmail to be an explicit nil
-func (o *WebhookDisputePayload) SetCustomerEmailNil() {
-	o.CustomerEmail.Set(nil)
+	o.CustomerEmail = &v
 }
 
-// UnsetCustomerEmail ensures that no value is present for CustomerEmail, not even an explicit nil
-func (o *WebhookDisputePayload) UnsetCustomerEmail() {
-	o.CustomerEmail.Unset()
-}
-
-// GetNotes returns the Notes field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetNotes returns the Notes field value if set, zero value otherwise.
 func (o *WebhookDisputePayload) GetNotes() string {
-	if o == nil || IsNil(o.Notes.Get()) {
+	if o == nil || IsNil(o.Notes) {
 		var ret string
 		return ret
 	}
-	return *o.Notes.Get()
+	return *o.Notes
 }
 
 // GetNotesOk returns a tuple with the Notes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookDisputePayload) GetNotesOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Notes) {
 		return nil, false
 	}
-	return o.Notes.Get(), o.Notes.IsSet()
+	return o.Notes, true
 }
 
 // HasNotes returns a boolean if a field has been set.
 func (o *WebhookDisputePayload) HasNotes() bool {
-	if o != nil && o.Notes.IsSet() {
+	if o != nil && !IsNil(o.Notes) {
 		return true
 	}
 
 	return false
 }
 
-// SetNotes gets a reference to the given NullableString and assigns it to the Notes field.
+// SetNotes gets a reference to the given string and assigns it to the Notes field.
 func (o *WebhookDisputePayload) SetNotes(v string) {
-	o.Notes.Set(&v)
-}
-// SetNotesNil sets the value for Notes to be an explicit nil
-func (o *WebhookDisputePayload) SetNotesNil() {
-	o.Notes.Set(nil)
-}
-
-// UnsetNotes ensures that no value is present for Notes, not even an explicit nil
-func (o *WebhookDisputePayload) UnsetNotes() {
-	o.Notes.Unset()
+	o.Notes = &v
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
@@ -545,23 +495,23 @@ func (o WebhookDisputePayload) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
-	if o.Reason.IsSet() {
-		toSerialize["reason"] = o.Reason.Get()
+	if !IsNil(o.Reason) {
+		toSerialize["reason"] = o.Reason
 	}
 	if !IsNil(o.Editable) {
 		toSerialize["editable"] = o.Editable
 	}
-	if o.NeedsResponseBy.IsSet() {
-		toSerialize["needsResponseBy"] = o.NeedsResponseBy.Get()
+	if !IsNil(o.NeedsResponseBy) {
+		toSerialize["needsResponseBy"] = o.NeedsResponseBy
 	}
-	if o.CustomerName.IsSet() {
-		toSerialize["customerName"] = o.CustomerName.Get()
+	if !IsNil(o.CustomerName) {
+		toSerialize["customerName"] = o.CustomerName
 	}
-	if o.CustomerEmail.IsSet() {
-		toSerialize["customerEmail"] = o.CustomerEmail.Get()
+	if !IsNil(o.CustomerEmail) {
+		toSerialize["customerEmail"] = o.CustomerEmail
 	}
-	if o.Notes.IsSet() {
-		toSerialize["notes"] = o.Notes.Get()
+	if !IsNil(o.Notes) {
+		toSerialize["notes"] = o.Notes
 	}
 	if !IsNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt

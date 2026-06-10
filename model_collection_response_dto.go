@@ -27,9 +27,9 @@ type CollectionResponseDto struct {
 	// The name of the collection
 	Name string `json:"name"`
 	// A brief description of the collection
-	Description NullableString `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 	// URL of the collection image
-	ImageUrl NullableString `json:"imageUrl,omitempty"`
+	ImageUrl *string `json:"imageUrl,omitempty"`
 	// Status of the collection
 	Status string `json:"status"`
 	// The unique identifier of the business owning this collection.
@@ -118,88 +118,68 @@ func (o *CollectionResponseDto) SetName(v string) {
 	o.Name = v
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetDescription returns the Description field value if set, zero value otherwise.
 func (o *CollectionResponseDto) GetDescription() string {
-	if o == nil || IsNil(o.Description.Get()) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
-	return *o.Description.Get()
+	return *o.Description
 }
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CollectionResponseDto) GetDescriptionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
-	return o.Description.Get(), o.Description.IsSet()
+	return o.Description, true
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *CollectionResponseDto) HasDescription() bool {
-	if o != nil && o.Description.IsSet() {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
 	return false
 }
 
-// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
+// SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *CollectionResponseDto) SetDescription(v string) {
-	o.Description.Set(&v)
-}
-// SetDescriptionNil sets the value for Description to be an explicit nil
-func (o *CollectionResponseDto) SetDescriptionNil() {
-	o.Description.Set(nil)
+	o.Description = &v
 }
 
-// UnsetDescription ensures that no value is present for Description, not even an explicit nil
-func (o *CollectionResponseDto) UnsetDescription() {
-	o.Description.Unset()
-}
-
-// GetImageUrl returns the ImageUrl field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetImageUrl returns the ImageUrl field value if set, zero value otherwise.
 func (o *CollectionResponseDto) GetImageUrl() string {
-	if o == nil || IsNil(o.ImageUrl.Get()) {
+	if o == nil || IsNil(o.ImageUrl) {
 		var ret string
 		return ret
 	}
-	return *o.ImageUrl.Get()
+	return *o.ImageUrl
 }
 
 // GetImageUrlOk returns a tuple with the ImageUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CollectionResponseDto) GetImageUrlOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ImageUrl) {
 		return nil, false
 	}
-	return o.ImageUrl.Get(), o.ImageUrl.IsSet()
+	return o.ImageUrl, true
 }
 
 // HasImageUrl returns a boolean if a field has been set.
 func (o *CollectionResponseDto) HasImageUrl() bool {
-	if o != nil && o.ImageUrl.IsSet() {
+	if o != nil && !IsNil(o.ImageUrl) {
 		return true
 	}
 
 	return false
 }
 
-// SetImageUrl gets a reference to the given NullableString and assigns it to the ImageUrl field.
+// SetImageUrl gets a reference to the given string and assigns it to the ImageUrl field.
 func (o *CollectionResponseDto) SetImageUrl(v string) {
-	o.ImageUrl.Set(&v)
-}
-// SetImageUrlNil sets the value for ImageUrl to be an explicit nil
-func (o *CollectionResponseDto) SetImageUrlNil() {
-	o.ImageUrl.Set(nil)
-}
-
-// UnsetImageUrl ensures that no value is present for ImageUrl, not even an explicit nil
-func (o *CollectionResponseDto) UnsetImageUrl() {
-	o.ImageUrl.Unset()
+	o.ImageUrl = &v
 }
 
 // GetStatus returns the Status field value
@@ -366,11 +346,11 @@ func (o CollectionResponseDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	toSerialize["name"] = o.Name
-	if o.Description.IsSet() {
-		toSerialize["description"] = o.Description.Get()
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
 	}
-	if o.ImageUrl.IsSet() {
-		toSerialize["imageUrl"] = o.ImageUrl.Get()
+	if !IsNil(o.ImageUrl) {
+		toSerialize["imageUrl"] = o.ImageUrl
 	}
 	toSerialize["status"] = o.Status
 	toSerialize["businessId"] = o.BusinessId

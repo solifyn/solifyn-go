@@ -63,6 +63,8 @@ type APIClient struct {
 
 	DigitalFileAPI *DigitalFileAPIService
 
+	DiscordIntegrationAPI *DiscordIntegrationAPIService
+
 	DiscountsAPI *DiscountsAPIService
 
 	DisputesAPI *DisputesAPIService
@@ -119,6 +121,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.CustomersAPI = (*CustomersAPIService)(&c.common)
 	c.DeveloperAPI = (*DeveloperAPIService)(&c.common)
 	c.DigitalFileAPI = (*DigitalFileAPIService)(&c.common)
+	c.DiscordIntegrationAPI = (*DiscordIntegrationAPIService)(&c.common)
 	c.DiscountsAPI = (*DiscountsAPIService)(&c.common)
 	c.DisputesAPI = (*DisputesAPIService)(&c.common)
 	c.EntitlementGrantsAPI = (*EntitlementGrantsAPIService)(&c.common)

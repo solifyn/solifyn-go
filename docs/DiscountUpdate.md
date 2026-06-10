@@ -7,9 +7,9 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | Customer-facing name of the discount. | [optional] 
 **Type** | Pointer to **string** | Calculation type: percentage or fixed_amount. | [optional] 
 **Amount** | Pointer to **float32** | The discount value. | [optional] 
-**UsageLimit** | Pointer to **NullableInt32** | Maximum number of redemptions allowed. | [optional] 
-**ExpiresAt** | Pointer to **NullableTime** | Expiration timestamp for the discount. | [optional] 
-**SubscriptionCycles** | Pointer to **NullableInt32** | Number of subscription cycles this discount applies to. | [optional] 
+**UsageLimit** | Pointer to **int32** | Maximum number of redemptions allowed. | [optional] 
+**ExpiresAt** | Pointer to **time.Time** | Expiration timestamp for the discount. | [optional] 
+**SubscriptionCycles** | Pointer to **int32** | Number of subscription cycles this discount applies to. | [optional] 
 **RestrictedTo** | Pointer to **[]string** | List of product IDs this discount is restricted to. | [optional] 
 **PreserveOnPlanChange** | Pointer to **bool** | Whether to preserve the discount when subscription plan changes. | [optional] 
 **Metadata** | Pointer to **map[string]interface{}** | Custom metadata for the discount. | [optional] 
@@ -133,16 +133,6 @@ SetUsageLimit sets UsageLimit field to given value.
 
 HasUsageLimit returns a boolean if a field has been set.
 
-### SetUsageLimitNil
-
-`func (o *DiscountUpdate) SetUsageLimitNil(b bool)`
-
- SetUsageLimitNil sets the value for UsageLimit to be an explicit nil
-
-### UnsetUsageLimit
-`func (o *DiscountUpdate) UnsetUsageLimit()`
-
-UnsetUsageLimit ensures that no value is present for UsageLimit, not even an explicit nil
 ### GetExpiresAt
 
 `func (o *DiscountUpdate) GetExpiresAt() time.Time`
@@ -168,16 +158,6 @@ SetExpiresAt sets ExpiresAt field to given value.
 
 HasExpiresAt returns a boolean if a field has been set.
 
-### SetExpiresAtNil
-
-`func (o *DiscountUpdate) SetExpiresAtNil(b bool)`
-
- SetExpiresAtNil sets the value for ExpiresAt to be an explicit nil
-
-### UnsetExpiresAt
-`func (o *DiscountUpdate) UnsetExpiresAt()`
-
-UnsetExpiresAt ensures that no value is present for ExpiresAt, not even an explicit nil
 ### GetSubscriptionCycles
 
 `func (o *DiscountUpdate) GetSubscriptionCycles() int32`
@@ -203,16 +183,6 @@ SetSubscriptionCycles sets SubscriptionCycles field to given value.
 
 HasSubscriptionCycles returns a boolean if a field has been set.
 
-### SetSubscriptionCyclesNil
-
-`func (o *DiscountUpdate) SetSubscriptionCyclesNil(b bool)`
-
- SetSubscriptionCyclesNil sets the value for SubscriptionCycles to be an explicit nil
-
-### UnsetSubscriptionCycles
-`func (o *DiscountUpdate) UnsetSubscriptionCycles()`
-
-UnsetSubscriptionCycles ensures that no value is present for SubscriptionCycles, not even an explicit nil
 ### GetRestrictedTo
 
 `func (o *DiscountUpdate) GetRestrictedTo() []string`

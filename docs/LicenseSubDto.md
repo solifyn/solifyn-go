@@ -7,16 +7,16 @@ Name | Type | Description | Notes
 **Id** | **string** |  | 
 **Key** | **string** |  | 
 **Status** | **string** |  | 
-**ActivationLimit** | **NullableFloat32** |  | 
-**ActivationMessage** | **NullableString** |  | 
-**ExpiresAt** | **NullableString** |  | 
+**ActivationLimit** | **float32** |  | 
+**ActivationMessage** | **string** |  | 
+**ExpiresAt** | **string** |  | 
 **Product** | Pointer to [**ProductSubDto**](ProductSubDto.md) |  | [optional] 
 
 ## Methods
 
 ### NewLicenseSubDto
 
-`func NewLicenseSubDto(id string, key string, status string, activationLimit NullableFloat32, activationMessage NullableString, expiresAt NullableString, ) *LicenseSubDto`
+`func NewLicenseSubDto(id string, key string, status string, activationLimit float32, activationMessage string, expiresAt string, ) *LicenseSubDto`
 
 NewLicenseSubDto instantiates a new LicenseSubDto object
 This constructor will assign default values to properties that have it defined,
@@ -111,16 +111,6 @@ and a boolean to check if the value has been set.
 SetActivationLimit sets ActivationLimit field to given value.
 
 
-### SetActivationLimitNil
-
-`func (o *LicenseSubDto) SetActivationLimitNil(b bool)`
-
- SetActivationLimitNil sets the value for ActivationLimit to be an explicit nil
-
-### UnsetActivationLimit
-`func (o *LicenseSubDto) UnsetActivationLimit()`
-
-UnsetActivationLimit ensures that no value is present for ActivationLimit, not even an explicit nil
 ### GetActivationMessage
 
 `func (o *LicenseSubDto) GetActivationMessage() string`
@@ -141,16 +131,6 @@ and a boolean to check if the value has been set.
 SetActivationMessage sets ActivationMessage field to given value.
 
 
-### SetActivationMessageNil
-
-`func (o *LicenseSubDto) SetActivationMessageNil(b bool)`
-
- SetActivationMessageNil sets the value for ActivationMessage to be an explicit nil
-
-### UnsetActivationMessage
-`func (o *LicenseSubDto) UnsetActivationMessage()`
-
-UnsetActivationMessage ensures that no value is present for ActivationMessage, not even an explicit nil
 ### GetExpiresAt
 
 `func (o *LicenseSubDto) GetExpiresAt() string`
@@ -171,16 +151,6 @@ and a boolean to check if the value has been set.
 SetExpiresAt sets ExpiresAt field to given value.
 
 
-### SetExpiresAtNil
-
-`func (o *LicenseSubDto) SetExpiresAtNil(b bool)`
-
- SetExpiresAtNil sets the value for ExpiresAt to be an explicit nil
-
-### UnsetExpiresAt
-`func (o *LicenseSubDto) UnsetExpiresAt()`
-
-UnsetExpiresAt ensures that no value is present for ExpiresAt, not even an explicit nil
 ### GetProduct
 
 `func (o *LicenseSubDto) GetProduct() ProductSubDto`

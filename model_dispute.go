@@ -33,29 +33,29 @@ type Dispute struct {
 	// The status of the dispute
 	Status string `json:"status"`
 	// The reason for the dispute
-	Reason NullableString `json:"reason,omitempty"`
+	Reason *string `json:"reason,omitempty"`
 	// Whether the evidence is still editable
 	Editable bool `json:"editable"`
 	// Timestamp by when evidence must be submitted
-	NeedsResponseBy NullableTime `json:"needsResponseBy,omitempty"`
+	NeedsResponseBy *time.Time `json:"needsResponseBy,omitempty"`
 	// Whether Visa RDR was applied
 	VisaRdr bool `json:"visaRdr"`
 	// Customer billing address details
-	BillingAddress NullableString `json:"billingAddress,omitempty"`
+	BillingAddress *string `json:"billingAddress,omitempty"`
 	// Customer name
-	CustomerName NullableString `json:"customerName,omitempty"`
+	CustomerName *string `json:"customerName,omitempty"`
 	// Customer email address
-	CustomerEmail NullableString `json:"customerEmail,omitempty"`
+	CustomerEmail *string `json:"customerEmail,omitempty"`
 	// Additional notes
-	Notes NullableString `json:"notes,omitempty"`
+	Notes *string `json:"notes,omitempty"`
 	// Product or service description
-	ProductDescription NullableString `json:"productDescription,omitempty"`
+	ProductDescription *string `json:"productDescription,omitempty"`
 	// Service or purchase date
-	ServiceDate NullableString `json:"serviceDate,omitempty"`
+	ServiceDate *string `json:"serviceDate,omitempty"`
 	// Log of access activity
-	AccessActivityLog NullableString `json:"accessActivityLog,omitempty"`
+	AccessActivityLog *string `json:"accessActivityLog,omitempty"`
 	// Evidence attachments associated with the dispute
-	Evidence NullableDisputeEvidenceDto `json:"evidence,omitempty"`
+	Evidence *DisputeEvidenceDto `json:"evidence,omitempty"`
 	// The associated payment ID
 	PaymentId string `json:"paymentId"`
 	// The associated business ID
@@ -216,46 +216,36 @@ func (o *Dispute) SetStatus(v string) {
 	o.Status = v
 }
 
-// GetReason returns the Reason field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetReason returns the Reason field value if set, zero value otherwise.
 func (o *Dispute) GetReason() string {
-	if o == nil || IsNil(o.Reason.Get()) {
+	if o == nil || IsNil(o.Reason) {
 		var ret string
 		return ret
 	}
-	return *o.Reason.Get()
+	return *o.Reason
 }
 
 // GetReasonOk returns a tuple with the Reason field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Dispute) GetReasonOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Reason) {
 		return nil, false
 	}
-	return o.Reason.Get(), o.Reason.IsSet()
+	return o.Reason, true
 }
 
 // HasReason returns a boolean if a field has been set.
 func (o *Dispute) HasReason() bool {
-	if o != nil && o.Reason.IsSet() {
+	if o != nil && !IsNil(o.Reason) {
 		return true
 	}
 
 	return false
 }
 
-// SetReason gets a reference to the given NullableString and assigns it to the Reason field.
+// SetReason gets a reference to the given string and assigns it to the Reason field.
 func (o *Dispute) SetReason(v string) {
-	o.Reason.Set(&v)
-}
-// SetReasonNil sets the value for Reason to be an explicit nil
-func (o *Dispute) SetReasonNil() {
-	o.Reason.Set(nil)
-}
-
-// UnsetReason ensures that no value is present for Reason, not even an explicit nil
-func (o *Dispute) UnsetReason() {
-	o.Reason.Unset()
+	o.Reason = &v
 }
 
 // GetEditable returns the Editable field value
@@ -282,46 +272,36 @@ func (o *Dispute) SetEditable(v bool) {
 	o.Editable = v
 }
 
-// GetNeedsResponseBy returns the NeedsResponseBy field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetNeedsResponseBy returns the NeedsResponseBy field value if set, zero value otherwise.
 func (o *Dispute) GetNeedsResponseBy() time.Time {
-	if o == nil || IsNil(o.NeedsResponseBy.Get()) {
+	if o == nil || IsNil(o.NeedsResponseBy) {
 		var ret time.Time
 		return ret
 	}
-	return *o.NeedsResponseBy.Get()
+	return *o.NeedsResponseBy
 }
 
 // GetNeedsResponseByOk returns a tuple with the NeedsResponseBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Dispute) GetNeedsResponseByOk() (*time.Time, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.NeedsResponseBy) {
 		return nil, false
 	}
-	return o.NeedsResponseBy.Get(), o.NeedsResponseBy.IsSet()
+	return o.NeedsResponseBy, true
 }
 
 // HasNeedsResponseBy returns a boolean if a field has been set.
 func (o *Dispute) HasNeedsResponseBy() bool {
-	if o != nil && o.NeedsResponseBy.IsSet() {
+	if o != nil && !IsNil(o.NeedsResponseBy) {
 		return true
 	}
 
 	return false
 }
 
-// SetNeedsResponseBy gets a reference to the given NullableTime and assigns it to the NeedsResponseBy field.
+// SetNeedsResponseBy gets a reference to the given time.Time and assigns it to the NeedsResponseBy field.
 func (o *Dispute) SetNeedsResponseBy(v time.Time) {
-	o.NeedsResponseBy.Set(&v)
-}
-// SetNeedsResponseByNil sets the value for NeedsResponseBy to be an explicit nil
-func (o *Dispute) SetNeedsResponseByNil() {
-	o.NeedsResponseBy.Set(nil)
-}
-
-// UnsetNeedsResponseBy ensures that no value is present for NeedsResponseBy, not even an explicit nil
-func (o *Dispute) UnsetNeedsResponseBy() {
-	o.NeedsResponseBy.Unset()
+	o.NeedsResponseBy = &v
 }
 
 // GetVisaRdr returns the VisaRdr field value
@@ -348,340 +328,260 @@ func (o *Dispute) SetVisaRdr(v bool) {
 	o.VisaRdr = v
 }
 
-// GetBillingAddress returns the BillingAddress field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetBillingAddress returns the BillingAddress field value if set, zero value otherwise.
 func (o *Dispute) GetBillingAddress() string {
-	if o == nil || IsNil(o.BillingAddress.Get()) {
+	if o == nil || IsNil(o.BillingAddress) {
 		var ret string
 		return ret
 	}
-	return *o.BillingAddress.Get()
+	return *o.BillingAddress
 }
 
 // GetBillingAddressOk returns a tuple with the BillingAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Dispute) GetBillingAddressOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.BillingAddress) {
 		return nil, false
 	}
-	return o.BillingAddress.Get(), o.BillingAddress.IsSet()
+	return o.BillingAddress, true
 }
 
 // HasBillingAddress returns a boolean if a field has been set.
 func (o *Dispute) HasBillingAddress() bool {
-	if o != nil && o.BillingAddress.IsSet() {
+	if o != nil && !IsNil(o.BillingAddress) {
 		return true
 	}
 
 	return false
 }
 
-// SetBillingAddress gets a reference to the given NullableString and assigns it to the BillingAddress field.
+// SetBillingAddress gets a reference to the given string and assigns it to the BillingAddress field.
 func (o *Dispute) SetBillingAddress(v string) {
-	o.BillingAddress.Set(&v)
-}
-// SetBillingAddressNil sets the value for BillingAddress to be an explicit nil
-func (o *Dispute) SetBillingAddressNil() {
-	o.BillingAddress.Set(nil)
+	o.BillingAddress = &v
 }
 
-// UnsetBillingAddress ensures that no value is present for BillingAddress, not even an explicit nil
-func (o *Dispute) UnsetBillingAddress() {
-	o.BillingAddress.Unset()
-}
-
-// GetCustomerName returns the CustomerName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCustomerName returns the CustomerName field value if set, zero value otherwise.
 func (o *Dispute) GetCustomerName() string {
-	if o == nil || IsNil(o.CustomerName.Get()) {
+	if o == nil || IsNil(o.CustomerName) {
 		var ret string
 		return ret
 	}
-	return *o.CustomerName.Get()
+	return *o.CustomerName
 }
 
 // GetCustomerNameOk returns a tuple with the CustomerName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Dispute) GetCustomerNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CustomerName) {
 		return nil, false
 	}
-	return o.CustomerName.Get(), o.CustomerName.IsSet()
+	return o.CustomerName, true
 }
 
 // HasCustomerName returns a boolean if a field has been set.
 func (o *Dispute) HasCustomerName() bool {
-	if o != nil && o.CustomerName.IsSet() {
+	if o != nil && !IsNil(o.CustomerName) {
 		return true
 	}
 
 	return false
 }
 
-// SetCustomerName gets a reference to the given NullableString and assigns it to the CustomerName field.
+// SetCustomerName gets a reference to the given string and assigns it to the CustomerName field.
 func (o *Dispute) SetCustomerName(v string) {
-	o.CustomerName.Set(&v)
-}
-// SetCustomerNameNil sets the value for CustomerName to be an explicit nil
-func (o *Dispute) SetCustomerNameNil() {
-	o.CustomerName.Set(nil)
+	o.CustomerName = &v
 }
 
-// UnsetCustomerName ensures that no value is present for CustomerName, not even an explicit nil
-func (o *Dispute) UnsetCustomerName() {
-	o.CustomerName.Unset()
-}
-
-// GetCustomerEmail returns the CustomerEmail field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCustomerEmail returns the CustomerEmail field value if set, zero value otherwise.
 func (o *Dispute) GetCustomerEmail() string {
-	if o == nil || IsNil(o.CustomerEmail.Get()) {
+	if o == nil || IsNil(o.CustomerEmail) {
 		var ret string
 		return ret
 	}
-	return *o.CustomerEmail.Get()
+	return *o.CustomerEmail
 }
 
 // GetCustomerEmailOk returns a tuple with the CustomerEmail field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Dispute) GetCustomerEmailOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CustomerEmail) {
 		return nil, false
 	}
-	return o.CustomerEmail.Get(), o.CustomerEmail.IsSet()
+	return o.CustomerEmail, true
 }
 
 // HasCustomerEmail returns a boolean if a field has been set.
 func (o *Dispute) HasCustomerEmail() bool {
-	if o != nil && o.CustomerEmail.IsSet() {
+	if o != nil && !IsNil(o.CustomerEmail) {
 		return true
 	}
 
 	return false
 }
 
-// SetCustomerEmail gets a reference to the given NullableString and assigns it to the CustomerEmail field.
+// SetCustomerEmail gets a reference to the given string and assigns it to the CustomerEmail field.
 func (o *Dispute) SetCustomerEmail(v string) {
-	o.CustomerEmail.Set(&v)
-}
-// SetCustomerEmailNil sets the value for CustomerEmail to be an explicit nil
-func (o *Dispute) SetCustomerEmailNil() {
-	o.CustomerEmail.Set(nil)
+	o.CustomerEmail = &v
 }
 
-// UnsetCustomerEmail ensures that no value is present for CustomerEmail, not even an explicit nil
-func (o *Dispute) UnsetCustomerEmail() {
-	o.CustomerEmail.Unset()
-}
-
-// GetNotes returns the Notes field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetNotes returns the Notes field value if set, zero value otherwise.
 func (o *Dispute) GetNotes() string {
-	if o == nil || IsNil(o.Notes.Get()) {
+	if o == nil || IsNil(o.Notes) {
 		var ret string
 		return ret
 	}
-	return *o.Notes.Get()
+	return *o.Notes
 }
 
 // GetNotesOk returns a tuple with the Notes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Dispute) GetNotesOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Notes) {
 		return nil, false
 	}
-	return o.Notes.Get(), o.Notes.IsSet()
+	return o.Notes, true
 }
 
 // HasNotes returns a boolean if a field has been set.
 func (o *Dispute) HasNotes() bool {
-	if o != nil && o.Notes.IsSet() {
+	if o != nil && !IsNil(o.Notes) {
 		return true
 	}
 
 	return false
 }
 
-// SetNotes gets a reference to the given NullableString and assigns it to the Notes field.
+// SetNotes gets a reference to the given string and assigns it to the Notes field.
 func (o *Dispute) SetNotes(v string) {
-	o.Notes.Set(&v)
-}
-// SetNotesNil sets the value for Notes to be an explicit nil
-func (o *Dispute) SetNotesNil() {
-	o.Notes.Set(nil)
+	o.Notes = &v
 }
 
-// UnsetNotes ensures that no value is present for Notes, not even an explicit nil
-func (o *Dispute) UnsetNotes() {
-	o.Notes.Unset()
-}
-
-// GetProductDescription returns the ProductDescription field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetProductDescription returns the ProductDescription field value if set, zero value otherwise.
 func (o *Dispute) GetProductDescription() string {
-	if o == nil || IsNil(o.ProductDescription.Get()) {
+	if o == nil || IsNil(o.ProductDescription) {
 		var ret string
 		return ret
 	}
-	return *o.ProductDescription.Get()
+	return *o.ProductDescription
 }
 
 // GetProductDescriptionOk returns a tuple with the ProductDescription field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Dispute) GetProductDescriptionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ProductDescription) {
 		return nil, false
 	}
-	return o.ProductDescription.Get(), o.ProductDescription.IsSet()
+	return o.ProductDescription, true
 }
 
 // HasProductDescription returns a boolean if a field has been set.
 func (o *Dispute) HasProductDescription() bool {
-	if o != nil && o.ProductDescription.IsSet() {
+	if o != nil && !IsNil(o.ProductDescription) {
 		return true
 	}
 
 	return false
 }
 
-// SetProductDescription gets a reference to the given NullableString and assigns it to the ProductDescription field.
+// SetProductDescription gets a reference to the given string and assigns it to the ProductDescription field.
 func (o *Dispute) SetProductDescription(v string) {
-	o.ProductDescription.Set(&v)
-}
-// SetProductDescriptionNil sets the value for ProductDescription to be an explicit nil
-func (o *Dispute) SetProductDescriptionNil() {
-	o.ProductDescription.Set(nil)
+	o.ProductDescription = &v
 }
 
-// UnsetProductDescription ensures that no value is present for ProductDescription, not even an explicit nil
-func (o *Dispute) UnsetProductDescription() {
-	o.ProductDescription.Unset()
-}
-
-// GetServiceDate returns the ServiceDate field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetServiceDate returns the ServiceDate field value if set, zero value otherwise.
 func (o *Dispute) GetServiceDate() string {
-	if o == nil || IsNil(o.ServiceDate.Get()) {
+	if o == nil || IsNil(o.ServiceDate) {
 		var ret string
 		return ret
 	}
-	return *o.ServiceDate.Get()
+	return *o.ServiceDate
 }
 
 // GetServiceDateOk returns a tuple with the ServiceDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Dispute) GetServiceDateOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ServiceDate) {
 		return nil, false
 	}
-	return o.ServiceDate.Get(), o.ServiceDate.IsSet()
+	return o.ServiceDate, true
 }
 
 // HasServiceDate returns a boolean if a field has been set.
 func (o *Dispute) HasServiceDate() bool {
-	if o != nil && o.ServiceDate.IsSet() {
+	if o != nil && !IsNil(o.ServiceDate) {
 		return true
 	}
 
 	return false
 }
 
-// SetServiceDate gets a reference to the given NullableString and assigns it to the ServiceDate field.
+// SetServiceDate gets a reference to the given string and assigns it to the ServiceDate field.
 func (o *Dispute) SetServiceDate(v string) {
-	o.ServiceDate.Set(&v)
-}
-// SetServiceDateNil sets the value for ServiceDate to be an explicit nil
-func (o *Dispute) SetServiceDateNil() {
-	o.ServiceDate.Set(nil)
+	o.ServiceDate = &v
 }
 
-// UnsetServiceDate ensures that no value is present for ServiceDate, not even an explicit nil
-func (o *Dispute) UnsetServiceDate() {
-	o.ServiceDate.Unset()
-}
-
-// GetAccessActivityLog returns the AccessActivityLog field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAccessActivityLog returns the AccessActivityLog field value if set, zero value otherwise.
 func (o *Dispute) GetAccessActivityLog() string {
-	if o == nil || IsNil(o.AccessActivityLog.Get()) {
+	if o == nil || IsNil(o.AccessActivityLog) {
 		var ret string
 		return ret
 	}
-	return *o.AccessActivityLog.Get()
+	return *o.AccessActivityLog
 }
 
 // GetAccessActivityLogOk returns a tuple with the AccessActivityLog field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Dispute) GetAccessActivityLogOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AccessActivityLog) {
 		return nil, false
 	}
-	return o.AccessActivityLog.Get(), o.AccessActivityLog.IsSet()
+	return o.AccessActivityLog, true
 }
 
 // HasAccessActivityLog returns a boolean if a field has been set.
 func (o *Dispute) HasAccessActivityLog() bool {
-	if o != nil && o.AccessActivityLog.IsSet() {
+	if o != nil && !IsNil(o.AccessActivityLog) {
 		return true
 	}
 
 	return false
 }
 
-// SetAccessActivityLog gets a reference to the given NullableString and assigns it to the AccessActivityLog field.
+// SetAccessActivityLog gets a reference to the given string and assigns it to the AccessActivityLog field.
 func (o *Dispute) SetAccessActivityLog(v string) {
-	o.AccessActivityLog.Set(&v)
-}
-// SetAccessActivityLogNil sets the value for AccessActivityLog to be an explicit nil
-func (o *Dispute) SetAccessActivityLogNil() {
-	o.AccessActivityLog.Set(nil)
+	o.AccessActivityLog = &v
 }
 
-// UnsetAccessActivityLog ensures that no value is present for AccessActivityLog, not even an explicit nil
-func (o *Dispute) UnsetAccessActivityLog() {
-	o.AccessActivityLog.Unset()
-}
-
-// GetEvidence returns the Evidence field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetEvidence returns the Evidence field value if set, zero value otherwise.
 func (o *Dispute) GetEvidence() DisputeEvidenceDto {
-	if o == nil || IsNil(o.Evidence.Get()) {
+	if o == nil || IsNil(o.Evidence) {
 		var ret DisputeEvidenceDto
 		return ret
 	}
-	return *o.Evidence.Get()
+	return *o.Evidence
 }
 
 // GetEvidenceOk returns a tuple with the Evidence field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Dispute) GetEvidenceOk() (*DisputeEvidenceDto, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Evidence) {
 		return nil, false
 	}
-	return o.Evidence.Get(), o.Evidence.IsSet()
+	return o.Evidence, true
 }
 
 // HasEvidence returns a boolean if a field has been set.
 func (o *Dispute) HasEvidence() bool {
-	if o != nil && o.Evidence.IsSet() {
+	if o != nil && !IsNil(o.Evidence) {
 		return true
 	}
 
 	return false
 }
 
-// SetEvidence gets a reference to the given NullableDisputeEvidenceDto and assigns it to the Evidence field.
+// SetEvidence gets a reference to the given DisputeEvidenceDto and assigns it to the Evidence field.
 func (o *Dispute) SetEvidence(v DisputeEvidenceDto) {
-	o.Evidence.Set(&v)
-}
-// SetEvidenceNil sets the value for Evidence to be an explicit nil
-func (o *Dispute) SetEvidenceNil() {
-	o.Evidence.Set(nil)
-}
-
-// UnsetEvidence ensures that no value is present for Evidence, not even an explicit nil
-func (o *Dispute) UnsetEvidence() {
-	o.Evidence.Unset()
+	o.Evidence = &v
 }
 
 // GetPaymentId returns the PaymentId field value
@@ -795,37 +695,37 @@ func (o Dispute) ToMap() (map[string]interface{}, error) {
 	toSerialize["amount"] = o.Amount
 	toSerialize["currency"] = o.Currency
 	toSerialize["status"] = o.Status
-	if o.Reason.IsSet() {
-		toSerialize["reason"] = o.Reason.Get()
+	if !IsNil(o.Reason) {
+		toSerialize["reason"] = o.Reason
 	}
 	toSerialize["editable"] = o.Editable
-	if o.NeedsResponseBy.IsSet() {
-		toSerialize["needsResponseBy"] = o.NeedsResponseBy.Get()
+	if !IsNil(o.NeedsResponseBy) {
+		toSerialize["needsResponseBy"] = o.NeedsResponseBy
 	}
 	toSerialize["visaRdr"] = o.VisaRdr
-	if o.BillingAddress.IsSet() {
-		toSerialize["billingAddress"] = o.BillingAddress.Get()
+	if !IsNil(o.BillingAddress) {
+		toSerialize["billingAddress"] = o.BillingAddress
 	}
-	if o.CustomerName.IsSet() {
-		toSerialize["customerName"] = o.CustomerName.Get()
+	if !IsNil(o.CustomerName) {
+		toSerialize["customerName"] = o.CustomerName
 	}
-	if o.CustomerEmail.IsSet() {
-		toSerialize["customerEmail"] = o.CustomerEmail.Get()
+	if !IsNil(o.CustomerEmail) {
+		toSerialize["customerEmail"] = o.CustomerEmail
 	}
-	if o.Notes.IsSet() {
-		toSerialize["notes"] = o.Notes.Get()
+	if !IsNil(o.Notes) {
+		toSerialize["notes"] = o.Notes
 	}
-	if o.ProductDescription.IsSet() {
-		toSerialize["productDescription"] = o.ProductDescription.Get()
+	if !IsNil(o.ProductDescription) {
+		toSerialize["productDescription"] = o.ProductDescription
 	}
-	if o.ServiceDate.IsSet() {
-		toSerialize["serviceDate"] = o.ServiceDate.Get()
+	if !IsNil(o.ServiceDate) {
+		toSerialize["serviceDate"] = o.ServiceDate
 	}
-	if o.AccessActivityLog.IsSet() {
-		toSerialize["accessActivityLog"] = o.AccessActivityLog.Get()
+	if !IsNil(o.AccessActivityLog) {
+		toSerialize["accessActivityLog"] = o.AccessActivityLog
 	}
-	if o.Evidence.IsSet() {
-		toSerialize["evidence"] = o.Evidence.Get()
+	if !IsNil(o.Evidence) {
+		toSerialize["evidence"] = o.Evidence
 	}
 	toSerialize["paymentId"] = o.PaymentId
 	toSerialize["businessId"] = o.BusinessId

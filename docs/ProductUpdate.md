@@ -16,9 +16,12 @@ Name | Type | Description | Notes
 **HasGithubAccess** | Pointer to **bool** | Whether the purchase includes GitHub repository access. | [optional] [default to false]
 **GithubRepo** | Pointer to **string** | GitHub repository to grant access to (format: owner/repo). | [optional] 
 **GithubPermission** | Pointer to **string** | GitHub collaborator permission level. | [optional] 
+**HasDiscordAccess** | Pointer to **bool** | Whether the purchase includes Discord server role access. | [optional] [default to false]
+**DiscordGuildId** | Pointer to **string** | Discord Guild (Server) ID to grant access to. | [optional] 
+**DiscordRoleId** | Pointer to **string** | Discord Role ID to assign to the user. | [optional] 
 **IsTaxInclusive** | Pointer to **bool** | Whether tax is included in the base price. | [optional] [default to false]
-**ActivationLimit** | Pointer to **NullableInt32** | Maximum concurrent activated instances allowed per license key. | [optional] 
-**BrandId** | Pointer to **NullableString** | Brand id for the product, if not provided will default to primary brand. | [optional] 
+**ActivationLimit** | Pointer to **int32** | Maximum concurrent activated instances allowed per license key. | [optional] 
+**BrandId** | Pointer to **string** | Brand id for the product, if not provided will default to primary brand. | [optional] 
 **BillingPeriod** | Pointer to **int32** | Billing period in days (for Subscription products). | [optional] 
 **TrialPeriodDays** | Pointer to **int32** | Trial duration in days. | [optional] 
 **ExpirationDays** | Pointer to **int32** | Subscription expiration duration in days. | [optional] 
@@ -350,6 +353,81 @@ SetGithubPermission sets GithubPermission field to given value.
 
 HasGithubPermission returns a boolean if a field has been set.
 
+### GetHasDiscordAccess
+
+`func (o *ProductUpdate) GetHasDiscordAccess() bool`
+
+GetHasDiscordAccess returns the HasDiscordAccess field if non-nil, zero value otherwise.
+
+### GetHasDiscordAccessOk
+
+`func (o *ProductUpdate) GetHasDiscordAccessOk() (*bool, bool)`
+
+GetHasDiscordAccessOk returns a tuple with the HasDiscordAccess field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHasDiscordAccess
+
+`func (o *ProductUpdate) SetHasDiscordAccess(v bool)`
+
+SetHasDiscordAccess sets HasDiscordAccess field to given value.
+
+### HasHasDiscordAccess
+
+`func (o *ProductUpdate) HasHasDiscordAccess() bool`
+
+HasHasDiscordAccess returns a boolean if a field has been set.
+
+### GetDiscordGuildId
+
+`func (o *ProductUpdate) GetDiscordGuildId() string`
+
+GetDiscordGuildId returns the DiscordGuildId field if non-nil, zero value otherwise.
+
+### GetDiscordGuildIdOk
+
+`func (o *ProductUpdate) GetDiscordGuildIdOk() (*string, bool)`
+
+GetDiscordGuildIdOk returns a tuple with the DiscordGuildId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDiscordGuildId
+
+`func (o *ProductUpdate) SetDiscordGuildId(v string)`
+
+SetDiscordGuildId sets DiscordGuildId field to given value.
+
+### HasDiscordGuildId
+
+`func (o *ProductUpdate) HasDiscordGuildId() bool`
+
+HasDiscordGuildId returns a boolean if a field has been set.
+
+### GetDiscordRoleId
+
+`func (o *ProductUpdate) GetDiscordRoleId() string`
+
+GetDiscordRoleId returns the DiscordRoleId field if non-nil, zero value otherwise.
+
+### GetDiscordRoleIdOk
+
+`func (o *ProductUpdate) GetDiscordRoleIdOk() (*string, bool)`
+
+GetDiscordRoleIdOk returns a tuple with the DiscordRoleId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDiscordRoleId
+
+`func (o *ProductUpdate) SetDiscordRoleId(v string)`
+
+SetDiscordRoleId sets DiscordRoleId field to given value.
+
+### HasDiscordRoleId
+
+`func (o *ProductUpdate) HasDiscordRoleId() bool`
+
+HasDiscordRoleId returns a boolean if a field has been set.
+
 ### GetIsTaxInclusive
 
 `func (o *ProductUpdate) GetIsTaxInclusive() bool`
@@ -400,16 +478,6 @@ SetActivationLimit sets ActivationLimit field to given value.
 
 HasActivationLimit returns a boolean if a field has been set.
 
-### SetActivationLimitNil
-
-`func (o *ProductUpdate) SetActivationLimitNil(b bool)`
-
- SetActivationLimitNil sets the value for ActivationLimit to be an explicit nil
-
-### UnsetActivationLimit
-`func (o *ProductUpdate) UnsetActivationLimit()`
-
-UnsetActivationLimit ensures that no value is present for ActivationLimit, not even an explicit nil
 ### GetBrandId
 
 `func (o *ProductUpdate) GetBrandId() string`
@@ -435,16 +503,6 @@ SetBrandId sets BrandId field to given value.
 
 HasBrandId returns a boolean if a field has been set.
 
-### SetBrandIdNil
-
-`func (o *ProductUpdate) SetBrandIdNil(b bool)`
-
- SetBrandIdNil sets the value for BrandId to be an explicit nil
-
-### UnsetBrandId
-`func (o *ProductUpdate) UnsetBrandId()`
-
-UnsetBrandId ensures that no value is present for BrandId, not even an explicit nil
 ### GetBillingPeriod
 
 `func (o *ProductUpdate) GetBillingPeriod() int32`

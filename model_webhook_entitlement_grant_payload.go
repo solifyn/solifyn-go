@@ -27,23 +27,23 @@ type WebhookEntitlementGrantPayload struct {
 	// The customer ID.
 	CustomerId *string `json:"customerId,omitempty"`
 	// Associated payment transaction ID.
-	PaymentId NullableString `json:"paymentId,omitempty"`
+	PaymentId *string `json:"paymentId,omitempty"`
 	// The purchased product ID.
 	ProductId *string `json:"productId,omitempty"`
 	// The type of entitlement (e.g. GITHUB).
 	Type *string `json:"type,omitempty"`
 	// Target GitHub repository (owner/repo) if type is GITHUB.
-	GithubRepo NullableString `json:"githubRepo,omitempty"`
+	GithubRepo *string `json:"githubRepo,omitempty"`
 	// GitHub access permission level if type is GITHUB.
-	GithubPermission NullableString `json:"githubPermission,omitempty"`
+	GithubPermission *string `json:"githubPermission,omitempty"`
 	// The connected customer GitHub username.
-	GithubUsername NullableString `json:"githubUsername,omitempty"`
+	GithubUsername *string `json:"githubUsername,omitempty"`
 	// Delivery status of the collaborator invite (PENDING, DELIVERED, FAILED, REVOKED).
 	Status *string `json:"status,omitempty"`
 	// OAuth URL to redirect the customer to.
-	OauthUrl NullableString `json:"oauthUrl,omitempty"`
+	OauthUrl *string `json:"oauthUrl,omitempty"`
 	// Error message if invitation delivery failed.
-	ErrorDetails NullableString `json:"errorDetails,omitempty"`
+	ErrorDetails *string `json:"errorDetails,omitempty"`
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
 }
@@ -161,46 +161,36 @@ func (o *WebhookEntitlementGrantPayload) SetCustomerId(v string) {
 	o.CustomerId = &v
 }
 
-// GetPaymentId returns the PaymentId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetPaymentId returns the PaymentId field value if set, zero value otherwise.
 func (o *WebhookEntitlementGrantPayload) GetPaymentId() string {
-	if o == nil || IsNil(o.PaymentId.Get()) {
+	if o == nil || IsNil(o.PaymentId) {
 		var ret string
 		return ret
 	}
-	return *o.PaymentId.Get()
+	return *o.PaymentId
 }
 
 // GetPaymentIdOk returns a tuple with the PaymentId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookEntitlementGrantPayload) GetPaymentIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PaymentId) {
 		return nil, false
 	}
-	return o.PaymentId.Get(), o.PaymentId.IsSet()
+	return o.PaymentId, true
 }
 
 // HasPaymentId returns a boolean if a field has been set.
 func (o *WebhookEntitlementGrantPayload) HasPaymentId() bool {
-	if o != nil && o.PaymentId.IsSet() {
+	if o != nil && !IsNil(o.PaymentId) {
 		return true
 	}
 
 	return false
 }
 
-// SetPaymentId gets a reference to the given NullableString and assigns it to the PaymentId field.
+// SetPaymentId gets a reference to the given string and assigns it to the PaymentId field.
 func (o *WebhookEntitlementGrantPayload) SetPaymentId(v string) {
-	o.PaymentId.Set(&v)
-}
-// SetPaymentIdNil sets the value for PaymentId to be an explicit nil
-func (o *WebhookEntitlementGrantPayload) SetPaymentIdNil() {
-	o.PaymentId.Set(nil)
-}
-
-// UnsetPaymentId ensures that no value is present for PaymentId, not even an explicit nil
-func (o *WebhookEntitlementGrantPayload) UnsetPaymentId() {
-	o.PaymentId.Unset()
+	o.PaymentId = &v
 }
 
 // GetProductId returns the ProductId field value if set, zero value otherwise.
@@ -267,130 +257,100 @@ func (o *WebhookEntitlementGrantPayload) SetType(v string) {
 	o.Type = &v
 }
 
-// GetGithubRepo returns the GithubRepo field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetGithubRepo returns the GithubRepo field value if set, zero value otherwise.
 func (o *WebhookEntitlementGrantPayload) GetGithubRepo() string {
-	if o == nil || IsNil(o.GithubRepo.Get()) {
+	if o == nil || IsNil(o.GithubRepo) {
 		var ret string
 		return ret
 	}
-	return *o.GithubRepo.Get()
+	return *o.GithubRepo
 }
 
 // GetGithubRepoOk returns a tuple with the GithubRepo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookEntitlementGrantPayload) GetGithubRepoOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.GithubRepo) {
 		return nil, false
 	}
-	return o.GithubRepo.Get(), o.GithubRepo.IsSet()
+	return o.GithubRepo, true
 }
 
 // HasGithubRepo returns a boolean if a field has been set.
 func (o *WebhookEntitlementGrantPayload) HasGithubRepo() bool {
-	if o != nil && o.GithubRepo.IsSet() {
+	if o != nil && !IsNil(o.GithubRepo) {
 		return true
 	}
 
 	return false
 }
 
-// SetGithubRepo gets a reference to the given NullableString and assigns it to the GithubRepo field.
+// SetGithubRepo gets a reference to the given string and assigns it to the GithubRepo field.
 func (o *WebhookEntitlementGrantPayload) SetGithubRepo(v string) {
-	o.GithubRepo.Set(&v)
-}
-// SetGithubRepoNil sets the value for GithubRepo to be an explicit nil
-func (o *WebhookEntitlementGrantPayload) SetGithubRepoNil() {
-	o.GithubRepo.Set(nil)
+	o.GithubRepo = &v
 }
 
-// UnsetGithubRepo ensures that no value is present for GithubRepo, not even an explicit nil
-func (o *WebhookEntitlementGrantPayload) UnsetGithubRepo() {
-	o.GithubRepo.Unset()
-}
-
-// GetGithubPermission returns the GithubPermission field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetGithubPermission returns the GithubPermission field value if set, zero value otherwise.
 func (o *WebhookEntitlementGrantPayload) GetGithubPermission() string {
-	if o == nil || IsNil(o.GithubPermission.Get()) {
+	if o == nil || IsNil(o.GithubPermission) {
 		var ret string
 		return ret
 	}
-	return *o.GithubPermission.Get()
+	return *o.GithubPermission
 }
 
 // GetGithubPermissionOk returns a tuple with the GithubPermission field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookEntitlementGrantPayload) GetGithubPermissionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.GithubPermission) {
 		return nil, false
 	}
-	return o.GithubPermission.Get(), o.GithubPermission.IsSet()
+	return o.GithubPermission, true
 }
 
 // HasGithubPermission returns a boolean if a field has been set.
 func (o *WebhookEntitlementGrantPayload) HasGithubPermission() bool {
-	if o != nil && o.GithubPermission.IsSet() {
+	if o != nil && !IsNil(o.GithubPermission) {
 		return true
 	}
 
 	return false
 }
 
-// SetGithubPermission gets a reference to the given NullableString and assigns it to the GithubPermission field.
+// SetGithubPermission gets a reference to the given string and assigns it to the GithubPermission field.
 func (o *WebhookEntitlementGrantPayload) SetGithubPermission(v string) {
-	o.GithubPermission.Set(&v)
-}
-// SetGithubPermissionNil sets the value for GithubPermission to be an explicit nil
-func (o *WebhookEntitlementGrantPayload) SetGithubPermissionNil() {
-	o.GithubPermission.Set(nil)
+	o.GithubPermission = &v
 }
 
-// UnsetGithubPermission ensures that no value is present for GithubPermission, not even an explicit nil
-func (o *WebhookEntitlementGrantPayload) UnsetGithubPermission() {
-	o.GithubPermission.Unset()
-}
-
-// GetGithubUsername returns the GithubUsername field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetGithubUsername returns the GithubUsername field value if set, zero value otherwise.
 func (o *WebhookEntitlementGrantPayload) GetGithubUsername() string {
-	if o == nil || IsNil(o.GithubUsername.Get()) {
+	if o == nil || IsNil(o.GithubUsername) {
 		var ret string
 		return ret
 	}
-	return *o.GithubUsername.Get()
+	return *o.GithubUsername
 }
 
 // GetGithubUsernameOk returns a tuple with the GithubUsername field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookEntitlementGrantPayload) GetGithubUsernameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.GithubUsername) {
 		return nil, false
 	}
-	return o.GithubUsername.Get(), o.GithubUsername.IsSet()
+	return o.GithubUsername, true
 }
 
 // HasGithubUsername returns a boolean if a field has been set.
 func (o *WebhookEntitlementGrantPayload) HasGithubUsername() bool {
-	if o != nil && o.GithubUsername.IsSet() {
+	if o != nil && !IsNil(o.GithubUsername) {
 		return true
 	}
 
 	return false
 }
 
-// SetGithubUsername gets a reference to the given NullableString and assigns it to the GithubUsername field.
+// SetGithubUsername gets a reference to the given string and assigns it to the GithubUsername field.
 func (o *WebhookEntitlementGrantPayload) SetGithubUsername(v string) {
-	o.GithubUsername.Set(&v)
-}
-// SetGithubUsernameNil sets the value for GithubUsername to be an explicit nil
-func (o *WebhookEntitlementGrantPayload) SetGithubUsernameNil() {
-	o.GithubUsername.Set(nil)
-}
-
-// UnsetGithubUsername ensures that no value is present for GithubUsername, not even an explicit nil
-func (o *WebhookEntitlementGrantPayload) UnsetGithubUsername() {
-	o.GithubUsername.Unset()
+	o.GithubUsername = &v
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
@@ -425,88 +385,68 @@ func (o *WebhookEntitlementGrantPayload) SetStatus(v string) {
 	o.Status = &v
 }
 
-// GetOauthUrl returns the OauthUrl field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetOauthUrl returns the OauthUrl field value if set, zero value otherwise.
 func (o *WebhookEntitlementGrantPayload) GetOauthUrl() string {
-	if o == nil || IsNil(o.OauthUrl.Get()) {
+	if o == nil || IsNil(o.OauthUrl) {
 		var ret string
 		return ret
 	}
-	return *o.OauthUrl.Get()
+	return *o.OauthUrl
 }
 
 // GetOauthUrlOk returns a tuple with the OauthUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookEntitlementGrantPayload) GetOauthUrlOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OauthUrl) {
 		return nil, false
 	}
-	return o.OauthUrl.Get(), o.OauthUrl.IsSet()
+	return o.OauthUrl, true
 }
 
 // HasOauthUrl returns a boolean if a field has been set.
 func (o *WebhookEntitlementGrantPayload) HasOauthUrl() bool {
-	if o != nil && o.OauthUrl.IsSet() {
+	if o != nil && !IsNil(o.OauthUrl) {
 		return true
 	}
 
 	return false
 }
 
-// SetOauthUrl gets a reference to the given NullableString and assigns it to the OauthUrl field.
+// SetOauthUrl gets a reference to the given string and assigns it to the OauthUrl field.
 func (o *WebhookEntitlementGrantPayload) SetOauthUrl(v string) {
-	o.OauthUrl.Set(&v)
-}
-// SetOauthUrlNil sets the value for OauthUrl to be an explicit nil
-func (o *WebhookEntitlementGrantPayload) SetOauthUrlNil() {
-	o.OauthUrl.Set(nil)
+	o.OauthUrl = &v
 }
 
-// UnsetOauthUrl ensures that no value is present for OauthUrl, not even an explicit nil
-func (o *WebhookEntitlementGrantPayload) UnsetOauthUrl() {
-	o.OauthUrl.Unset()
-}
-
-// GetErrorDetails returns the ErrorDetails field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetErrorDetails returns the ErrorDetails field value if set, zero value otherwise.
 func (o *WebhookEntitlementGrantPayload) GetErrorDetails() string {
-	if o == nil || IsNil(o.ErrorDetails.Get()) {
+	if o == nil || IsNil(o.ErrorDetails) {
 		var ret string
 		return ret
 	}
-	return *o.ErrorDetails.Get()
+	return *o.ErrorDetails
 }
 
 // GetErrorDetailsOk returns a tuple with the ErrorDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookEntitlementGrantPayload) GetErrorDetailsOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ErrorDetails) {
 		return nil, false
 	}
-	return o.ErrorDetails.Get(), o.ErrorDetails.IsSet()
+	return o.ErrorDetails, true
 }
 
 // HasErrorDetails returns a boolean if a field has been set.
 func (o *WebhookEntitlementGrantPayload) HasErrorDetails() bool {
-	if o != nil && o.ErrorDetails.IsSet() {
+	if o != nil && !IsNil(o.ErrorDetails) {
 		return true
 	}
 
 	return false
 }
 
-// SetErrorDetails gets a reference to the given NullableString and assigns it to the ErrorDetails field.
+// SetErrorDetails gets a reference to the given string and assigns it to the ErrorDetails field.
 func (o *WebhookEntitlementGrantPayload) SetErrorDetails(v string) {
-	o.ErrorDetails.Set(&v)
-}
-// SetErrorDetailsNil sets the value for ErrorDetails to be an explicit nil
-func (o *WebhookEntitlementGrantPayload) SetErrorDetailsNil() {
-	o.ErrorDetails.Set(nil)
-}
-
-// UnsetErrorDetails ensures that no value is present for ErrorDetails, not even an explicit nil
-func (o *WebhookEntitlementGrantPayload) UnsetErrorDetails() {
-	o.ErrorDetails.Unset()
+	o.ErrorDetails = &v
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
@@ -592,8 +532,8 @@ func (o WebhookEntitlementGrantPayload) ToMap() (map[string]interface{}, error) 
 	if !IsNil(o.CustomerId) {
 		toSerialize["customerId"] = o.CustomerId
 	}
-	if o.PaymentId.IsSet() {
-		toSerialize["paymentId"] = o.PaymentId.Get()
+	if !IsNil(o.PaymentId) {
+		toSerialize["paymentId"] = o.PaymentId
 	}
 	if !IsNil(o.ProductId) {
 		toSerialize["productId"] = o.ProductId
@@ -601,23 +541,23 @@ func (o WebhookEntitlementGrantPayload) ToMap() (map[string]interface{}, error) 
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if o.GithubRepo.IsSet() {
-		toSerialize["githubRepo"] = o.GithubRepo.Get()
+	if !IsNil(o.GithubRepo) {
+		toSerialize["githubRepo"] = o.GithubRepo
 	}
-	if o.GithubPermission.IsSet() {
-		toSerialize["githubPermission"] = o.GithubPermission.Get()
+	if !IsNil(o.GithubPermission) {
+		toSerialize["githubPermission"] = o.GithubPermission
 	}
-	if o.GithubUsername.IsSet() {
-		toSerialize["githubUsername"] = o.GithubUsername.Get()
+	if !IsNil(o.GithubUsername) {
+		toSerialize["githubUsername"] = o.GithubUsername
 	}
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
-	if o.OauthUrl.IsSet() {
-		toSerialize["oauthUrl"] = o.OauthUrl.Get()
+	if !IsNil(o.OauthUrl) {
+		toSerialize["oauthUrl"] = o.OauthUrl
 	}
-	if o.ErrorDetails.IsSet() {
-		toSerialize["errorDetails"] = o.ErrorDetails.Get()
+	if !IsNil(o.ErrorDetails) {
+		toSerialize["errorDetails"] = o.ErrorDetails
 	}
 	if !IsNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt

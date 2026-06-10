@@ -13,6 +13,10 @@ Name | Type | Description | Notes
 **GithubRepo** | Pointer to **string** | Target GitHub repository (owner/repo) if type is GITHUB. | [optional] 
 **GithubPermission** | Pointer to **string** | GitHub access permission level if type is GITHUB. | [optional] 
 **GithubUsername** | Pointer to **string** | The connected customer GitHub username. | [optional] 
+**DiscordGuildId** | Pointer to **string** | Target Discord Guild ID if type is DISCORD. | [optional] 
+**DiscordRoleId** | Pointer to **string** | Target Discord Role ID if type is DISCORD. | [optional] 
+**DiscordUsername** | Pointer to **string** | The connected customer Discord username. | [optional] 
+**DiscordUserId** | Pointer to **string** | The connected customer Discord user ID. | [optional] 
 **Status** | **string** | Delivery status of the collaborator invite (PENDING, DELIVERED, FAILED, REVOKED). | 
 **OauthUrl** | Pointer to **string** | OAuth URL to redirect the customer to. | [optional] 
 **ErrorDetails** | Pointer to **string** | Error message if invitation delivery failed. | [optional] 
@@ -238,6 +242,106 @@ SetGithubUsername sets GithubUsername field to given value.
 `func (o *EntitlementGrantResponseDto) HasGithubUsername() bool`
 
 HasGithubUsername returns a boolean if a field has been set.
+
+### GetDiscordGuildId
+
+`func (o *EntitlementGrantResponseDto) GetDiscordGuildId() string`
+
+GetDiscordGuildId returns the DiscordGuildId field if non-nil, zero value otherwise.
+
+### GetDiscordGuildIdOk
+
+`func (o *EntitlementGrantResponseDto) GetDiscordGuildIdOk() (*string, bool)`
+
+GetDiscordGuildIdOk returns a tuple with the DiscordGuildId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDiscordGuildId
+
+`func (o *EntitlementGrantResponseDto) SetDiscordGuildId(v string)`
+
+SetDiscordGuildId sets DiscordGuildId field to given value.
+
+### HasDiscordGuildId
+
+`func (o *EntitlementGrantResponseDto) HasDiscordGuildId() bool`
+
+HasDiscordGuildId returns a boolean if a field has been set.
+
+### GetDiscordRoleId
+
+`func (o *EntitlementGrantResponseDto) GetDiscordRoleId() string`
+
+GetDiscordRoleId returns the DiscordRoleId field if non-nil, zero value otherwise.
+
+### GetDiscordRoleIdOk
+
+`func (o *EntitlementGrantResponseDto) GetDiscordRoleIdOk() (*string, bool)`
+
+GetDiscordRoleIdOk returns a tuple with the DiscordRoleId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDiscordRoleId
+
+`func (o *EntitlementGrantResponseDto) SetDiscordRoleId(v string)`
+
+SetDiscordRoleId sets DiscordRoleId field to given value.
+
+### HasDiscordRoleId
+
+`func (o *EntitlementGrantResponseDto) HasDiscordRoleId() bool`
+
+HasDiscordRoleId returns a boolean if a field has been set.
+
+### GetDiscordUsername
+
+`func (o *EntitlementGrantResponseDto) GetDiscordUsername() string`
+
+GetDiscordUsername returns the DiscordUsername field if non-nil, zero value otherwise.
+
+### GetDiscordUsernameOk
+
+`func (o *EntitlementGrantResponseDto) GetDiscordUsernameOk() (*string, bool)`
+
+GetDiscordUsernameOk returns a tuple with the DiscordUsername field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDiscordUsername
+
+`func (o *EntitlementGrantResponseDto) SetDiscordUsername(v string)`
+
+SetDiscordUsername sets DiscordUsername field to given value.
+
+### HasDiscordUsername
+
+`func (o *EntitlementGrantResponseDto) HasDiscordUsername() bool`
+
+HasDiscordUsername returns a boolean if a field has been set.
+
+### GetDiscordUserId
+
+`func (o *EntitlementGrantResponseDto) GetDiscordUserId() string`
+
+GetDiscordUserId returns the DiscordUserId field if non-nil, zero value otherwise.
+
+### GetDiscordUserIdOk
+
+`func (o *EntitlementGrantResponseDto) GetDiscordUserIdOk() (*string, bool)`
+
+GetDiscordUserIdOk returns a tuple with the DiscordUserId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDiscordUserId
+
+`func (o *EntitlementGrantResponseDto) SetDiscordUserId(v string)`
+
+SetDiscordUserId sets DiscordUserId field to given value.
+
+### HasDiscordUserId
+
+`func (o *EntitlementGrantResponseDto) HasDiscordUserId() bool`
+
+HasDiscordUserId returns a boolean if a field has been set.
 
 ### GetStatus
 

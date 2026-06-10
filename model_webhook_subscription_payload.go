@@ -25,17 +25,17 @@ type WebhookSubscriptionPayload struct {
 	// Current status of the subscription.
 	Status *string `json:"status,omitempty"`
 	CancelAtPeriodEnd *bool `json:"cancelAtPeriodEnd,omitempty"`
-	RenewalPeriodStart NullableTime `json:"renewalPeriodStart,omitempty"`
-	RenewalPeriodEnd NullableTime `json:"renewalPeriodEnd,omitempty"`
+	RenewalPeriodStart *time.Time `json:"renewalPeriodStart,omitempty"`
+	RenewalPeriodEnd *time.Time `json:"renewalPeriodEnd,omitempty"`
 	Currency *string `json:"currency,omitempty"`
 	Amount *float32 `json:"amount,omitempty"`
-	CustomerId NullableString `json:"customerId,omitempty"`
-	CustomerEmail NullableString `json:"customerEmail,omitempty"`
-	CustomerName NullableString `json:"customerName,omitempty"`
-	ProductId NullableString `json:"productId,omitempty"`
-	ProductTitle NullableString `json:"productTitle,omitempty"`
-	CreatedAt NullableTime `json:"createdAt,omitempty"`
-	UpdatedAt NullableTime `json:"updatedAt,omitempty"`
+	CustomerId *string `json:"customerId,omitempty"`
+	CustomerEmail *string `json:"customerEmail,omitempty"`
+	CustomerName *string `json:"customerName,omitempty"`
+	ProductId *string `json:"productId,omitempty"`
+	ProductTitle *string `json:"productTitle,omitempty"`
+	CreatedAt *time.Time `json:"createdAt,omitempty"`
+	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
 }
 
 // NewWebhookSubscriptionPayload instantiates a new WebhookSubscriptionPayload object
@@ -151,88 +151,68 @@ func (o *WebhookSubscriptionPayload) SetCancelAtPeriodEnd(v bool) {
 	o.CancelAtPeriodEnd = &v
 }
 
-// GetRenewalPeriodStart returns the RenewalPeriodStart field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetRenewalPeriodStart returns the RenewalPeriodStart field value if set, zero value otherwise.
 func (o *WebhookSubscriptionPayload) GetRenewalPeriodStart() time.Time {
-	if o == nil || IsNil(o.RenewalPeriodStart.Get()) {
+	if o == nil || IsNil(o.RenewalPeriodStart) {
 		var ret time.Time
 		return ret
 	}
-	return *o.RenewalPeriodStart.Get()
+	return *o.RenewalPeriodStart
 }
 
 // GetRenewalPeriodStartOk returns a tuple with the RenewalPeriodStart field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookSubscriptionPayload) GetRenewalPeriodStartOk() (*time.Time, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.RenewalPeriodStart) {
 		return nil, false
 	}
-	return o.RenewalPeriodStart.Get(), o.RenewalPeriodStart.IsSet()
+	return o.RenewalPeriodStart, true
 }
 
 // HasRenewalPeriodStart returns a boolean if a field has been set.
 func (o *WebhookSubscriptionPayload) HasRenewalPeriodStart() bool {
-	if o != nil && o.RenewalPeriodStart.IsSet() {
+	if o != nil && !IsNil(o.RenewalPeriodStart) {
 		return true
 	}
 
 	return false
 }
 
-// SetRenewalPeriodStart gets a reference to the given NullableTime and assigns it to the RenewalPeriodStart field.
+// SetRenewalPeriodStart gets a reference to the given time.Time and assigns it to the RenewalPeriodStart field.
 func (o *WebhookSubscriptionPayload) SetRenewalPeriodStart(v time.Time) {
-	o.RenewalPeriodStart.Set(&v)
-}
-// SetRenewalPeriodStartNil sets the value for RenewalPeriodStart to be an explicit nil
-func (o *WebhookSubscriptionPayload) SetRenewalPeriodStartNil() {
-	o.RenewalPeriodStart.Set(nil)
+	o.RenewalPeriodStart = &v
 }
 
-// UnsetRenewalPeriodStart ensures that no value is present for RenewalPeriodStart, not even an explicit nil
-func (o *WebhookSubscriptionPayload) UnsetRenewalPeriodStart() {
-	o.RenewalPeriodStart.Unset()
-}
-
-// GetRenewalPeriodEnd returns the RenewalPeriodEnd field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetRenewalPeriodEnd returns the RenewalPeriodEnd field value if set, zero value otherwise.
 func (o *WebhookSubscriptionPayload) GetRenewalPeriodEnd() time.Time {
-	if o == nil || IsNil(o.RenewalPeriodEnd.Get()) {
+	if o == nil || IsNil(o.RenewalPeriodEnd) {
 		var ret time.Time
 		return ret
 	}
-	return *o.RenewalPeriodEnd.Get()
+	return *o.RenewalPeriodEnd
 }
 
 // GetRenewalPeriodEndOk returns a tuple with the RenewalPeriodEnd field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookSubscriptionPayload) GetRenewalPeriodEndOk() (*time.Time, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.RenewalPeriodEnd) {
 		return nil, false
 	}
-	return o.RenewalPeriodEnd.Get(), o.RenewalPeriodEnd.IsSet()
+	return o.RenewalPeriodEnd, true
 }
 
 // HasRenewalPeriodEnd returns a boolean if a field has been set.
 func (o *WebhookSubscriptionPayload) HasRenewalPeriodEnd() bool {
-	if o != nil && o.RenewalPeriodEnd.IsSet() {
+	if o != nil && !IsNil(o.RenewalPeriodEnd) {
 		return true
 	}
 
 	return false
 }
 
-// SetRenewalPeriodEnd gets a reference to the given NullableTime and assigns it to the RenewalPeriodEnd field.
+// SetRenewalPeriodEnd gets a reference to the given time.Time and assigns it to the RenewalPeriodEnd field.
 func (o *WebhookSubscriptionPayload) SetRenewalPeriodEnd(v time.Time) {
-	o.RenewalPeriodEnd.Set(&v)
-}
-// SetRenewalPeriodEndNil sets the value for RenewalPeriodEnd to be an explicit nil
-func (o *WebhookSubscriptionPayload) SetRenewalPeriodEndNil() {
-	o.RenewalPeriodEnd.Set(nil)
-}
-
-// UnsetRenewalPeriodEnd ensures that no value is present for RenewalPeriodEnd, not even an explicit nil
-func (o *WebhookSubscriptionPayload) UnsetRenewalPeriodEnd() {
-	o.RenewalPeriodEnd.Unset()
+	o.RenewalPeriodEnd = &v
 }
 
 // GetCurrency returns the Currency field value if set, zero value otherwise.
@@ -299,298 +279,228 @@ func (o *WebhookSubscriptionPayload) SetAmount(v float32) {
 	o.Amount = &v
 }
 
-// GetCustomerId returns the CustomerId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCustomerId returns the CustomerId field value if set, zero value otherwise.
 func (o *WebhookSubscriptionPayload) GetCustomerId() string {
-	if o == nil || IsNil(o.CustomerId.Get()) {
+	if o == nil || IsNil(o.CustomerId) {
 		var ret string
 		return ret
 	}
-	return *o.CustomerId.Get()
+	return *o.CustomerId
 }
 
 // GetCustomerIdOk returns a tuple with the CustomerId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookSubscriptionPayload) GetCustomerIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CustomerId) {
 		return nil, false
 	}
-	return o.CustomerId.Get(), o.CustomerId.IsSet()
+	return o.CustomerId, true
 }
 
 // HasCustomerId returns a boolean if a field has been set.
 func (o *WebhookSubscriptionPayload) HasCustomerId() bool {
-	if o != nil && o.CustomerId.IsSet() {
+	if o != nil && !IsNil(o.CustomerId) {
 		return true
 	}
 
 	return false
 }
 
-// SetCustomerId gets a reference to the given NullableString and assigns it to the CustomerId field.
+// SetCustomerId gets a reference to the given string and assigns it to the CustomerId field.
 func (o *WebhookSubscriptionPayload) SetCustomerId(v string) {
-	o.CustomerId.Set(&v)
-}
-// SetCustomerIdNil sets the value for CustomerId to be an explicit nil
-func (o *WebhookSubscriptionPayload) SetCustomerIdNil() {
-	o.CustomerId.Set(nil)
+	o.CustomerId = &v
 }
 
-// UnsetCustomerId ensures that no value is present for CustomerId, not even an explicit nil
-func (o *WebhookSubscriptionPayload) UnsetCustomerId() {
-	o.CustomerId.Unset()
-}
-
-// GetCustomerEmail returns the CustomerEmail field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCustomerEmail returns the CustomerEmail field value if set, zero value otherwise.
 func (o *WebhookSubscriptionPayload) GetCustomerEmail() string {
-	if o == nil || IsNil(o.CustomerEmail.Get()) {
+	if o == nil || IsNil(o.CustomerEmail) {
 		var ret string
 		return ret
 	}
-	return *o.CustomerEmail.Get()
+	return *o.CustomerEmail
 }
 
 // GetCustomerEmailOk returns a tuple with the CustomerEmail field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookSubscriptionPayload) GetCustomerEmailOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CustomerEmail) {
 		return nil, false
 	}
-	return o.CustomerEmail.Get(), o.CustomerEmail.IsSet()
+	return o.CustomerEmail, true
 }
 
 // HasCustomerEmail returns a boolean if a field has been set.
 func (o *WebhookSubscriptionPayload) HasCustomerEmail() bool {
-	if o != nil && o.CustomerEmail.IsSet() {
+	if o != nil && !IsNil(o.CustomerEmail) {
 		return true
 	}
 
 	return false
 }
 
-// SetCustomerEmail gets a reference to the given NullableString and assigns it to the CustomerEmail field.
+// SetCustomerEmail gets a reference to the given string and assigns it to the CustomerEmail field.
 func (o *WebhookSubscriptionPayload) SetCustomerEmail(v string) {
-	o.CustomerEmail.Set(&v)
-}
-// SetCustomerEmailNil sets the value for CustomerEmail to be an explicit nil
-func (o *WebhookSubscriptionPayload) SetCustomerEmailNil() {
-	o.CustomerEmail.Set(nil)
+	o.CustomerEmail = &v
 }
 
-// UnsetCustomerEmail ensures that no value is present for CustomerEmail, not even an explicit nil
-func (o *WebhookSubscriptionPayload) UnsetCustomerEmail() {
-	o.CustomerEmail.Unset()
-}
-
-// GetCustomerName returns the CustomerName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCustomerName returns the CustomerName field value if set, zero value otherwise.
 func (o *WebhookSubscriptionPayload) GetCustomerName() string {
-	if o == nil || IsNil(o.CustomerName.Get()) {
+	if o == nil || IsNil(o.CustomerName) {
 		var ret string
 		return ret
 	}
-	return *o.CustomerName.Get()
+	return *o.CustomerName
 }
 
 // GetCustomerNameOk returns a tuple with the CustomerName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookSubscriptionPayload) GetCustomerNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CustomerName) {
 		return nil, false
 	}
-	return o.CustomerName.Get(), o.CustomerName.IsSet()
+	return o.CustomerName, true
 }
 
 // HasCustomerName returns a boolean if a field has been set.
 func (o *WebhookSubscriptionPayload) HasCustomerName() bool {
-	if o != nil && o.CustomerName.IsSet() {
+	if o != nil && !IsNil(o.CustomerName) {
 		return true
 	}
 
 	return false
 }
 
-// SetCustomerName gets a reference to the given NullableString and assigns it to the CustomerName field.
+// SetCustomerName gets a reference to the given string and assigns it to the CustomerName field.
 func (o *WebhookSubscriptionPayload) SetCustomerName(v string) {
-	o.CustomerName.Set(&v)
-}
-// SetCustomerNameNil sets the value for CustomerName to be an explicit nil
-func (o *WebhookSubscriptionPayload) SetCustomerNameNil() {
-	o.CustomerName.Set(nil)
+	o.CustomerName = &v
 }
 
-// UnsetCustomerName ensures that no value is present for CustomerName, not even an explicit nil
-func (o *WebhookSubscriptionPayload) UnsetCustomerName() {
-	o.CustomerName.Unset()
-}
-
-// GetProductId returns the ProductId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetProductId returns the ProductId field value if set, zero value otherwise.
 func (o *WebhookSubscriptionPayload) GetProductId() string {
-	if o == nil || IsNil(o.ProductId.Get()) {
+	if o == nil || IsNil(o.ProductId) {
 		var ret string
 		return ret
 	}
-	return *o.ProductId.Get()
+	return *o.ProductId
 }
 
 // GetProductIdOk returns a tuple with the ProductId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookSubscriptionPayload) GetProductIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ProductId) {
 		return nil, false
 	}
-	return o.ProductId.Get(), o.ProductId.IsSet()
+	return o.ProductId, true
 }
 
 // HasProductId returns a boolean if a field has been set.
 func (o *WebhookSubscriptionPayload) HasProductId() bool {
-	if o != nil && o.ProductId.IsSet() {
+	if o != nil && !IsNil(o.ProductId) {
 		return true
 	}
 
 	return false
 }
 
-// SetProductId gets a reference to the given NullableString and assigns it to the ProductId field.
+// SetProductId gets a reference to the given string and assigns it to the ProductId field.
 func (o *WebhookSubscriptionPayload) SetProductId(v string) {
-	o.ProductId.Set(&v)
-}
-// SetProductIdNil sets the value for ProductId to be an explicit nil
-func (o *WebhookSubscriptionPayload) SetProductIdNil() {
-	o.ProductId.Set(nil)
+	o.ProductId = &v
 }
 
-// UnsetProductId ensures that no value is present for ProductId, not even an explicit nil
-func (o *WebhookSubscriptionPayload) UnsetProductId() {
-	o.ProductId.Unset()
-}
-
-// GetProductTitle returns the ProductTitle field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetProductTitle returns the ProductTitle field value if set, zero value otherwise.
 func (o *WebhookSubscriptionPayload) GetProductTitle() string {
-	if o == nil || IsNil(o.ProductTitle.Get()) {
+	if o == nil || IsNil(o.ProductTitle) {
 		var ret string
 		return ret
 	}
-	return *o.ProductTitle.Get()
+	return *o.ProductTitle
 }
 
 // GetProductTitleOk returns a tuple with the ProductTitle field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookSubscriptionPayload) GetProductTitleOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ProductTitle) {
 		return nil, false
 	}
-	return o.ProductTitle.Get(), o.ProductTitle.IsSet()
+	return o.ProductTitle, true
 }
 
 // HasProductTitle returns a boolean if a field has been set.
 func (o *WebhookSubscriptionPayload) HasProductTitle() bool {
-	if o != nil && o.ProductTitle.IsSet() {
+	if o != nil && !IsNil(o.ProductTitle) {
 		return true
 	}
 
 	return false
 }
 
-// SetProductTitle gets a reference to the given NullableString and assigns it to the ProductTitle field.
+// SetProductTitle gets a reference to the given string and assigns it to the ProductTitle field.
 func (o *WebhookSubscriptionPayload) SetProductTitle(v string) {
-	o.ProductTitle.Set(&v)
-}
-// SetProductTitleNil sets the value for ProductTitle to be an explicit nil
-func (o *WebhookSubscriptionPayload) SetProductTitleNil() {
-	o.ProductTitle.Set(nil)
+	o.ProductTitle = &v
 }
 
-// UnsetProductTitle ensures that no value is present for ProductTitle, not even an explicit nil
-func (o *WebhookSubscriptionPayload) UnsetProductTitle() {
-	o.ProductTitle.Unset()
-}
-
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *WebhookSubscriptionPayload) GetCreatedAt() time.Time {
-	if o == nil || IsNil(o.CreatedAt.Get()) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
 	}
-	return *o.CreatedAt.Get()
+	return *o.CreatedAt
 }
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookSubscriptionPayload) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
-	return o.CreatedAt.Get(), o.CreatedAt.IsSet()
+	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *WebhookSubscriptionPayload) HasCreatedAt() bool {
-	if o != nil && o.CreatedAt.IsSet() {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
 	return false
 }
 
-// SetCreatedAt gets a reference to the given NullableTime and assigns it to the CreatedAt field.
+// SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
 func (o *WebhookSubscriptionPayload) SetCreatedAt(v time.Time) {
-	o.CreatedAt.Set(&v)
-}
-// SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
-func (o *WebhookSubscriptionPayload) SetCreatedAtNil() {
-	o.CreatedAt.Set(nil)
+	o.CreatedAt = &v
 }
 
-// UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
-func (o *WebhookSubscriptionPayload) UnsetCreatedAt() {
-	o.CreatedAt.Unset()
-}
-
-// GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *WebhookSubscriptionPayload) GetUpdatedAt() time.Time {
-	if o == nil || IsNil(o.UpdatedAt.Get()) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
-	return *o.UpdatedAt.Get()
+	return *o.UpdatedAt
 }
 
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookSubscriptionPayload) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
-	return o.UpdatedAt.Get(), o.UpdatedAt.IsSet()
+	return o.UpdatedAt, true
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *WebhookSubscriptionPayload) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt.IsSet() {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
 	return false
 }
 
-// SetUpdatedAt gets a reference to the given NullableTime and assigns it to the UpdatedAt field.
+// SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
 func (o *WebhookSubscriptionPayload) SetUpdatedAt(v time.Time) {
-	o.UpdatedAt.Set(&v)
-}
-// SetUpdatedAtNil sets the value for UpdatedAt to be an explicit nil
-func (o *WebhookSubscriptionPayload) SetUpdatedAtNil() {
-	o.UpdatedAt.Set(nil)
-}
-
-// UnsetUpdatedAt ensures that no value is present for UpdatedAt, not even an explicit nil
-func (o *WebhookSubscriptionPayload) UnsetUpdatedAt() {
-	o.UpdatedAt.Unset()
+	o.UpdatedAt = &v
 }
 
 func (o WebhookSubscriptionPayload) MarshalJSON() ([]byte, error) {
@@ -612,11 +522,11 @@ func (o WebhookSubscriptionPayload) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CancelAtPeriodEnd) {
 		toSerialize["cancelAtPeriodEnd"] = o.CancelAtPeriodEnd
 	}
-	if o.RenewalPeriodStart.IsSet() {
-		toSerialize["renewalPeriodStart"] = o.RenewalPeriodStart.Get()
+	if !IsNil(o.RenewalPeriodStart) {
+		toSerialize["renewalPeriodStart"] = o.RenewalPeriodStart
 	}
-	if o.RenewalPeriodEnd.IsSet() {
-		toSerialize["renewalPeriodEnd"] = o.RenewalPeriodEnd.Get()
+	if !IsNil(o.RenewalPeriodEnd) {
+		toSerialize["renewalPeriodEnd"] = o.RenewalPeriodEnd
 	}
 	if !IsNil(o.Currency) {
 		toSerialize["currency"] = o.Currency
@@ -624,26 +534,26 @@ func (o WebhookSubscriptionPayload) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Amount) {
 		toSerialize["amount"] = o.Amount
 	}
-	if o.CustomerId.IsSet() {
-		toSerialize["customerId"] = o.CustomerId.Get()
+	if !IsNil(o.CustomerId) {
+		toSerialize["customerId"] = o.CustomerId
 	}
-	if o.CustomerEmail.IsSet() {
-		toSerialize["customerEmail"] = o.CustomerEmail.Get()
+	if !IsNil(o.CustomerEmail) {
+		toSerialize["customerEmail"] = o.CustomerEmail
 	}
-	if o.CustomerName.IsSet() {
-		toSerialize["customerName"] = o.CustomerName.Get()
+	if !IsNil(o.CustomerName) {
+		toSerialize["customerName"] = o.CustomerName
 	}
-	if o.ProductId.IsSet() {
-		toSerialize["productId"] = o.ProductId.Get()
+	if !IsNil(o.ProductId) {
+		toSerialize["productId"] = o.ProductId
 	}
-	if o.ProductTitle.IsSet() {
-		toSerialize["productTitle"] = o.ProductTitle.Get()
+	if !IsNil(o.ProductTitle) {
+		toSerialize["productTitle"] = o.ProductTitle
 	}
-	if o.CreatedAt.IsSet() {
-		toSerialize["createdAt"] = o.CreatedAt.Get()
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
 	}
-	if o.UpdatedAt.IsSet() {
-		toSerialize["updatedAt"] = o.UpdatedAt.Get()
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updatedAt"] = o.UpdatedAt
 	}
 	return toSerialize, nil
 }

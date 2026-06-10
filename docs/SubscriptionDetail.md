@@ -7,13 +7,13 @@ Name | Type | Description | Notes
 **Subscription** | [**Subscription**](Subscription.md) | The main subscription details | 
 **Payments** | [**[]Order**](Order.md) | The subscription payments / invoice billing history | 
 **PurchasedAddons** | [**[]ResolvedAddon**](ResolvedAddon.md) | List of purchased addons associated with this subscription | 
-**Product** | [**NullableSubscriptionDetailProduct**](SubscriptionDetailProduct.md) | The core product information associated with this subscription | 
+**Product** | [**SubscriptionDetailProduct**](SubscriptionDetailProduct.md) | The core product information associated with this subscription | 
 
 ## Methods
 
 ### NewSubscriptionDetail
 
-`func NewSubscriptionDetail(subscription Subscription, payments []Order, purchasedAddons []ResolvedAddon, product NullableSubscriptionDetailProduct, ) *SubscriptionDetail`
+`func NewSubscriptionDetail(subscription Subscription, payments []Order, purchasedAddons []ResolvedAddon, product SubscriptionDetailProduct, ) *SubscriptionDetail`
 
 NewSubscriptionDetail instantiates a new SubscriptionDetail object
 This constructor will assign default values to properties that have it defined,
@@ -108,16 +108,6 @@ and a boolean to check if the value has been set.
 SetProduct sets Product field to given value.
 
 
-### SetProductNil
-
-`func (o *SubscriptionDetail) SetProductNil(b bool)`
-
- SetProductNil sets the value for Product to be an explicit nil
-
-### UnsetProduct
-`func (o *SubscriptionDetail) UnsetProduct()`
-
-UnsetProduct ensures that no value is present for Product, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
