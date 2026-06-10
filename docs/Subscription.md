@@ -230,6 +230,16 @@ and a boolean to check if the value has been set.
 SetRenewalPeriodStart sets RenewalPeriodStart field to given value.
 
 
+### SetRenewalPeriodStartNil
+
+`func (o *Subscription) SetRenewalPeriodStartNil(b bool)`
+
+ SetRenewalPeriodStartNil sets the value for RenewalPeriodStart to be an explicit nil
+
+### UnsetRenewalPeriodStart
+`func (o *Subscription) UnsetRenewalPeriodStart()`
+
+UnsetRenewalPeriodStart ensures that no value is present for RenewalPeriodStart, not even an explicit nil
 ### GetRenewalPeriodEnd
 
 `func (o *Subscription) GetRenewalPeriodEnd() map[string]interface{}`
@@ -250,6 +260,16 @@ and a boolean to check if the value has been set.
 SetRenewalPeriodEnd sets RenewalPeriodEnd field to given value.
 
 
+### SetRenewalPeriodEndNil
+
+`func (o *Subscription) SetRenewalPeriodEndNil(b bool)`
+
+ SetRenewalPeriodEndNil sets the value for RenewalPeriodEnd to be an explicit nil
+
+### UnsetRenewalPeriodEnd
+`func (o *Subscription) UnsetRenewalPeriodEnd()`
+
+UnsetRenewalPeriodEnd ensures that no value is present for RenewalPeriodEnd, not even an explicit nil
 ### GetCancelAtPeriodEnd
 
 `func (o *Subscription) GetCancelAtPeriodEnd() bool`
@@ -290,6 +310,16 @@ and a boolean to check if the value has been set.
 SetCancelOption sets CancelOption field to given value.
 
 
+### SetCancelOptionNil
+
+`func (o *Subscription) SetCancelOptionNil(b bool)`
+
+ SetCancelOptionNil sets the value for CancelOption to be an explicit nil
+
+### UnsetCancelOption
+`func (o *Subscription) UnsetCancelOption()`
+
+UnsetCancelOption ensures that no value is present for CancelOption, not even an explicit nil
 ### GetCancellationReason
 
 `func (o *Subscription) GetCancellationReason() map[string]interface{}`
@@ -310,6 +340,16 @@ and a boolean to check if the value has been set.
 SetCancellationReason sets CancellationReason field to given value.
 
 
+### SetCancellationReasonNil
+
+`func (o *Subscription) SetCancellationReasonNil(b bool)`
+
+ SetCancellationReasonNil sets the value for CancellationReason to be an explicit nil
+
+### UnsetCancellationReason
+`func (o *Subscription) UnsetCancellationReason()`
+
+UnsetCancellationReason ensures that no value is present for CancellationReason, not even an explicit nil
 ### GetCanceledAt
 
 `func (o *Subscription) GetCanceledAt() map[string]interface{}`
@@ -330,6 +370,16 @@ and a boolean to check if the value has been set.
 SetCanceledAt sets CanceledAt field to given value.
 
 
+### SetCanceledAtNil
+
+`func (o *Subscription) SetCanceledAtNil(b bool)`
+
+ SetCanceledAtNil sets the value for CanceledAt to be an explicit nil
+
+### UnsetCanceledAt
+`func (o *Subscription) UnsetCanceledAt()`
+
+UnsetCanceledAt ensures that no value is present for CanceledAt, not even an explicit nil
 ### GetCurrency
 
 `func (o *Subscription) GetCurrency() string`
@@ -410,6 +460,16 @@ and a boolean to check if the value has been set.
 SetPromoCode sets PromoCode field to given value.
 
 
+### SetPromoCodeNil
+
+`func (o *Subscription) SetPromoCodeNil(b bool)`
+
+ SetPromoCodeNil sets the value for PromoCode to be an explicit nil
+
+### UnsetPromoCode
+`func (o *Subscription) UnsetPromoCode()`
+
+UnsetPromoCode ensures that no value is present for PromoCode, not even an explicit nil
 ### GetProduct
 
 `func (o *Subscription) GetProduct() SubscriptionProductDto`
@@ -450,6 +510,16 @@ and a boolean to check if the value has been set.
 SetLicenseKey sets LicenseKey field to given value.
 
 
+### SetLicenseKeyNil
+
+`func (o *Subscription) SetLicenseKeyNil(b bool)`
+
+ SetLicenseKeyNil sets the value for LicenseKey to be an explicit nil
+
+### UnsetLicenseKey
+`func (o *Subscription) UnsetLicenseKey()`
+
+UnsetLicenseKey ensures that no value is present for LicenseKey, not even an explicit nil
 ### GetMetadata
 
 `func (o *Subscription) GetMetadata() map[string]interface{}`
@@ -535,6 +605,16 @@ SetPrice sets Price field to given value.
 
 HasPrice returns a boolean if a field has been set.
 
+### SetPriceNil
+
+`func (o *Subscription) SetPriceNil(b bool)`
+
+ SetPriceNil sets the value for Price to be an explicit nil
+
+### UnsetPrice
+`func (o *Subscription) UnsetPrice()`
+
+UnsetPrice ensures that no value is present for Price, not even an explicit nil
 ### GetType
 
 `func (o *Subscription) GetType() map[string]interface{}`
@@ -560,6 +640,16 @@ SetType sets Type field to given value.
 
 HasType returns a boolean if a field has been set.
 
+### SetTypeNil
+
+`func (o *Subscription) SetTypeNil(b bool)`
+
+ SetTypeNil sets the value for Type to be an explicit nil
+
+### UnsetType
+`func (o *Subscription) UnsetType()`
+
+UnsetType ensures that no value is present for Type, not even an explicit nil
 ### GetCustomerId
 
 `func (o *Subscription) GetCustomerId() map[string]interface{}`
@@ -585,6 +675,16 @@ SetCustomerId sets CustomerId field to given value.
 
 HasCustomerId returns a boolean if a field has been set.
 
+### SetCustomerIdNil
+
+`func (o *Subscription) SetCustomerIdNil(b bool)`
+
+ SetCustomerIdNil sets the value for CustomerId to be an explicit nil
+
+### UnsetCustomerId
+`func (o *Subscription) UnsetCustomerId()`
+
+UnsetCustomerId ensures that no value is present for CustomerId, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

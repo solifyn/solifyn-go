@@ -10,9 +10,9 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | The customer-facing name of the discount code (e.g. Summer Sale). | [optional] 
 **Type** | **string** | The discount calculation type: percentage or fixed_amount. | 
 **Amount** | **int32** | The discount value. For percentage type, it is in basis points (e.g. 1000 &#x3D; 10.00%). For fixed_amount type, it is in cents (e.g. 1000 &#x3D; $10.00). | 
-**UsageLimit** | **int32** | Maximum number of times this discount code can be redeemed. Null represents unlimited usage. | 
+**UsageLimit** | **NullableInt32** | Maximum number of times this discount code can be redeemed. Null represents unlimited usage. | 
 **TimesUsed** | **int32** | The number of times this discount code has been successfully redeemed. | 
-**ExpiresAt** | **time.Time** | The expiration timestamp after which the discount code is no longer valid. | 
+**ExpiresAt** | **NullableTime** | The expiration timestamp after which the discount code is no longer valid. | 
 **Status** | **string** | The current status of the discount. | 
 **BusinessId** | **string** | The unique identifier associated with the business this discount belongs to. | 
 **CreatedAt** | **time.Time** | Timestamp indicating exactly when the discount was created. | 
@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 
 ### NewDiscount
 
-`func NewDiscount(id string, discountId string, code string, type_ string, amount int32, usageLimit int32, timesUsed int32, expiresAt time.Time, status string, businessId string, createdAt time.Time, updatedAt time.Time, ) *Discount`
+`func NewDiscount(id string, discountId string, code string, type_ string, amount int32, usageLimit NullableInt32, timesUsed int32, expiresAt NullableTime, status string, businessId string, createdAt time.Time, updatedAt time.Time, ) *Discount`
 
 NewDiscount instantiates a new Discount object
 This constructor will assign default values to properties that have it defined,
@@ -182,6 +182,16 @@ and a boolean to check if the value has been set.
 SetUsageLimit sets UsageLimit field to given value.
 
 
+### SetUsageLimitNil
+
+`func (o *Discount) SetUsageLimitNil(b bool)`
+
+ SetUsageLimitNil sets the value for UsageLimit to be an explicit nil
+
+### UnsetUsageLimit
+`func (o *Discount) UnsetUsageLimit()`
+
+UnsetUsageLimit ensures that no value is present for UsageLimit, not even an explicit nil
 ### GetTimesUsed
 
 `func (o *Discount) GetTimesUsed() int32`
@@ -222,6 +232,16 @@ and a boolean to check if the value has been set.
 SetExpiresAt sets ExpiresAt field to given value.
 
 
+### SetExpiresAtNil
+
+`func (o *Discount) SetExpiresAtNil(b bool)`
+
+ SetExpiresAtNil sets the value for ExpiresAt to be an explicit nil
+
+### UnsetExpiresAt
+`func (o *Discount) UnsetExpiresAt()`
+
+UnsetExpiresAt ensures that no value is present for ExpiresAt, not even an explicit nil
 ### GetStatus
 
 `func (o *Discount) GetStatus() string`

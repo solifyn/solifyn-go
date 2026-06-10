@@ -48,9 +48,9 @@ type ProductCreate struct {
 	// Whether tax is included in the base price.
 	IsTaxInclusive *bool `json:"isTaxInclusive,omitempty"`
 	// Maximum concurrent activated instances allowed per license key.
-	ActivationLimit *int32 `json:"activationLimit,omitempty"`
+	ActivationLimit NullableInt32 `json:"activationLimit,omitempty"`
 	// Brand id for the product, if not provided will default to primary brand.
-	BrandId *string `json:"brandId,omitempty"`
+	BrandId NullableString `json:"brandId,omitempty"`
 	// Billing period in days (for Subscription products).
 	BillingPeriod *int32 `json:"billingPeriod,omitempty"`
 	// Trial duration in days.
@@ -62,7 +62,7 @@ type ProductCreate struct {
 	// Allow pay-what-you-want pricing.
 	PayWhatYouWant *bool `json:"payWhatYouWant,omitempty"`
 	// Developer key-value metadata pairs.
-	Metadata map[string]string `json:"metadata,omitempty"`
+	Metadata *map[string]string `json:"metadata,omitempty"`
 	// Form field configurations to gather during checkout.
 	CustomFields []ProductCreateCustomFieldsInner `json:"customFields,omitempty"`
 	// Initial stock quantity limit.
@@ -95,8 +95,6 @@ func NewProductCreate(name string, price float32, currency string, taxCategory s
 	this.HasGithubAccess = &hasGithubAccess
 	var isTaxInclusive bool = false
 	this.IsTaxInclusive = &isTaxInclusive
-	var activationLimit int32 = null
-	this.ActivationLimit = &activationLimit
 	var payWhatYouWant bool = false
 	this.PayWhatYouWant = &payWhatYouWant
 	var isListed bool = true
@@ -121,8 +119,6 @@ func NewProductCreateWithDefaults() *ProductCreate {
 	this.HasGithubAccess = &hasGithubAccess
 	var isTaxInclusive bool = false
 	this.IsTaxInclusive = &isTaxInclusive
-	var activationLimit int32 = null
-	this.ActivationLimit = &activationLimit
 	var payWhatYouWant bool = false
 	this.PayWhatYouWant = &payWhatYouWant
 	var isListed bool = true
@@ -516,68 +512,88 @@ func (o *ProductCreate) SetIsTaxInclusive(v bool) {
 	o.IsTaxInclusive = &v
 }
 
-// GetActivationLimit returns the ActivationLimit field value if set, zero value otherwise.
+// GetActivationLimit returns the ActivationLimit field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProductCreate) GetActivationLimit() int32 {
-	if o == nil || IsNil(o.ActivationLimit) {
+	if o == nil || IsNil(o.ActivationLimit.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.ActivationLimit
+	return *o.ActivationLimit.Get()
 }
 
 // GetActivationLimitOk returns a tuple with the ActivationLimit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProductCreate) GetActivationLimitOk() (*int32, bool) {
-	if o == nil || IsNil(o.ActivationLimit) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ActivationLimit, true
+	return o.ActivationLimit.Get(), o.ActivationLimit.IsSet()
 }
 
 // HasActivationLimit returns a boolean if a field has been set.
 func (o *ProductCreate) HasActivationLimit() bool {
-	if o != nil && !IsNil(o.ActivationLimit) {
+	if o != nil && o.ActivationLimit.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetActivationLimit gets a reference to the given int32 and assigns it to the ActivationLimit field.
+// SetActivationLimit gets a reference to the given NullableInt32 and assigns it to the ActivationLimit field.
 func (o *ProductCreate) SetActivationLimit(v int32) {
-	o.ActivationLimit = &v
+	o.ActivationLimit.Set(&v)
+}
+// SetActivationLimitNil sets the value for ActivationLimit to be an explicit nil
+func (o *ProductCreate) SetActivationLimitNil() {
+	o.ActivationLimit.Set(nil)
 }
 
-// GetBrandId returns the BrandId field value if set, zero value otherwise.
+// UnsetActivationLimit ensures that no value is present for ActivationLimit, not even an explicit nil
+func (o *ProductCreate) UnsetActivationLimit() {
+	o.ActivationLimit.Unset()
+}
+
+// GetBrandId returns the BrandId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProductCreate) GetBrandId() string {
-	if o == nil || IsNil(o.BrandId) {
+	if o == nil || IsNil(o.BrandId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.BrandId
+	return *o.BrandId.Get()
 }
 
 // GetBrandIdOk returns a tuple with the BrandId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProductCreate) GetBrandIdOk() (*string, bool) {
-	if o == nil || IsNil(o.BrandId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.BrandId, true
+	return o.BrandId.Get(), o.BrandId.IsSet()
 }
 
 // HasBrandId returns a boolean if a field has been set.
 func (o *ProductCreate) HasBrandId() bool {
-	if o != nil && !IsNil(o.BrandId) {
+	if o != nil && o.BrandId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetBrandId gets a reference to the given string and assigns it to the BrandId field.
+// SetBrandId gets a reference to the given NullableString and assigns it to the BrandId field.
 func (o *ProductCreate) SetBrandId(v string) {
-	o.BrandId = &v
+	o.BrandId.Set(&v)
+}
+// SetBrandIdNil sets the value for BrandId to be an explicit nil
+func (o *ProductCreate) SetBrandIdNil() {
+	o.BrandId.Set(nil)
+}
+
+// UnsetBrandId ensures that no value is present for BrandId, not even an explicit nil
+func (o *ProductCreate) UnsetBrandId() {
+	o.BrandId.Unset()
 }
 
 // GetBillingPeriod returns the BillingPeriod field value if set, zero value otherwise.
@@ -746,14 +762,14 @@ func (o *ProductCreate) GetMetadata() map[string]string {
 		var ret map[string]string
 		return ret
 	}
-	return o.Metadata
+	return *o.Metadata
 }
 
 // GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProductCreate) GetMetadataOk() (map[string]string, bool) {
+func (o *ProductCreate) GetMetadataOk() (*map[string]string, bool) {
 	if o == nil || IsNil(o.Metadata) {
-		return map[string]string{}, false
+		return nil, false
 	}
 	return o.Metadata, true
 }
@@ -769,7 +785,7 @@ func (o *ProductCreate) HasMetadata() bool {
 
 // SetMetadata gets a reference to the given map[string]string and assigns it to the Metadata field.
 func (o *ProductCreate) SetMetadata(v map[string]string) {
-	o.Metadata = v
+	o.Metadata = &v
 }
 
 // GetCustomFields returns the CustomFields field value if set, zero value otherwise.
@@ -973,11 +989,11 @@ func (o ProductCreate) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsTaxInclusive) {
 		toSerialize["isTaxInclusive"] = o.IsTaxInclusive
 	}
-	if !IsNil(o.ActivationLimit) {
-		toSerialize["activationLimit"] = o.ActivationLimit
+	if o.ActivationLimit.IsSet() {
+		toSerialize["activationLimit"] = o.ActivationLimit.Get()
 	}
-	if !IsNil(o.BrandId) {
-		toSerialize["brandId"] = o.BrandId
+	if o.BrandId.IsSet() {
+		toSerialize["brandId"] = o.BrandId.Get()
 	}
 	if !IsNil(o.BillingPeriod) {
 		toSerialize["billingPeriod"] = o.BillingPeriod

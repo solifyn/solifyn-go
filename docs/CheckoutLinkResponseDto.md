@@ -5,19 +5,19 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | The checkout link ID | 
-**Title** | Pointer to **string** | The title of the checkout link | [optional] 
-**ProductId** | Pointer to **string** | The linked Product ID | [optional] 
-**CollectionId** | Pointer to **string** | The linked Collection ID | [optional] 
-**CustomerName** | Pointer to **string** | Pre-filled customer name | [optional] 
-**CustomerEmail** | Pointer to **string** | Pre-filled customer email | [optional] 
-**AddressLine1** | Pointer to **string** | Pre-filled address line 1 | [optional] 
-**City** | Pointer to **string** | Pre-filled city | [optional] 
-**State** | Pointer to **string** | Pre-filled state | [optional] 
-**PostalCode** | Pointer to **string** | Pre-filled postal code | [optional] 
-**Country** | Pointer to **string** | Pre-filled country | [optional] 
+**Title** | Pointer to **NullableString** | The title of the checkout link | [optional] 
+**ProductId** | Pointer to **NullableString** | The linked Product ID | [optional] 
+**CollectionId** | Pointer to **NullableString** | The linked Collection ID | [optional] 
+**CustomerName** | Pointer to **NullableString** | Pre-filled customer name | [optional] 
+**CustomerEmail** | Pointer to **NullableString** | Pre-filled customer email | [optional] 
+**AddressLine1** | Pointer to **NullableString** | Pre-filled address line 1 | [optional] 
+**City** | Pointer to **NullableString** | Pre-filled city | [optional] 
+**State** | Pointer to **NullableString** | Pre-filled state | [optional] 
+**PostalCode** | Pointer to **NullableString** | Pre-filled postal code | [optional] 
+**Country** | Pointer to **NullableString** | Pre-filled country | [optional] 
 **Quantity** | **float32** | Quantity to purchase | 
-**RedirectUrl** | Pointer to **string** | URL to redirect to after successful payment | [optional] 
-**CancelUrl** | Pointer to **string** | URL to redirect to if payment is cancelled | [optional] 
+**RedirectUrl** | Pointer to **NullableString** | URL to redirect to after successful payment | [optional] 
+**CancelUrl** | Pointer to **NullableString** | URL to redirect to if payment is cancelled | [optional] 
 **ShowDiscounts** | **bool** | Whether to show discounts on the checkout page | 
 **CreatedAt** | **time.Time** | Timestamp when the link was created | 
 **UpdatedAt** | **time.Time** | Timestamp when the link was last updated | 
@@ -86,6 +86,16 @@ SetTitle sets Title field to given value.
 
 HasTitle returns a boolean if a field has been set.
 
+### SetTitleNil
+
+`func (o *CheckoutLinkResponseDto) SetTitleNil(b bool)`
+
+ SetTitleNil sets the value for Title to be an explicit nil
+
+### UnsetTitle
+`func (o *CheckoutLinkResponseDto) UnsetTitle()`
+
+UnsetTitle ensures that no value is present for Title, not even an explicit nil
 ### GetProductId
 
 `func (o *CheckoutLinkResponseDto) GetProductId() string`
@@ -111,6 +121,16 @@ SetProductId sets ProductId field to given value.
 
 HasProductId returns a boolean if a field has been set.
 
+### SetProductIdNil
+
+`func (o *CheckoutLinkResponseDto) SetProductIdNil(b bool)`
+
+ SetProductIdNil sets the value for ProductId to be an explicit nil
+
+### UnsetProductId
+`func (o *CheckoutLinkResponseDto) UnsetProductId()`
+
+UnsetProductId ensures that no value is present for ProductId, not even an explicit nil
 ### GetCollectionId
 
 `func (o *CheckoutLinkResponseDto) GetCollectionId() string`
@@ -136,6 +156,16 @@ SetCollectionId sets CollectionId field to given value.
 
 HasCollectionId returns a boolean if a field has been set.
 
+### SetCollectionIdNil
+
+`func (o *CheckoutLinkResponseDto) SetCollectionIdNil(b bool)`
+
+ SetCollectionIdNil sets the value for CollectionId to be an explicit nil
+
+### UnsetCollectionId
+`func (o *CheckoutLinkResponseDto) UnsetCollectionId()`
+
+UnsetCollectionId ensures that no value is present for CollectionId, not even an explicit nil
 ### GetCustomerName
 
 `func (o *CheckoutLinkResponseDto) GetCustomerName() string`
@@ -161,6 +191,16 @@ SetCustomerName sets CustomerName field to given value.
 
 HasCustomerName returns a boolean if a field has been set.
 
+### SetCustomerNameNil
+
+`func (o *CheckoutLinkResponseDto) SetCustomerNameNil(b bool)`
+
+ SetCustomerNameNil sets the value for CustomerName to be an explicit nil
+
+### UnsetCustomerName
+`func (o *CheckoutLinkResponseDto) UnsetCustomerName()`
+
+UnsetCustomerName ensures that no value is present for CustomerName, not even an explicit nil
 ### GetCustomerEmail
 
 `func (o *CheckoutLinkResponseDto) GetCustomerEmail() string`
@@ -186,6 +226,16 @@ SetCustomerEmail sets CustomerEmail field to given value.
 
 HasCustomerEmail returns a boolean if a field has been set.
 
+### SetCustomerEmailNil
+
+`func (o *CheckoutLinkResponseDto) SetCustomerEmailNil(b bool)`
+
+ SetCustomerEmailNil sets the value for CustomerEmail to be an explicit nil
+
+### UnsetCustomerEmail
+`func (o *CheckoutLinkResponseDto) UnsetCustomerEmail()`
+
+UnsetCustomerEmail ensures that no value is present for CustomerEmail, not even an explicit nil
 ### GetAddressLine1
 
 `func (o *CheckoutLinkResponseDto) GetAddressLine1() string`
@@ -211,6 +261,16 @@ SetAddressLine1 sets AddressLine1 field to given value.
 
 HasAddressLine1 returns a boolean if a field has been set.
 
+### SetAddressLine1Nil
+
+`func (o *CheckoutLinkResponseDto) SetAddressLine1Nil(b bool)`
+
+ SetAddressLine1Nil sets the value for AddressLine1 to be an explicit nil
+
+### UnsetAddressLine1
+`func (o *CheckoutLinkResponseDto) UnsetAddressLine1()`
+
+UnsetAddressLine1 ensures that no value is present for AddressLine1, not even an explicit nil
 ### GetCity
 
 `func (o *CheckoutLinkResponseDto) GetCity() string`
@@ -236,6 +296,16 @@ SetCity sets City field to given value.
 
 HasCity returns a boolean if a field has been set.
 
+### SetCityNil
+
+`func (o *CheckoutLinkResponseDto) SetCityNil(b bool)`
+
+ SetCityNil sets the value for City to be an explicit nil
+
+### UnsetCity
+`func (o *CheckoutLinkResponseDto) UnsetCity()`
+
+UnsetCity ensures that no value is present for City, not even an explicit nil
 ### GetState
 
 `func (o *CheckoutLinkResponseDto) GetState() string`
@@ -261,6 +331,16 @@ SetState sets State field to given value.
 
 HasState returns a boolean if a field has been set.
 
+### SetStateNil
+
+`func (o *CheckoutLinkResponseDto) SetStateNil(b bool)`
+
+ SetStateNil sets the value for State to be an explicit nil
+
+### UnsetState
+`func (o *CheckoutLinkResponseDto) UnsetState()`
+
+UnsetState ensures that no value is present for State, not even an explicit nil
 ### GetPostalCode
 
 `func (o *CheckoutLinkResponseDto) GetPostalCode() string`
@@ -286,6 +366,16 @@ SetPostalCode sets PostalCode field to given value.
 
 HasPostalCode returns a boolean if a field has been set.
 
+### SetPostalCodeNil
+
+`func (o *CheckoutLinkResponseDto) SetPostalCodeNil(b bool)`
+
+ SetPostalCodeNil sets the value for PostalCode to be an explicit nil
+
+### UnsetPostalCode
+`func (o *CheckoutLinkResponseDto) UnsetPostalCode()`
+
+UnsetPostalCode ensures that no value is present for PostalCode, not even an explicit nil
 ### GetCountry
 
 `func (o *CheckoutLinkResponseDto) GetCountry() string`
@@ -311,6 +401,16 @@ SetCountry sets Country field to given value.
 
 HasCountry returns a boolean if a field has been set.
 
+### SetCountryNil
+
+`func (o *CheckoutLinkResponseDto) SetCountryNil(b bool)`
+
+ SetCountryNil sets the value for Country to be an explicit nil
+
+### UnsetCountry
+`func (o *CheckoutLinkResponseDto) UnsetCountry()`
+
+UnsetCountry ensures that no value is present for Country, not even an explicit nil
 ### GetQuantity
 
 `func (o *CheckoutLinkResponseDto) GetQuantity() float32`
@@ -356,6 +456,16 @@ SetRedirectUrl sets RedirectUrl field to given value.
 
 HasRedirectUrl returns a boolean if a field has been set.
 
+### SetRedirectUrlNil
+
+`func (o *CheckoutLinkResponseDto) SetRedirectUrlNil(b bool)`
+
+ SetRedirectUrlNil sets the value for RedirectUrl to be an explicit nil
+
+### UnsetRedirectUrl
+`func (o *CheckoutLinkResponseDto) UnsetRedirectUrl()`
+
+UnsetRedirectUrl ensures that no value is present for RedirectUrl, not even an explicit nil
 ### GetCancelUrl
 
 `func (o *CheckoutLinkResponseDto) GetCancelUrl() string`
@@ -381,6 +491,16 @@ SetCancelUrl sets CancelUrl field to given value.
 
 HasCancelUrl returns a boolean if a field has been set.
 
+### SetCancelUrlNil
+
+`func (o *CheckoutLinkResponseDto) SetCancelUrlNil(b bool)`
+
+ SetCancelUrlNil sets the value for CancelUrl to be an explicit nil
+
+### UnsetCancelUrl
+`func (o *CheckoutLinkResponseDto) UnsetCancelUrl()`
+
+UnsetCancelUrl ensures that no value is present for CancelUrl, not even an explicit nil
 ### GetShowDiscounts
 
 `func (o *CheckoutLinkResponseDto) GetShowDiscounts() bool`

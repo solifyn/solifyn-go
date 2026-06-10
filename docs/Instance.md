@@ -6,17 +6,17 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | The unique database identifier of this instance record. | 
 **LicenseId** | **string** | The internal ID of the parent license key this instance belongs to. | 
-**InstanceId** | **string** | The unique hardware hash or client-generated identifier of the activated device/machine. | 
-**InstanceName** | **string** | A human-readable display name for this instance, assigned by the client application. | 
-**IpAddress** | **string** | The IP address recorded at the time of activation. | 
+**InstanceId** | **NullableString** | The unique hardware hash or client-generated identifier of the activated device/machine. | 
+**InstanceName** | **NullableString** | A human-readable display name for this instance, assigned by the client application. | 
+**IpAddress** | **NullableString** | The IP address recorded at the time of activation. | 
 **ActivatedAt** | **string** | Timestamp when this device instance was first activated. | 
-**LastSeenAt** | **string** | Timestamp of the most recent activation heartbeat or re-activation check from this device. | 
+**LastSeenAt** | **NullableString** | Timestamp of the most recent activation heartbeat or re-activation check from this device. | 
 
 ## Methods
 
 ### NewInstance
 
-`func NewInstance(id string, licenseId string, instanceId string, instanceName string, ipAddress string, activatedAt string, lastSeenAt string, ) *Instance`
+`func NewInstance(id string, licenseId string, instanceId NullableString, instanceName NullableString, ipAddress NullableString, activatedAt string, lastSeenAt NullableString, ) *Instance`
 
 NewInstance instantiates a new Instance object
 This constructor will assign default values to properties that have it defined,
@@ -91,6 +91,16 @@ and a boolean to check if the value has been set.
 SetInstanceId sets InstanceId field to given value.
 
 
+### SetInstanceIdNil
+
+`func (o *Instance) SetInstanceIdNil(b bool)`
+
+ SetInstanceIdNil sets the value for InstanceId to be an explicit nil
+
+### UnsetInstanceId
+`func (o *Instance) UnsetInstanceId()`
+
+UnsetInstanceId ensures that no value is present for InstanceId, not even an explicit nil
 ### GetInstanceName
 
 `func (o *Instance) GetInstanceName() string`
@@ -111,6 +121,16 @@ and a boolean to check if the value has been set.
 SetInstanceName sets InstanceName field to given value.
 
 
+### SetInstanceNameNil
+
+`func (o *Instance) SetInstanceNameNil(b bool)`
+
+ SetInstanceNameNil sets the value for InstanceName to be an explicit nil
+
+### UnsetInstanceName
+`func (o *Instance) UnsetInstanceName()`
+
+UnsetInstanceName ensures that no value is present for InstanceName, not even an explicit nil
 ### GetIpAddress
 
 `func (o *Instance) GetIpAddress() string`
@@ -131,6 +151,16 @@ and a boolean to check if the value has been set.
 SetIpAddress sets IpAddress field to given value.
 
 
+### SetIpAddressNil
+
+`func (o *Instance) SetIpAddressNil(b bool)`
+
+ SetIpAddressNil sets the value for IpAddress to be an explicit nil
+
+### UnsetIpAddress
+`func (o *Instance) UnsetIpAddress()`
+
+UnsetIpAddress ensures that no value is present for IpAddress, not even an explicit nil
 ### GetActivatedAt
 
 `func (o *Instance) GetActivatedAt() string`
@@ -171,6 +201,16 @@ and a boolean to check if the value has been set.
 SetLastSeenAt sets LastSeenAt field to given value.
 
 
+### SetLastSeenAtNil
+
+`func (o *Instance) SetLastSeenAtNil(b bool)`
+
+ SetLastSeenAtNil sets the value for LastSeenAt to be an explicit nil
+
+### UnsetLastSeenAt
+`func (o *Instance) UnsetLastSeenAt()`
+
+UnsetLastSeenAt ensures that no value is present for LastSeenAt, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

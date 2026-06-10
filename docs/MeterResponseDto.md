@@ -121,6 +121,16 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
+### SetDescriptionNil
+
+`func (o *MeterResponseDto) SetDescriptionNil(b bool)`
+
+ SetDescriptionNil sets the value for Description to be an explicit nil
+
+### UnsetDescription
+`func (o *MeterResponseDto) UnsetDescription()`
+
+UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetEventName
 
 `func (o *MeterResponseDto) GetEventName() string`
@@ -186,6 +196,16 @@ SetAggregationKey sets AggregationKey field to given value.
 
 HasAggregationKey returns a boolean if a field has been set.
 
+### SetAggregationKeyNil
+
+`func (o *MeterResponseDto) SetAggregationKeyNil(b bool)`
+
+ SetAggregationKeyNil sets the value for AggregationKey to be an explicit nil
+
+### UnsetAggregationKey
+`func (o *MeterResponseDto) UnsetAggregationKey()`
+
+UnsetAggregationKey ensures that no value is present for AggregationKey, not even an explicit nil
 ### GetUnit
 
 `func (o *MeterResponseDto) GetUnit() map[string]interface{}`
@@ -211,6 +231,16 @@ SetUnit sets Unit field to given value.
 
 HasUnit returns a boolean if a field has been set.
 
+### SetUnitNil
+
+`func (o *MeterResponseDto) SetUnitNil(b bool)`
+
+ SetUnitNil sets the value for Unit to be an explicit nil
+
+### UnsetUnit
+`func (o *MeterResponseDto) UnsetUnit()`
+
+UnsetUnit ensures that no value is present for Unit, not even an explicit nil
 ### GetFilters
 
 `func (o *MeterResponseDto) GetFilters() map[string]interface{}`
@@ -236,6 +266,16 @@ SetFilters sets Filters field to given value.
 
 HasFilters returns a boolean if a field has been set.
 
+### SetFiltersNil
+
+`func (o *MeterResponseDto) SetFiltersNil(b bool)`
+
+ SetFiltersNil sets the value for Filters to be an explicit nil
+
+### UnsetFilters
+`func (o *MeterResponseDto) UnsetFilters()`
+
+UnsetFilters ensures that no value is present for Filters, not even an explicit nil
 ### GetArchived
 
 `func (o *MeterResponseDto) GetArchived() bool`

@@ -9,12 +9,12 @@ Name | Type | Description | Notes
 **Amount** | Pointer to **string** | Dollar value, 2 d.p. | [optional] 
 **Currency** | Pointer to **string** |  | [optional] 
 **Status** | Pointer to **string** |  | [optional] 
-**Reason** | Pointer to **string** |  | [optional] 
+**Reason** | Pointer to **NullableString** |  | [optional] 
 **Editable** | Pointer to **bool** |  | [optional] 
-**NeedsResponseBy** | Pointer to **time.Time** |  | [optional] 
-**CustomerName** | Pointer to **string** |  | [optional] 
-**CustomerEmail** | Pointer to **string** |  | [optional] 
-**Notes** | Pointer to **string** |  | [optional] 
+**NeedsResponseBy** | Pointer to **NullableTime** |  | [optional] 
+**CustomerName** | Pointer to **NullableString** |  | [optional] 
+**CustomerEmail** | Pointer to **NullableString** |  | [optional] 
+**Notes** | Pointer to **NullableString** |  | [optional] 
 **CreatedAt** | Pointer to **time.Time** |  | [optional] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] 
 
@@ -187,6 +187,16 @@ SetReason sets Reason field to given value.
 
 HasReason returns a boolean if a field has been set.
 
+### SetReasonNil
+
+`func (o *WebhookDisputePayload) SetReasonNil(b bool)`
+
+ SetReasonNil sets the value for Reason to be an explicit nil
+
+### UnsetReason
+`func (o *WebhookDisputePayload) UnsetReason()`
+
+UnsetReason ensures that no value is present for Reason, not even an explicit nil
 ### GetEditable
 
 `func (o *WebhookDisputePayload) GetEditable() bool`
@@ -237,6 +247,16 @@ SetNeedsResponseBy sets NeedsResponseBy field to given value.
 
 HasNeedsResponseBy returns a boolean if a field has been set.
 
+### SetNeedsResponseByNil
+
+`func (o *WebhookDisputePayload) SetNeedsResponseByNil(b bool)`
+
+ SetNeedsResponseByNil sets the value for NeedsResponseBy to be an explicit nil
+
+### UnsetNeedsResponseBy
+`func (o *WebhookDisputePayload) UnsetNeedsResponseBy()`
+
+UnsetNeedsResponseBy ensures that no value is present for NeedsResponseBy, not even an explicit nil
 ### GetCustomerName
 
 `func (o *WebhookDisputePayload) GetCustomerName() string`
@@ -262,6 +282,16 @@ SetCustomerName sets CustomerName field to given value.
 
 HasCustomerName returns a boolean if a field has been set.
 
+### SetCustomerNameNil
+
+`func (o *WebhookDisputePayload) SetCustomerNameNil(b bool)`
+
+ SetCustomerNameNil sets the value for CustomerName to be an explicit nil
+
+### UnsetCustomerName
+`func (o *WebhookDisputePayload) UnsetCustomerName()`
+
+UnsetCustomerName ensures that no value is present for CustomerName, not even an explicit nil
 ### GetCustomerEmail
 
 `func (o *WebhookDisputePayload) GetCustomerEmail() string`
@@ -287,6 +317,16 @@ SetCustomerEmail sets CustomerEmail field to given value.
 
 HasCustomerEmail returns a boolean if a field has been set.
 
+### SetCustomerEmailNil
+
+`func (o *WebhookDisputePayload) SetCustomerEmailNil(b bool)`
+
+ SetCustomerEmailNil sets the value for CustomerEmail to be an explicit nil
+
+### UnsetCustomerEmail
+`func (o *WebhookDisputePayload) UnsetCustomerEmail()`
+
+UnsetCustomerEmail ensures that no value is present for CustomerEmail, not even an explicit nil
 ### GetNotes
 
 `func (o *WebhookDisputePayload) GetNotes() string`
@@ -312,6 +352,16 @@ SetNotes sets Notes field to given value.
 
 HasNotes returns a boolean if a field has been set.
 
+### SetNotesNil
+
+`func (o *WebhookDisputePayload) SetNotesNil(b bool)`
+
+ SetNotesNil sets the value for Notes to be an explicit nil
+
+### UnsetNotes
+`func (o *WebhookDisputePayload) UnsetNotes()`
+
+UnsetNotes ensures that no value is present for Notes, not even an explicit nil
 ### GetCreatedAt
 
 `func (o *WebhookDisputePayload) GetCreatedAt() time.Time`

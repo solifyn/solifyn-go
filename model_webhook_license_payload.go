@@ -30,21 +30,21 @@ type WebhookLicensePayload struct {
 	// The unique identifier associated with the business this license belongs to.
 	BusinessId string `json:"businessId"`
 	// The unique ID of the product this license key is associated with.
-	ProductId string `json:"productId"`
+	ProductId NullableString `json:"productId"`
 	// The unique payment identifier that triggered the issuance of this license key.
-	PaymentId string `json:"paymentId"`
+	PaymentId NullableString `json:"paymentId"`
 	// The unique customer identifier (ID) who received this license key.
-	CustomerId string `json:"customerId"`
+	CustomerId NullableString `json:"customerId"`
 	// Maximum number of simultaneous active device instances allowed for this license. Null means unlimited.
-	ActivationLimit float32 `json:"activationLimit"`
+	ActivationLimit NullableFloat32 `json:"activationLimit"`
 	// Optional message displayed to the customer upon successful activation.
-	ActivationMessage string `json:"activationMessage"`
+	ActivationMessage NullableString `json:"activationMessage"`
 	// Running count of how many times this license key has been activated.
 	InstancesCount float32 `json:"instancesCount"`
 	// Relative expiry duration in hours from the time of issuance.
-	ExpiryHours float32 `json:"expiryHours"`
+	ExpiryHours NullableFloat32 `json:"expiryHours"`
 	// Absolute expiration timestamp. The license becomes invalid after this point.
-	ExpiresAt string `json:"expiresAt"`
+	ExpiresAt NullableString `json:"expiresAt"`
 	// Optional custom metadata filters associated with the license.
 	Filters map[string]interface{} `json:"filters"`
 	// Indicates if the license key is archived.
@@ -61,7 +61,7 @@ type _WebhookLicensePayload WebhookLicensePayload
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewWebhookLicensePayload(id string, key string, status string, businessId string, productId string, paymentId string, customerId string, activationLimit float32, activationMessage string, instancesCount float32, expiryHours float32, expiresAt string, filters map[string]interface{}, archived bool, createdAt string, updatedAt string) *WebhookLicensePayload {
+func NewWebhookLicensePayload(id string, key string, status string, businessId string, productId NullableString, paymentId NullableString, customerId NullableString, activationLimit NullableFloat32, activationMessage NullableString, instancesCount float32, expiryHours NullableFloat32, expiresAt NullableString, filters map[string]interface{}, archived bool, createdAt string, updatedAt string) *WebhookLicensePayload {
 	this := WebhookLicensePayload{}
 	this.Id = id
 	this.Key = key
@@ -187,123 +187,133 @@ func (o *WebhookLicensePayload) SetBusinessId(v string) {
 }
 
 // GetProductId returns the ProductId field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *WebhookLicensePayload) GetProductId() string {
-	if o == nil {
+	if o == nil || o.ProductId.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.ProductId
+	return *o.ProductId.Get()
 }
 
 // GetProductIdOk returns a tuple with the ProductId field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookLicensePayload) GetProductIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.ProductId, true
+	return o.ProductId.Get(), o.ProductId.IsSet()
 }
 
 // SetProductId sets field value
 func (o *WebhookLicensePayload) SetProductId(v string) {
-	o.ProductId = v
+	o.ProductId.Set(&v)
 }
 
 // GetPaymentId returns the PaymentId field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *WebhookLicensePayload) GetPaymentId() string {
-	if o == nil {
+	if o == nil || o.PaymentId.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.PaymentId
+	return *o.PaymentId.Get()
 }
 
 // GetPaymentIdOk returns a tuple with the PaymentId field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookLicensePayload) GetPaymentIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.PaymentId, true
+	return o.PaymentId.Get(), o.PaymentId.IsSet()
 }
 
 // SetPaymentId sets field value
 func (o *WebhookLicensePayload) SetPaymentId(v string) {
-	o.PaymentId = v
+	o.PaymentId.Set(&v)
 }
 
 // GetCustomerId returns the CustomerId field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *WebhookLicensePayload) GetCustomerId() string {
-	if o == nil {
+	if o == nil || o.CustomerId.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.CustomerId
+	return *o.CustomerId.Get()
 }
 
 // GetCustomerIdOk returns a tuple with the CustomerId field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookLicensePayload) GetCustomerIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.CustomerId, true
+	return o.CustomerId.Get(), o.CustomerId.IsSet()
 }
 
 // SetCustomerId sets field value
 func (o *WebhookLicensePayload) SetCustomerId(v string) {
-	o.CustomerId = v
+	o.CustomerId.Set(&v)
 }
 
 // GetActivationLimit returns the ActivationLimit field value
+// If the value is explicit nil, the zero value for float32 will be returned
 func (o *WebhookLicensePayload) GetActivationLimit() float32 {
-	if o == nil {
+	if o == nil || o.ActivationLimit.Get() == nil {
 		var ret float32
 		return ret
 	}
 
-	return o.ActivationLimit
+	return *o.ActivationLimit.Get()
 }
 
 // GetActivationLimitOk returns a tuple with the ActivationLimit field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookLicensePayload) GetActivationLimitOk() (*float32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.ActivationLimit, true
+	return o.ActivationLimit.Get(), o.ActivationLimit.IsSet()
 }
 
 // SetActivationLimit sets field value
 func (o *WebhookLicensePayload) SetActivationLimit(v float32) {
-	o.ActivationLimit = v
+	o.ActivationLimit.Set(&v)
 }
 
 // GetActivationMessage returns the ActivationMessage field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *WebhookLicensePayload) GetActivationMessage() string {
-	if o == nil {
+	if o == nil || o.ActivationMessage.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.ActivationMessage
+	return *o.ActivationMessage.Get()
 }
 
 // GetActivationMessageOk returns a tuple with the ActivationMessage field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookLicensePayload) GetActivationMessageOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.ActivationMessage, true
+	return o.ActivationMessage.Get(), o.ActivationMessage.IsSet()
 }
 
 // SetActivationMessage sets field value
 func (o *WebhookLicensePayload) SetActivationMessage(v string) {
-	o.ActivationMessage = v
+	o.ActivationMessage.Set(&v)
 }
 
 // GetInstancesCount returns the InstancesCount field value
@@ -331,54 +341,59 @@ func (o *WebhookLicensePayload) SetInstancesCount(v float32) {
 }
 
 // GetExpiryHours returns the ExpiryHours field value
+// If the value is explicit nil, the zero value for float32 will be returned
 func (o *WebhookLicensePayload) GetExpiryHours() float32 {
-	if o == nil {
+	if o == nil || o.ExpiryHours.Get() == nil {
 		var ret float32
 		return ret
 	}
 
-	return o.ExpiryHours
+	return *o.ExpiryHours.Get()
 }
 
 // GetExpiryHoursOk returns a tuple with the ExpiryHours field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookLicensePayload) GetExpiryHoursOk() (*float32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.ExpiryHours, true
+	return o.ExpiryHours.Get(), o.ExpiryHours.IsSet()
 }
 
 // SetExpiryHours sets field value
 func (o *WebhookLicensePayload) SetExpiryHours(v float32) {
-	o.ExpiryHours = v
+	o.ExpiryHours.Set(&v)
 }
 
 // GetExpiresAt returns the ExpiresAt field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *WebhookLicensePayload) GetExpiresAt() string {
-	if o == nil {
+	if o == nil || o.ExpiresAt.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.ExpiresAt
+	return *o.ExpiresAt.Get()
 }
 
 // GetExpiresAtOk returns a tuple with the ExpiresAt field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookLicensePayload) GetExpiresAtOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.ExpiresAt, true
+	return o.ExpiresAt.Get(), o.ExpiresAt.IsSet()
 }
 
 // SetExpiresAt sets field value
 func (o *WebhookLicensePayload) SetExpiresAt(v string) {
-	o.ExpiresAt = v
+	o.ExpiresAt.Set(&v)
 }
 
 // GetFilters returns the Filters field value
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
 func (o *WebhookLicensePayload) GetFilters() map[string]interface{} {
 	if o == nil {
 		var ret map[string]interface{}
@@ -390,8 +405,9 @@ func (o *WebhookLicensePayload) GetFilters() map[string]interface{} {
 
 // GetFiltersOk returns a tuple with the Filters field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookLicensePayload) GetFiltersOk() (map[string]interface{}, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Filters) {
 		return map[string]interface{}{}, false
 	}
 	return o.Filters, true
@@ -488,15 +504,17 @@ func (o WebhookLicensePayload) ToMap() (map[string]interface{}, error) {
 	toSerialize["key"] = o.Key
 	toSerialize["status"] = o.Status
 	toSerialize["businessId"] = o.BusinessId
-	toSerialize["productId"] = o.ProductId
-	toSerialize["paymentId"] = o.PaymentId
-	toSerialize["customerId"] = o.CustomerId
-	toSerialize["activationLimit"] = o.ActivationLimit
-	toSerialize["activationMessage"] = o.ActivationMessage
+	toSerialize["productId"] = o.ProductId.Get()
+	toSerialize["paymentId"] = o.PaymentId.Get()
+	toSerialize["customerId"] = o.CustomerId.Get()
+	toSerialize["activationLimit"] = o.ActivationLimit.Get()
+	toSerialize["activationMessage"] = o.ActivationMessage.Get()
 	toSerialize["instancesCount"] = o.InstancesCount
-	toSerialize["expiryHours"] = o.ExpiryHours
-	toSerialize["expiresAt"] = o.ExpiresAt
-	toSerialize["filters"] = o.Filters
+	toSerialize["expiryHours"] = o.ExpiryHours.Get()
+	toSerialize["expiresAt"] = o.ExpiresAt.Get()
+	if o.Filters != nil {
+		toSerialize["filters"] = o.Filters
+	}
 	toSerialize["archived"] = o.Archived
 	toSerialize["createdAt"] = o.CreatedAt
 	toSerialize["updatedAt"] = o.UpdatedAt

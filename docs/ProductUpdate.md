@@ -17,8 +17,8 @@ Name | Type | Description | Notes
 **GithubRepo** | Pointer to **string** | GitHub repository to grant access to (format: owner/repo). | [optional] 
 **GithubPermission** | Pointer to **string** | GitHub collaborator permission level. | [optional] 
 **IsTaxInclusive** | Pointer to **bool** | Whether tax is included in the base price. | [optional] [default to false]
-**ActivationLimit** | Pointer to **int32** | Maximum concurrent activated instances allowed per license key. | [optional] 
-**BrandId** | Pointer to **string** | Brand id for the product, if not provided will default to primary brand. | [optional] 
+**ActivationLimit** | Pointer to **NullableInt32** | Maximum concurrent activated instances allowed per license key. | [optional] 
+**BrandId** | Pointer to **NullableString** | Brand id for the product, if not provided will default to primary brand. | [optional] 
 **BillingPeriod** | Pointer to **int32** | Billing period in days (for Subscription products). | [optional] 
 **TrialPeriodDays** | Pointer to **int32** | Trial duration in days. | [optional] 
 **ExpirationDays** | Pointer to **int32** | Subscription expiration duration in days. | [optional] 
@@ -400,6 +400,16 @@ SetActivationLimit sets ActivationLimit field to given value.
 
 HasActivationLimit returns a boolean if a field has been set.
 
+### SetActivationLimitNil
+
+`func (o *ProductUpdate) SetActivationLimitNil(b bool)`
+
+ SetActivationLimitNil sets the value for ActivationLimit to be an explicit nil
+
+### UnsetActivationLimit
+`func (o *ProductUpdate) UnsetActivationLimit()`
+
+UnsetActivationLimit ensures that no value is present for ActivationLimit, not even an explicit nil
 ### GetBrandId
 
 `func (o *ProductUpdate) GetBrandId() string`
@@ -425,6 +435,16 @@ SetBrandId sets BrandId field to given value.
 
 HasBrandId returns a boolean if a field has been set.
 
+### SetBrandIdNil
+
+`func (o *ProductUpdate) SetBrandIdNil(b bool)`
+
+ SetBrandIdNil sets the value for BrandId to be an explicit nil
+
+### UnsetBrandId
+`func (o *ProductUpdate) UnsetBrandId()`
+
+UnsetBrandId ensures that no value is present for BrandId, not even an explicit nil
 ### GetBillingPeriod
 
 `func (o *ProductUpdate) GetBillingPeriod() int32`

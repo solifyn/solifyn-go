@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **SessionId** | Pointer to **string** | The payment partner session ID | [optional] 
 **PaymentId** | Pointer to **string** | Database payment transaction ID | [optional] 
 **CheckoutUrl** | Pointer to **string** | Checkout session redirect URL if loaded in link mode | [optional] 
-**Product** | Pointer to [**Product**](Product.md) | The details of the product being purchased | [optional] 
+**Product** | Pointer to [**NullableProduct**](Product.md) | The details of the product being purchased | [optional] 
 **EntitlementGrants** | Pointer to **[]map[string]interface{}** | List of entitlement grants (e.g. GitHub repo invites) associated with this checkout. | [optional] 
 
 ## Methods
@@ -286,6 +286,16 @@ SetProduct sets Product field to given value.
 
 HasProduct returns a boolean if a field has been set.
 
+### SetProductNil
+
+`func (o *CheckoutSessionDetailsDto) SetProductNil(b bool)`
+
+ SetProductNil sets the value for Product to be an explicit nil
+
+### UnsetProduct
+`func (o *CheckoutSessionDetailsDto) UnsetProduct()`
+
+UnsetProduct ensures that no value is present for Product, not even an explicit nil
 ### GetEntitlementGrants
 
 `func (o *CheckoutSessionDetailsDto) GetEntitlementGrants() []map[string]interface{}`

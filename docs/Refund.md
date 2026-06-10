@@ -6,15 +6,15 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | The refund ID | 
 **WhopId** | **string** | The Whop Refund ID | 
-**IdempotencyKey** | Pointer to **string** | Client-generated key to prevent duplicate refunds | [optional] 
+**IdempotencyKey** | Pointer to **NullableString** | Client-generated key to prevent duplicate refunds | [optional] 
 **Amount** | **float32** | Refunded amount | 
 **Currency** | **string** | Currency code | 
 **Status** | **string** | Status of the refund | 
-**Provider** | Pointer to **string** | The payment provider used | [optional] 
-**Reason** | Pointer to **string** | Reason for the refund | [optional] 
-**ReferenceValue** | Pointer to **string** | Acquirer Reference Number (ARN) or tracking number | [optional] 
+**Provider** | Pointer to **NullableString** | The payment provider used | [optional] 
+**Reason** | Pointer to **NullableString** | Reason for the refund | [optional] 
+**ReferenceValue** | Pointer to **NullableString** | Acquirer Reference Number (ARN) or tracking number | [optional] 
 **PaymentId** | **string** | The associated Payment ID | 
-**ProviderCreatedAt** | Pointer to **time.Time** | Timestamp when the refund was processed by the provider | [optional] 
+**ProviderCreatedAt** | Pointer to **NullableTime** | Timestamp when the refund was processed by the provider | [optional] 
 **CreatedAt** | **time.Time** | Timestamp when the refund was created in our system | 
 **UpdatedAt** | **time.Time** | Timestamp when the refund was last updated | 
 
@@ -102,6 +102,16 @@ SetIdempotencyKey sets IdempotencyKey field to given value.
 
 HasIdempotencyKey returns a boolean if a field has been set.
 
+### SetIdempotencyKeyNil
+
+`func (o *Refund) SetIdempotencyKeyNil(b bool)`
+
+ SetIdempotencyKeyNil sets the value for IdempotencyKey to be an explicit nil
+
+### UnsetIdempotencyKey
+`func (o *Refund) UnsetIdempotencyKey()`
+
+UnsetIdempotencyKey ensures that no value is present for IdempotencyKey, not even an explicit nil
 ### GetAmount
 
 `func (o *Refund) GetAmount() float32`
@@ -187,6 +197,16 @@ SetProvider sets Provider field to given value.
 
 HasProvider returns a boolean if a field has been set.
 
+### SetProviderNil
+
+`func (o *Refund) SetProviderNil(b bool)`
+
+ SetProviderNil sets the value for Provider to be an explicit nil
+
+### UnsetProvider
+`func (o *Refund) UnsetProvider()`
+
+UnsetProvider ensures that no value is present for Provider, not even an explicit nil
 ### GetReason
 
 `func (o *Refund) GetReason() string`
@@ -212,6 +232,16 @@ SetReason sets Reason field to given value.
 
 HasReason returns a boolean if a field has been set.
 
+### SetReasonNil
+
+`func (o *Refund) SetReasonNil(b bool)`
+
+ SetReasonNil sets the value for Reason to be an explicit nil
+
+### UnsetReason
+`func (o *Refund) UnsetReason()`
+
+UnsetReason ensures that no value is present for Reason, not even an explicit nil
 ### GetReferenceValue
 
 `func (o *Refund) GetReferenceValue() string`
@@ -237,6 +267,16 @@ SetReferenceValue sets ReferenceValue field to given value.
 
 HasReferenceValue returns a boolean if a field has been set.
 
+### SetReferenceValueNil
+
+`func (o *Refund) SetReferenceValueNil(b bool)`
+
+ SetReferenceValueNil sets the value for ReferenceValue to be an explicit nil
+
+### UnsetReferenceValue
+`func (o *Refund) UnsetReferenceValue()`
+
+UnsetReferenceValue ensures that no value is present for ReferenceValue, not even an explicit nil
 ### GetPaymentId
 
 `func (o *Refund) GetPaymentId() string`
@@ -282,6 +322,16 @@ SetProviderCreatedAt sets ProviderCreatedAt field to given value.
 
 HasProviderCreatedAt returns a boolean if a field has been set.
 
+### SetProviderCreatedAtNil
+
+`func (o *Refund) SetProviderCreatedAtNil(b bool)`
+
+ SetProviderCreatedAtNil sets the value for ProviderCreatedAt to be an explicit nil
+
+### UnsetProviderCreatedAt
+`func (o *Refund) UnsetProviderCreatedAt()`
+
+UnsetProviderCreatedAt ensures that no value is present for ProviderCreatedAt, not even an explicit nil
 ### GetCreatedAt
 
 `func (o *Refund) GetCreatedAt() time.Time`

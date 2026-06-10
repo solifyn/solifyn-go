@@ -88,6 +88,16 @@ and a boolean to check if the value has been set.
 SetImageUrl sets ImageUrl field to given value.
 
 
+### SetImageUrlNil
+
+`func (o *ResolvedAddon) SetImageUrlNil(b bool)`
+
+ SetImageUrlNil sets the value for ImageUrl to be an explicit nil
+
+### UnsetImageUrl
+`func (o *ResolvedAddon) UnsetImageUrl()`
+
+UnsetImageUrl ensures that no value is present for ImageUrl, not even an explicit nil
 ### GetQuantity
 
 `func (o *ResolvedAddon) GetQuantity() float32`

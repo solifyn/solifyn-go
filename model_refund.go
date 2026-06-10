@@ -27,7 +27,7 @@ type Refund struct {
 	// The Whop Refund ID
 	WhopId string `json:"whopId"`
 	// Client-generated key to prevent duplicate refunds
-	IdempotencyKey *string `json:"idempotencyKey,omitempty"`
+	IdempotencyKey NullableString `json:"idempotencyKey,omitempty"`
 	// Refunded amount
 	Amount float32 `json:"amount"`
 	// Currency code
@@ -35,15 +35,15 @@ type Refund struct {
 	// Status of the refund
 	Status string `json:"status"`
 	// The payment provider used
-	Provider *string `json:"provider,omitempty"`
+	Provider NullableString `json:"provider,omitempty"`
 	// Reason for the refund
-	Reason *string `json:"reason,omitempty"`
+	Reason NullableString `json:"reason,omitempty"`
 	// Acquirer Reference Number (ARN) or tracking number
-	ReferenceValue *string `json:"referenceValue,omitempty"`
+	ReferenceValue NullableString `json:"referenceValue,omitempty"`
 	// The associated Payment ID
 	PaymentId string `json:"paymentId"`
 	// Timestamp when the refund was processed by the provider
-	ProviderCreatedAt *time.Time `json:"providerCreatedAt,omitempty"`
+	ProviderCreatedAt NullableTime `json:"providerCreatedAt,omitempty"`
 	// Timestamp when the refund was created in our system
 	CreatedAt time.Time `json:"createdAt"`
 	// Timestamp when the refund was last updated
@@ -125,36 +125,46 @@ func (o *Refund) SetWhopId(v string) {
 	o.WhopId = v
 }
 
-// GetIdempotencyKey returns the IdempotencyKey field value if set, zero value otherwise.
+// GetIdempotencyKey returns the IdempotencyKey field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Refund) GetIdempotencyKey() string {
-	if o == nil || IsNil(o.IdempotencyKey) {
+	if o == nil || IsNil(o.IdempotencyKey.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.IdempotencyKey
+	return *o.IdempotencyKey.Get()
 }
 
 // GetIdempotencyKeyOk returns a tuple with the IdempotencyKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Refund) GetIdempotencyKeyOk() (*string, bool) {
-	if o == nil || IsNil(o.IdempotencyKey) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IdempotencyKey, true
+	return o.IdempotencyKey.Get(), o.IdempotencyKey.IsSet()
 }
 
 // HasIdempotencyKey returns a boolean if a field has been set.
 func (o *Refund) HasIdempotencyKey() bool {
-	if o != nil && !IsNil(o.IdempotencyKey) {
+	if o != nil && o.IdempotencyKey.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetIdempotencyKey gets a reference to the given string and assigns it to the IdempotencyKey field.
+// SetIdempotencyKey gets a reference to the given NullableString and assigns it to the IdempotencyKey field.
 func (o *Refund) SetIdempotencyKey(v string) {
-	o.IdempotencyKey = &v
+	o.IdempotencyKey.Set(&v)
+}
+// SetIdempotencyKeyNil sets the value for IdempotencyKey to be an explicit nil
+func (o *Refund) SetIdempotencyKeyNil() {
+	o.IdempotencyKey.Set(nil)
+}
+
+// UnsetIdempotencyKey ensures that no value is present for IdempotencyKey, not even an explicit nil
+func (o *Refund) UnsetIdempotencyKey() {
+	o.IdempotencyKey.Unset()
 }
 
 // GetAmount returns the Amount field value
@@ -229,100 +239,130 @@ func (o *Refund) SetStatus(v string) {
 	o.Status = v
 }
 
-// GetProvider returns the Provider field value if set, zero value otherwise.
+// GetProvider returns the Provider field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Refund) GetProvider() string {
-	if o == nil || IsNil(o.Provider) {
+	if o == nil || IsNil(o.Provider.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Provider
+	return *o.Provider.Get()
 }
 
 // GetProviderOk returns a tuple with the Provider field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Refund) GetProviderOk() (*string, bool) {
-	if o == nil || IsNil(o.Provider) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Provider, true
+	return o.Provider.Get(), o.Provider.IsSet()
 }
 
 // HasProvider returns a boolean if a field has been set.
 func (o *Refund) HasProvider() bool {
-	if o != nil && !IsNil(o.Provider) {
+	if o != nil && o.Provider.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetProvider gets a reference to the given string and assigns it to the Provider field.
+// SetProvider gets a reference to the given NullableString and assigns it to the Provider field.
 func (o *Refund) SetProvider(v string) {
-	o.Provider = &v
+	o.Provider.Set(&v)
+}
+// SetProviderNil sets the value for Provider to be an explicit nil
+func (o *Refund) SetProviderNil() {
+	o.Provider.Set(nil)
 }
 
-// GetReason returns the Reason field value if set, zero value otherwise.
+// UnsetProvider ensures that no value is present for Provider, not even an explicit nil
+func (o *Refund) UnsetProvider() {
+	o.Provider.Unset()
+}
+
+// GetReason returns the Reason field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Refund) GetReason() string {
-	if o == nil || IsNil(o.Reason) {
+	if o == nil || IsNil(o.Reason.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Reason
+	return *o.Reason.Get()
 }
 
 // GetReasonOk returns a tuple with the Reason field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Refund) GetReasonOk() (*string, bool) {
-	if o == nil || IsNil(o.Reason) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Reason, true
+	return o.Reason.Get(), o.Reason.IsSet()
 }
 
 // HasReason returns a boolean if a field has been set.
 func (o *Refund) HasReason() bool {
-	if o != nil && !IsNil(o.Reason) {
+	if o != nil && o.Reason.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetReason gets a reference to the given string and assigns it to the Reason field.
+// SetReason gets a reference to the given NullableString and assigns it to the Reason field.
 func (o *Refund) SetReason(v string) {
-	o.Reason = &v
+	o.Reason.Set(&v)
+}
+// SetReasonNil sets the value for Reason to be an explicit nil
+func (o *Refund) SetReasonNil() {
+	o.Reason.Set(nil)
 }
 
-// GetReferenceValue returns the ReferenceValue field value if set, zero value otherwise.
+// UnsetReason ensures that no value is present for Reason, not even an explicit nil
+func (o *Refund) UnsetReason() {
+	o.Reason.Unset()
+}
+
+// GetReferenceValue returns the ReferenceValue field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Refund) GetReferenceValue() string {
-	if o == nil || IsNil(o.ReferenceValue) {
+	if o == nil || IsNil(o.ReferenceValue.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ReferenceValue
+	return *o.ReferenceValue.Get()
 }
 
 // GetReferenceValueOk returns a tuple with the ReferenceValue field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Refund) GetReferenceValueOk() (*string, bool) {
-	if o == nil || IsNil(o.ReferenceValue) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ReferenceValue, true
+	return o.ReferenceValue.Get(), o.ReferenceValue.IsSet()
 }
 
 // HasReferenceValue returns a boolean if a field has been set.
 func (o *Refund) HasReferenceValue() bool {
-	if o != nil && !IsNil(o.ReferenceValue) {
+	if o != nil && o.ReferenceValue.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetReferenceValue gets a reference to the given string and assigns it to the ReferenceValue field.
+// SetReferenceValue gets a reference to the given NullableString and assigns it to the ReferenceValue field.
 func (o *Refund) SetReferenceValue(v string) {
-	o.ReferenceValue = &v
+	o.ReferenceValue.Set(&v)
+}
+// SetReferenceValueNil sets the value for ReferenceValue to be an explicit nil
+func (o *Refund) SetReferenceValueNil() {
+	o.ReferenceValue.Set(nil)
+}
+
+// UnsetReferenceValue ensures that no value is present for ReferenceValue, not even an explicit nil
+func (o *Refund) UnsetReferenceValue() {
+	o.ReferenceValue.Unset()
 }
 
 // GetPaymentId returns the PaymentId field value
@@ -349,36 +389,46 @@ func (o *Refund) SetPaymentId(v string) {
 	o.PaymentId = v
 }
 
-// GetProviderCreatedAt returns the ProviderCreatedAt field value if set, zero value otherwise.
+// GetProviderCreatedAt returns the ProviderCreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Refund) GetProviderCreatedAt() time.Time {
-	if o == nil || IsNil(o.ProviderCreatedAt) {
+	if o == nil || IsNil(o.ProviderCreatedAt.Get()) {
 		var ret time.Time
 		return ret
 	}
-	return *o.ProviderCreatedAt
+	return *o.ProviderCreatedAt.Get()
 }
 
 // GetProviderCreatedAtOk returns a tuple with the ProviderCreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Refund) GetProviderCreatedAtOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.ProviderCreatedAt) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ProviderCreatedAt, true
+	return o.ProviderCreatedAt.Get(), o.ProviderCreatedAt.IsSet()
 }
 
 // HasProviderCreatedAt returns a boolean if a field has been set.
 func (o *Refund) HasProviderCreatedAt() bool {
-	if o != nil && !IsNil(o.ProviderCreatedAt) {
+	if o != nil && o.ProviderCreatedAt.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetProviderCreatedAt gets a reference to the given time.Time and assigns it to the ProviderCreatedAt field.
+// SetProviderCreatedAt gets a reference to the given NullableTime and assigns it to the ProviderCreatedAt field.
 func (o *Refund) SetProviderCreatedAt(v time.Time) {
-	o.ProviderCreatedAt = &v
+	o.ProviderCreatedAt.Set(&v)
+}
+// SetProviderCreatedAtNil sets the value for ProviderCreatedAt to be an explicit nil
+func (o *Refund) SetProviderCreatedAtNil() {
+	o.ProviderCreatedAt.Set(nil)
+}
+
+// UnsetProviderCreatedAt ensures that no value is present for ProviderCreatedAt, not even an explicit nil
+func (o *Refund) UnsetProviderCreatedAt() {
+	o.ProviderCreatedAt.Unset()
 }
 
 // GetCreatedAt returns the CreatedAt field value
@@ -441,24 +491,24 @@ func (o Refund) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	toSerialize["whopId"] = o.WhopId
-	if !IsNil(o.IdempotencyKey) {
-		toSerialize["idempotencyKey"] = o.IdempotencyKey
+	if o.IdempotencyKey.IsSet() {
+		toSerialize["idempotencyKey"] = o.IdempotencyKey.Get()
 	}
 	toSerialize["amount"] = o.Amount
 	toSerialize["currency"] = o.Currency
 	toSerialize["status"] = o.Status
-	if !IsNil(o.Provider) {
-		toSerialize["provider"] = o.Provider
+	if o.Provider.IsSet() {
+		toSerialize["provider"] = o.Provider.Get()
 	}
-	if !IsNil(o.Reason) {
-		toSerialize["reason"] = o.Reason
+	if o.Reason.IsSet() {
+		toSerialize["reason"] = o.Reason.Get()
 	}
-	if !IsNil(o.ReferenceValue) {
-		toSerialize["referenceValue"] = o.ReferenceValue
+	if o.ReferenceValue.IsSet() {
+		toSerialize["referenceValue"] = o.ReferenceValue.Get()
 	}
 	toSerialize["paymentId"] = o.PaymentId
-	if !IsNil(o.ProviderCreatedAt) {
-		toSerialize["providerCreatedAt"] = o.ProviderCreatedAt
+	if o.ProviderCreatedAt.IsSet() {
+		toSerialize["providerCreatedAt"] = o.ProviderCreatedAt.Get()
 	}
 	toSerialize["createdAt"] = o.CreatedAt
 	toSerialize["updatedAt"] = o.UpdatedAt

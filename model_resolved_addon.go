@@ -103,6 +103,7 @@ func (o *ResolvedAddon) SetName(v string) {
 }
 
 // GetImageUrl returns the ImageUrl field value
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
 func (o *ResolvedAddon) GetImageUrl() map[string]interface{} {
 	if o == nil {
 		var ret map[string]interface{}
@@ -114,8 +115,9 @@ func (o *ResolvedAddon) GetImageUrl() map[string]interface{} {
 
 // GetImageUrlOk returns a tuple with the ImageUrl field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ResolvedAddon) GetImageUrlOk() (map[string]interface{}, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ImageUrl) {
 		return map[string]interface{}{}, false
 	}
 	return o.ImageUrl, true
@@ -162,7 +164,9 @@ func (o ResolvedAddon) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["productId"] = o.ProductId
 	toSerialize["name"] = o.Name
-	toSerialize["imageUrl"] = o.ImageUrl
+	if o.ImageUrl != nil {
+		toSerialize["imageUrl"] = o.ImageUrl
+	}
 	toSerialize["quantity"] = o.Quantity
 	return toSerialize, nil
 }

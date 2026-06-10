@@ -25,31 +25,31 @@ type CheckoutLinkResponseDto struct {
 	// The checkout link ID
 	Id string `json:"id"`
 	// The title of the checkout link
-	Title *string `json:"title,omitempty"`
+	Title NullableString `json:"title,omitempty"`
 	// The linked Product ID
-	ProductId *string `json:"productId,omitempty"`
+	ProductId NullableString `json:"productId,omitempty"`
 	// The linked Collection ID
-	CollectionId *string `json:"collectionId,omitempty"`
+	CollectionId NullableString `json:"collectionId,omitempty"`
 	// Pre-filled customer name
-	CustomerName *string `json:"customerName,omitempty"`
+	CustomerName NullableString `json:"customerName,omitempty"`
 	// Pre-filled customer email
-	CustomerEmail *string `json:"customerEmail,omitempty"`
+	CustomerEmail NullableString `json:"customerEmail,omitempty"`
 	// Pre-filled address line 1
-	AddressLine1 *string `json:"addressLine1,omitempty"`
+	AddressLine1 NullableString `json:"addressLine1,omitempty"`
 	// Pre-filled city
-	City *string `json:"city,omitempty"`
+	City NullableString `json:"city,omitempty"`
 	// Pre-filled state
-	State *string `json:"state,omitempty"`
+	State NullableString `json:"state,omitempty"`
 	// Pre-filled postal code
-	PostalCode *string `json:"postalCode,omitempty"`
+	PostalCode NullableString `json:"postalCode,omitempty"`
 	// Pre-filled country
-	Country *string `json:"country,omitempty"`
+	Country NullableString `json:"country,omitempty"`
 	// Quantity to purchase
 	Quantity float32 `json:"quantity"`
 	// URL to redirect to after successful payment
-	RedirectUrl *string `json:"redirectUrl,omitempty"`
+	RedirectUrl NullableString `json:"redirectUrl,omitempty"`
 	// URL to redirect to if payment is cancelled
-	CancelUrl *string `json:"cancelUrl,omitempty"`
+	CancelUrl NullableString `json:"cancelUrl,omitempty"`
 	// Whether to show discounts on the checkout page
 	ShowDiscounts bool `json:"showDiscounts"`
 	// Timestamp when the link was created
@@ -106,324 +106,424 @@ func (o *CheckoutLinkResponseDto) SetId(v string) {
 	o.Id = v
 }
 
-// GetTitle returns the Title field value if set, zero value otherwise.
+// GetTitle returns the Title field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CheckoutLinkResponseDto) GetTitle() string {
-	if o == nil || IsNil(o.Title) {
+	if o == nil || IsNil(o.Title.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Title
+	return *o.Title.Get()
 }
 
 // GetTitleOk returns a tuple with the Title field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CheckoutLinkResponseDto) GetTitleOk() (*string, bool) {
-	if o == nil || IsNil(o.Title) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Title, true
+	return o.Title.Get(), o.Title.IsSet()
 }
 
 // HasTitle returns a boolean if a field has been set.
 func (o *CheckoutLinkResponseDto) HasTitle() bool {
-	if o != nil && !IsNil(o.Title) {
+	if o != nil && o.Title.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetTitle gets a reference to the given string and assigns it to the Title field.
+// SetTitle gets a reference to the given NullableString and assigns it to the Title field.
 func (o *CheckoutLinkResponseDto) SetTitle(v string) {
-	o.Title = &v
+	o.Title.Set(&v)
+}
+// SetTitleNil sets the value for Title to be an explicit nil
+func (o *CheckoutLinkResponseDto) SetTitleNil() {
+	o.Title.Set(nil)
 }
 
-// GetProductId returns the ProductId field value if set, zero value otherwise.
+// UnsetTitle ensures that no value is present for Title, not even an explicit nil
+func (o *CheckoutLinkResponseDto) UnsetTitle() {
+	o.Title.Unset()
+}
+
+// GetProductId returns the ProductId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CheckoutLinkResponseDto) GetProductId() string {
-	if o == nil || IsNil(o.ProductId) {
+	if o == nil || IsNil(o.ProductId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ProductId
+	return *o.ProductId.Get()
 }
 
 // GetProductIdOk returns a tuple with the ProductId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CheckoutLinkResponseDto) GetProductIdOk() (*string, bool) {
-	if o == nil || IsNil(o.ProductId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ProductId, true
+	return o.ProductId.Get(), o.ProductId.IsSet()
 }
 
 // HasProductId returns a boolean if a field has been set.
 func (o *CheckoutLinkResponseDto) HasProductId() bool {
-	if o != nil && !IsNil(o.ProductId) {
+	if o != nil && o.ProductId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetProductId gets a reference to the given string and assigns it to the ProductId field.
+// SetProductId gets a reference to the given NullableString and assigns it to the ProductId field.
 func (o *CheckoutLinkResponseDto) SetProductId(v string) {
-	o.ProductId = &v
+	o.ProductId.Set(&v)
+}
+// SetProductIdNil sets the value for ProductId to be an explicit nil
+func (o *CheckoutLinkResponseDto) SetProductIdNil() {
+	o.ProductId.Set(nil)
 }
 
-// GetCollectionId returns the CollectionId field value if set, zero value otherwise.
+// UnsetProductId ensures that no value is present for ProductId, not even an explicit nil
+func (o *CheckoutLinkResponseDto) UnsetProductId() {
+	o.ProductId.Unset()
+}
+
+// GetCollectionId returns the CollectionId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CheckoutLinkResponseDto) GetCollectionId() string {
-	if o == nil || IsNil(o.CollectionId) {
+	if o == nil || IsNil(o.CollectionId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.CollectionId
+	return *o.CollectionId.Get()
 }
 
 // GetCollectionIdOk returns a tuple with the CollectionId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CheckoutLinkResponseDto) GetCollectionIdOk() (*string, bool) {
-	if o == nil || IsNil(o.CollectionId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CollectionId, true
+	return o.CollectionId.Get(), o.CollectionId.IsSet()
 }
 
 // HasCollectionId returns a boolean if a field has been set.
 func (o *CheckoutLinkResponseDto) HasCollectionId() bool {
-	if o != nil && !IsNil(o.CollectionId) {
+	if o != nil && o.CollectionId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCollectionId gets a reference to the given string and assigns it to the CollectionId field.
+// SetCollectionId gets a reference to the given NullableString and assigns it to the CollectionId field.
 func (o *CheckoutLinkResponseDto) SetCollectionId(v string) {
-	o.CollectionId = &v
+	o.CollectionId.Set(&v)
+}
+// SetCollectionIdNil sets the value for CollectionId to be an explicit nil
+func (o *CheckoutLinkResponseDto) SetCollectionIdNil() {
+	o.CollectionId.Set(nil)
 }
 
-// GetCustomerName returns the CustomerName field value if set, zero value otherwise.
+// UnsetCollectionId ensures that no value is present for CollectionId, not even an explicit nil
+func (o *CheckoutLinkResponseDto) UnsetCollectionId() {
+	o.CollectionId.Unset()
+}
+
+// GetCustomerName returns the CustomerName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CheckoutLinkResponseDto) GetCustomerName() string {
-	if o == nil || IsNil(o.CustomerName) {
+	if o == nil || IsNil(o.CustomerName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.CustomerName
+	return *o.CustomerName.Get()
 }
 
 // GetCustomerNameOk returns a tuple with the CustomerName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CheckoutLinkResponseDto) GetCustomerNameOk() (*string, bool) {
-	if o == nil || IsNil(o.CustomerName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CustomerName, true
+	return o.CustomerName.Get(), o.CustomerName.IsSet()
 }
 
 // HasCustomerName returns a boolean if a field has been set.
 func (o *CheckoutLinkResponseDto) HasCustomerName() bool {
-	if o != nil && !IsNil(o.CustomerName) {
+	if o != nil && o.CustomerName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCustomerName gets a reference to the given string and assigns it to the CustomerName field.
+// SetCustomerName gets a reference to the given NullableString and assigns it to the CustomerName field.
 func (o *CheckoutLinkResponseDto) SetCustomerName(v string) {
-	o.CustomerName = &v
+	o.CustomerName.Set(&v)
+}
+// SetCustomerNameNil sets the value for CustomerName to be an explicit nil
+func (o *CheckoutLinkResponseDto) SetCustomerNameNil() {
+	o.CustomerName.Set(nil)
 }
 
-// GetCustomerEmail returns the CustomerEmail field value if set, zero value otherwise.
+// UnsetCustomerName ensures that no value is present for CustomerName, not even an explicit nil
+func (o *CheckoutLinkResponseDto) UnsetCustomerName() {
+	o.CustomerName.Unset()
+}
+
+// GetCustomerEmail returns the CustomerEmail field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CheckoutLinkResponseDto) GetCustomerEmail() string {
-	if o == nil || IsNil(o.CustomerEmail) {
+	if o == nil || IsNil(o.CustomerEmail.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.CustomerEmail
+	return *o.CustomerEmail.Get()
 }
 
 // GetCustomerEmailOk returns a tuple with the CustomerEmail field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CheckoutLinkResponseDto) GetCustomerEmailOk() (*string, bool) {
-	if o == nil || IsNil(o.CustomerEmail) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CustomerEmail, true
+	return o.CustomerEmail.Get(), o.CustomerEmail.IsSet()
 }
 
 // HasCustomerEmail returns a boolean if a field has been set.
 func (o *CheckoutLinkResponseDto) HasCustomerEmail() bool {
-	if o != nil && !IsNil(o.CustomerEmail) {
+	if o != nil && o.CustomerEmail.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCustomerEmail gets a reference to the given string and assigns it to the CustomerEmail field.
+// SetCustomerEmail gets a reference to the given NullableString and assigns it to the CustomerEmail field.
 func (o *CheckoutLinkResponseDto) SetCustomerEmail(v string) {
-	o.CustomerEmail = &v
+	o.CustomerEmail.Set(&v)
+}
+// SetCustomerEmailNil sets the value for CustomerEmail to be an explicit nil
+func (o *CheckoutLinkResponseDto) SetCustomerEmailNil() {
+	o.CustomerEmail.Set(nil)
 }
 
-// GetAddressLine1 returns the AddressLine1 field value if set, zero value otherwise.
+// UnsetCustomerEmail ensures that no value is present for CustomerEmail, not even an explicit nil
+func (o *CheckoutLinkResponseDto) UnsetCustomerEmail() {
+	o.CustomerEmail.Unset()
+}
+
+// GetAddressLine1 returns the AddressLine1 field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CheckoutLinkResponseDto) GetAddressLine1() string {
-	if o == nil || IsNil(o.AddressLine1) {
+	if o == nil || IsNil(o.AddressLine1.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.AddressLine1
+	return *o.AddressLine1.Get()
 }
 
 // GetAddressLine1Ok returns a tuple with the AddressLine1 field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CheckoutLinkResponseDto) GetAddressLine1Ok() (*string, bool) {
-	if o == nil || IsNil(o.AddressLine1) {
+	if o == nil {
 		return nil, false
 	}
-	return o.AddressLine1, true
+	return o.AddressLine1.Get(), o.AddressLine1.IsSet()
 }
 
 // HasAddressLine1 returns a boolean if a field has been set.
 func (o *CheckoutLinkResponseDto) HasAddressLine1() bool {
-	if o != nil && !IsNil(o.AddressLine1) {
+	if o != nil && o.AddressLine1.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAddressLine1 gets a reference to the given string and assigns it to the AddressLine1 field.
+// SetAddressLine1 gets a reference to the given NullableString and assigns it to the AddressLine1 field.
 func (o *CheckoutLinkResponseDto) SetAddressLine1(v string) {
-	o.AddressLine1 = &v
+	o.AddressLine1.Set(&v)
+}
+// SetAddressLine1Nil sets the value for AddressLine1 to be an explicit nil
+func (o *CheckoutLinkResponseDto) SetAddressLine1Nil() {
+	o.AddressLine1.Set(nil)
 }
 
-// GetCity returns the City field value if set, zero value otherwise.
+// UnsetAddressLine1 ensures that no value is present for AddressLine1, not even an explicit nil
+func (o *CheckoutLinkResponseDto) UnsetAddressLine1() {
+	o.AddressLine1.Unset()
+}
+
+// GetCity returns the City field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CheckoutLinkResponseDto) GetCity() string {
-	if o == nil || IsNil(o.City) {
+	if o == nil || IsNil(o.City.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.City
+	return *o.City.Get()
 }
 
 // GetCityOk returns a tuple with the City field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CheckoutLinkResponseDto) GetCityOk() (*string, bool) {
-	if o == nil || IsNil(o.City) {
+	if o == nil {
 		return nil, false
 	}
-	return o.City, true
+	return o.City.Get(), o.City.IsSet()
 }
 
 // HasCity returns a boolean if a field has been set.
 func (o *CheckoutLinkResponseDto) HasCity() bool {
-	if o != nil && !IsNil(o.City) {
+	if o != nil && o.City.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCity gets a reference to the given string and assigns it to the City field.
+// SetCity gets a reference to the given NullableString and assigns it to the City field.
 func (o *CheckoutLinkResponseDto) SetCity(v string) {
-	o.City = &v
+	o.City.Set(&v)
+}
+// SetCityNil sets the value for City to be an explicit nil
+func (o *CheckoutLinkResponseDto) SetCityNil() {
+	o.City.Set(nil)
 }
 
-// GetState returns the State field value if set, zero value otherwise.
+// UnsetCity ensures that no value is present for City, not even an explicit nil
+func (o *CheckoutLinkResponseDto) UnsetCity() {
+	o.City.Unset()
+}
+
+// GetState returns the State field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CheckoutLinkResponseDto) GetState() string {
-	if o == nil || IsNil(o.State) {
+	if o == nil || IsNil(o.State.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.State
+	return *o.State.Get()
 }
 
 // GetStateOk returns a tuple with the State field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CheckoutLinkResponseDto) GetStateOk() (*string, bool) {
-	if o == nil || IsNil(o.State) {
+	if o == nil {
 		return nil, false
 	}
-	return o.State, true
+	return o.State.Get(), o.State.IsSet()
 }
 
 // HasState returns a boolean if a field has been set.
 func (o *CheckoutLinkResponseDto) HasState() bool {
-	if o != nil && !IsNil(o.State) {
+	if o != nil && o.State.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetState gets a reference to the given string and assigns it to the State field.
+// SetState gets a reference to the given NullableString and assigns it to the State field.
 func (o *CheckoutLinkResponseDto) SetState(v string) {
-	o.State = &v
+	o.State.Set(&v)
+}
+// SetStateNil sets the value for State to be an explicit nil
+func (o *CheckoutLinkResponseDto) SetStateNil() {
+	o.State.Set(nil)
 }
 
-// GetPostalCode returns the PostalCode field value if set, zero value otherwise.
+// UnsetState ensures that no value is present for State, not even an explicit nil
+func (o *CheckoutLinkResponseDto) UnsetState() {
+	o.State.Unset()
+}
+
+// GetPostalCode returns the PostalCode field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CheckoutLinkResponseDto) GetPostalCode() string {
-	if o == nil || IsNil(o.PostalCode) {
+	if o == nil || IsNil(o.PostalCode.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.PostalCode
+	return *o.PostalCode.Get()
 }
 
 // GetPostalCodeOk returns a tuple with the PostalCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CheckoutLinkResponseDto) GetPostalCodeOk() (*string, bool) {
-	if o == nil || IsNil(o.PostalCode) {
+	if o == nil {
 		return nil, false
 	}
-	return o.PostalCode, true
+	return o.PostalCode.Get(), o.PostalCode.IsSet()
 }
 
 // HasPostalCode returns a boolean if a field has been set.
 func (o *CheckoutLinkResponseDto) HasPostalCode() bool {
-	if o != nil && !IsNil(o.PostalCode) {
+	if o != nil && o.PostalCode.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetPostalCode gets a reference to the given string and assigns it to the PostalCode field.
+// SetPostalCode gets a reference to the given NullableString and assigns it to the PostalCode field.
 func (o *CheckoutLinkResponseDto) SetPostalCode(v string) {
-	o.PostalCode = &v
+	o.PostalCode.Set(&v)
+}
+// SetPostalCodeNil sets the value for PostalCode to be an explicit nil
+func (o *CheckoutLinkResponseDto) SetPostalCodeNil() {
+	o.PostalCode.Set(nil)
 }
 
-// GetCountry returns the Country field value if set, zero value otherwise.
+// UnsetPostalCode ensures that no value is present for PostalCode, not even an explicit nil
+func (o *CheckoutLinkResponseDto) UnsetPostalCode() {
+	o.PostalCode.Unset()
+}
+
+// GetCountry returns the Country field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CheckoutLinkResponseDto) GetCountry() string {
-	if o == nil || IsNil(o.Country) {
+	if o == nil || IsNil(o.Country.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Country
+	return *o.Country.Get()
 }
 
 // GetCountryOk returns a tuple with the Country field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CheckoutLinkResponseDto) GetCountryOk() (*string, bool) {
-	if o == nil || IsNil(o.Country) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Country, true
+	return o.Country.Get(), o.Country.IsSet()
 }
 
 // HasCountry returns a boolean if a field has been set.
 func (o *CheckoutLinkResponseDto) HasCountry() bool {
-	if o != nil && !IsNil(o.Country) {
+	if o != nil && o.Country.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCountry gets a reference to the given string and assigns it to the Country field.
+// SetCountry gets a reference to the given NullableString and assigns it to the Country field.
 func (o *CheckoutLinkResponseDto) SetCountry(v string) {
-	o.Country = &v
+	o.Country.Set(&v)
+}
+// SetCountryNil sets the value for Country to be an explicit nil
+func (o *CheckoutLinkResponseDto) SetCountryNil() {
+	o.Country.Set(nil)
+}
+
+// UnsetCountry ensures that no value is present for Country, not even an explicit nil
+func (o *CheckoutLinkResponseDto) UnsetCountry() {
+	o.Country.Unset()
 }
 
 // GetQuantity returns the Quantity field value
@@ -450,68 +550,88 @@ func (o *CheckoutLinkResponseDto) SetQuantity(v float32) {
 	o.Quantity = v
 }
 
-// GetRedirectUrl returns the RedirectUrl field value if set, zero value otherwise.
+// GetRedirectUrl returns the RedirectUrl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CheckoutLinkResponseDto) GetRedirectUrl() string {
-	if o == nil || IsNil(o.RedirectUrl) {
+	if o == nil || IsNil(o.RedirectUrl.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.RedirectUrl
+	return *o.RedirectUrl.Get()
 }
 
 // GetRedirectUrlOk returns a tuple with the RedirectUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CheckoutLinkResponseDto) GetRedirectUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.RedirectUrl) {
+	if o == nil {
 		return nil, false
 	}
-	return o.RedirectUrl, true
+	return o.RedirectUrl.Get(), o.RedirectUrl.IsSet()
 }
 
 // HasRedirectUrl returns a boolean if a field has been set.
 func (o *CheckoutLinkResponseDto) HasRedirectUrl() bool {
-	if o != nil && !IsNil(o.RedirectUrl) {
+	if o != nil && o.RedirectUrl.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetRedirectUrl gets a reference to the given string and assigns it to the RedirectUrl field.
+// SetRedirectUrl gets a reference to the given NullableString and assigns it to the RedirectUrl field.
 func (o *CheckoutLinkResponseDto) SetRedirectUrl(v string) {
-	o.RedirectUrl = &v
+	o.RedirectUrl.Set(&v)
+}
+// SetRedirectUrlNil sets the value for RedirectUrl to be an explicit nil
+func (o *CheckoutLinkResponseDto) SetRedirectUrlNil() {
+	o.RedirectUrl.Set(nil)
 }
 
-// GetCancelUrl returns the CancelUrl field value if set, zero value otherwise.
+// UnsetRedirectUrl ensures that no value is present for RedirectUrl, not even an explicit nil
+func (o *CheckoutLinkResponseDto) UnsetRedirectUrl() {
+	o.RedirectUrl.Unset()
+}
+
+// GetCancelUrl returns the CancelUrl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CheckoutLinkResponseDto) GetCancelUrl() string {
-	if o == nil || IsNil(o.CancelUrl) {
+	if o == nil || IsNil(o.CancelUrl.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.CancelUrl
+	return *o.CancelUrl.Get()
 }
 
 // GetCancelUrlOk returns a tuple with the CancelUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CheckoutLinkResponseDto) GetCancelUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.CancelUrl) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CancelUrl, true
+	return o.CancelUrl.Get(), o.CancelUrl.IsSet()
 }
 
 // HasCancelUrl returns a boolean if a field has been set.
 func (o *CheckoutLinkResponseDto) HasCancelUrl() bool {
-	if o != nil && !IsNil(o.CancelUrl) {
+	if o != nil && o.CancelUrl.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCancelUrl gets a reference to the given string and assigns it to the CancelUrl field.
+// SetCancelUrl gets a reference to the given NullableString and assigns it to the CancelUrl field.
 func (o *CheckoutLinkResponseDto) SetCancelUrl(v string) {
-	o.CancelUrl = &v
+	o.CancelUrl.Set(&v)
+}
+// SetCancelUrlNil sets the value for CancelUrl to be an explicit nil
+func (o *CheckoutLinkResponseDto) SetCancelUrlNil() {
+	o.CancelUrl.Set(nil)
+}
+
+// UnsetCancelUrl ensures that no value is present for CancelUrl, not even an explicit nil
+func (o *CheckoutLinkResponseDto) UnsetCancelUrl() {
+	o.CancelUrl.Unset()
 }
 
 // GetShowDiscounts returns the ShowDiscounts field value
@@ -597,42 +717,42 @@ func (o CheckoutLinkResponseDto) MarshalJSON() ([]byte, error) {
 func (o CheckoutLinkResponseDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
-	if !IsNil(o.Title) {
-		toSerialize["title"] = o.Title
+	if o.Title.IsSet() {
+		toSerialize["title"] = o.Title.Get()
 	}
-	if !IsNil(o.ProductId) {
-		toSerialize["productId"] = o.ProductId
+	if o.ProductId.IsSet() {
+		toSerialize["productId"] = o.ProductId.Get()
 	}
-	if !IsNil(o.CollectionId) {
-		toSerialize["collectionId"] = o.CollectionId
+	if o.CollectionId.IsSet() {
+		toSerialize["collectionId"] = o.CollectionId.Get()
 	}
-	if !IsNil(o.CustomerName) {
-		toSerialize["customerName"] = o.CustomerName
+	if o.CustomerName.IsSet() {
+		toSerialize["customerName"] = o.CustomerName.Get()
 	}
-	if !IsNil(o.CustomerEmail) {
-		toSerialize["customerEmail"] = o.CustomerEmail
+	if o.CustomerEmail.IsSet() {
+		toSerialize["customerEmail"] = o.CustomerEmail.Get()
 	}
-	if !IsNil(o.AddressLine1) {
-		toSerialize["addressLine1"] = o.AddressLine1
+	if o.AddressLine1.IsSet() {
+		toSerialize["addressLine1"] = o.AddressLine1.Get()
 	}
-	if !IsNil(o.City) {
-		toSerialize["city"] = o.City
+	if o.City.IsSet() {
+		toSerialize["city"] = o.City.Get()
 	}
-	if !IsNil(o.State) {
-		toSerialize["state"] = o.State
+	if o.State.IsSet() {
+		toSerialize["state"] = o.State.Get()
 	}
-	if !IsNil(o.PostalCode) {
-		toSerialize["postalCode"] = o.PostalCode
+	if o.PostalCode.IsSet() {
+		toSerialize["postalCode"] = o.PostalCode.Get()
 	}
-	if !IsNil(o.Country) {
-		toSerialize["country"] = o.Country
+	if o.Country.IsSet() {
+		toSerialize["country"] = o.Country.Get()
 	}
 	toSerialize["quantity"] = o.Quantity
-	if !IsNil(o.RedirectUrl) {
-		toSerialize["redirectUrl"] = o.RedirectUrl
+	if o.RedirectUrl.IsSet() {
+		toSerialize["redirectUrl"] = o.RedirectUrl.Get()
 	}
-	if !IsNil(o.CancelUrl) {
-		toSerialize["cancelUrl"] = o.CancelUrl
+	if o.CancelUrl.IsSet() {
+		toSerialize["cancelUrl"] = o.CancelUrl.Get()
 	}
 	toSerialize["showDiscounts"] = o.ShowDiscounts
 	toSerialize["createdAt"] = o.CreatedAt

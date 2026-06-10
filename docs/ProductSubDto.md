@@ -6,13 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** |  | 
 **Name** | **string** |  | 
-**DigitalLink** | **string** |  | 
+**DigitalLink** | **NullableString** |  | 
 
 ## Methods
 
 ### NewProductSubDto
 
-`func NewProductSubDto(id string, name string, digitalLink string, ) *ProductSubDto`
+`func NewProductSubDto(id string, name string, digitalLink NullableString, ) *ProductSubDto`
 
 NewProductSubDto instantiates a new ProductSubDto object
 This constructor will assign default values to properties that have it defined,
@@ -87,6 +87,16 @@ and a boolean to check if the value has been set.
 SetDigitalLink sets DigitalLink field to given value.
 
 
+### SetDigitalLinkNil
+
+`func (o *ProductSubDto) SetDigitalLinkNil(b bool)`
+
+ SetDigitalLinkNil sets the value for DigitalLink to be an explicit nil
+
+### UnsetDigitalLink
+`func (o *ProductSubDto) UnsetDigitalLink()`
+
+UnsetDigitalLink ensures that no value is present for DigitalLink, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

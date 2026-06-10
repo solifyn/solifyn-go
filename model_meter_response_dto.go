@@ -147,9 +147,9 @@ func (o *MeterResponseDto) SetName(v string) {
 	o.Name = v
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise.
+// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MeterResponseDto) GetDescription() map[string]interface{} {
-	if o == nil || IsNil(o.Description) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -158,6 +158,7 @@ func (o *MeterResponseDto) GetDescription() map[string]interface{} {
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MeterResponseDto) GetDescriptionOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Description) {
 		return map[string]interface{}{}, false
@@ -227,9 +228,9 @@ func (o *MeterResponseDto) SetAggregationType(v string) {
 	o.AggregationType = v
 }
 
-// GetAggregationKey returns the AggregationKey field value if set, zero value otherwise.
+// GetAggregationKey returns the AggregationKey field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MeterResponseDto) GetAggregationKey() map[string]interface{} {
-	if o == nil || IsNil(o.AggregationKey) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -238,6 +239,7 @@ func (o *MeterResponseDto) GetAggregationKey() map[string]interface{} {
 
 // GetAggregationKeyOk returns a tuple with the AggregationKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MeterResponseDto) GetAggregationKeyOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AggregationKey) {
 		return map[string]interface{}{}, false
@@ -259,9 +261,9 @@ func (o *MeterResponseDto) SetAggregationKey(v map[string]interface{}) {
 	o.AggregationKey = v
 }
 
-// GetUnit returns the Unit field value if set, zero value otherwise.
+// GetUnit returns the Unit field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MeterResponseDto) GetUnit() map[string]interface{} {
-	if o == nil || IsNil(o.Unit) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -270,6 +272,7 @@ func (o *MeterResponseDto) GetUnit() map[string]interface{} {
 
 // GetUnitOk returns a tuple with the Unit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MeterResponseDto) GetUnitOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Unit) {
 		return map[string]interface{}{}, false
@@ -291,9 +294,9 @@ func (o *MeterResponseDto) SetUnit(v map[string]interface{}) {
 	o.Unit = v
 }
 
-// GetFilters returns the Filters field value if set, zero value otherwise.
+// GetFilters returns the Filters field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MeterResponseDto) GetFilters() map[string]interface{} {
-	if o == nil || IsNil(o.Filters) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -302,6 +305,7 @@ func (o *MeterResponseDto) GetFilters() map[string]interface{} {
 
 // GetFiltersOk returns a tuple with the Filters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MeterResponseDto) GetFiltersOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Filters) {
 		return map[string]interface{}{}, false
@@ -408,18 +412,18 @@ func (o MeterResponseDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["id"] = o.Id
 	toSerialize["businessId"] = o.BusinessId
 	toSerialize["name"] = o.Name
-	if !IsNil(o.Description) {
+	if o.Description != nil {
 		toSerialize["description"] = o.Description
 	}
 	toSerialize["eventName"] = o.EventName
 	toSerialize["aggregationType"] = o.AggregationType
-	if !IsNil(o.AggregationKey) {
+	if o.AggregationKey != nil {
 		toSerialize["aggregationKey"] = o.AggregationKey
 	}
-	if !IsNil(o.Unit) {
+	if o.Unit != nil {
 		toSerialize["unit"] = o.Unit
 	}
-	if !IsNil(o.Filters) {
+	if o.Filters != nil {
 		toSerialize["filters"] = o.Filters
 	}
 	toSerialize["archived"] = o.Archived

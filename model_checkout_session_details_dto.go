@@ -42,7 +42,7 @@ type CheckoutSessionDetailsDto struct {
 	// Checkout session redirect URL if loaded in link mode
 	CheckoutUrl *string `json:"checkoutUrl,omitempty"`
 	// The details of the product being purchased
-	Product *Product `json:"product,omitempty"`
+	Product NullableProduct `json:"product,omitempty"`
 	// List of entitlement grants (e.g. GitHub repo invites) associated with this checkout.
 	EntitlementGrants []map[string]interface{} `json:"entitlementGrants,omitempty"`
 }
@@ -351,36 +351,46 @@ func (o *CheckoutSessionDetailsDto) SetCheckoutUrl(v string) {
 	o.CheckoutUrl = &v
 }
 
-// GetProduct returns the Product field value if set, zero value otherwise.
+// GetProduct returns the Product field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CheckoutSessionDetailsDto) GetProduct() Product {
-	if o == nil || IsNil(o.Product) {
+	if o == nil || IsNil(o.Product.Get()) {
 		var ret Product
 		return ret
 	}
-	return *o.Product
+	return *o.Product.Get()
 }
 
 // GetProductOk returns a tuple with the Product field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CheckoutSessionDetailsDto) GetProductOk() (*Product, bool) {
-	if o == nil || IsNil(o.Product) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Product, true
+	return o.Product.Get(), o.Product.IsSet()
 }
 
 // HasProduct returns a boolean if a field has been set.
 func (o *CheckoutSessionDetailsDto) HasProduct() bool {
-	if o != nil && !IsNil(o.Product) {
+	if o != nil && o.Product.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetProduct gets a reference to the given Product and assigns it to the Product field.
+// SetProduct gets a reference to the given NullableProduct and assigns it to the Product field.
 func (o *CheckoutSessionDetailsDto) SetProduct(v Product) {
-	o.Product = &v
+	o.Product.Set(&v)
+}
+// SetProductNil sets the value for Product to be an explicit nil
+func (o *CheckoutSessionDetailsDto) SetProductNil() {
+	o.Product.Set(nil)
+}
+
+// UnsetProduct ensures that no value is present for Product, not even an explicit nil
+func (o *CheckoutSessionDetailsDto) UnsetProduct() {
+	o.Product.Unset()
 }
 
 // GetEntitlementGrants returns the EntitlementGrants field value if set, zero value otherwise.
@@ -445,8 +455,8 @@ func (o CheckoutSessionDetailsDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CheckoutUrl) {
 		toSerialize["checkoutUrl"] = o.CheckoutUrl
 	}
-	if !IsNil(o.Product) {
-		toSerialize["product"] = o.Product
+	if o.Product.IsSet() {
+		toSerialize["product"] = o.Product.Get()
 	}
 	if !IsNil(o.EntitlementGrants) {
 		toSerialize["entitlementGrants"] = o.EntitlementGrants

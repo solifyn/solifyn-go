@@ -26,15 +26,15 @@ type Instance struct {
 	// The internal ID of the parent license key this instance belongs to.
 	LicenseId string `json:"licenseId"`
 	// The unique hardware hash or client-generated identifier of the activated device/machine.
-	InstanceId string `json:"instanceId"`
+	InstanceId NullableString `json:"instanceId"`
 	// A human-readable display name for this instance, assigned by the client application.
-	InstanceName string `json:"instanceName"`
+	InstanceName NullableString `json:"instanceName"`
 	// The IP address recorded at the time of activation.
-	IpAddress string `json:"ipAddress"`
+	IpAddress NullableString `json:"ipAddress"`
 	// Timestamp when this device instance was first activated.
 	ActivatedAt string `json:"activatedAt"`
 	// Timestamp of the most recent activation heartbeat or re-activation check from this device.
-	LastSeenAt string `json:"lastSeenAt"`
+	LastSeenAt NullableString `json:"lastSeenAt"`
 }
 
 type _Instance Instance
@@ -43,7 +43,7 @@ type _Instance Instance
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInstance(id string, licenseId string, instanceId string, instanceName string, ipAddress string, activatedAt string, lastSeenAt string) *Instance {
+func NewInstance(id string, licenseId string, instanceId NullableString, instanceName NullableString, ipAddress NullableString, activatedAt string, lastSeenAt NullableString) *Instance {
 	this := Instance{}
 	this.Id = id
 	this.LicenseId = licenseId
@@ -112,75 +112,81 @@ func (o *Instance) SetLicenseId(v string) {
 }
 
 // GetInstanceId returns the InstanceId field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *Instance) GetInstanceId() string {
-	if o == nil {
+	if o == nil || o.InstanceId.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.InstanceId
+	return *o.InstanceId.Get()
 }
 
 // GetInstanceIdOk returns a tuple with the InstanceId field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Instance) GetInstanceIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.InstanceId, true
+	return o.InstanceId.Get(), o.InstanceId.IsSet()
 }
 
 // SetInstanceId sets field value
 func (o *Instance) SetInstanceId(v string) {
-	o.InstanceId = v
+	o.InstanceId.Set(&v)
 }
 
 // GetInstanceName returns the InstanceName field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *Instance) GetInstanceName() string {
-	if o == nil {
+	if o == nil || o.InstanceName.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.InstanceName
+	return *o.InstanceName.Get()
 }
 
 // GetInstanceNameOk returns a tuple with the InstanceName field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Instance) GetInstanceNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.InstanceName, true
+	return o.InstanceName.Get(), o.InstanceName.IsSet()
 }
 
 // SetInstanceName sets field value
 func (o *Instance) SetInstanceName(v string) {
-	o.InstanceName = v
+	o.InstanceName.Set(&v)
 }
 
 // GetIpAddress returns the IpAddress field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *Instance) GetIpAddress() string {
-	if o == nil {
+	if o == nil || o.IpAddress.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.IpAddress
+	return *o.IpAddress.Get()
 }
 
 // GetIpAddressOk returns a tuple with the IpAddress field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Instance) GetIpAddressOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.IpAddress, true
+	return o.IpAddress.Get(), o.IpAddress.IsSet()
 }
 
 // SetIpAddress sets field value
 func (o *Instance) SetIpAddress(v string) {
-	o.IpAddress = v
+	o.IpAddress.Set(&v)
 }
 
 // GetActivatedAt returns the ActivatedAt field value
@@ -208,27 +214,29 @@ func (o *Instance) SetActivatedAt(v string) {
 }
 
 // GetLastSeenAt returns the LastSeenAt field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *Instance) GetLastSeenAt() string {
-	if o == nil {
+	if o == nil || o.LastSeenAt.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.LastSeenAt
+	return *o.LastSeenAt.Get()
 }
 
 // GetLastSeenAtOk returns a tuple with the LastSeenAt field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Instance) GetLastSeenAtOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.LastSeenAt, true
+	return o.LastSeenAt.Get(), o.LastSeenAt.IsSet()
 }
 
 // SetLastSeenAt sets field value
 func (o *Instance) SetLastSeenAt(v string) {
-	o.LastSeenAt = v
+	o.LastSeenAt.Set(&v)
 }
 
 func (o Instance) MarshalJSON() ([]byte, error) {
@@ -243,11 +251,11 @@ func (o Instance) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	toSerialize["licenseId"] = o.LicenseId
-	toSerialize["instanceId"] = o.InstanceId
-	toSerialize["instanceName"] = o.InstanceName
-	toSerialize["ipAddress"] = o.IpAddress
+	toSerialize["instanceId"] = o.InstanceId.Get()
+	toSerialize["instanceName"] = o.InstanceName.Get()
+	toSerialize["ipAddress"] = o.IpAddress.Get()
 	toSerialize["activatedAt"] = o.ActivatedAt
-	toSerialize["lastSeenAt"] = o.LastSeenAt
+	toSerialize["lastSeenAt"] = o.LastSeenAt.Get()
 	return toSerialize, nil
 }
 

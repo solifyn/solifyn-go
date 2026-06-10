@@ -23,54 +23,54 @@ type WebhookPaymentPayload struct {
 	// Internal payment ID.
 	Id *string `json:"id,omitempty"`
 	Status *string `json:"status,omitempty"`
-	Substatus *string `json:"substatus,omitempty"`
-	CustomerId *string `json:"customerId,omitempty"`
-	CustomerEmail *string `json:"customerEmail,omitempty"`
-	CustomerName *string `json:"customerName,omitempty"`
-	CustomerUsername *string `json:"customerUsername,omitempty"`
-	ProductTitle *string `json:"productTitle,omitempty"`
-	ProductRoute *string `json:"productRoute,omitempty"`
-	PlanId *string `json:"planId,omitempty"`
-	MembershipId *string `json:"membershipId,omitempty"`
-	MembershipStatus *string `json:"membershipStatus,omitempty"`
-	BillingReason *string `json:"billingReason,omitempty"`
+	Substatus NullableString `json:"substatus,omitempty"`
+	CustomerId NullableString `json:"customerId,omitempty"`
+	CustomerEmail NullableString `json:"customerEmail,omitempty"`
+	CustomerName NullableString `json:"customerName,omitempty"`
+	CustomerUsername NullableString `json:"customerUsername,omitempty"`
+	ProductTitle NullableString `json:"productTitle,omitempty"`
+	ProductRoute NullableString `json:"productRoute,omitempty"`
+	PlanId NullableString `json:"planId,omitempty"`
+	MembershipId NullableString `json:"membershipId,omitempty"`
+	MembershipStatus NullableString `json:"membershipStatus,omitempty"`
+	BillingReason NullableString `json:"billingReason,omitempty"`
 	// Dollar value, 2 d.p.
-	Amount *string `json:"amount,omitempty"`
-	Subtotal *string `json:"subtotal,omitempty"`
-	UsdTotal *string `json:"usdTotal,omitempty"`
-	FeeAmount *string `json:"feeAmount,omitempty"`
-	AmountAfterFees *string `json:"amountAfterFees,omitempty"`
-	TaxAmount *string `json:"taxAmount,omitempty"`
-	TaxBehavior *string `json:"taxBehavior,omitempty"`
-	TaxRefundedAmount *string `json:"taxRefundedAmount,omitempty"`
+	Amount NullableString `json:"amount,omitempty"`
+	Subtotal NullableString `json:"subtotal,omitempty"`
+	UsdTotal NullableString `json:"usdTotal,omitempty"`
+	FeeAmount NullableString `json:"feeAmount,omitempty"`
+	AmountAfterFees NullableString `json:"amountAfterFees,omitempty"`
+	TaxAmount NullableString `json:"taxAmount,omitempty"`
+	TaxBehavior NullableString `json:"taxBehavior,omitempty"`
+	TaxRefundedAmount NullableString `json:"taxRefundedAmount,omitempty"`
 	RefundedAmount *string `json:"refundedAmount,omitempty"`
-	SettlementAmount *string `json:"settlementAmount,omitempty"`
-	SettlementCurrency *string `json:"settlementCurrency,omitempty"`
-	SettlementExchangeRate *string `json:"settlementExchangeRate,omitempty"`
+	SettlementAmount NullableString `json:"settlementAmount,omitempty"`
+	SettlementCurrency NullableString `json:"settlementCurrency,omitempty"`
+	SettlementExchangeRate NullableString `json:"settlementExchangeRate,omitempty"`
 	Currency *string `json:"currency,omitempty"`
 	Refundable *bool `json:"refundable,omitempty"`
 	Retryable *bool `json:"retryable,omitempty"`
 	AutoRefunded *bool `json:"autoRefunded,omitempty"`
-	PaymentMethod *string `json:"paymentMethod,omitempty"`
-	CardBrand *string `json:"cardBrand,omitempty"`
-	CardLast4 *string `json:"cardLast4,omitempty"`
-	CardExpMonth *int32 `json:"cardExpMonth,omitempty"`
-	CardExpYear *int32 `json:"cardExpYear,omitempty"`
-	BillingAddress *WebhookPaymentPayloadBillingAddress `json:"billingAddress,omitempty"`
-	LicenseKey *string `json:"licenseKey,omitempty"`
+	PaymentMethod NullableString `json:"paymentMethod,omitempty"`
+	CardBrand NullableString `json:"cardBrand,omitempty"`
+	CardLast4 NullableString `json:"cardLast4,omitempty"`
+	CardExpMonth NullableInt32 `json:"cardExpMonth,omitempty"`
+	CardExpYear NullableInt32 `json:"cardExpYear,omitempty"`
+	BillingAddress NullableWebhookPaymentPayloadBillingAddress `json:"billingAddress,omitempty"`
+	LicenseKey NullableString `json:"licenseKey,omitempty"`
 	FilesSnapshot []map[string]interface{} `json:"filesSnapshot,omitempty"`
-	CheckoutId *string `json:"checkoutId,omitempty"`
-	DiscountCode *string `json:"discountCode,omitempty"`
-	FailureMessage *string `json:"failureMessage,omitempty"`
-	PaidAt *time.Time `json:"paidAt,omitempty"`
-	RefundedAt *time.Time `json:"refundedAt,omitempty"`
-	DisputeAlertedAt *time.Time `json:"disputeAlertedAt,omitempty"`
-	LastPaymentAttempt *time.Time `json:"lastPaymentAttempt,omitempty"`
-	NextPaymentAttempt *time.Time `json:"nextPaymentAttempt,omitempty"`
+	CheckoutId NullableString `json:"checkoutId,omitempty"`
+	DiscountCode NullableString `json:"discountCode,omitempty"`
+	FailureMessage NullableString `json:"failureMessage,omitempty"`
+	PaidAt NullableTime `json:"paidAt,omitempty"`
+	RefundedAt NullableTime `json:"refundedAt,omitempty"`
+	DisputeAlertedAt NullableTime `json:"disputeAlertedAt,omitempty"`
+	LastPaymentAttempt NullableTime `json:"lastPaymentAttempt,omitempty"`
+	NextPaymentAttempt NullableTime `json:"nextPaymentAttempt,omitempty"`
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
-	PaymentEventType *string `json:"paymentEventType,omitempty"`
-	LastEventType *string `json:"lastEventType,omitempty"`
+	PaymentEventType NullableString `json:"paymentEventType,omitempty"`
+	LastEventType NullableString `json:"lastEventType,omitempty"`
 	BusinessId *string `json:"businessId,omitempty"`
 }
 
@@ -155,612 +155,802 @@ func (o *WebhookPaymentPayload) SetStatus(v string) {
 	o.Status = &v
 }
 
-// GetSubstatus returns the Substatus field value if set, zero value otherwise.
+// GetSubstatus returns the Substatus field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WebhookPaymentPayload) GetSubstatus() string {
-	if o == nil || IsNil(o.Substatus) {
+	if o == nil || IsNil(o.Substatus.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Substatus
+	return *o.Substatus.Get()
 }
 
 // GetSubstatusOk returns a tuple with the Substatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookPaymentPayload) GetSubstatusOk() (*string, bool) {
-	if o == nil || IsNil(o.Substatus) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Substatus, true
+	return o.Substatus.Get(), o.Substatus.IsSet()
 }
 
 // HasSubstatus returns a boolean if a field has been set.
 func (o *WebhookPaymentPayload) HasSubstatus() bool {
-	if o != nil && !IsNil(o.Substatus) {
+	if o != nil && o.Substatus.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSubstatus gets a reference to the given string and assigns it to the Substatus field.
+// SetSubstatus gets a reference to the given NullableString and assigns it to the Substatus field.
 func (o *WebhookPaymentPayload) SetSubstatus(v string) {
-	o.Substatus = &v
+	o.Substatus.Set(&v)
+}
+// SetSubstatusNil sets the value for Substatus to be an explicit nil
+func (o *WebhookPaymentPayload) SetSubstatusNil() {
+	o.Substatus.Set(nil)
 }
 
-// GetCustomerId returns the CustomerId field value if set, zero value otherwise.
+// UnsetSubstatus ensures that no value is present for Substatus, not even an explicit nil
+func (o *WebhookPaymentPayload) UnsetSubstatus() {
+	o.Substatus.Unset()
+}
+
+// GetCustomerId returns the CustomerId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WebhookPaymentPayload) GetCustomerId() string {
-	if o == nil || IsNil(o.CustomerId) {
+	if o == nil || IsNil(o.CustomerId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.CustomerId
+	return *o.CustomerId.Get()
 }
 
 // GetCustomerIdOk returns a tuple with the CustomerId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookPaymentPayload) GetCustomerIdOk() (*string, bool) {
-	if o == nil || IsNil(o.CustomerId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CustomerId, true
+	return o.CustomerId.Get(), o.CustomerId.IsSet()
 }
 
 // HasCustomerId returns a boolean if a field has been set.
 func (o *WebhookPaymentPayload) HasCustomerId() bool {
-	if o != nil && !IsNil(o.CustomerId) {
+	if o != nil && o.CustomerId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCustomerId gets a reference to the given string and assigns it to the CustomerId field.
+// SetCustomerId gets a reference to the given NullableString and assigns it to the CustomerId field.
 func (o *WebhookPaymentPayload) SetCustomerId(v string) {
-	o.CustomerId = &v
+	o.CustomerId.Set(&v)
+}
+// SetCustomerIdNil sets the value for CustomerId to be an explicit nil
+func (o *WebhookPaymentPayload) SetCustomerIdNil() {
+	o.CustomerId.Set(nil)
 }
 
-// GetCustomerEmail returns the CustomerEmail field value if set, zero value otherwise.
+// UnsetCustomerId ensures that no value is present for CustomerId, not even an explicit nil
+func (o *WebhookPaymentPayload) UnsetCustomerId() {
+	o.CustomerId.Unset()
+}
+
+// GetCustomerEmail returns the CustomerEmail field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WebhookPaymentPayload) GetCustomerEmail() string {
-	if o == nil || IsNil(o.CustomerEmail) {
+	if o == nil || IsNil(o.CustomerEmail.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.CustomerEmail
+	return *o.CustomerEmail.Get()
 }
 
 // GetCustomerEmailOk returns a tuple with the CustomerEmail field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookPaymentPayload) GetCustomerEmailOk() (*string, bool) {
-	if o == nil || IsNil(o.CustomerEmail) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CustomerEmail, true
+	return o.CustomerEmail.Get(), o.CustomerEmail.IsSet()
 }
 
 // HasCustomerEmail returns a boolean if a field has been set.
 func (o *WebhookPaymentPayload) HasCustomerEmail() bool {
-	if o != nil && !IsNil(o.CustomerEmail) {
+	if o != nil && o.CustomerEmail.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCustomerEmail gets a reference to the given string and assigns it to the CustomerEmail field.
+// SetCustomerEmail gets a reference to the given NullableString and assigns it to the CustomerEmail field.
 func (o *WebhookPaymentPayload) SetCustomerEmail(v string) {
-	o.CustomerEmail = &v
+	o.CustomerEmail.Set(&v)
+}
+// SetCustomerEmailNil sets the value for CustomerEmail to be an explicit nil
+func (o *WebhookPaymentPayload) SetCustomerEmailNil() {
+	o.CustomerEmail.Set(nil)
 }
 
-// GetCustomerName returns the CustomerName field value if set, zero value otherwise.
+// UnsetCustomerEmail ensures that no value is present for CustomerEmail, not even an explicit nil
+func (o *WebhookPaymentPayload) UnsetCustomerEmail() {
+	o.CustomerEmail.Unset()
+}
+
+// GetCustomerName returns the CustomerName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WebhookPaymentPayload) GetCustomerName() string {
-	if o == nil || IsNil(o.CustomerName) {
+	if o == nil || IsNil(o.CustomerName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.CustomerName
+	return *o.CustomerName.Get()
 }
 
 // GetCustomerNameOk returns a tuple with the CustomerName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookPaymentPayload) GetCustomerNameOk() (*string, bool) {
-	if o == nil || IsNil(o.CustomerName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CustomerName, true
+	return o.CustomerName.Get(), o.CustomerName.IsSet()
 }
 
 // HasCustomerName returns a boolean if a field has been set.
 func (o *WebhookPaymentPayload) HasCustomerName() bool {
-	if o != nil && !IsNil(o.CustomerName) {
+	if o != nil && o.CustomerName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCustomerName gets a reference to the given string and assigns it to the CustomerName field.
+// SetCustomerName gets a reference to the given NullableString and assigns it to the CustomerName field.
 func (o *WebhookPaymentPayload) SetCustomerName(v string) {
-	o.CustomerName = &v
+	o.CustomerName.Set(&v)
+}
+// SetCustomerNameNil sets the value for CustomerName to be an explicit nil
+func (o *WebhookPaymentPayload) SetCustomerNameNil() {
+	o.CustomerName.Set(nil)
 }
 
-// GetCustomerUsername returns the CustomerUsername field value if set, zero value otherwise.
+// UnsetCustomerName ensures that no value is present for CustomerName, not even an explicit nil
+func (o *WebhookPaymentPayload) UnsetCustomerName() {
+	o.CustomerName.Unset()
+}
+
+// GetCustomerUsername returns the CustomerUsername field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WebhookPaymentPayload) GetCustomerUsername() string {
-	if o == nil || IsNil(o.CustomerUsername) {
+	if o == nil || IsNil(o.CustomerUsername.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.CustomerUsername
+	return *o.CustomerUsername.Get()
 }
 
 // GetCustomerUsernameOk returns a tuple with the CustomerUsername field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookPaymentPayload) GetCustomerUsernameOk() (*string, bool) {
-	if o == nil || IsNil(o.CustomerUsername) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CustomerUsername, true
+	return o.CustomerUsername.Get(), o.CustomerUsername.IsSet()
 }
 
 // HasCustomerUsername returns a boolean if a field has been set.
 func (o *WebhookPaymentPayload) HasCustomerUsername() bool {
-	if o != nil && !IsNil(o.CustomerUsername) {
+	if o != nil && o.CustomerUsername.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCustomerUsername gets a reference to the given string and assigns it to the CustomerUsername field.
+// SetCustomerUsername gets a reference to the given NullableString and assigns it to the CustomerUsername field.
 func (o *WebhookPaymentPayload) SetCustomerUsername(v string) {
-	o.CustomerUsername = &v
+	o.CustomerUsername.Set(&v)
+}
+// SetCustomerUsernameNil sets the value for CustomerUsername to be an explicit nil
+func (o *WebhookPaymentPayload) SetCustomerUsernameNil() {
+	o.CustomerUsername.Set(nil)
 }
 
-// GetProductTitle returns the ProductTitle field value if set, zero value otherwise.
+// UnsetCustomerUsername ensures that no value is present for CustomerUsername, not even an explicit nil
+func (o *WebhookPaymentPayload) UnsetCustomerUsername() {
+	o.CustomerUsername.Unset()
+}
+
+// GetProductTitle returns the ProductTitle field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WebhookPaymentPayload) GetProductTitle() string {
-	if o == nil || IsNil(o.ProductTitle) {
+	if o == nil || IsNil(o.ProductTitle.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ProductTitle
+	return *o.ProductTitle.Get()
 }
 
 // GetProductTitleOk returns a tuple with the ProductTitle field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookPaymentPayload) GetProductTitleOk() (*string, bool) {
-	if o == nil || IsNil(o.ProductTitle) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ProductTitle, true
+	return o.ProductTitle.Get(), o.ProductTitle.IsSet()
 }
 
 // HasProductTitle returns a boolean if a field has been set.
 func (o *WebhookPaymentPayload) HasProductTitle() bool {
-	if o != nil && !IsNil(o.ProductTitle) {
+	if o != nil && o.ProductTitle.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetProductTitle gets a reference to the given string and assigns it to the ProductTitle field.
+// SetProductTitle gets a reference to the given NullableString and assigns it to the ProductTitle field.
 func (o *WebhookPaymentPayload) SetProductTitle(v string) {
-	o.ProductTitle = &v
+	o.ProductTitle.Set(&v)
+}
+// SetProductTitleNil sets the value for ProductTitle to be an explicit nil
+func (o *WebhookPaymentPayload) SetProductTitleNil() {
+	o.ProductTitle.Set(nil)
 }
 
-// GetProductRoute returns the ProductRoute field value if set, zero value otherwise.
+// UnsetProductTitle ensures that no value is present for ProductTitle, not even an explicit nil
+func (o *WebhookPaymentPayload) UnsetProductTitle() {
+	o.ProductTitle.Unset()
+}
+
+// GetProductRoute returns the ProductRoute field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WebhookPaymentPayload) GetProductRoute() string {
-	if o == nil || IsNil(o.ProductRoute) {
+	if o == nil || IsNil(o.ProductRoute.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ProductRoute
+	return *o.ProductRoute.Get()
 }
 
 // GetProductRouteOk returns a tuple with the ProductRoute field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookPaymentPayload) GetProductRouteOk() (*string, bool) {
-	if o == nil || IsNil(o.ProductRoute) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ProductRoute, true
+	return o.ProductRoute.Get(), o.ProductRoute.IsSet()
 }
 
 // HasProductRoute returns a boolean if a field has been set.
 func (o *WebhookPaymentPayload) HasProductRoute() bool {
-	if o != nil && !IsNil(o.ProductRoute) {
+	if o != nil && o.ProductRoute.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetProductRoute gets a reference to the given string and assigns it to the ProductRoute field.
+// SetProductRoute gets a reference to the given NullableString and assigns it to the ProductRoute field.
 func (o *WebhookPaymentPayload) SetProductRoute(v string) {
-	o.ProductRoute = &v
+	o.ProductRoute.Set(&v)
+}
+// SetProductRouteNil sets the value for ProductRoute to be an explicit nil
+func (o *WebhookPaymentPayload) SetProductRouteNil() {
+	o.ProductRoute.Set(nil)
 }
 
-// GetPlanId returns the PlanId field value if set, zero value otherwise.
+// UnsetProductRoute ensures that no value is present for ProductRoute, not even an explicit nil
+func (o *WebhookPaymentPayload) UnsetProductRoute() {
+	o.ProductRoute.Unset()
+}
+
+// GetPlanId returns the PlanId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WebhookPaymentPayload) GetPlanId() string {
-	if o == nil || IsNil(o.PlanId) {
+	if o == nil || IsNil(o.PlanId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.PlanId
+	return *o.PlanId.Get()
 }
 
 // GetPlanIdOk returns a tuple with the PlanId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookPaymentPayload) GetPlanIdOk() (*string, bool) {
-	if o == nil || IsNil(o.PlanId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.PlanId, true
+	return o.PlanId.Get(), o.PlanId.IsSet()
 }
 
 // HasPlanId returns a boolean if a field has been set.
 func (o *WebhookPaymentPayload) HasPlanId() bool {
-	if o != nil && !IsNil(o.PlanId) {
+	if o != nil && o.PlanId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetPlanId gets a reference to the given string and assigns it to the PlanId field.
+// SetPlanId gets a reference to the given NullableString and assigns it to the PlanId field.
 func (o *WebhookPaymentPayload) SetPlanId(v string) {
-	o.PlanId = &v
+	o.PlanId.Set(&v)
+}
+// SetPlanIdNil sets the value for PlanId to be an explicit nil
+func (o *WebhookPaymentPayload) SetPlanIdNil() {
+	o.PlanId.Set(nil)
 }
 
-// GetMembershipId returns the MembershipId field value if set, zero value otherwise.
+// UnsetPlanId ensures that no value is present for PlanId, not even an explicit nil
+func (o *WebhookPaymentPayload) UnsetPlanId() {
+	o.PlanId.Unset()
+}
+
+// GetMembershipId returns the MembershipId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WebhookPaymentPayload) GetMembershipId() string {
-	if o == nil || IsNil(o.MembershipId) {
+	if o == nil || IsNil(o.MembershipId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.MembershipId
+	return *o.MembershipId.Get()
 }
 
 // GetMembershipIdOk returns a tuple with the MembershipId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookPaymentPayload) GetMembershipIdOk() (*string, bool) {
-	if o == nil || IsNil(o.MembershipId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.MembershipId, true
+	return o.MembershipId.Get(), o.MembershipId.IsSet()
 }
 
 // HasMembershipId returns a boolean if a field has been set.
 func (o *WebhookPaymentPayload) HasMembershipId() bool {
-	if o != nil && !IsNil(o.MembershipId) {
+	if o != nil && o.MembershipId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMembershipId gets a reference to the given string and assigns it to the MembershipId field.
+// SetMembershipId gets a reference to the given NullableString and assigns it to the MembershipId field.
 func (o *WebhookPaymentPayload) SetMembershipId(v string) {
-	o.MembershipId = &v
+	o.MembershipId.Set(&v)
+}
+// SetMembershipIdNil sets the value for MembershipId to be an explicit nil
+func (o *WebhookPaymentPayload) SetMembershipIdNil() {
+	o.MembershipId.Set(nil)
 }
 
-// GetMembershipStatus returns the MembershipStatus field value if set, zero value otherwise.
+// UnsetMembershipId ensures that no value is present for MembershipId, not even an explicit nil
+func (o *WebhookPaymentPayload) UnsetMembershipId() {
+	o.MembershipId.Unset()
+}
+
+// GetMembershipStatus returns the MembershipStatus field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WebhookPaymentPayload) GetMembershipStatus() string {
-	if o == nil || IsNil(o.MembershipStatus) {
+	if o == nil || IsNil(o.MembershipStatus.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.MembershipStatus
+	return *o.MembershipStatus.Get()
 }
 
 // GetMembershipStatusOk returns a tuple with the MembershipStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookPaymentPayload) GetMembershipStatusOk() (*string, bool) {
-	if o == nil || IsNil(o.MembershipStatus) {
+	if o == nil {
 		return nil, false
 	}
-	return o.MembershipStatus, true
+	return o.MembershipStatus.Get(), o.MembershipStatus.IsSet()
 }
 
 // HasMembershipStatus returns a boolean if a field has been set.
 func (o *WebhookPaymentPayload) HasMembershipStatus() bool {
-	if o != nil && !IsNil(o.MembershipStatus) {
+	if o != nil && o.MembershipStatus.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMembershipStatus gets a reference to the given string and assigns it to the MembershipStatus field.
+// SetMembershipStatus gets a reference to the given NullableString and assigns it to the MembershipStatus field.
 func (o *WebhookPaymentPayload) SetMembershipStatus(v string) {
-	o.MembershipStatus = &v
+	o.MembershipStatus.Set(&v)
+}
+// SetMembershipStatusNil sets the value for MembershipStatus to be an explicit nil
+func (o *WebhookPaymentPayload) SetMembershipStatusNil() {
+	o.MembershipStatus.Set(nil)
 }
 
-// GetBillingReason returns the BillingReason field value if set, zero value otherwise.
+// UnsetMembershipStatus ensures that no value is present for MembershipStatus, not even an explicit nil
+func (o *WebhookPaymentPayload) UnsetMembershipStatus() {
+	o.MembershipStatus.Unset()
+}
+
+// GetBillingReason returns the BillingReason field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WebhookPaymentPayload) GetBillingReason() string {
-	if o == nil || IsNil(o.BillingReason) {
+	if o == nil || IsNil(o.BillingReason.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.BillingReason
+	return *o.BillingReason.Get()
 }
 
 // GetBillingReasonOk returns a tuple with the BillingReason field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookPaymentPayload) GetBillingReasonOk() (*string, bool) {
-	if o == nil || IsNil(o.BillingReason) {
+	if o == nil {
 		return nil, false
 	}
-	return o.BillingReason, true
+	return o.BillingReason.Get(), o.BillingReason.IsSet()
 }
 
 // HasBillingReason returns a boolean if a field has been set.
 func (o *WebhookPaymentPayload) HasBillingReason() bool {
-	if o != nil && !IsNil(o.BillingReason) {
+	if o != nil && o.BillingReason.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetBillingReason gets a reference to the given string and assigns it to the BillingReason field.
+// SetBillingReason gets a reference to the given NullableString and assigns it to the BillingReason field.
 func (o *WebhookPaymentPayload) SetBillingReason(v string) {
-	o.BillingReason = &v
+	o.BillingReason.Set(&v)
+}
+// SetBillingReasonNil sets the value for BillingReason to be an explicit nil
+func (o *WebhookPaymentPayload) SetBillingReasonNil() {
+	o.BillingReason.Set(nil)
 }
 
-// GetAmount returns the Amount field value if set, zero value otherwise.
+// UnsetBillingReason ensures that no value is present for BillingReason, not even an explicit nil
+func (o *WebhookPaymentPayload) UnsetBillingReason() {
+	o.BillingReason.Unset()
+}
+
+// GetAmount returns the Amount field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WebhookPaymentPayload) GetAmount() string {
-	if o == nil || IsNil(o.Amount) {
+	if o == nil || IsNil(o.Amount.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Amount
+	return *o.Amount.Get()
 }
 
 // GetAmountOk returns a tuple with the Amount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookPaymentPayload) GetAmountOk() (*string, bool) {
-	if o == nil || IsNil(o.Amount) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Amount, true
+	return o.Amount.Get(), o.Amount.IsSet()
 }
 
 // HasAmount returns a boolean if a field has been set.
 func (o *WebhookPaymentPayload) HasAmount() bool {
-	if o != nil && !IsNil(o.Amount) {
+	if o != nil && o.Amount.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAmount gets a reference to the given string and assigns it to the Amount field.
+// SetAmount gets a reference to the given NullableString and assigns it to the Amount field.
 func (o *WebhookPaymentPayload) SetAmount(v string) {
-	o.Amount = &v
+	o.Amount.Set(&v)
+}
+// SetAmountNil sets the value for Amount to be an explicit nil
+func (o *WebhookPaymentPayload) SetAmountNil() {
+	o.Amount.Set(nil)
 }
 
-// GetSubtotal returns the Subtotal field value if set, zero value otherwise.
+// UnsetAmount ensures that no value is present for Amount, not even an explicit nil
+func (o *WebhookPaymentPayload) UnsetAmount() {
+	o.Amount.Unset()
+}
+
+// GetSubtotal returns the Subtotal field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WebhookPaymentPayload) GetSubtotal() string {
-	if o == nil || IsNil(o.Subtotal) {
+	if o == nil || IsNil(o.Subtotal.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Subtotal
+	return *o.Subtotal.Get()
 }
 
 // GetSubtotalOk returns a tuple with the Subtotal field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookPaymentPayload) GetSubtotalOk() (*string, bool) {
-	if o == nil || IsNil(o.Subtotal) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Subtotal, true
+	return o.Subtotal.Get(), o.Subtotal.IsSet()
 }
 
 // HasSubtotal returns a boolean if a field has been set.
 func (o *WebhookPaymentPayload) HasSubtotal() bool {
-	if o != nil && !IsNil(o.Subtotal) {
+	if o != nil && o.Subtotal.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSubtotal gets a reference to the given string and assigns it to the Subtotal field.
+// SetSubtotal gets a reference to the given NullableString and assigns it to the Subtotal field.
 func (o *WebhookPaymentPayload) SetSubtotal(v string) {
-	o.Subtotal = &v
+	o.Subtotal.Set(&v)
+}
+// SetSubtotalNil sets the value for Subtotal to be an explicit nil
+func (o *WebhookPaymentPayload) SetSubtotalNil() {
+	o.Subtotal.Set(nil)
 }
 
-// GetUsdTotal returns the UsdTotal field value if set, zero value otherwise.
+// UnsetSubtotal ensures that no value is present for Subtotal, not even an explicit nil
+func (o *WebhookPaymentPayload) UnsetSubtotal() {
+	o.Subtotal.Unset()
+}
+
+// GetUsdTotal returns the UsdTotal field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WebhookPaymentPayload) GetUsdTotal() string {
-	if o == nil || IsNil(o.UsdTotal) {
+	if o == nil || IsNil(o.UsdTotal.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.UsdTotal
+	return *o.UsdTotal.Get()
 }
 
 // GetUsdTotalOk returns a tuple with the UsdTotal field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookPaymentPayload) GetUsdTotalOk() (*string, bool) {
-	if o == nil || IsNil(o.UsdTotal) {
+	if o == nil {
 		return nil, false
 	}
-	return o.UsdTotal, true
+	return o.UsdTotal.Get(), o.UsdTotal.IsSet()
 }
 
 // HasUsdTotal returns a boolean if a field has been set.
 func (o *WebhookPaymentPayload) HasUsdTotal() bool {
-	if o != nil && !IsNil(o.UsdTotal) {
+	if o != nil && o.UsdTotal.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetUsdTotal gets a reference to the given string and assigns it to the UsdTotal field.
+// SetUsdTotal gets a reference to the given NullableString and assigns it to the UsdTotal field.
 func (o *WebhookPaymentPayload) SetUsdTotal(v string) {
-	o.UsdTotal = &v
+	o.UsdTotal.Set(&v)
+}
+// SetUsdTotalNil sets the value for UsdTotal to be an explicit nil
+func (o *WebhookPaymentPayload) SetUsdTotalNil() {
+	o.UsdTotal.Set(nil)
 }
 
-// GetFeeAmount returns the FeeAmount field value if set, zero value otherwise.
+// UnsetUsdTotal ensures that no value is present for UsdTotal, not even an explicit nil
+func (o *WebhookPaymentPayload) UnsetUsdTotal() {
+	o.UsdTotal.Unset()
+}
+
+// GetFeeAmount returns the FeeAmount field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WebhookPaymentPayload) GetFeeAmount() string {
-	if o == nil || IsNil(o.FeeAmount) {
+	if o == nil || IsNil(o.FeeAmount.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.FeeAmount
+	return *o.FeeAmount.Get()
 }
 
 // GetFeeAmountOk returns a tuple with the FeeAmount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookPaymentPayload) GetFeeAmountOk() (*string, bool) {
-	if o == nil || IsNil(o.FeeAmount) {
+	if o == nil {
 		return nil, false
 	}
-	return o.FeeAmount, true
+	return o.FeeAmount.Get(), o.FeeAmount.IsSet()
 }
 
 // HasFeeAmount returns a boolean if a field has been set.
 func (o *WebhookPaymentPayload) HasFeeAmount() bool {
-	if o != nil && !IsNil(o.FeeAmount) {
+	if o != nil && o.FeeAmount.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetFeeAmount gets a reference to the given string and assigns it to the FeeAmount field.
+// SetFeeAmount gets a reference to the given NullableString and assigns it to the FeeAmount field.
 func (o *WebhookPaymentPayload) SetFeeAmount(v string) {
-	o.FeeAmount = &v
+	o.FeeAmount.Set(&v)
+}
+// SetFeeAmountNil sets the value for FeeAmount to be an explicit nil
+func (o *WebhookPaymentPayload) SetFeeAmountNil() {
+	o.FeeAmount.Set(nil)
 }
 
-// GetAmountAfterFees returns the AmountAfterFees field value if set, zero value otherwise.
+// UnsetFeeAmount ensures that no value is present for FeeAmount, not even an explicit nil
+func (o *WebhookPaymentPayload) UnsetFeeAmount() {
+	o.FeeAmount.Unset()
+}
+
+// GetAmountAfterFees returns the AmountAfterFees field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WebhookPaymentPayload) GetAmountAfterFees() string {
-	if o == nil || IsNil(o.AmountAfterFees) {
+	if o == nil || IsNil(o.AmountAfterFees.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.AmountAfterFees
+	return *o.AmountAfterFees.Get()
 }
 
 // GetAmountAfterFeesOk returns a tuple with the AmountAfterFees field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookPaymentPayload) GetAmountAfterFeesOk() (*string, bool) {
-	if o == nil || IsNil(o.AmountAfterFees) {
+	if o == nil {
 		return nil, false
 	}
-	return o.AmountAfterFees, true
+	return o.AmountAfterFees.Get(), o.AmountAfterFees.IsSet()
 }
 
 // HasAmountAfterFees returns a boolean if a field has been set.
 func (o *WebhookPaymentPayload) HasAmountAfterFees() bool {
-	if o != nil && !IsNil(o.AmountAfterFees) {
+	if o != nil && o.AmountAfterFees.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAmountAfterFees gets a reference to the given string and assigns it to the AmountAfterFees field.
+// SetAmountAfterFees gets a reference to the given NullableString and assigns it to the AmountAfterFees field.
 func (o *WebhookPaymentPayload) SetAmountAfterFees(v string) {
-	o.AmountAfterFees = &v
+	o.AmountAfterFees.Set(&v)
+}
+// SetAmountAfterFeesNil sets the value for AmountAfterFees to be an explicit nil
+func (o *WebhookPaymentPayload) SetAmountAfterFeesNil() {
+	o.AmountAfterFees.Set(nil)
 }
 
-// GetTaxAmount returns the TaxAmount field value if set, zero value otherwise.
+// UnsetAmountAfterFees ensures that no value is present for AmountAfterFees, not even an explicit nil
+func (o *WebhookPaymentPayload) UnsetAmountAfterFees() {
+	o.AmountAfterFees.Unset()
+}
+
+// GetTaxAmount returns the TaxAmount field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WebhookPaymentPayload) GetTaxAmount() string {
-	if o == nil || IsNil(o.TaxAmount) {
+	if o == nil || IsNil(o.TaxAmount.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.TaxAmount
+	return *o.TaxAmount.Get()
 }
 
 // GetTaxAmountOk returns a tuple with the TaxAmount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookPaymentPayload) GetTaxAmountOk() (*string, bool) {
-	if o == nil || IsNil(o.TaxAmount) {
+	if o == nil {
 		return nil, false
 	}
-	return o.TaxAmount, true
+	return o.TaxAmount.Get(), o.TaxAmount.IsSet()
 }
 
 // HasTaxAmount returns a boolean if a field has been set.
 func (o *WebhookPaymentPayload) HasTaxAmount() bool {
-	if o != nil && !IsNil(o.TaxAmount) {
+	if o != nil && o.TaxAmount.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetTaxAmount gets a reference to the given string and assigns it to the TaxAmount field.
+// SetTaxAmount gets a reference to the given NullableString and assigns it to the TaxAmount field.
 func (o *WebhookPaymentPayload) SetTaxAmount(v string) {
-	o.TaxAmount = &v
+	o.TaxAmount.Set(&v)
+}
+// SetTaxAmountNil sets the value for TaxAmount to be an explicit nil
+func (o *WebhookPaymentPayload) SetTaxAmountNil() {
+	o.TaxAmount.Set(nil)
 }
 
-// GetTaxBehavior returns the TaxBehavior field value if set, zero value otherwise.
+// UnsetTaxAmount ensures that no value is present for TaxAmount, not even an explicit nil
+func (o *WebhookPaymentPayload) UnsetTaxAmount() {
+	o.TaxAmount.Unset()
+}
+
+// GetTaxBehavior returns the TaxBehavior field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WebhookPaymentPayload) GetTaxBehavior() string {
-	if o == nil || IsNil(o.TaxBehavior) {
+	if o == nil || IsNil(o.TaxBehavior.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.TaxBehavior
+	return *o.TaxBehavior.Get()
 }
 
 // GetTaxBehaviorOk returns a tuple with the TaxBehavior field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookPaymentPayload) GetTaxBehaviorOk() (*string, bool) {
-	if o == nil || IsNil(o.TaxBehavior) {
+	if o == nil {
 		return nil, false
 	}
-	return o.TaxBehavior, true
+	return o.TaxBehavior.Get(), o.TaxBehavior.IsSet()
 }
 
 // HasTaxBehavior returns a boolean if a field has been set.
 func (o *WebhookPaymentPayload) HasTaxBehavior() bool {
-	if o != nil && !IsNil(o.TaxBehavior) {
+	if o != nil && o.TaxBehavior.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetTaxBehavior gets a reference to the given string and assigns it to the TaxBehavior field.
+// SetTaxBehavior gets a reference to the given NullableString and assigns it to the TaxBehavior field.
 func (o *WebhookPaymentPayload) SetTaxBehavior(v string) {
-	o.TaxBehavior = &v
+	o.TaxBehavior.Set(&v)
+}
+// SetTaxBehaviorNil sets the value for TaxBehavior to be an explicit nil
+func (o *WebhookPaymentPayload) SetTaxBehaviorNil() {
+	o.TaxBehavior.Set(nil)
 }
 
-// GetTaxRefundedAmount returns the TaxRefundedAmount field value if set, zero value otherwise.
+// UnsetTaxBehavior ensures that no value is present for TaxBehavior, not even an explicit nil
+func (o *WebhookPaymentPayload) UnsetTaxBehavior() {
+	o.TaxBehavior.Unset()
+}
+
+// GetTaxRefundedAmount returns the TaxRefundedAmount field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WebhookPaymentPayload) GetTaxRefundedAmount() string {
-	if o == nil || IsNil(o.TaxRefundedAmount) {
+	if o == nil || IsNil(o.TaxRefundedAmount.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.TaxRefundedAmount
+	return *o.TaxRefundedAmount.Get()
 }
 
 // GetTaxRefundedAmountOk returns a tuple with the TaxRefundedAmount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookPaymentPayload) GetTaxRefundedAmountOk() (*string, bool) {
-	if o == nil || IsNil(o.TaxRefundedAmount) {
+	if o == nil {
 		return nil, false
 	}
-	return o.TaxRefundedAmount, true
+	return o.TaxRefundedAmount.Get(), o.TaxRefundedAmount.IsSet()
 }
 
 // HasTaxRefundedAmount returns a boolean if a field has been set.
 func (o *WebhookPaymentPayload) HasTaxRefundedAmount() bool {
-	if o != nil && !IsNil(o.TaxRefundedAmount) {
+	if o != nil && o.TaxRefundedAmount.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetTaxRefundedAmount gets a reference to the given string and assigns it to the TaxRefundedAmount field.
+// SetTaxRefundedAmount gets a reference to the given NullableString and assigns it to the TaxRefundedAmount field.
 func (o *WebhookPaymentPayload) SetTaxRefundedAmount(v string) {
-	o.TaxRefundedAmount = &v
+	o.TaxRefundedAmount.Set(&v)
+}
+// SetTaxRefundedAmountNil sets the value for TaxRefundedAmount to be an explicit nil
+func (o *WebhookPaymentPayload) SetTaxRefundedAmountNil() {
+	o.TaxRefundedAmount.Set(nil)
+}
+
+// UnsetTaxRefundedAmount ensures that no value is present for TaxRefundedAmount, not even an explicit nil
+func (o *WebhookPaymentPayload) UnsetTaxRefundedAmount() {
+	o.TaxRefundedAmount.Unset()
 }
 
 // GetRefundedAmount returns the RefundedAmount field value if set, zero value otherwise.
@@ -795,100 +985,130 @@ func (o *WebhookPaymentPayload) SetRefundedAmount(v string) {
 	o.RefundedAmount = &v
 }
 
-// GetSettlementAmount returns the SettlementAmount field value if set, zero value otherwise.
+// GetSettlementAmount returns the SettlementAmount field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WebhookPaymentPayload) GetSettlementAmount() string {
-	if o == nil || IsNil(o.SettlementAmount) {
+	if o == nil || IsNil(o.SettlementAmount.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.SettlementAmount
+	return *o.SettlementAmount.Get()
 }
 
 // GetSettlementAmountOk returns a tuple with the SettlementAmount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookPaymentPayload) GetSettlementAmountOk() (*string, bool) {
-	if o == nil || IsNil(o.SettlementAmount) {
+	if o == nil {
 		return nil, false
 	}
-	return o.SettlementAmount, true
+	return o.SettlementAmount.Get(), o.SettlementAmount.IsSet()
 }
 
 // HasSettlementAmount returns a boolean if a field has been set.
 func (o *WebhookPaymentPayload) HasSettlementAmount() bool {
-	if o != nil && !IsNil(o.SettlementAmount) {
+	if o != nil && o.SettlementAmount.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSettlementAmount gets a reference to the given string and assigns it to the SettlementAmount field.
+// SetSettlementAmount gets a reference to the given NullableString and assigns it to the SettlementAmount field.
 func (o *WebhookPaymentPayload) SetSettlementAmount(v string) {
-	o.SettlementAmount = &v
+	o.SettlementAmount.Set(&v)
+}
+// SetSettlementAmountNil sets the value for SettlementAmount to be an explicit nil
+func (o *WebhookPaymentPayload) SetSettlementAmountNil() {
+	o.SettlementAmount.Set(nil)
 }
 
-// GetSettlementCurrency returns the SettlementCurrency field value if set, zero value otherwise.
+// UnsetSettlementAmount ensures that no value is present for SettlementAmount, not even an explicit nil
+func (o *WebhookPaymentPayload) UnsetSettlementAmount() {
+	o.SettlementAmount.Unset()
+}
+
+// GetSettlementCurrency returns the SettlementCurrency field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WebhookPaymentPayload) GetSettlementCurrency() string {
-	if o == nil || IsNil(o.SettlementCurrency) {
+	if o == nil || IsNil(o.SettlementCurrency.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.SettlementCurrency
+	return *o.SettlementCurrency.Get()
 }
 
 // GetSettlementCurrencyOk returns a tuple with the SettlementCurrency field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookPaymentPayload) GetSettlementCurrencyOk() (*string, bool) {
-	if o == nil || IsNil(o.SettlementCurrency) {
+	if o == nil {
 		return nil, false
 	}
-	return o.SettlementCurrency, true
+	return o.SettlementCurrency.Get(), o.SettlementCurrency.IsSet()
 }
 
 // HasSettlementCurrency returns a boolean if a field has been set.
 func (o *WebhookPaymentPayload) HasSettlementCurrency() bool {
-	if o != nil && !IsNil(o.SettlementCurrency) {
+	if o != nil && o.SettlementCurrency.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSettlementCurrency gets a reference to the given string and assigns it to the SettlementCurrency field.
+// SetSettlementCurrency gets a reference to the given NullableString and assigns it to the SettlementCurrency field.
 func (o *WebhookPaymentPayload) SetSettlementCurrency(v string) {
-	o.SettlementCurrency = &v
+	o.SettlementCurrency.Set(&v)
+}
+// SetSettlementCurrencyNil sets the value for SettlementCurrency to be an explicit nil
+func (o *WebhookPaymentPayload) SetSettlementCurrencyNil() {
+	o.SettlementCurrency.Set(nil)
 }
 
-// GetSettlementExchangeRate returns the SettlementExchangeRate field value if set, zero value otherwise.
+// UnsetSettlementCurrency ensures that no value is present for SettlementCurrency, not even an explicit nil
+func (o *WebhookPaymentPayload) UnsetSettlementCurrency() {
+	o.SettlementCurrency.Unset()
+}
+
+// GetSettlementExchangeRate returns the SettlementExchangeRate field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WebhookPaymentPayload) GetSettlementExchangeRate() string {
-	if o == nil || IsNil(o.SettlementExchangeRate) {
+	if o == nil || IsNil(o.SettlementExchangeRate.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.SettlementExchangeRate
+	return *o.SettlementExchangeRate.Get()
 }
 
 // GetSettlementExchangeRateOk returns a tuple with the SettlementExchangeRate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookPaymentPayload) GetSettlementExchangeRateOk() (*string, bool) {
-	if o == nil || IsNil(o.SettlementExchangeRate) {
+	if o == nil {
 		return nil, false
 	}
-	return o.SettlementExchangeRate, true
+	return o.SettlementExchangeRate.Get(), o.SettlementExchangeRate.IsSet()
 }
 
 // HasSettlementExchangeRate returns a boolean if a field has been set.
 func (o *WebhookPaymentPayload) HasSettlementExchangeRate() bool {
-	if o != nil && !IsNil(o.SettlementExchangeRate) {
+	if o != nil && o.SettlementExchangeRate.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSettlementExchangeRate gets a reference to the given string and assigns it to the SettlementExchangeRate field.
+// SetSettlementExchangeRate gets a reference to the given NullableString and assigns it to the SettlementExchangeRate field.
 func (o *WebhookPaymentPayload) SetSettlementExchangeRate(v string) {
-	o.SettlementExchangeRate = &v
+	o.SettlementExchangeRate.Set(&v)
+}
+// SetSettlementExchangeRateNil sets the value for SettlementExchangeRate to be an explicit nil
+func (o *WebhookPaymentPayload) SetSettlementExchangeRateNil() {
+	o.SettlementExchangeRate.Set(nil)
+}
+
+// UnsetSettlementExchangeRate ensures that no value is present for SettlementExchangeRate, not even an explicit nil
+func (o *WebhookPaymentPayload) UnsetSettlementExchangeRate() {
+	o.SettlementExchangeRate.Unset()
 }
 
 // GetCurrency returns the Currency field value if set, zero value otherwise.
@@ -1019,233 +1239,303 @@ func (o *WebhookPaymentPayload) SetAutoRefunded(v bool) {
 	o.AutoRefunded = &v
 }
 
-// GetPaymentMethod returns the PaymentMethod field value if set, zero value otherwise.
+// GetPaymentMethod returns the PaymentMethod field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WebhookPaymentPayload) GetPaymentMethod() string {
-	if o == nil || IsNil(o.PaymentMethod) {
+	if o == nil || IsNil(o.PaymentMethod.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.PaymentMethod
+	return *o.PaymentMethod.Get()
 }
 
 // GetPaymentMethodOk returns a tuple with the PaymentMethod field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookPaymentPayload) GetPaymentMethodOk() (*string, bool) {
-	if o == nil || IsNil(o.PaymentMethod) {
+	if o == nil {
 		return nil, false
 	}
-	return o.PaymentMethod, true
+	return o.PaymentMethod.Get(), o.PaymentMethod.IsSet()
 }
 
 // HasPaymentMethod returns a boolean if a field has been set.
 func (o *WebhookPaymentPayload) HasPaymentMethod() bool {
-	if o != nil && !IsNil(o.PaymentMethod) {
+	if o != nil && o.PaymentMethod.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetPaymentMethod gets a reference to the given string and assigns it to the PaymentMethod field.
+// SetPaymentMethod gets a reference to the given NullableString and assigns it to the PaymentMethod field.
 func (o *WebhookPaymentPayload) SetPaymentMethod(v string) {
-	o.PaymentMethod = &v
+	o.PaymentMethod.Set(&v)
+}
+// SetPaymentMethodNil sets the value for PaymentMethod to be an explicit nil
+func (o *WebhookPaymentPayload) SetPaymentMethodNil() {
+	o.PaymentMethod.Set(nil)
 }
 
-// GetCardBrand returns the CardBrand field value if set, zero value otherwise.
+// UnsetPaymentMethod ensures that no value is present for PaymentMethod, not even an explicit nil
+func (o *WebhookPaymentPayload) UnsetPaymentMethod() {
+	o.PaymentMethod.Unset()
+}
+
+// GetCardBrand returns the CardBrand field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WebhookPaymentPayload) GetCardBrand() string {
-	if o == nil || IsNil(o.CardBrand) {
+	if o == nil || IsNil(o.CardBrand.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.CardBrand
+	return *o.CardBrand.Get()
 }
 
 // GetCardBrandOk returns a tuple with the CardBrand field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookPaymentPayload) GetCardBrandOk() (*string, bool) {
-	if o == nil || IsNil(o.CardBrand) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CardBrand, true
+	return o.CardBrand.Get(), o.CardBrand.IsSet()
 }
 
 // HasCardBrand returns a boolean if a field has been set.
 func (o *WebhookPaymentPayload) HasCardBrand() bool {
-	if o != nil && !IsNil(o.CardBrand) {
+	if o != nil && o.CardBrand.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCardBrand gets a reference to the given string and assigns it to the CardBrand field.
+// SetCardBrand gets a reference to the given NullableString and assigns it to the CardBrand field.
 func (o *WebhookPaymentPayload) SetCardBrand(v string) {
-	o.CardBrand = &v
+	o.CardBrand.Set(&v)
+}
+// SetCardBrandNil sets the value for CardBrand to be an explicit nil
+func (o *WebhookPaymentPayload) SetCardBrandNil() {
+	o.CardBrand.Set(nil)
 }
 
-// GetCardLast4 returns the CardLast4 field value if set, zero value otherwise.
+// UnsetCardBrand ensures that no value is present for CardBrand, not even an explicit nil
+func (o *WebhookPaymentPayload) UnsetCardBrand() {
+	o.CardBrand.Unset()
+}
+
+// GetCardLast4 returns the CardLast4 field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WebhookPaymentPayload) GetCardLast4() string {
-	if o == nil || IsNil(o.CardLast4) {
+	if o == nil || IsNil(o.CardLast4.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.CardLast4
+	return *o.CardLast4.Get()
 }
 
 // GetCardLast4Ok returns a tuple with the CardLast4 field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookPaymentPayload) GetCardLast4Ok() (*string, bool) {
-	if o == nil || IsNil(o.CardLast4) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CardLast4, true
+	return o.CardLast4.Get(), o.CardLast4.IsSet()
 }
 
 // HasCardLast4 returns a boolean if a field has been set.
 func (o *WebhookPaymentPayload) HasCardLast4() bool {
-	if o != nil && !IsNil(o.CardLast4) {
+	if o != nil && o.CardLast4.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCardLast4 gets a reference to the given string and assigns it to the CardLast4 field.
+// SetCardLast4 gets a reference to the given NullableString and assigns it to the CardLast4 field.
 func (o *WebhookPaymentPayload) SetCardLast4(v string) {
-	o.CardLast4 = &v
+	o.CardLast4.Set(&v)
+}
+// SetCardLast4Nil sets the value for CardLast4 to be an explicit nil
+func (o *WebhookPaymentPayload) SetCardLast4Nil() {
+	o.CardLast4.Set(nil)
 }
 
-// GetCardExpMonth returns the CardExpMonth field value if set, zero value otherwise.
+// UnsetCardLast4 ensures that no value is present for CardLast4, not even an explicit nil
+func (o *WebhookPaymentPayload) UnsetCardLast4() {
+	o.CardLast4.Unset()
+}
+
+// GetCardExpMonth returns the CardExpMonth field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WebhookPaymentPayload) GetCardExpMonth() int32 {
-	if o == nil || IsNil(o.CardExpMonth) {
+	if o == nil || IsNil(o.CardExpMonth.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.CardExpMonth
+	return *o.CardExpMonth.Get()
 }
 
 // GetCardExpMonthOk returns a tuple with the CardExpMonth field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookPaymentPayload) GetCardExpMonthOk() (*int32, bool) {
-	if o == nil || IsNil(o.CardExpMonth) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CardExpMonth, true
+	return o.CardExpMonth.Get(), o.CardExpMonth.IsSet()
 }
 
 // HasCardExpMonth returns a boolean if a field has been set.
 func (o *WebhookPaymentPayload) HasCardExpMonth() bool {
-	if o != nil && !IsNil(o.CardExpMonth) {
+	if o != nil && o.CardExpMonth.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCardExpMonth gets a reference to the given int32 and assigns it to the CardExpMonth field.
+// SetCardExpMonth gets a reference to the given NullableInt32 and assigns it to the CardExpMonth field.
 func (o *WebhookPaymentPayload) SetCardExpMonth(v int32) {
-	o.CardExpMonth = &v
+	o.CardExpMonth.Set(&v)
+}
+// SetCardExpMonthNil sets the value for CardExpMonth to be an explicit nil
+func (o *WebhookPaymentPayload) SetCardExpMonthNil() {
+	o.CardExpMonth.Set(nil)
 }
 
-// GetCardExpYear returns the CardExpYear field value if set, zero value otherwise.
+// UnsetCardExpMonth ensures that no value is present for CardExpMonth, not even an explicit nil
+func (o *WebhookPaymentPayload) UnsetCardExpMonth() {
+	o.CardExpMonth.Unset()
+}
+
+// GetCardExpYear returns the CardExpYear field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WebhookPaymentPayload) GetCardExpYear() int32 {
-	if o == nil || IsNil(o.CardExpYear) {
+	if o == nil || IsNil(o.CardExpYear.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.CardExpYear
+	return *o.CardExpYear.Get()
 }
 
 // GetCardExpYearOk returns a tuple with the CardExpYear field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookPaymentPayload) GetCardExpYearOk() (*int32, bool) {
-	if o == nil || IsNil(o.CardExpYear) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CardExpYear, true
+	return o.CardExpYear.Get(), o.CardExpYear.IsSet()
 }
 
 // HasCardExpYear returns a boolean if a field has been set.
 func (o *WebhookPaymentPayload) HasCardExpYear() bool {
-	if o != nil && !IsNil(o.CardExpYear) {
+	if o != nil && o.CardExpYear.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCardExpYear gets a reference to the given int32 and assigns it to the CardExpYear field.
+// SetCardExpYear gets a reference to the given NullableInt32 and assigns it to the CardExpYear field.
 func (o *WebhookPaymentPayload) SetCardExpYear(v int32) {
-	o.CardExpYear = &v
+	o.CardExpYear.Set(&v)
+}
+// SetCardExpYearNil sets the value for CardExpYear to be an explicit nil
+func (o *WebhookPaymentPayload) SetCardExpYearNil() {
+	o.CardExpYear.Set(nil)
 }
 
-// GetBillingAddress returns the BillingAddress field value if set, zero value otherwise.
+// UnsetCardExpYear ensures that no value is present for CardExpYear, not even an explicit nil
+func (o *WebhookPaymentPayload) UnsetCardExpYear() {
+	o.CardExpYear.Unset()
+}
+
+// GetBillingAddress returns the BillingAddress field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WebhookPaymentPayload) GetBillingAddress() WebhookPaymentPayloadBillingAddress {
-	if o == nil || IsNil(o.BillingAddress) {
+	if o == nil || IsNil(o.BillingAddress.Get()) {
 		var ret WebhookPaymentPayloadBillingAddress
 		return ret
 	}
-	return *o.BillingAddress
+	return *o.BillingAddress.Get()
 }
 
 // GetBillingAddressOk returns a tuple with the BillingAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookPaymentPayload) GetBillingAddressOk() (*WebhookPaymentPayloadBillingAddress, bool) {
-	if o == nil || IsNil(o.BillingAddress) {
+	if o == nil {
 		return nil, false
 	}
-	return o.BillingAddress, true
+	return o.BillingAddress.Get(), o.BillingAddress.IsSet()
 }
 
 // HasBillingAddress returns a boolean if a field has been set.
 func (o *WebhookPaymentPayload) HasBillingAddress() bool {
-	if o != nil && !IsNil(o.BillingAddress) {
+	if o != nil && o.BillingAddress.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetBillingAddress gets a reference to the given WebhookPaymentPayloadBillingAddress and assigns it to the BillingAddress field.
+// SetBillingAddress gets a reference to the given NullableWebhookPaymentPayloadBillingAddress and assigns it to the BillingAddress field.
 func (o *WebhookPaymentPayload) SetBillingAddress(v WebhookPaymentPayloadBillingAddress) {
-	o.BillingAddress = &v
+	o.BillingAddress.Set(&v)
+}
+// SetBillingAddressNil sets the value for BillingAddress to be an explicit nil
+func (o *WebhookPaymentPayload) SetBillingAddressNil() {
+	o.BillingAddress.Set(nil)
 }
 
-// GetLicenseKey returns the LicenseKey field value if set, zero value otherwise.
+// UnsetBillingAddress ensures that no value is present for BillingAddress, not even an explicit nil
+func (o *WebhookPaymentPayload) UnsetBillingAddress() {
+	o.BillingAddress.Unset()
+}
+
+// GetLicenseKey returns the LicenseKey field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WebhookPaymentPayload) GetLicenseKey() string {
-	if o == nil || IsNil(o.LicenseKey) {
+	if o == nil || IsNil(o.LicenseKey.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.LicenseKey
+	return *o.LicenseKey.Get()
 }
 
 // GetLicenseKeyOk returns a tuple with the LicenseKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookPaymentPayload) GetLicenseKeyOk() (*string, bool) {
-	if o == nil || IsNil(o.LicenseKey) {
+	if o == nil {
 		return nil, false
 	}
-	return o.LicenseKey, true
+	return o.LicenseKey.Get(), o.LicenseKey.IsSet()
 }
 
 // HasLicenseKey returns a boolean if a field has been set.
 func (o *WebhookPaymentPayload) HasLicenseKey() bool {
-	if o != nil && !IsNil(o.LicenseKey) {
+	if o != nil && o.LicenseKey.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetLicenseKey gets a reference to the given string and assigns it to the LicenseKey field.
+// SetLicenseKey gets a reference to the given NullableString and assigns it to the LicenseKey field.
 func (o *WebhookPaymentPayload) SetLicenseKey(v string) {
-	o.LicenseKey = &v
+	o.LicenseKey.Set(&v)
+}
+// SetLicenseKeyNil sets the value for LicenseKey to be an explicit nil
+func (o *WebhookPaymentPayload) SetLicenseKeyNil() {
+	o.LicenseKey.Set(nil)
 }
 
-// GetFilesSnapshot returns the FilesSnapshot field value if set, zero value otherwise.
+// UnsetLicenseKey ensures that no value is present for LicenseKey, not even an explicit nil
+func (o *WebhookPaymentPayload) UnsetLicenseKey() {
+	o.LicenseKey.Unset()
+}
+
+// GetFilesSnapshot returns the FilesSnapshot field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WebhookPaymentPayload) GetFilesSnapshot() []map[string]interface{} {
-	if o == nil || IsNil(o.FilesSnapshot) {
+	if o == nil {
 		var ret []map[string]interface{}
 		return ret
 	}
@@ -1254,6 +1544,7 @@ func (o *WebhookPaymentPayload) GetFilesSnapshot() []map[string]interface{} {
 
 // GetFilesSnapshotOk returns a tuple with the FilesSnapshot field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookPaymentPayload) GetFilesSnapshotOk() ([]map[string]interface{}, bool) {
 	if o == nil || IsNil(o.FilesSnapshot) {
 		return nil, false
@@ -1275,260 +1566,340 @@ func (o *WebhookPaymentPayload) SetFilesSnapshot(v []map[string]interface{}) {
 	o.FilesSnapshot = v
 }
 
-// GetCheckoutId returns the CheckoutId field value if set, zero value otherwise.
+// GetCheckoutId returns the CheckoutId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WebhookPaymentPayload) GetCheckoutId() string {
-	if o == nil || IsNil(o.CheckoutId) {
+	if o == nil || IsNil(o.CheckoutId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.CheckoutId
+	return *o.CheckoutId.Get()
 }
 
 // GetCheckoutIdOk returns a tuple with the CheckoutId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookPaymentPayload) GetCheckoutIdOk() (*string, bool) {
-	if o == nil || IsNil(o.CheckoutId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CheckoutId, true
+	return o.CheckoutId.Get(), o.CheckoutId.IsSet()
 }
 
 // HasCheckoutId returns a boolean if a field has been set.
 func (o *WebhookPaymentPayload) HasCheckoutId() bool {
-	if o != nil && !IsNil(o.CheckoutId) {
+	if o != nil && o.CheckoutId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCheckoutId gets a reference to the given string and assigns it to the CheckoutId field.
+// SetCheckoutId gets a reference to the given NullableString and assigns it to the CheckoutId field.
 func (o *WebhookPaymentPayload) SetCheckoutId(v string) {
-	o.CheckoutId = &v
+	o.CheckoutId.Set(&v)
+}
+// SetCheckoutIdNil sets the value for CheckoutId to be an explicit nil
+func (o *WebhookPaymentPayload) SetCheckoutIdNil() {
+	o.CheckoutId.Set(nil)
 }
 
-// GetDiscountCode returns the DiscountCode field value if set, zero value otherwise.
+// UnsetCheckoutId ensures that no value is present for CheckoutId, not even an explicit nil
+func (o *WebhookPaymentPayload) UnsetCheckoutId() {
+	o.CheckoutId.Unset()
+}
+
+// GetDiscountCode returns the DiscountCode field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WebhookPaymentPayload) GetDiscountCode() string {
-	if o == nil || IsNil(o.DiscountCode) {
+	if o == nil || IsNil(o.DiscountCode.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.DiscountCode
+	return *o.DiscountCode.Get()
 }
 
 // GetDiscountCodeOk returns a tuple with the DiscountCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookPaymentPayload) GetDiscountCodeOk() (*string, bool) {
-	if o == nil || IsNil(o.DiscountCode) {
+	if o == nil {
 		return nil, false
 	}
-	return o.DiscountCode, true
+	return o.DiscountCode.Get(), o.DiscountCode.IsSet()
 }
 
 // HasDiscountCode returns a boolean if a field has been set.
 func (o *WebhookPaymentPayload) HasDiscountCode() bool {
-	if o != nil && !IsNil(o.DiscountCode) {
+	if o != nil && o.DiscountCode.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDiscountCode gets a reference to the given string and assigns it to the DiscountCode field.
+// SetDiscountCode gets a reference to the given NullableString and assigns it to the DiscountCode field.
 func (o *WebhookPaymentPayload) SetDiscountCode(v string) {
-	o.DiscountCode = &v
+	o.DiscountCode.Set(&v)
+}
+// SetDiscountCodeNil sets the value for DiscountCode to be an explicit nil
+func (o *WebhookPaymentPayload) SetDiscountCodeNil() {
+	o.DiscountCode.Set(nil)
 }
 
-// GetFailureMessage returns the FailureMessage field value if set, zero value otherwise.
+// UnsetDiscountCode ensures that no value is present for DiscountCode, not even an explicit nil
+func (o *WebhookPaymentPayload) UnsetDiscountCode() {
+	o.DiscountCode.Unset()
+}
+
+// GetFailureMessage returns the FailureMessage field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WebhookPaymentPayload) GetFailureMessage() string {
-	if o == nil || IsNil(o.FailureMessage) {
+	if o == nil || IsNil(o.FailureMessage.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.FailureMessage
+	return *o.FailureMessage.Get()
 }
 
 // GetFailureMessageOk returns a tuple with the FailureMessage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookPaymentPayload) GetFailureMessageOk() (*string, bool) {
-	if o == nil || IsNil(o.FailureMessage) {
+	if o == nil {
 		return nil, false
 	}
-	return o.FailureMessage, true
+	return o.FailureMessage.Get(), o.FailureMessage.IsSet()
 }
 
 // HasFailureMessage returns a boolean if a field has been set.
 func (o *WebhookPaymentPayload) HasFailureMessage() bool {
-	if o != nil && !IsNil(o.FailureMessage) {
+	if o != nil && o.FailureMessage.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetFailureMessage gets a reference to the given string and assigns it to the FailureMessage field.
+// SetFailureMessage gets a reference to the given NullableString and assigns it to the FailureMessage field.
 func (o *WebhookPaymentPayload) SetFailureMessage(v string) {
-	o.FailureMessage = &v
+	o.FailureMessage.Set(&v)
+}
+// SetFailureMessageNil sets the value for FailureMessage to be an explicit nil
+func (o *WebhookPaymentPayload) SetFailureMessageNil() {
+	o.FailureMessage.Set(nil)
 }
 
-// GetPaidAt returns the PaidAt field value if set, zero value otherwise.
+// UnsetFailureMessage ensures that no value is present for FailureMessage, not even an explicit nil
+func (o *WebhookPaymentPayload) UnsetFailureMessage() {
+	o.FailureMessage.Unset()
+}
+
+// GetPaidAt returns the PaidAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WebhookPaymentPayload) GetPaidAt() time.Time {
-	if o == nil || IsNil(o.PaidAt) {
+	if o == nil || IsNil(o.PaidAt.Get()) {
 		var ret time.Time
 		return ret
 	}
-	return *o.PaidAt
+	return *o.PaidAt.Get()
 }
 
 // GetPaidAtOk returns a tuple with the PaidAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookPaymentPayload) GetPaidAtOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.PaidAt) {
+	if o == nil {
 		return nil, false
 	}
-	return o.PaidAt, true
+	return o.PaidAt.Get(), o.PaidAt.IsSet()
 }
 
 // HasPaidAt returns a boolean if a field has been set.
 func (o *WebhookPaymentPayload) HasPaidAt() bool {
-	if o != nil && !IsNil(o.PaidAt) {
+	if o != nil && o.PaidAt.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetPaidAt gets a reference to the given time.Time and assigns it to the PaidAt field.
+// SetPaidAt gets a reference to the given NullableTime and assigns it to the PaidAt field.
 func (o *WebhookPaymentPayload) SetPaidAt(v time.Time) {
-	o.PaidAt = &v
+	o.PaidAt.Set(&v)
+}
+// SetPaidAtNil sets the value for PaidAt to be an explicit nil
+func (o *WebhookPaymentPayload) SetPaidAtNil() {
+	o.PaidAt.Set(nil)
 }
 
-// GetRefundedAt returns the RefundedAt field value if set, zero value otherwise.
+// UnsetPaidAt ensures that no value is present for PaidAt, not even an explicit nil
+func (o *WebhookPaymentPayload) UnsetPaidAt() {
+	o.PaidAt.Unset()
+}
+
+// GetRefundedAt returns the RefundedAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WebhookPaymentPayload) GetRefundedAt() time.Time {
-	if o == nil || IsNil(o.RefundedAt) {
+	if o == nil || IsNil(o.RefundedAt.Get()) {
 		var ret time.Time
 		return ret
 	}
-	return *o.RefundedAt
+	return *o.RefundedAt.Get()
 }
 
 // GetRefundedAtOk returns a tuple with the RefundedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookPaymentPayload) GetRefundedAtOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.RefundedAt) {
+	if o == nil {
 		return nil, false
 	}
-	return o.RefundedAt, true
+	return o.RefundedAt.Get(), o.RefundedAt.IsSet()
 }
 
 // HasRefundedAt returns a boolean if a field has been set.
 func (o *WebhookPaymentPayload) HasRefundedAt() bool {
-	if o != nil && !IsNil(o.RefundedAt) {
+	if o != nil && o.RefundedAt.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetRefundedAt gets a reference to the given time.Time and assigns it to the RefundedAt field.
+// SetRefundedAt gets a reference to the given NullableTime and assigns it to the RefundedAt field.
 func (o *WebhookPaymentPayload) SetRefundedAt(v time.Time) {
-	o.RefundedAt = &v
+	o.RefundedAt.Set(&v)
+}
+// SetRefundedAtNil sets the value for RefundedAt to be an explicit nil
+func (o *WebhookPaymentPayload) SetRefundedAtNil() {
+	o.RefundedAt.Set(nil)
 }
 
-// GetDisputeAlertedAt returns the DisputeAlertedAt field value if set, zero value otherwise.
+// UnsetRefundedAt ensures that no value is present for RefundedAt, not even an explicit nil
+func (o *WebhookPaymentPayload) UnsetRefundedAt() {
+	o.RefundedAt.Unset()
+}
+
+// GetDisputeAlertedAt returns the DisputeAlertedAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WebhookPaymentPayload) GetDisputeAlertedAt() time.Time {
-	if o == nil || IsNil(o.DisputeAlertedAt) {
+	if o == nil || IsNil(o.DisputeAlertedAt.Get()) {
 		var ret time.Time
 		return ret
 	}
-	return *o.DisputeAlertedAt
+	return *o.DisputeAlertedAt.Get()
 }
 
 // GetDisputeAlertedAtOk returns a tuple with the DisputeAlertedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookPaymentPayload) GetDisputeAlertedAtOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.DisputeAlertedAt) {
+	if o == nil {
 		return nil, false
 	}
-	return o.DisputeAlertedAt, true
+	return o.DisputeAlertedAt.Get(), o.DisputeAlertedAt.IsSet()
 }
 
 // HasDisputeAlertedAt returns a boolean if a field has been set.
 func (o *WebhookPaymentPayload) HasDisputeAlertedAt() bool {
-	if o != nil && !IsNil(o.DisputeAlertedAt) {
+	if o != nil && o.DisputeAlertedAt.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDisputeAlertedAt gets a reference to the given time.Time and assigns it to the DisputeAlertedAt field.
+// SetDisputeAlertedAt gets a reference to the given NullableTime and assigns it to the DisputeAlertedAt field.
 func (o *WebhookPaymentPayload) SetDisputeAlertedAt(v time.Time) {
-	o.DisputeAlertedAt = &v
+	o.DisputeAlertedAt.Set(&v)
+}
+// SetDisputeAlertedAtNil sets the value for DisputeAlertedAt to be an explicit nil
+func (o *WebhookPaymentPayload) SetDisputeAlertedAtNil() {
+	o.DisputeAlertedAt.Set(nil)
 }
 
-// GetLastPaymentAttempt returns the LastPaymentAttempt field value if set, zero value otherwise.
+// UnsetDisputeAlertedAt ensures that no value is present for DisputeAlertedAt, not even an explicit nil
+func (o *WebhookPaymentPayload) UnsetDisputeAlertedAt() {
+	o.DisputeAlertedAt.Unset()
+}
+
+// GetLastPaymentAttempt returns the LastPaymentAttempt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WebhookPaymentPayload) GetLastPaymentAttempt() time.Time {
-	if o == nil || IsNil(o.LastPaymentAttempt) {
+	if o == nil || IsNil(o.LastPaymentAttempt.Get()) {
 		var ret time.Time
 		return ret
 	}
-	return *o.LastPaymentAttempt
+	return *o.LastPaymentAttempt.Get()
 }
 
 // GetLastPaymentAttemptOk returns a tuple with the LastPaymentAttempt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookPaymentPayload) GetLastPaymentAttemptOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.LastPaymentAttempt) {
+	if o == nil {
 		return nil, false
 	}
-	return o.LastPaymentAttempt, true
+	return o.LastPaymentAttempt.Get(), o.LastPaymentAttempt.IsSet()
 }
 
 // HasLastPaymentAttempt returns a boolean if a field has been set.
 func (o *WebhookPaymentPayload) HasLastPaymentAttempt() bool {
-	if o != nil && !IsNil(o.LastPaymentAttempt) {
+	if o != nil && o.LastPaymentAttempt.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetLastPaymentAttempt gets a reference to the given time.Time and assigns it to the LastPaymentAttempt field.
+// SetLastPaymentAttempt gets a reference to the given NullableTime and assigns it to the LastPaymentAttempt field.
 func (o *WebhookPaymentPayload) SetLastPaymentAttempt(v time.Time) {
-	o.LastPaymentAttempt = &v
+	o.LastPaymentAttempt.Set(&v)
+}
+// SetLastPaymentAttemptNil sets the value for LastPaymentAttempt to be an explicit nil
+func (o *WebhookPaymentPayload) SetLastPaymentAttemptNil() {
+	o.LastPaymentAttempt.Set(nil)
 }
 
-// GetNextPaymentAttempt returns the NextPaymentAttempt field value if set, zero value otherwise.
+// UnsetLastPaymentAttempt ensures that no value is present for LastPaymentAttempt, not even an explicit nil
+func (o *WebhookPaymentPayload) UnsetLastPaymentAttempt() {
+	o.LastPaymentAttempt.Unset()
+}
+
+// GetNextPaymentAttempt returns the NextPaymentAttempt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WebhookPaymentPayload) GetNextPaymentAttempt() time.Time {
-	if o == nil || IsNil(o.NextPaymentAttempt) {
+	if o == nil || IsNil(o.NextPaymentAttempt.Get()) {
 		var ret time.Time
 		return ret
 	}
-	return *o.NextPaymentAttempt
+	return *o.NextPaymentAttempt.Get()
 }
 
 // GetNextPaymentAttemptOk returns a tuple with the NextPaymentAttempt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookPaymentPayload) GetNextPaymentAttemptOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.NextPaymentAttempt) {
+	if o == nil {
 		return nil, false
 	}
-	return o.NextPaymentAttempt, true
+	return o.NextPaymentAttempt.Get(), o.NextPaymentAttempt.IsSet()
 }
 
 // HasNextPaymentAttempt returns a boolean if a field has been set.
 func (o *WebhookPaymentPayload) HasNextPaymentAttempt() bool {
-	if o != nil && !IsNil(o.NextPaymentAttempt) {
+	if o != nil && o.NextPaymentAttempt.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetNextPaymentAttempt gets a reference to the given time.Time and assigns it to the NextPaymentAttempt field.
+// SetNextPaymentAttempt gets a reference to the given NullableTime and assigns it to the NextPaymentAttempt field.
 func (o *WebhookPaymentPayload) SetNextPaymentAttempt(v time.Time) {
-	o.NextPaymentAttempt = &v
+	o.NextPaymentAttempt.Set(&v)
+}
+// SetNextPaymentAttemptNil sets the value for NextPaymentAttempt to be an explicit nil
+func (o *WebhookPaymentPayload) SetNextPaymentAttemptNil() {
+	o.NextPaymentAttempt.Set(nil)
+}
+
+// UnsetNextPaymentAttempt ensures that no value is present for NextPaymentAttempt, not even an explicit nil
+func (o *WebhookPaymentPayload) UnsetNextPaymentAttempt() {
+	o.NextPaymentAttempt.Unset()
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
@@ -1595,68 +1966,88 @@ func (o *WebhookPaymentPayload) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = &v
 }
 
-// GetPaymentEventType returns the PaymentEventType field value if set, zero value otherwise.
+// GetPaymentEventType returns the PaymentEventType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WebhookPaymentPayload) GetPaymentEventType() string {
-	if o == nil || IsNil(o.PaymentEventType) {
+	if o == nil || IsNil(o.PaymentEventType.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.PaymentEventType
+	return *o.PaymentEventType.Get()
 }
 
 // GetPaymentEventTypeOk returns a tuple with the PaymentEventType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookPaymentPayload) GetPaymentEventTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.PaymentEventType) {
+	if o == nil {
 		return nil, false
 	}
-	return o.PaymentEventType, true
+	return o.PaymentEventType.Get(), o.PaymentEventType.IsSet()
 }
 
 // HasPaymentEventType returns a boolean if a field has been set.
 func (o *WebhookPaymentPayload) HasPaymentEventType() bool {
-	if o != nil && !IsNil(o.PaymentEventType) {
+	if o != nil && o.PaymentEventType.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetPaymentEventType gets a reference to the given string and assigns it to the PaymentEventType field.
+// SetPaymentEventType gets a reference to the given NullableString and assigns it to the PaymentEventType field.
 func (o *WebhookPaymentPayload) SetPaymentEventType(v string) {
-	o.PaymentEventType = &v
+	o.PaymentEventType.Set(&v)
+}
+// SetPaymentEventTypeNil sets the value for PaymentEventType to be an explicit nil
+func (o *WebhookPaymentPayload) SetPaymentEventTypeNil() {
+	o.PaymentEventType.Set(nil)
 }
 
-// GetLastEventType returns the LastEventType field value if set, zero value otherwise.
+// UnsetPaymentEventType ensures that no value is present for PaymentEventType, not even an explicit nil
+func (o *WebhookPaymentPayload) UnsetPaymentEventType() {
+	o.PaymentEventType.Unset()
+}
+
+// GetLastEventType returns the LastEventType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WebhookPaymentPayload) GetLastEventType() string {
-	if o == nil || IsNil(o.LastEventType) {
+	if o == nil || IsNil(o.LastEventType.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.LastEventType
+	return *o.LastEventType.Get()
 }
 
 // GetLastEventTypeOk returns a tuple with the LastEventType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookPaymentPayload) GetLastEventTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.LastEventType) {
+	if o == nil {
 		return nil, false
 	}
-	return o.LastEventType, true
+	return o.LastEventType.Get(), o.LastEventType.IsSet()
 }
 
 // HasLastEventType returns a boolean if a field has been set.
 func (o *WebhookPaymentPayload) HasLastEventType() bool {
-	if o != nil && !IsNil(o.LastEventType) {
+	if o != nil && o.LastEventType.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetLastEventType gets a reference to the given string and assigns it to the LastEventType field.
+// SetLastEventType gets a reference to the given NullableString and assigns it to the LastEventType field.
 func (o *WebhookPaymentPayload) SetLastEventType(v string) {
-	o.LastEventType = &v
+	o.LastEventType.Set(&v)
+}
+// SetLastEventTypeNil sets the value for LastEventType to be an explicit nil
+func (o *WebhookPaymentPayload) SetLastEventTypeNil() {
+	o.LastEventType.Set(nil)
+}
+
+// UnsetLastEventType ensures that no value is present for LastEventType, not even an explicit nil
+func (o *WebhookPaymentPayload) UnsetLastEventType() {
+	o.LastEventType.Unset()
 }
 
 // GetBusinessId returns the BusinessId field value if set, zero value otherwise.
@@ -1707,74 +2098,74 @@ func (o WebhookPaymentPayload) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
-	if !IsNil(o.Substatus) {
-		toSerialize["substatus"] = o.Substatus
+	if o.Substatus.IsSet() {
+		toSerialize["substatus"] = o.Substatus.Get()
 	}
-	if !IsNil(o.CustomerId) {
-		toSerialize["customerId"] = o.CustomerId
+	if o.CustomerId.IsSet() {
+		toSerialize["customerId"] = o.CustomerId.Get()
 	}
-	if !IsNil(o.CustomerEmail) {
-		toSerialize["customerEmail"] = o.CustomerEmail
+	if o.CustomerEmail.IsSet() {
+		toSerialize["customerEmail"] = o.CustomerEmail.Get()
 	}
-	if !IsNil(o.CustomerName) {
-		toSerialize["customerName"] = o.CustomerName
+	if o.CustomerName.IsSet() {
+		toSerialize["customerName"] = o.CustomerName.Get()
 	}
-	if !IsNil(o.CustomerUsername) {
-		toSerialize["customerUsername"] = o.CustomerUsername
+	if o.CustomerUsername.IsSet() {
+		toSerialize["customerUsername"] = o.CustomerUsername.Get()
 	}
-	if !IsNil(o.ProductTitle) {
-		toSerialize["productTitle"] = o.ProductTitle
+	if o.ProductTitle.IsSet() {
+		toSerialize["productTitle"] = o.ProductTitle.Get()
 	}
-	if !IsNil(o.ProductRoute) {
-		toSerialize["productRoute"] = o.ProductRoute
+	if o.ProductRoute.IsSet() {
+		toSerialize["productRoute"] = o.ProductRoute.Get()
 	}
-	if !IsNil(o.PlanId) {
-		toSerialize["planId"] = o.PlanId
+	if o.PlanId.IsSet() {
+		toSerialize["planId"] = o.PlanId.Get()
 	}
-	if !IsNil(o.MembershipId) {
-		toSerialize["membershipId"] = o.MembershipId
+	if o.MembershipId.IsSet() {
+		toSerialize["membershipId"] = o.MembershipId.Get()
 	}
-	if !IsNil(o.MembershipStatus) {
-		toSerialize["membershipStatus"] = o.MembershipStatus
+	if o.MembershipStatus.IsSet() {
+		toSerialize["membershipStatus"] = o.MembershipStatus.Get()
 	}
-	if !IsNil(o.BillingReason) {
-		toSerialize["billingReason"] = o.BillingReason
+	if o.BillingReason.IsSet() {
+		toSerialize["billingReason"] = o.BillingReason.Get()
 	}
-	if !IsNil(o.Amount) {
-		toSerialize["amount"] = o.Amount
+	if o.Amount.IsSet() {
+		toSerialize["amount"] = o.Amount.Get()
 	}
-	if !IsNil(o.Subtotal) {
-		toSerialize["subtotal"] = o.Subtotal
+	if o.Subtotal.IsSet() {
+		toSerialize["subtotal"] = o.Subtotal.Get()
 	}
-	if !IsNil(o.UsdTotal) {
-		toSerialize["usdTotal"] = o.UsdTotal
+	if o.UsdTotal.IsSet() {
+		toSerialize["usdTotal"] = o.UsdTotal.Get()
 	}
-	if !IsNil(o.FeeAmount) {
-		toSerialize["feeAmount"] = o.FeeAmount
+	if o.FeeAmount.IsSet() {
+		toSerialize["feeAmount"] = o.FeeAmount.Get()
 	}
-	if !IsNil(o.AmountAfterFees) {
-		toSerialize["amountAfterFees"] = o.AmountAfterFees
+	if o.AmountAfterFees.IsSet() {
+		toSerialize["amountAfterFees"] = o.AmountAfterFees.Get()
 	}
-	if !IsNil(o.TaxAmount) {
-		toSerialize["taxAmount"] = o.TaxAmount
+	if o.TaxAmount.IsSet() {
+		toSerialize["taxAmount"] = o.TaxAmount.Get()
 	}
-	if !IsNil(o.TaxBehavior) {
-		toSerialize["taxBehavior"] = o.TaxBehavior
+	if o.TaxBehavior.IsSet() {
+		toSerialize["taxBehavior"] = o.TaxBehavior.Get()
 	}
-	if !IsNil(o.TaxRefundedAmount) {
-		toSerialize["taxRefundedAmount"] = o.TaxRefundedAmount
+	if o.TaxRefundedAmount.IsSet() {
+		toSerialize["taxRefundedAmount"] = o.TaxRefundedAmount.Get()
 	}
 	if !IsNil(o.RefundedAmount) {
 		toSerialize["refundedAmount"] = o.RefundedAmount
 	}
-	if !IsNil(o.SettlementAmount) {
-		toSerialize["settlementAmount"] = o.SettlementAmount
+	if o.SettlementAmount.IsSet() {
+		toSerialize["settlementAmount"] = o.SettlementAmount.Get()
 	}
-	if !IsNil(o.SettlementCurrency) {
-		toSerialize["settlementCurrency"] = o.SettlementCurrency
+	if o.SettlementCurrency.IsSet() {
+		toSerialize["settlementCurrency"] = o.SettlementCurrency.Get()
 	}
-	if !IsNil(o.SettlementExchangeRate) {
-		toSerialize["settlementExchangeRate"] = o.SettlementExchangeRate
+	if o.SettlementExchangeRate.IsSet() {
+		toSerialize["settlementExchangeRate"] = o.SettlementExchangeRate.Get()
 	}
 	if !IsNil(o.Currency) {
 		toSerialize["currency"] = o.Currency
@@ -1788,53 +2179,53 @@ func (o WebhookPaymentPayload) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AutoRefunded) {
 		toSerialize["autoRefunded"] = o.AutoRefunded
 	}
-	if !IsNil(o.PaymentMethod) {
-		toSerialize["paymentMethod"] = o.PaymentMethod
+	if o.PaymentMethod.IsSet() {
+		toSerialize["paymentMethod"] = o.PaymentMethod.Get()
 	}
-	if !IsNil(o.CardBrand) {
-		toSerialize["cardBrand"] = o.CardBrand
+	if o.CardBrand.IsSet() {
+		toSerialize["cardBrand"] = o.CardBrand.Get()
 	}
-	if !IsNil(o.CardLast4) {
-		toSerialize["cardLast4"] = o.CardLast4
+	if o.CardLast4.IsSet() {
+		toSerialize["cardLast4"] = o.CardLast4.Get()
 	}
-	if !IsNil(o.CardExpMonth) {
-		toSerialize["cardExpMonth"] = o.CardExpMonth
+	if o.CardExpMonth.IsSet() {
+		toSerialize["cardExpMonth"] = o.CardExpMonth.Get()
 	}
-	if !IsNil(o.CardExpYear) {
-		toSerialize["cardExpYear"] = o.CardExpYear
+	if o.CardExpYear.IsSet() {
+		toSerialize["cardExpYear"] = o.CardExpYear.Get()
 	}
-	if !IsNil(o.BillingAddress) {
-		toSerialize["billingAddress"] = o.BillingAddress
+	if o.BillingAddress.IsSet() {
+		toSerialize["billingAddress"] = o.BillingAddress.Get()
 	}
-	if !IsNil(o.LicenseKey) {
-		toSerialize["licenseKey"] = o.LicenseKey
+	if o.LicenseKey.IsSet() {
+		toSerialize["licenseKey"] = o.LicenseKey.Get()
 	}
-	if !IsNil(o.FilesSnapshot) {
+	if o.FilesSnapshot != nil {
 		toSerialize["filesSnapshot"] = o.FilesSnapshot
 	}
-	if !IsNil(o.CheckoutId) {
-		toSerialize["checkoutId"] = o.CheckoutId
+	if o.CheckoutId.IsSet() {
+		toSerialize["checkoutId"] = o.CheckoutId.Get()
 	}
-	if !IsNil(o.DiscountCode) {
-		toSerialize["discountCode"] = o.DiscountCode
+	if o.DiscountCode.IsSet() {
+		toSerialize["discountCode"] = o.DiscountCode.Get()
 	}
-	if !IsNil(o.FailureMessage) {
-		toSerialize["failureMessage"] = o.FailureMessage
+	if o.FailureMessage.IsSet() {
+		toSerialize["failureMessage"] = o.FailureMessage.Get()
 	}
-	if !IsNil(o.PaidAt) {
-		toSerialize["paidAt"] = o.PaidAt
+	if o.PaidAt.IsSet() {
+		toSerialize["paidAt"] = o.PaidAt.Get()
 	}
-	if !IsNil(o.RefundedAt) {
-		toSerialize["refundedAt"] = o.RefundedAt
+	if o.RefundedAt.IsSet() {
+		toSerialize["refundedAt"] = o.RefundedAt.Get()
 	}
-	if !IsNil(o.DisputeAlertedAt) {
-		toSerialize["disputeAlertedAt"] = o.DisputeAlertedAt
+	if o.DisputeAlertedAt.IsSet() {
+		toSerialize["disputeAlertedAt"] = o.DisputeAlertedAt.Get()
 	}
-	if !IsNil(o.LastPaymentAttempt) {
-		toSerialize["lastPaymentAttempt"] = o.LastPaymentAttempt
+	if o.LastPaymentAttempt.IsSet() {
+		toSerialize["lastPaymentAttempt"] = o.LastPaymentAttempt.Get()
 	}
-	if !IsNil(o.NextPaymentAttempt) {
-		toSerialize["nextPaymentAttempt"] = o.NextPaymentAttempt
+	if o.NextPaymentAttempt.IsSet() {
+		toSerialize["nextPaymentAttempt"] = o.NextPaymentAttempt.Get()
 	}
 	if !IsNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
@@ -1842,11 +2233,11 @@ func (o WebhookPaymentPayload) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
-	if !IsNil(o.PaymentEventType) {
-		toSerialize["paymentEventType"] = o.PaymentEventType
+	if o.PaymentEventType.IsSet() {
+		toSerialize["paymentEventType"] = o.PaymentEventType.Get()
 	}
-	if !IsNil(o.LastEventType) {
-		toSerialize["lastEventType"] = o.LastEventType
+	if o.LastEventType.IsSet() {
+		toSerialize["lastEventType"] = o.LastEventType.Get()
 	}
 	if !IsNil(o.BusinessId) {
 		toSerialize["businessId"] = o.BusinessId

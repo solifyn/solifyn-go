@@ -9,10 +9,10 @@ Name | Type | Description | Notes
 **Amount** | Pointer to **string** | Dollar value, 2 d.p. | [optional] 
 **Currency** | Pointer to **string** |  | [optional] 
 **Status** | Pointer to **string** |  | [optional] 
-**Reason** | Pointer to **string** |  | [optional] 
-**ReferenceValue** | Pointer to **string** |  | [optional] 
-**Provider** | Pointer to **string** |  | [optional] 
-**ProviderCreatedAt** | Pointer to **time.Time** |  | [optional] 
+**Reason** | Pointer to **NullableString** |  | [optional] 
+**ReferenceValue** | Pointer to **NullableString** |  | [optional] 
+**Provider** | Pointer to **NullableString** |  | [optional] 
+**ProviderCreatedAt** | Pointer to **NullableTime** |  | [optional] 
 **CreatedAt** | Pointer to **time.Time** |  | [optional] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] 
 
@@ -185,6 +185,16 @@ SetReason sets Reason field to given value.
 
 HasReason returns a boolean if a field has been set.
 
+### SetReasonNil
+
+`func (o *WebhookRefundPayload) SetReasonNil(b bool)`
+
+ SetReasonNil sets the value for Reason to be an explicit nil
+
+### UnsetReason
+`func (o *WebhookRefundPayload) UnsetReason()`
+
+UnsetReason ensures that no value is present for Reason, not even an explicit nil
 ### GetReferenceValue
 
 `func (o *WebhookRefundPayload) GetReferenceValue() string`
@@ -210,6 +220,16 @@ SetReferenceValue sets ReferenceValue field to given value.
 
 HasReferenceValue returns a boolean if a field has been set.
 
+### SetReferenceValueNil
+
+`func (o *WebhookRefundPayload) SetReferenceValueNil(b bool)`
+
+ SetReferenceValueNil sets the value for ReferenceValue to be an explicit nil
+
+### UnsetReferenceValue
+`func (o *WebhookRefundPayload) UnsetReferenceValue()`
+
+UnsetReferenceValue ensures that no value is present for ReferenceValue, not even an explicit nil
 ### GetProvider
 
 `func (o *WebhookRefundPayload) GetProvider() string`
@@ -235,6 +255,16 @@ SetProvider sets Provider field to given value.
 
 HasProvider returns a boolean if a field has been set.
 
+### SetProviderNil
+
+`func (o *WebhookRefundPayload) SetProviderNil(b bool)`
+
+ SetProviderNil sets the value for Provider to be an explicit nil
+
+### UnsetProvider
+`func (o *WebhookRefundPayload) UnsetProvider()`
+
+UnsetProvider ensures that no value is present for Provider, not even an explicit nil
 ### GetProviderCreatedAt
 
 `func (o *WebhookRefundPayload) GetProviderCreatedAt() time.Time`
@@ -260,6 +290,16 @@ SetProviderCreatedAt sets ProviderCreatedAt field to given value.
 
 HasProviderCreatedAt returns a boolean if a field has been set.
 
+### SetProviderCreatedAtNil
+
+`func (o *WebhookRefundPayload) SetProviderCreatedAtNil(b bool)`
+
+ SetProviderCreatedAtNil sets the value for ProviderCreatedAt to be an explicit nil
+
+### UnsetProviderCreatedAt
+`func (o *WebhookRefundPayload) UnsetProviderCreatedAt()`
+
+UnsetProviderCreatedAt ensures that no value is present for ProviderCreatedAt, not even an explicit nil
 ### GetCreatedAt
 
 `func (o *WebhookRefundPayload) GetCreatedAt() time.Time`

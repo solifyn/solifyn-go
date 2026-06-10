@@ -25,17 +25,17 @@ type CustomerResponseDto struct {
 	// The customer ID
 	Id string `json:"id"`
 	// The Membership ID associated with this customer
-	MemberId *string `json:"memberId,omitempty"`
+	MemberId NullableString `json:"memberId,omitempty"`
 	// The email address of the customer
 	Email string `json:"email"`
 	// The name of the customer
-	Name *string `json:"name,omitempty"`
+	Name NullableString `json:"name,omitempty"`
 	// The username of the customer
-	Username *string `json:"username,omitempty"`
+	Username NullableString `json:"username,omitempty"`
 	// The phone number of the customer
-	Phone *string `json:"phone,omitempty"`
+	Phone NullableString `json:"phone,omitempty"`
 	// The phone number of the customer
-	PhoneNumber *string `json:"phone_number,omitempty"`
+	PhoneNumber NullableString `json:"phone_number,omitempty"`
 	// Additional metadata associated with the customer
 	Metadata map[string]interface{} `json:"metadata,omitempty"`
 	// Timestamp when the customer was created
@@ -94,36 +94,46 @@ func (o *CustomerResponseDto) SetId(v string) {
 	o.Id = v
 }
 
-// GetMemberId returns the MemberId field value if set, zero value otherwise.
+// GetMemberId returns the MemberId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CustomerResponseDto) GetMemberId() string {
-	if o == nil || IsNil(o.MemberId) {
+	if o == nil || IsNil(o.MemberId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.MemberId
+	return *o.MemberId.Get()
 }
 
 // GetMemberIdOk returns a tuple with the MemberId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CustomerResponseDto) GetMemberIdOk() (*string, bool) {
-	if o == nil || IsNil(o.MemberId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.MemberId, true
+	return o.MemberId.Get(), o.MemberId.IsSet()
 }
 
 // HasMemberId returns a boolean if a field has been set.
 func (o *CustomerResponseDto) HasMemberId() bool {
-	if o != nil && !IsNil(o.MemberId) {
+	if o != nil && o.MemberId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMemberId gets a reference to the given string and assigns it to the MemberId field.
+// SetMemberId gets a reference to the given NullableString and assigns it to the MemberId field.
 func (o *CustomerResponseDto) SetMemberId(v string) {
-	o.MemberId = &v
+	o.MemberId.Set(&v)
+}
+// SetMemberIdNil sets the value for MemberId to be an explicit nil
+func (o *CustomerResponseDto) SetMemberIdNil() {
+	o.MemberId.Set(nil)
+}
+
+// UnsetMemberId ensures that no value is present for MemberId, not even an explicit nil
+func (o *CustomerResponseDto) UnsetMemberId() {
+	o.MemberId.Unset()
 }
 
 // GetEmail returns the Email field value
@@ -150,137 +160,177 @@ func (o *CustomerResponseDto) SetEmail(v string) {
 	o.Email = v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CustomerResponseDto) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Name
+	return *o.Name.Get()
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CustomerResponseDto) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return o.Name.Get(), o.Name.IsSet()
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *CustomerResponseDto) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName gets a reference to the given NullableString and assigns it to the Name field.
 func (o *CustomerResponseDto) SetName(v string) {
-	o.Name = &v
+	o.Name.Set(&v)
+}
+// SetNameNil sets the value for Name to be an explicit nil
+func (o *CustomerResponseDto) SetNameNil() {
+	o.Name.Set(nil)
 }
 
-// GetUsername returns the Username field value if set, zero value otherwise.
+// UnsetName ensures that no value is present for Name, not even an explicit nil
+func (o *CustomerResponseDto) UnsetName() {
+	o.Name.Unset()
+}
+
+// GetUsername returns the Username field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CustomerResponseDto) GetUsername() string {
-	if o == nil || IsNil(o.Username) {
+	if o == nil || IsNil(o.Username.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Username
+	return *o.Username.Get()
 }
 
 // GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CustomerResponseDto) GetUsernameOk() (*string, bool) {
-	if o == nil || IsNil(o.Username) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Username, true
+	return o.Username.Get(), o.Username.IsSet()
 }
 
 // HasUsername returns a boolean if a field has been set.
 func (o *CustomerResponseDto) HasUsername() bool {
-	if o != nil && !IsNil(o.Username) {
+	if o != nil && o.Username.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetUsername gets a reference to the given string and assigns it to the Username field.
+// SetUsername gets a reference to the given NullableString and assigns it to the Username field.
 func (o *CustomerResponseDto) SetUsername(v string) {
-	o.Username = &v
+	o.Username.Set(&v)
+}
+// SetUsernameNil sets the value for Username to be an explicit nil
+func (o *CustomerResponseDto) SetUsernameNil() {
+	o.Username.Set(nil)
 }
 
-// GetPhone returns the Phone field value if set, zero value otherwise.
+// UnsetUsername ensures that no value is present for Username, not even an explicit nil
+func (o *CustomerResponseDto) UnsetUsername() {
+	o.Username.Unset()
+}
+
+// GetPhone returns the Phone field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CustomerResponseDto) GetPhone() string {
-	if o == nil || IsNil(o.Phone) {
+	if o == nil || IsNil(o.Phone.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Phone
+	return *o.Phone.Get()
 }
 
 // GetPhoneOk returns a tuple with the Phone field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CustomerResponseDto) GetPhoneOk() (*string, bool) {
-	if o == nil || IsNil(o.Phone) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Phone, true
+	return o.Phone.Get(), o.Phone.IsSet()
 }
 
 // HasPhone returns a boolean if a field has been set.
 func (o *CustomerResponseDto) HasPhone() bool {
-	if o != nil && !IsNil(o.Phone) {
+	if o != nil && o.Phone.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetPhone gets a reference to the given string and assigns it to the Phone field.
+// SetPhone gets a reference to the given NullableString and assigns it to the Phone field.
 func (o *CustomerResponseDto) SetPhone(v string) {
-	o.Phone = &v
+	o.Phone.Set(&v)
+}
+// SetPhoneNil sets the value for Phone to be an explicit nil
+func (o *CustomerResponseDto) SetPhoneNil() {
+	o.Phone.Set(nil)
 }
 
-// GetPhoneNumber returns the PhoneNumber field value if set, zero value otherwise.
+// UnsetPhone ensures that no value is present for Phone, not even an explicit nil
+func (o *CustomerResponseDto) UnsetPhone() {
+	o.Phone.Unset()
+}
+
+// GetPhoneNumber returns the PhoneNumber field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CustomerResponseDto) GetPhoneNumber() string {
-	if o == nil || IsNil(o.PhoneNumber) {
+	if o == nil || IsNil(o.PhoneNumber.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.PhoneNumber
+	return *o.PhoneNumber.Get()
 }
 
 // GetPhoneNumberOk returns a tuple with the PhoneNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CustomerResponseDto) GetPhoneNumberOk() (*string, bool) {
-	if o == nil || IsNil(o.PhoneNumber) {
+	if o == nil {
 		return nil, false
 	}
-	return o.PhoneNumber, true
+	return o.PhoneNumber.Get(), o.PhoneNumber.IsSet()
 }
 
 // HasPhoneNumber returns a boolean if a field has been set.
 func (o *CustomerResponseDto) HasPhoneNumber() bool {
-	if o != nil && !IsNil(o.PhoneNumber) {
+	if o != nil && o.PhoneNumber.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetPhoneNumber gets a reference to the given string and assigns it to the PhoneNumber field.
+// SetPhoneNumber gets a reference to the given NullableString and assigns it to the PhoneNumber field.
 func (o *CustomerResponseDto) SetPhoneNumber(v string) {
-	o.PhoneNumber = &v
+	o.PhoneNumber.Set(&v)
+}
+// SetPhoneNumberNil sets the value for PhoneNumber to be an explicit nil
+func (o *CustomerResponseDto) SetPhoneNumberNil() {
+	o.PhoneNumber.Set(nil)
 }
 
-// GetMetadata returns the Metadata field value if set, zero value otherwise.
+// UnsetPhoneNumber ensures that no value is present for PhoneNumber, not even an explicit nil
+func (o *CustomerResponseDto) UnsetPhoneNumber() {
+	o.PhoneNumber.Unset()
+}
+
+// GetMetadata returns the Metadata field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CustomerResponseDto) GetMetadata() map[string]interface{} {
-	if o == nil || IsNil(o.Metadata) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -289,6 +339,7 @@ func (o *CustomerResponseDto) GetMetadata() map[string]interface{} {
 
 // GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CustomerResponseDto) GetMetadataOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Metadata) {
 		return map[string]interface{}{}, false
@@ -393,23 +444,23 @@ func (o CustomerResponseDto) MarshalJSON() ([]byte, error) {
 func (o CustomerResponseDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
-	if !IsNil(o.MemberId) {
-		toSerialize["memberId"] = o.MemberId
+	if o.MemberId.IsSet() {
+		toSerialize["memberId"] = o.MemberId.Get()
 	}
 	toSerialize["email"] = o.Email
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
+	if o.Name.IsSet() {
+		toSerialize["name"] = o.Name.Get()
 	}
-	if !IsNil(o.Username) {
-		toSerialize["username"] = o.Username
+	if o.Username.IsSet() {
+		toSerialize["username"] = o.Username.Get()
 	}
-	if !IsNil(o.Phone) {
-		toSerialize["phone"] = o.Phone
+	if o.Phone.IsSet() {
+		toSerialize["phone"] = o.Phone.Get()
 	}
-	if !IsNil(o.PhoneNumber) {
-		toSerialize["phone_number"] = o.PhoneNumber
+	if o.PhoneNumber.IsSet() {
+		toSerialize["phone_number"] = o.PhoneNumber.Get()
 	}
-	if !IsNil(o.Metadata) {
+	if o.Metadata != nil {
 		toSerialize["metadata"] = o.Metadata
 	}
 	toSerialize["createdAt"] = o.CreatedAt

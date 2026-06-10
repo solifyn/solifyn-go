@@ -28,7 +28,7 @@ type SubscriptionDetail struct {
 	// List of purchased addons associated with this subscription
 	PurchasedAddons []ResolvedAddon `json:"purchasedAddons"`
 	// The core product information associated with this subscription
-	Product SubscriptionDetailProduct `json:"product"`
+	Product NullableSubscriptionDetailProduct `json:"product"`
 }
 
 type _SubscriptionDetail SubscriptionDetail
@@ -37,7 +37,7 @@ type _SubscriptionDetail SubscriptionDetail
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSubscriptionDetail(subscription Subscription, payments []Order, purchasedAddons []ResolvedAddon, product SubscriptionDetailProduct) *SubscriptionDetail {
+func NewSubscriptionDetail(subscription Subscription, payments []Order, purchasedAddons []ResolvedAddon, product NullableSubscriptionDetailProduct) *SubscriptionDetail {
 	this := SubscriptionDetail{}
 	this.Subscription = subscription
 	this.Payments = payments
@@ -127,27 +127,29 @@ func (o *SubscriptionDetail) SetPurchasedAddons(v []ResolvedAddon) {
 }
 
 // GetProduct returns the Product field value
+// If the value is explicit nil, the zero value for SubscriptionDetailProduct will be returned
 func (o *SubscriptionDetail) GetProduct() SubscriptionDetailProduct {
-	if o == nil {
+	if o == nil || o.Product.Get() == nil {
 		var ret SubscriptionDetailProduct
 		return ret
 	}
 
-	return o.Product
+	return *o.Product.Get()
 }
 
 // GetProductOk returns a tuple with the Product field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SubscriptionDetail) GetProductOk() (*SubscriptionDetailProduct, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Product, true
+	return o.Product.Get(), o.Product.IsSet()
 }
 
 // SetProduct sets field value
 func (o *SubscriptionDetail) SetProduct(v SubscriptionDetailProduct) {
-	o.Product = v
+	o.Product.Set(&v)
 }
 
 func (o SubscriptionDetail) MarshalJSON() ([]byte, error) {
@@ -163,7 +165,7 @@ func (o SubscriptionDetail) ToMap() (map[string]interface{}, error) {
 	toSerialize["subscription"] = o.Subscription
 	toSerialize["payments"] = o.Payments
 	toSerialize["purchasedAddons"] = o.PurchasedAddons
-	toSerialize["product"] = o.Product
+	toSerialize["product"] = o.Product.Get()
 	return toSerialize, nil
 }
 

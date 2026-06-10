@@ -9,18 +9,18 @@ Name | Type | Description | Notes
 **Amount** | **float32** | The dispute amount | 
 **Currency** | **string** | The currency code | 
 **Status** | **string** | The status of the dispute | 
-**Reason** | Pointer to **string** | The reason for the dispute | [optional] 
+**Reason** | Pointer to **NullableString** | The reason for the dispute | [optional] 
 **Editable** | **bool** | Whether the evidence is still editable | 
-**NeedsResponseBy** | Pointer to **time.Time** | Timestamp by when evidence must be submitted | [optional] 
+**NeedsResponseBy** | Pointer to **NullableTime** | Timestamp by when evidence must be submitted | [optional] 
 **VisaRdr** | **bool** | Whether Visa RDR was applied | 
-**BillingAddress** | Pointer to **string** | Customer billing address details | [optional] 
-**CustomerName** | Pointer to **string** | Customer name | [optional] 
-**CustomerEmail** | Pointer to **string** | Customer email address | [optional] 
-**Notes** | Pointer to **string** | Additional notes | [optional] 
-**ProductDescription** | Pointer to **string** | Product or service description | [optional] 
-**ServiceDate** | Pointer to **string** | Service or purchase date | [optional] 
-**AccessActivityLog** | Pointer to **string** | Log of access activity | [optional] 
-**Evidence** | Pointer to [**DisputeEvidenceDto**](DisputeEvidenceDto.md) | Evidence attachments associated with the dispute | [optional] 
+**BillingAddress** | Pointer to **NullableString** | Customer billing address details | [optional] 
+**CustomerName** | Pointer to **NullableString** | Customer name | [optional] 
+**CustomerEmail** | Pointer to **NullableString** | Customer email address | [optional] 
+**Notes** | Pointer to **NullableString** | Additional notes | [optional] 
+**ProductDescription** | Pointer to **NullableString** | Product or service description | [optional] 
+**ServiceDate** | Pointer to **NullableString** | Service or purchase date | [optional] 
+**AccessActivityLog** | Pointer to **NullableString** | Log of access activity | [optional] 
+**Evidence** | Pointer to [**NullableDisputeEvidenceDto**](DisputeEvidenceDto.md) | Evidence attachments associated with the dispute | [optional] 
 **PaymentId** | **string** | The associated payment ID | 
 **BusinessId** | **string** | The associated business ID | 
 **CreatedAt** | **time.Time** | Timestamp when the dispute was created | 
@@ -170,6 +170,16 @@ SetReason sets Reason field to given value.
 
 HasReason returns a boolean if a field has been set.
 
+### SetReasonNil
+
+`func (o *Dispute) SetReasonNil(b bool)`
+
+ SetReasonNil sets the value for Reason to be an explicit nil
+
+### UnsetReason
+`func (o *Dispute) UnsetReason()`
+
+UnsetReason ensures that no value is present for Reason, not even an explicit nil
 ### GetEditable
 
 `func (o *Dispute) GetEditable() bool`
@@ -215,6 +225,16 @@ SetNeedsResponseBy sets NeedsResponseBy field to given value.
 
 HasNeedsResponseBy returns a boolean if a field has been set.
 
+### SetNeedsResponseByNil
+
+`func (o *Dispute) SetNeedsResponseByNil(b bool)`
+
+ SetNeedsResponseByNil sets the value for NeedsResponseBy to be an explicit nil
+
+### UnsetNeedsResponseBy
+`func (o *Dispute) UnsetNeedsResponseBy()`
+
+UnsetNeedsResponseBy ensures that no value is present for NeedsResponseBy, not even an explicit nil
 ### GetVisaRdr
 
 `func (o *Dispute) GetVisaRdr() bool`
@@ -260,6 +280,16 @@ SetBillingAddress sets BillingAddress field to given value.
 
 HasBillingAddress returns a boolean if a field has been set.
 
+### SetBillingAddressNil
+
+`func (o *Dispute) SetBillingAddressNil(b bool)`
+
+ SetBillingAddressNil sets the value for BillingAddress to be an explicit nil
+
+### UnsetBillingAddress
+`func (o *Dispute) UnsetBillingAddress()`
+
+UnsetBillingAddress ensures that no value is present for BillingAddress, not even an explicit nil
 ### GetCustomerName
 
 `func (o *Dispute) GetCustomerName() string`
@@ -285,6 +315,16 @@ SetCustomerName sets CustomerName field to given value.
 
 HasCustomerName returns a boolean if a field has been set.
 
+### SetCustomerNameNil
+
+`func (o *Dispute) SetCustomerNameNil(b bool)`
+
+ SetCustomerNameNil sets the value for CustomerName to be an explicit nil
+
+### UnsetCustomerName
+`func (o *Dispute) UnsetCustomerName()`
+
+UnsetCustomerName ensures that no value is present for CustomerName, not even an explicit nil
 ### GetCustomerEmail
 
 `func (o *Dispute) GetCustomerEmail() string`
@@ -310,6 +350,16 @@ SetCustomerEmail sets CustomerEmail field to given value.
 
 HasCustomerEmail returns a boolean if a field has been set.
 
+### SetCustomerEmailNil
+
+`func (o *Dispute) SetCustomerEmailNil(b bool)`
+
+ SetCustomerEmailNil sets the value for CustomerEmail to be an explicit nil
+
+### UnsetCustomerEmail
+`func (o *Dispute) UnsetCustomerEmail()`
+
+UnsetCustomerEmail ensures that no value is present for CustomerEmail, not even an explicit nil
 ### GetNotes
 
 `func (o *Dispute) GetNotes() string`
@@ -335,6 +385,16 @@ SetNotes sets Notes field to given value.
 
 HasNotes returns a boolean if a field has been set.
 
+### SetNotesNil
+
+`func (o *Dispute) SetNotesNil(b bool)`
+
+ SetNotesNil sets the value for Notes to be an explicit nil
+
+### UnsetNotes
+`func (o *Dispute) UnsetNotes()`
+
+UnsetNotes ensures that no value is present for Notes, not even an explicit nil
 ### GetProductDescription
 
 `func (o *Dispute) GetProductDescription() string`
@@ -360,6 +420,16 @@ SetProductDescription sets ProductDescription field to given value.
 
 HasProductDescription returns a boolean if a field has been set.
 
+### SetProductDescriptionNil
+
+`func (o *Dispute) SetProductDescriptionNil(b bool)`
+
+ SetProductDescriptionNil sets the value for ProductDescription to be an explicit nil
+
+### UnsetProductDescription
+`func (o *Dispute) UnsetProductDescription()`
+
+UnsetProductDescription ensures that no value is present for ProductDescription, not even an explicit nil
 ### GetServiceDate
 
 `func (o *Dispute) GetServiceDate() string`
@@ -385,6 +455,16 @@ SetServiceDate sets ServiceDate field to given value.
 
 HasServiceDate returns a boolean if a field has been set.
 
+### SetServiceDateNil
+
+`func (o *Dispute) SetServiceDateNil(b bool)`
+
+ SetServiceDateNil sets the value for ServiceDate to be an explicit nil
+
+### UnsetServiceDate
+`func (o *Dispute) UnsetServiceDate()`
+
+UnsetServiceDate ensures that no value is present for ServiceDate, not even an explicit nil
 ### GetAccessActivityLog
 
 `func (o *Dispute) GetAccessActivityLog() string`
@@ -410,6 +490,16 @@ SetAccessActivityLog sets AccessActivityLog field to given value.
 
 HasAccessActivityLog returns a boolean if a field has been set.
 
+### SetAccessActivityLogNil
+
+`func (o *Dispute) SetAccessActivityLogNil(b bool)`
+
+ SetAccessActivityLogNil sets the value for AccessActivityLog to be an explicit nil
+
+### UnsetAccessActivityLog
+`func (o *Dispute) UnsetAccessActivityLog()`
+
+UnsetAccessActivityLog ensures that no value is present for AccessActivityLog, not even an explicit nil
 ### GetEvidence
 
 `func (o *Dispute) GetEvidence() DisputeEvidenceDto`
@@ -435,6 +525,16 @@ SetEvidence sets Evidence field to given value.
 
 HasEvidence returns a boolean if a field has been set.
 
+### SetEvidenceNil
+
+`func (o *Dispute) SetEvidenceNil(b bool)`
+
+ SetEvidenceNil sets the value for Evidence to be an explicit nil
+
+### UnsetEvidence
+`func (o *Dispute) UnsetEvidence()`
+
+UnsetEvidence ensures that no value is present for Evidence, not even an explicit nil
 ### GetPaymentId
 
 `func (o *Dispute) GetPaymentId() string`

@@ -311,6 +311,7 @@ func (o *Subscription) SetUser(v SubscriptionUserDto) {
 }
 
 // GetRenewalPeriodStart returns the RenewalPeriodStart field value
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
 func (o *Subscription) GetRenewalPeriodStart() map[string]interface{} {
 	if o == nil {
 		var ret map[string]interface{}
@@ -322,8 +323,9 @@ func (o *Subscription) GetRenewalPeriodStart() map[string]interface{} {
 
 // GetRenewalPeriodStartOk returns a tuple with the RenewalPeriodStart field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Subscription) GetRenewalPeriodStartOk() (map[string]interface{}, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.RenewalPeriodStart) {
 		return map[string]interface{}{}, false
 	}
 	return o.RenewalPeriodStart, true
@@ -335,6 +337,7 @@ func (o *Subscription) SetRenewalPeriodStart(v map[string]interface{}) {
 }
 
 // GetRenewalPeriodEnd returns the RenewalPeriodEnd field value
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
 func (o *Subscription) GetRenewalPeriodEnd() map[string]interface{} {
 	if o == nil {
 		var ret map[string]interface{}
@@ -346,8 +349,9 @@ func (o *Subscription) GetRenewalPeriodEnd() map[string]interface{} {
 
 // GetRenewalPeriodEndOk returns a tuple with the RenewalPeriodEnd field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Subscription) GetRenewalPeriodEndOk() (map[string]interface{}, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.RenewalPeriodEnd) {
 		return map[string]interface{}{}, false
 	}
 	return o.RenewalPeriodEnd, true
@@ -383,6 +387,7 @@ func (o *Subscription) SetCancelAtPeriodEnd(v bool) {
 }
 
 // GetCancelOption returns the CancelOption field value
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
 func (o *Subscription) GetCancelOption() map[string]interface{} {
 	if o == nil {
 		var ret map[string]interface{}
@@ -394,8 +399,9 @@ func (o *Subscription) GetCancelOption() map[string]interface{} {
 
 // GetCancelOptionOk returns a tuple with the CancelOption field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Subscription) GetCancelOptionOk() (map[string]interface{}, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CancelOption) {
 		return map[string]interface{}{}, false
 	}
 	return o.CancelOption, true
@@ -407,6 +413,7 @@ func (o *Subscription) SetCancelOption(v map[string]interface{}) {
 }
 
 // GetCancellationReason returns the CancellationReason field value
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
 func (o *Subscription) GetCancellationReason() map[string]interface{} {
 	if o == nil {
 		var ret map[string]interface{}
@@ -418,8 +425,9 @@ func (o *Subscription) GetCancellationReason() map[string]interface{} {
 
 // GetCancellationReasonOk returns a tuple with the CancellationReason field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Subscription) GetCancellationReasonOk() (map[string]interface{}, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CancellationReason) {
 		return map[string]interface{}{}, false
 	}
 	return o.CancellationReason, true
@@ -431,6 +439,7 @@ func (o *Subscription) SetCancellationReason(v map[string]interface{}) {
 }
 
 // GetCanceledAt returns the CanceledAt field value
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
 func (o *Subscription) GetCanceledAt() map[string]interface{} {
 	if o == nil {
 		var ret map[string]interface{}
@@ -442,8 +451,9 @@ func (o *Subscription) GetCanceledAt() map[string]interface{} {
 
 // GetCanceledAtOk returns a tuple with the CanceledAt field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Subscription) GetCanceledAtOk() (map[string]interface{}, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CanceledAt) {
 		return map[string]interface{}{}, false
 	}
 	return o.CanceledAt, true
@@ -527,6 +537,7 @@ func (o *Subscription) SetPlan(v SubscriptionPlanDto) {
 }
 
 // GetPromoCode returns the PromoCode field value
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
 func (o *Subscription) GetPromoCode() map[string]interface{} {
 	if o == nil {
 		var ret map[string]interface{}
@@ -538,8 +549,9 @@ func (o *Subscription) GetPromoCode() map[string]interface{} {
 
 // GetPromoCodeOk returns a tuple with the PromoCode field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Subscription) GetPromoCodeOk() (map[string]interface{}, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PromoCode) {
 		return map[string]interface{}{}, false
 	}
 	return o.PromoCode, true
@@ -575,6 +587,7 @@ func (o *Subscription) SetProduct(v SubscriptionProductDto) {
 }
 
 // GetLicenseKey returns the LicenseKey field value
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
 func (o *Subscription) GetLicenseKey() map[string]interface{} {
 	if o == nil {
 		var ret map[string]interface{}
@@ -586,8 +599,9 @@ func (o *Subscription) GetLicenseKey() map[string]interface{} {
 
 // GetLicenseKeyOk returns a tuple with the LicenseKey field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Subscription) GetLicenseKeyOk() (map[string]interface{}, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.LicenseKey) {
 		return map[string]interface{}{}, false
 	}
 	return o.LicenseKey, true
@@ -670,9 +684,9 @@ func (o *Subscription) SetCheckoutConfigurationId(v string) {
 	o.CheckoutConfigurationId = v
 }
 
-// GetPrice returns the Price field value if set, zero value otherwise.
+// GetPrice returns the Price field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Subscription) GetPrice() map[string]interface{} {
-	if o == nil || IsNil(o.Price) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -681,6 +695,7 @@ func (o *Subscription) GetPrice() map[string]interface{} {
 
 // GetPriceOk returns a tuple with the Price field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Subscription) GetPriceOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Price) {
 		return map[string]interface{}{}, false
@@ -702,9 +717,9 @@ func (o *Subscription) SetPrice(v map[string]interface{}) {
 	o.Price = v
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
+// GetType returns the Type field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Subscription) GetType() map[string]interface{} {
-	if o == nil || IsNil(o.Type) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -713,6 +728,7 @@ func (o *Subscription) GetType() map[string]interface{} {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Subscription) GetTypeOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Type) {
 		return map[string]interface{}{}, false
@@ -734,9 +750,9 @@ func (o *Subscription) SetType(v map[string]interface{}) {
 	o.Type = v
 }
 
-// GetCustomerId returns the CustomerId field value if set, zero value otherwise.
+// GetCustomerId returns the CustomerId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Subscription) GetCustomerId() map[string]interface{} {
-	if o == nil || IsNil(o.CustomerId) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -745,6 +761,7 @@ func (o *Subscription) GetCustomerId() map[string]interface{} {
 
 // GetCustomerIdOk returns a tuple with the CustomerId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Subscription) GetCustomerIdOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomerId) {
 		return map[string]interface{}{}, false
@@ -784,28 +801,42 @@ func (o Subscription) ToMap() (map[string]interface{}, error) {
 	toSerialize["manage_url"] = o.ManageUrl
 	toSerialize["member"] = o.Member
 	toSerialize["user"] = o.User
-	toSerialize["renewal_period_start"] = o.RenewalPeriodStart
-	toSerialize["renewal_period_end"] = o.RenewalPeriodEnd
+	if o.RenewalPeriodStart != nil {
+		toSerialize["renewal_period_start"] = o.RenewalPeriodStart
+	}
+	if o.RenewalPeriodEnd != nil {
+		toSerialize["renewal_period_end"] = o.RenewalPeriodEnd
+	}
 	toSerialize["cancel_at_period_end"] = o.CancelAtPeriodEnd
-	toSerialize["cancel_option"] = o.CancelOption
-	toSerialize["cancellation_reason"] = o.CancellationReason
-	toSerialize["canceled_at"] = o.CanceledAt
+	if o.CancelOption != nil {
+		toSerialize["cancel_option"] = o.CancelOption
+	}
+	if o.CancellationReason != nil {
+		toSerialize["cancellation_reason"] = o.CancellationReason
+	}
+	if o.CanceledAt != nil {
+		toSerialize["canceled_at"] = o.CanceledAt
+	}
 	toSerialize["currency"] = o.Currency
 	toSerialize["company"] = o.Company
 	toSerialize["plan"] = o.Plan
-	toSerialize["promo_code"] = o.PromoCode
+	if o.PromoCode != nil {
+		toSerialize["promo_code"] = o.PromoCode
+	}
 	toSerialize["product"] = o.Product
-	toSerialize["license_key"] = o.LicenseKey
+	if o.LicenseKey != nil {
+		toSerialize["license_key"] = o.LicenseKey
+	}
 	toSerialize["metadata"] = o.Metadata
 	toSerialize["payment_collection_paused"] = o.PaymentCollectionPaused
 	toSerialize["checkout_configuration_id"] = o.CheckoutConfigurationId
-	if !IsNil(o.Price) {
+	if o.Price != nil {
 		toSerialize["price"] = o.Price
 	}
-	if !IsNil(o.Type) {
+	if o.Type != nil {
 		toSerialize["type"] = o.Type
 	}
-	if !IsNil(o.CustomerId) {
+	if o.CustomerId != nil {
 		toSerialize["customerId"] = o.CustomerId
 	}
 	return toSerialize, nil

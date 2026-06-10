@@ -7,7 +7,6 @@ api_checkout.go
 api_checkout_links.go
 api_collections.go
 api_customers.go
-api_default.go
 api_developer.go
 api_digital_file.go
 api_discounts.go
@@ -70,7 +69,6 @@ docs/CustomerResponseDto.md
 docs/CustomerSharedInviteResponseDto.md
 docs/CustomersAPI.md
 docs/DashboardStatsDto.md
-docs/DefaultAPI.md
 docs/DeveloperAPI.md
 docs/DigitalFileAPI.md
 docs/Discount.md

@@ -8,14 +8,14 @@ Name | Type | Description | Notes
 **Key** | **string** | The cryptographically generated license key string delivered to the customer. | 
 **Status** | **string** | Lifecycle status of the license. ACTIVE &#x3D; active. DISABLED &#x3D; suspended. REVOKED &#x3D; hard-revoked. | 
 **BusinessId** | **string** | The unique identifier associated with the business this license belongs to. | 
-**ProductId** | **string** | The unique ID of the product this license key is associated with. | 
-**PaymentId** | **string** | The unique payment identifier that triggered the issuance of this license key. | 
-**CustomerId** | **string** | The unique customer identifier (ID) who received this license key. | 
-**ActivationLimit** | **float32** | Maximum number of simultaneous active device instances allowed for this license. Null means unlimited. | 
-**ActivationMessage** | **string** | Optional message displayed to the customer upon successful activation. | 
+**ProductId** | **NullableString** | The unique ID of the product this license key is associated with. | 
+**PaymentId** | **NullableString** | The unique payment identifier that triggered the issuance of this license key. | 
+**CustomerId** | **NullableString** | The unique customer identifier (ID) who received this license key. | 
+**ActivationLimit** | **NullableFloat32** | Maximum number of simultaneous active device instances allowed for this license. Null means unlimited. | 
+**ActivationMessage** | **NullableString** | Optional message displayed to the customer upon successful activation. | 
 **InstancesCount** | **float32** | Running count of how many times this license key has been activated. | 
-**ExpiryHours** | **float32** | Relative expiry duration in hours from the time of issuance. | 
-**ExpiresAt** | **string** | Absolute expiration timestamp. The license becomes invalid after this point. | 
+**ExpiryHours** | **NullableFloat32** | Relative expiry duration in hours from the time of issuance. | 
+**ExpiresAt** | **NullableString** | Absolute expiration timestamp. The license becomes invalid after this point. | 
 **Filters** | **map[string]interface{}** | Optional custom metadata filters associated with the license. | 
 **Archived** | **bool** | Indicates if the license key is archived. | 
 **CreatedAt** | **string** | Timestamp indicating exactly when the license key was issued. | 
@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 
 ### NewLicense
 
-`func NewLicense(id string, key string, status string, businessId string, productId string, paymentId string, customerId string, activationLimit float32, activationMessage string, instancesCount float32, expiryHours float32, expiresAt string, filters map[string]interface{}, archived bool, createdAt string, updatedAt string, ) *License`
+`func NewLicense(id string, key string, status string, businessId string, productId NullableString, paymentId NullableString, customerId NullableString, activationLimit NullableFloat32, activationMessage NullableString, instancesCount float32, expiryHours NullableFloat32, expiresAt NullableString, filters map[string]interface{}, archived bool, createdAt string, updatedAt string, ) *License`
 
 NewLicense instantiates a new License object
 This constructor will assign default values to properties that have it defined,
@@ -140,6 +140,16 @@ and a boolean to check if the value has been set.
 SetProductId sets ProductId field to given value.
 
 
+### SetProductIdNil
+
+`func (o *License) SetProductIdNil(b bool)`
+
+ SetProductIdNil sets the value for ProductId to be an explicit nil
+
+### UnsetProductId
+`func (o *License) UnsetProductId()`
+
+UnsetProductId ensures that no value is present for ProductId, not even an explicit nil
 ### GetPaymentId
 
 `func (o *License) GetPaymentId() string`
@@ -160,6 +170,16 @@ and a boolean to check if the value has been set.
 SetPaymentId sets PaymentId field to given value.
 
 
+### SetPaymentIdNil
+
+`func (o *License) SetPaymentIdNil(b bool)`
+
+ SetPaymentIdNil sets the value for PaymentId to be an explicit nil
+
+### UnsetPaymentId
+`func (o *License) UnsetPaymentId()`
+
+UnsetPaymentId ensures that no value is present for PaymentId, not even an explicit nil
 ### GetCustomerId
 
 `func (o *License) GetCustomerId() string`
@@ -180,6 +200,16 @@ and a boolean to check if the value has been set.
 SetCustomerId sets CustomerId field to given value.
 
 
+### SetCustomerIdNil
+
+`func (o *License) SetCustomerIdNil(b bool)`
+
+ SetCustomerIdNil sets the value for CustomerId to be an explicit nil
+
+### UnsetCustomerId
+`func (o *License) UnsetCustomerId()`
+
+UnsetCustomerId ensures that no value is present for CustomerId, not even an explicit nil
 ### GetActivationLimit
 
 `func (o *License) GetActivationLimit() float32`
@@ -200,6 +230,16 @@ and a boolean to check if the value has been set.
 SetActivationLimit sets ActivationLimit field to given value.
 
 
+### SetActivationLimitNil
+
+`func (o *License) SetActivationLimitNil(b bool)`
+
+ SetActivationLimitNil sets the value for ActivationLimit to be an explicit nil
+
+### UnsetActivationLimit
+`func (o *License) UnsetActivationLimit()`
+
+UnsetActivationLimit ensures that no value is present for ActivationLimit, not even an explicit nil
 ### GetActivationMessage
 
 `func (o *License) GetActivationMessage() string`
@@ -220,6 +260,16 @@ and a boolean to check if the value has been set.
 SetActivationMessage sets ActivationMessage field to given value.
 
 
+### SetActivationMessageNil
+
+`func (o *License) SetActivationMessageNil(b bool)`
+
+ SetActivationMessageNil sets the value for ActivationMessage to be an explicit nil
+
+### UnsetActivationMessage
+`func (o *License) UnsetActivationMessage()`
+
+UnsetActivationMessage ensures that no value is present for ActivationMessage, not even an explicit nil
 ### GetInstancesCount
 
 `func (o *License) GetInstancesCount() float32`
@@ -260,6 +310,16 @@ and a boolean to check if the value has been set.
 SetExpiryHours sets ExpiryHours field to given value.
 
 
+### SetExpiryHoursNil
+
+`func (o *License) SetExpiryHoursNil(b bool)`
+
+ SetExpiryHoursNil sets the value for ExpiryHours to be an explicit nil
+
+### UnsetExpiryHours
+`func (o *License) UnsetExpiryHours()`
+
+UnsetExpiryHours ensures that no value is present for ExpiryHours, not even an explicit nil
 ### GetExpiresAt
 
 `func (o *License) GetExpiresAt() string`
@@ -280,6 +340,16 @@ and a boolean to check if the value has been set.
 SetExpiresAt sets ExpiresAt field to given value.
 
 
+### SetExpiresAtNil
+
+`func (o *License) SetExpiresAtNil(b bool)`
+
+ SetExpiresAtNil sets the value for ExpiresAt to be an explicit nil
+
+### UnsetExpiresAt
+`func (o *License) UnsetExpiresAt()`
+
+UnsetExpiresAt ensures that no value is present for ExpiresAt, not even an explicit nil
 ### GetFilters
 
 `func (o *License) GetFilters() map[string]interface{}`
@@ -300,6 +370,16 @@ and a boolean to check if the value has been set.
 SetFilters sets Filters field to given value.
 
 
+### SetFiltersNil
+
+`func (o *License) SetFiltersNil(b bool)`
+
+ SetFiltersNil sets the value for Filters to be an explicit nil
+
+### UnsetFilters
+`func (o *License) UnsetFilters()`
+
+UnsetFilters ensures that no value is present for Filters, not even an explicit nil
 ### GetArchived
 
 `func (o *License) GetArchived() bool`
