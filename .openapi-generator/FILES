@@ -181,6 +181,7 @@ docs/WebhookDeliveryResponseDto.md
 docs/WebhookDisputePayload.md
 docs/WebhookEndpointAPI.md
 docs/WebhookEndpointResponseDto.md
+docs/WebhookEntitlementGrantPayload.md
 docs/WebhookLicensePayload.md
 docs/WebhookPaymentPayload.md
 docs/WebhookPaymentPayloadBillingAddress.md
@@ -318,6 +319,7 @@ model_update_webhook_endpoint_dto.go
 model_webhook_delivery_response_dto.go
 model_webhook_dispute_payload.go
 model_webhook_endpoint_response_dto.go
+model_webhook_entitlement_grant_payload.go
 model_webhook_license_payload.go
 model_webhook_payment_payload.go
 model_webhook_payment_payload_billing_address.go

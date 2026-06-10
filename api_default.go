@@ -310,6 +310,390 @@ func (a *DefaultAPIService) DisputeWonPostExecute(r ApiDisputeWonPostRequest) (*
 	return localVarHTTPResponse, nil
 }
 
+type ApiEntitlementGrantCreatedPostRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	webhookEntitlementGrantPayload *WebhookEntitlementGrantPayload
+}
+
+func (r ApiEntitlementGrantCreatedPostRequest) WebhookEntitlementGrantPayload(webhookEntitlementGrantPayload WebhookEntitlementGrantPayload) ApiEntitlementGrantCreatedPostRequest {
+	r.webhookEntitlementGrantPayload = &webhookEntitlementGrantPayload
+	return r
+}
+
+func (r ApiEntitlementGrantCreatedPostRequest) Execute() (*http.Response, error) {
+	return r.ApiService.EntitlementGrantCreatedPostExecute(r)
+}
+
+/*
+EntitlementGrantCreatedPost Entitlement Grant Created
+
+Occurs when a new entitlement grant is created (e.g., at checkout completion if the product has GitHub access). The collaborator invitation is pending.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiEntitlementGrantCreatedPostRequest
+*/
+func (a *DefaultAPIService) EntitlementGrantCreatedPost(ctx context.Context) ApiEntitlementGrantCreatedPostRequest {
+	return ApiEntitlementGrantCreatedPostRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+func (a *DefaultAPIService) EntitlementGrantCreatedPostExecute(r ApiEntitlementGrantCreatedPostRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.EntitlementGrantCreatedPost")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/entitlement_grant.created"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.webhookEntitlementGrantPayload
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiEntitlementGrantDeliveredPostRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	webhookEntitlementGrantPayload *WebhookEntitlementGrantPayload
+}
+
+func (r ApiEntitlementGrantDeliveredPostRequest) WebhookEntitlementGrantPayload(webhookEntitlementGrantPayload WebhookEntitlementGrantPayload) ApiEntitlementGrantDeliveredPostRequest {
+	r.webhookEntitlementGrantPayload = &webhookEntitlementGrantPayload
+	return r
+}
+
+func (r ApiEntitlementGrantDeliveredPostRequest) Execute() (*http.Response, error) {
+	return r.ApiService.EntitlementGrantDeliveredPostExecute(r)
+}
+
+/*
+EntitlementGrantDeliveredPost Entitlement Grant Delivered
+
+Occurs when the customer successfully connects their GitHub account and the collaborator invitation is successfully delivered.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiEntitlementGrantDeliveredPostRequest
+*/
+func (a *DefaultAPIService) EntitlementGrantDeliveredPost(ctx context.Context) ApiEntitlementGrantDeliveredPostRequest {
+	return ApiEntitlementGrantDeliveredPostRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+func (a *DefaultAPIService) EntitlementGrantDeliveredPostExecute(r ApiEntitlementGrantDeliveredPostRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.EntitlementGrantDeliveredPost")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/entitlement_grant.delivered"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.webhookEntitlementGrantPayload
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiEntitlementGrantFailedPostRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	webhookEntitlementGrantPayload *WebhookEntitlementGrantPayload
+}
+
+func (r ApiEntitlementGrantFailedPostRequest) WebhookEntitlementGrantPayload(webhookEntitlementGrantPayload WebhookEntitlementGrantPayload) ApiEntitlementGrantFailedPostRequest {
+	r.webhookEntitlementGrantPayload = &webhookEntitlementGrantPayload
+	return r
+}
+
+func (r ApiEntitlementGrantFailedPostRequest) Execute() (*http.Response, error) {
+	return r.ApiService.EntitlementGrantFailedPostExecute(r)
+}
+
+/*
+EntitlementGrantFailedPost Entitlement Grant Failed
+
+Occurs when invitation delivery fails (e.g., if the user GitHub account is flagged or invitation limit is reached).
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiEntitlementGrantFailedPostRequest
+*/
+func (a *DefaultAPIService) EntitlementGrantFailedPost(ctx context.Context) ApiEntitlementGrantFailedPostRequest {
+	return ApiEntitlementGrantFailedPostRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+func (a *DefaultAPIService) EntitlementGrantFailedPostExecute(r ApiEntitlementGrantFailedPostRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.EntitlementGrantFailedPost")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/entitlement_grant.failed"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.webhookEntitlementGrantPayload
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiEntitlementGrantRevokedPostRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+	webhookEntitlementGrantPayload *WebhookEntitlementGrantPayload
+}
+
+func (r ApiEntitlementGrantRevokedPostRequest) WebhookEntitlementGrantPayload(webhookEntitlementGrantPayload WebhookEntitlementGrantPayload) ApiEntitlementGrantRevokedPostRequest {
+	r.webhookEntitlementGrantPayload = &webhookEntitlementGrantPayload
+	return r
+}
+
+func (r ApiEntitlementGrantRevokedPostRequest) Execute() (*http.Response, error) {
+	return r.ApiService.EntitlementGrantRevokedPostExecute(r)
+}
+
+/*
+EntitlementGrantRevokedPost Entitlement Grant Revoked
+
+Occurs when the customer access is removed from the repository (manually or automatically via subscription cancel/refund).
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiEntitlementGrantRevokedPostRequest
+*/
+func (a *DefaultAPIService) EntitlementGrantRevokedPost(ctx context.Context) ApiEntitlementGrantRevokedPostRequest {
+	return ApiEntitlementGrantRevokedPostRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+func (a *DefaultAPIService) EntitlementGrantRevokedPostExecute(r ApiEntitlementGrantRevokedPostRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.EntitlementGrantRevokedPost")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/entitlement_grant.revoked"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.webhookEntitlementGrantPayload
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
 type ApiLicenseCreatedPostRequest struct {
 	ctx context.Context
 	ApiService *DefaultAPIService

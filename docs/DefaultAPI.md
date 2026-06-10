@@ -7,6 +7,10 @@ Method | HTTP request | Description
 [**DisputeCreatedPost**](DefaultAPI.md#DisputeCreatedPost) | **Post** /dispute.created | Dispute Created
 [**DisputeLostPost**](DefaultAPI.md#DisputeLostPost) | **Post** /dispute.lost | Dispute Lost
 [**DisputeWonPost**](DefaultAPI.md#DisputeWonPost) | **Post** /dispute.won | Dispute Won
+[**EntitlementGrantCreatedPost**](DefaultAPI.md#EntitlementGrantCreatedPost) | **Post** /entitlement_grant.created | Entitlement Grant Created
+[**EntitlementGrantDeliveredPost**](DefaultAPI.md#EntitlementGrantDeliveredPost) | **Post** /entitlement_grant.delivered | Entitlement Grant Delivered
+[**EntitlementGrantFailedPost**](DefaultAPI.md#EntitlementGrantFailedPost) | **Post** /entitlement_grant.failed | Entitlement Grant Failed
+[**EntitlementGrantRevokedPost**](DefaultAPI.md#EntitlementGrantRevokedPost) | **Post** /entitlement_grant.revoked | Entitlement Grant Revoked
 [**LicenseCreatedPost**](DefaultAPI.md#LicenseCreatedPost) | **Post** /license.created | License Created
 [**LicenseRevokedPost**](DefaultAPI.md#LicenseRevokedPost) | **Post** /license.revoked | License Revoked
 [**PaymentCreatedPost**](DefaultAPI.md#PaymentCreatedPost) | **Post** /payment.created | Payment Created
@@ -193,6 +197,262 @@ Other parameters are passed through a pointer to a apiDisputeWonPostRequest stru
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **webhookDisputePayload** | [**WebhookDisputePayload**](WebhookDisputePayload.md) |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EntitlementGrantCreatedPost
+
+> EntitlementGrantCreatedPost(ctx).WebhookEntitlementGrantPayload(webhookEntitlementGrantPayload).Execute()
+
+Entitlement Grant Created
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	webhookEntitlementGrantPayload :=  // WebhookEntitlementGrantPayload |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.DefaultAPI.EntitlementGrantCreatedPost(context.Background()).WebhookEntitlementGrantPayload(webhookEntitlementGrantPayload).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.EntitlementGrantCreatedPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEntitlementGrantCreatedPostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **webhookEntitlementGrantPayload** | [**WebhookEntitlementGrantPayload**](WebhookEntitlementGrantPayload.md) |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EntitlementGrantDeliveredPost
+
+> EntitlementGrantDeliveredPost(ctx).WebhookEntitlementGrantPayload(webhookEntitlementGrantPayload).Execute()
+
+Entitlement Grant Delivered
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	webhookEntitlementGrantPayload :=  // WebhookEntitlementGrantPayload |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.DefaultAPI.EntitlementGrantDeliveredPost(context.Background()).WebhookEntitlementGrantPayload(webhookEntitlementGrantPayload).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.EntitlementGrantDeliveredPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEntitlementGrantDeliveredPostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **webhookEntitlementGrantPayload** | [**WebhookEntitlementGrantPayload**](WebhookEntitlementGrantPayload.md) |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EntitlementGrantFailedPost
+
+> EntitlementGrantFailedPost(ctx).WebhookEntitlementGrantPayload(webhookEntitlementGrantPayload).Execute()
+
+Entitlement Grant Failed
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	webhookEntitlementGrantPayload :=  // WebhookEntitlementGrantPayload |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.DefaultAPI.EntitlementGrantFailedPost(context.Background()).WebhookEntitlementGrantPayload(webhookEntitlementGrantPayload).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.EntitlementGrantFailedPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEntitlementGrantFailedPostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **webhookEntitlementGrantPayload** | [**WebhookEntitlementGrantPayload**](WebhookEntitlementGrantPayload.md) |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EntitlementGrantRevokedPost
+
+> EntitlementGrantRevokedPost(ctx).WebhookEntitlementGrantPayload(webhookEntitlementGrantPayload).Execute()
+
+Entitlement Grant Revoked
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	webhookEntitlementGrantPayload :=  // WebhookEntitlementGrantPayload |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.DefaultAPI.EntitlementGrantRevokedPost(context.Background()).WebhookEntitlementGrantPayload(webhookEntitlementGrantPayload).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.EntitlementGrantRevokedPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEntitlementGrantRevokedPostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **webhookEntitlementGrantPayload** | [**WebhookEntitlementGrantPayload**](WebhookEntitlementGrantPayload.md) |  | 
 
 ### Return type
 
