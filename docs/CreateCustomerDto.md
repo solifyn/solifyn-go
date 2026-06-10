@@ -1,0 +1,150 @@
+# CreateCustomerDto
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Email** | **string** | The unique email of the customer | 
+**Name** | **string** | The customer friendly full name | 
+**Phone** | Pointer to **string** | The customer telephone/phone number | [optional] 
+**Username** | Pointer to **string** | The username of the customer (e.g. Discord, Whop) | [optional] 
+**Metadata** | Pointer to **map[string]interface{}** | Custom key-value metadata associated with the customer | [optional] 
+
+## Methods
+
+### NewCreateCustomerDto
+
+`func NewCreateCustomerDto(email string, name string, ) *CreateCustomerDto`
+
+NewCreateCustomerDto instantiates a new CreateCustomerDto object
+This constructor will assign default values to properties that have it defined,
+and makes sure properties required by API are set, but the set of arguments
+will change when the set of required properties is changed
+
+### NewCreateCustomerDtoWithDefaults
+
+`func NewCreateCustomerDtoWithDefaults() *CreateCustomerDto`
+
+NewCreateCustomerDtoWithDefaults instantiates a new CreateCustomerDto object
+This constructor will only assign default values to properties that have it defined,
+but it doesn't guarantee that properties required by API are set
+
+### GetEmail
+
+`func (o *CreateCustomerDto) GetEmail() string`
+
+GetEmail returns the Email field if non-nil, zero value otherwise.
+
+### GetEmailOk
+
+`func (o *CreateCustomerDto) GetEmailOk() (*string, bool)`
+
+GetEmailOk returns a tuple with the Email field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEmail
+
+`func (o *CreateCustomerDto) SetEmail(v string)`
+
+SetEmail sets Email field to given value.
+
+
+### GetName
+
+`func (o *CreateCustomerDto) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *CreateCustomerDto) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *CreateCustomerDto) SetName(v string)`
+
+SetName sets Name field to given value.
+
+
+### GetPhone
+
+`func (o *CreateCustomerDto) GetPhone() string`
+
+GetPhone returns the Phone field if non-nil, zero value otherwise.
+
+### GetPhoneOk
+
+`func (o *CreateCustomerDto) GetPhoneOk() (*string, bool)`
+
+GetPhoneOk returns a tuple with the Phone field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPhone
+
+`func (o *CreateCustomerDto) SetPhone(v string)`
+
+SetPhone sets Phone field to given value.
+
+### HasPhone
+
+`func (o *CreateCustomerDto) HasPhone() bool`
+
+HasPhone returns a boolean if a field has been set.
+
+### GetUsername
+
+`func (o *CreateCustomerDto) GetUsername() string`
+
+GetUsername returns the Username field if non-nil, zero value otherwise.
+
+### GetUsernameOk
+
+`func (o *CreateCustomerDto) GetUsernameOk() (*string, bool)`
+
+GetUsernameOk returns a tuple with the Username field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUsername
+
+`func (o *CreateCustomerDto) SetUsername(v string)`
+
+SetUsername sets Username field to given value.
+
+### HasUsername
+
+`func (o *CreateCustomerDto) HasUsername() bool`
+
+HasUsername returns a boolean if a field has been set.
+
+### GetMetadata
+
+`func (o *CreateCustomerDto) GetMetadata() map[string]interface{}`
+
+GetMetadata returns the Metadata field if non-nil, zero value otherwise.
+
+### GetMetadataOk
+
+`func (o *CreateCustomerDto) GetMetadataOk() (*map[string]interface{}, bool)`
+
+GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetadata
+
+`func (o *CreateCustomerDto) SetMetadata(v map[string]interface{})`
+
+SetMetadata sets Metadata field to given value.
+
+### HasMetadata
+
+`func (o *CreateCustomerDto) HasMetadata() bool`
+
+HasMetadata returns a boolean if a field has been set.
+
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+
