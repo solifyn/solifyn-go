@@ -330,5 +330,4 @@ model_webhook_payment_payload_billing_address.go
 model_webhook_refund_payload.go
 model_webhook_subscription_payload.go
 response.go
-test/api_default_test.go
 utils.go
