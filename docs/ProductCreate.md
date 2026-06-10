@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **GithubRepo** | Pointer to **string** | GitHub repository to grant access to (format: owner/repo). | [optional] 
 **GithubPermission** | Pointer to **string** | GitHub collaborator permission level. | [optional] 
 **IsTaxInclusive** | Pointer to **bool** | Whether tax is included in the base price. | [optional] [default to false]
-**ActivationLimit** | Pointer to **int32** | Maximum concurrent activated instances allowed per license key. | [optional] 
+**ActivationLimit** | Pointer to **int32** | Maximum concurrent activated instances allowed per license key. | [optional] [default to null]
 **BrandId** | Pointer to **string** | Brand id for the product, if not provided will default to primary brand. | [optional] 
 **BillingPeriod** | Pointer to **int32** | Billing period in days (for Subscription products). | [optional] 
 **TrialPeriodDays** | Pointer to **int32** | Trial duration in days. | [optional] 
