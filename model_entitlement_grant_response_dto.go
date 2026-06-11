@@ -47,6 +47,10 @@ type EntitlementGrantResponseDto struct {
 	DiscordUsername *string `json:"discordUsername,omitempty"`
 	// The connected customer Discord user ID.
 	DiscordUserId *string `json:"discordUserId,omitempty"`
+	// The Framer template ID if type is FRAMER.
+	FramerTemplateId *string `json:"framerTemplateId,omitempty"`
+	// The single-use remix link generated for the customer if type is FRAMER.
+	FramerRemixLink *string `json:"framerRemixLink,omitempty"`
 	// Delivery status of the collaborator invite (PENDING, DELIVERED, FAILED, REVOKED).
 	Status string `json:"status"`
 	// OAuth URL to redirect the customer to.
@@ -464,6 +468,70 @@ func (o *EntitlementGrantResponseDto) SetDiscordUserId(v string) {
 	o.DiscordUserId = &v
 }
 
+// GetFramerTemplateId returns the FramerTemplateId field value if set, zero value otherwise.
+func (o *EntitlementGrantResponseDto) GetFramerTemplateId() string {
+	if o == nil || IsNil(o.FramerTemplateId) {
+		var ret string
+		return ret
+	}
+	return *o.FramerTemplateId
+}
+
+// GetFramerTemplateIdOk returns a tuple with the FramerTemplateId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntitlementGrantResponseDto) GetFramerTemplateIdOk() (*string, bool) {
+	if o == nil || IsNil(o.FramerTemplateId) {
+		return nil, false
+	}
+	return o.FramerTemplateId, true
+}
+
+// HasFramerTemplateId returns a boolean if a field has been set.
+func (o *EntitlementGrantResponseDto) HasFramerTemplateId() bool {
+	if o != nil && !IsNil(o.FramerTemplateId) {
+		return true
+	}
+
+	return false
+}
+
+// SetFramerTemplateId gets a reference to the given string and assigns it to the FramerTemplateId field.
+func (o *EntitlementGrantResponseDto) SetFramerTemplateId(v string) {
+	o.FramerTemplateId = &v
+}
+
+// GetFramerRemixLink returns the FramerRemixLink field value if set, zero value otherwise.
+func (o *EntitlementGrantResponseDto) GetFramerRemixLink() string {
+	if o == nil || IsNil(o.FramerRemixLink) {
+		var ret string
+		return ret
+	}
+	return *o.FramerRemixLink
+}
+
+// GetFramerRemixLinkOk returns a tuple with the FramerRemixLink field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntitlementGrantResponseDto) GetFramerRemixLinkOk() (*string, bool) {
+	if o == nil || IsNil(o.FramerRemixLink) {
+		return nil, false
+	}
+	return o.FramerRemixLink, true
+}
+
+// HasFramerRemixLink returns a boolean if a field has been set.
+func (o *EntitlementGrantResponseDto) HasFramerRemixLink() bool {
+	if o != nil && !IsNil(o.FramerRemixLink) {
+		return true
+	}
+
+	return false
+}
+
+// SetFramerRemixLink gets a reference to the given string and assigns it to the FramerRemixLink field.
+func (o *EntitlementGrantResponseDto) SetFramerRemixLink(v string) {
+	o.FramerRemixLink = &v
+}
+
 // GetStatus returns the Status field value
 func (o *EntitlementGrantResponseDto) GetStatus() string {
 	if o == nil {
@@ -670,6 +738,12 @@ func (o EntitlementGrantResponseDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.DiscordUserId) {
 		toSerialize["discordUserId"] = o.DiscordUserId
+	}
+	if !IsNil(o.FramerTemplateId) {
+		toSerialize["framerTemplateId"] = o.FramerTemplateId
+	}
+	if !IsNil(o.FramerRemixLink) {
+		toSerialize["framerRemixLink"] = o.FramerRemixLink
 	}
 	toSerialize["status"] = o.Status
 	if !IsNil(o.OauthUrl) {

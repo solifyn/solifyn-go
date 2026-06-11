@@ -77,6 +77,8 @@ type ProductUpdate struct {
 	IsFree *bool `json:"isFree,omitempty"`
 	// Product addons configurations.
 	Addons []ProductCreateAddonsInner `json:"addons,omitempty"`
+	// Array of independent entitlement IDs to link to this product.
+	EntitlementIds []string `json:"entitlementIds,omitempty"`
 }
 
 // NewProductUpdate instantiates a new ProductUpdate object
@@ -1060,6 +1062,38 @@ func (o *ProductUpdate) SetAddons(v []ProductCreateAddonsInner) {
 	o.Addons = v
 }
 
+// GetEntitlementIds returns the EntitlementIds field value if set, zero value otherwise.
+func (o *ProductUpdate) GetEntitlementIds() []string {
+	if o == nil || IsNil(o.EntitlementIds) {
+		var ret []string
+		return ret
+	}
+	return o.EntitlementIds
+}
+
+// GetEntitlementIdsOk returns a tuple with the EntitlementIds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductUpdate) GetEntitlementIdsOk() ([]string, bool) {
+	if o == nil || IsNil(o.EntitlementIds) {
+		return nil, false
+	}
+	return o.EntitlementIds, true
+}
+
+// HasEntitlementIds returns a boolean if a field has been set.
+func (o *ProductUpdate) HasEntitlementIds() bool {
+	if o != nil && !IsNil(o.EntitlementIds) {
+		return true
+	}
+
+	return false
+}
+
+// SetEntitlementIds gets a reference to the given []string and assigns it to the EntitlementIds field.
+func (o *ProductUpdate) SetEntitlementIds(v []string) {
+	o.EntitlementIds = v
+}
+
 func (o ProductUpdate) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -1156,6 +1190,9 @@ func (o ProductUpdate) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Addons) {
 		toSerialize["addons"] = o.Addons
+	}
+	if !IsNil(o.EntitlementIds) {
+		toSerialize["entitlementIds"] = o.EntitlementIds
 	}
 	return toSerialize, nil
 }

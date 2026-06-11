@@ -83,7 +83,7 @@ Name | Type | Description  | Notes
 
 ## EntitlementGrantsList
 
-> []EntitlementGrantResponseDto EntitlementGrantsList(ctx).Status(status).Execute()
+> []EntitlementGrantResponseDto EntitlementGrantsList(ctx).Status(status).EntitlementId(entitlementId).ProductId(productId).Execute()
 
 List Entitlement Grants
 
@@ -103,10 +103,12 @@ import (
 
 func main() {
 	status := "status_example" // string | Filter by status (PENDING, DELIVERED, FAILED, REVOKED) (optional)
+	entitlementId := "entitlementId_example" // string | Filter by entitlement config ID (optional)
+	productId := "productId_example" // string | Filter by product ID (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EntitlementGrantsAPI.EntitlementGrantsList(context.Background()).Status(status).Execute()
+	resp, r, err := apiClient.EntitlementGrantsAPI.EntitlementGrantsList(context.Background()).Status(status).EntitlementId(entitlementId).ProductId(productId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `EntitlementGrantsAPI.EntitlementGrantsList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -128,6 +130,8 @@ Other parameters are passed through a pointer to a apiEntitlementGrantsListReque
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **status** | **string** | Filter by status (PENDING, DELIVERED, FAILED, REVOKED) | 
+ **entitlementId** | **string** | Filter by entitlement config ID | 
+ **productId** | **string** | Filter by product ID | 
 
 ### Return type
 

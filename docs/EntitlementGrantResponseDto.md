@@ -17,6 +17,8 @@ Name | Type | Description | Notes
 **DiscordRoleId** | Pointer to **string** | Target Discord Role ID if type is DISCORD. | [optional] 
 **DiscordUsername** | Pointer to **string** | The connected customer Discord username. | [optional] 
 **DiscordUserId** | Pointer to **string** | The connected customer Discord user ID. | [optional] 
+**FramerTemplateId** | Pointer to **string** | The Framer template ID if type is FRAMER. | [optional] 
+**FramerRemixLink** | Pointer to **string** | The single-use remix link generated for the customer if type is FRAMER. | [optional] 
 **Status** | **string** | Delivery status of the collaborator invite (PENDING, DELIVERED, FAILED, REVOKED). | 
 **OauthUrl** | Pointer to **string** | OAuth URL to redirect the customer to. | [optional] 
 **ErrorDetails** | Pointer to **string** | Error message if invitation delivery failed. | [optional] 
@@ -342,6 +344,56 @@ SetDiscordUserId sets DiscordUserId field to given value.
 `func (o *EntitlementGrantResponseDto) HasDiscordUserId() bool`
 
 HasDiscordUserId returns a boolean if a field has been set.
+
+### GetFramerTemplateId
+
+`func (o *EntitlementGrantResponseDto) GetFramerTemplateId() string`
+
+GetFramerTemplateId returns the FramerTemplateId field if non-nil, zero value otherwise.
+
+### GetFramerTemplateIdOk
+
+`func (o *EntitlementGrantResponseDto) GetFramerTemplateIdOk() (*string, bool)`
+
+GetFramerTemplateIdOk returns a tuple with the FramerTemplateId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFramerTemplateId
+
+`func (o *EntitlementGrantResponseDto) SetFramerTemplateId(v string)`
+
+SetFramerTemplateId sets FramerTemplateId field to given value.
+
+### HasFramerTemplateId
+
+`func (o *EntitlementGrantResponseDto) HasFramerTemplateId() bool`
+
+HasFramerTemplateId returns a boolean if a field has been set.
+
+### GetFramerRemixLink
+
+`func (o *EntitlementGrantResponseDto) GetFramerRemixLink() string`
+
+GetFramerRemixLink returns the FramerRemixLink field if non-nil, zero value otherwise.
+
+### GetFramerRemixLinkOk
+
+`func (o *EntitlementGrantResponseDto) GetFramerRemixLinkOk() (*string, bool)`
+
+GetFramerRemixLinkOk returns a tuple with the FramerRemixLink field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFramerRemixLink
+
+`func (o *EntitlementGrantResponseDto) SetFramerRemixLink(v string)`
+
+SetFramerRemixLink sets FramerRemixLink field to given value.
+
+### HasFramerRemixLink
+
+`func (o *EntitlementGrantResponseDto) HasFramerRemixLink() bool`
+
+HasFramerRemixLink returns a boolean if a field has been set.
 
 ### GetStatus
 

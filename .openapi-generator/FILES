@@ -14,6 +14,8 @@ api_discord_integration.go
 api_discounts.go
 api_disputes.go
 api_entitlement_grants.go
+api_entitlements.go
+api_framer_integration.go
 api_git_hub_integration.go
 api_license.go
 api_license_keys.go
@@ -62,6 +64,8 @@ docs/CreateCheckoutLinkDto.md
 docs/CreateCollectionCheckoutDto.md
 docs/CreateCollectionDto.md
 docs/CreateCustomerDto.md
+docs/CreateEntitlementDto.md
+docs/CreateFramerTemplateDto.md
 docs/CreateMeterDto.md
 docs/CreateSetupCheckoutDto.md
 docs/CreateWebhookEndpointDto.md
@@ -90,8 +94,12 @@ docs/DisputeFileUpload.md
 docs/DisputeList.md
 docs/DisputeListMetaDto.md
 docs/DisputesAPI.md
+docs/EntitlementDetailResponseDto.md
 docs/EntitlementGrantResponseDto.md
 docs/EntitlementGrantsAPI.md
+docs/EntitlementsAPI.md
+docs/FramerIntegrationAPI.md
+docs/FramerTemplateResponseDto.md
 docs/GitHubIntegrationAPI.md
 docs/GithubReposResponseDto.md
 docs/Instance.md
@@ -109,6 +117,7 @@ docs/LicensesDeactivateRequest.md
 docs/LicensesUpdateInstancePostRequest.md
 docs/LicensesUpdateRequest.md
 docs/LicensesVerifyRequest.md
+docs/LinkedProductDto.md
 docs/MeterDetailResponseDto.md
 docs/MeterEventsResponseDto.md
 docs/MeterIngestEventDto.md
@@ -176,6 +185,8 @@ docs/UpdateCheckoutLinkDto.md
 docs/UpdateCollectionDto.md
 docs/UpdateCollectionProductDto.md
 docs/UpdateCustomerDto.md
+docs/UpdateEntitlementDto.md
+docs/UpdateFramerTemplateDto.md
 docs/UpdateInstanceDto.md
 docs/UpdateMeterDto.md
 docs/UpdateWebhookEndpointDto.md
@@ -222,6 +233,8 @@ model_create_checkout_link_dto.go
 model_create_collection_checkout_dto.go
 model_create_collection_dto.go
 model_create_customer_dto.go
+model_create_entitlement_dto.go
+model_create_framer_template_dto.go
 model_create_meter_dto.go
 model_create_setup_checkout_dto.go
 model_create_webhook_endpoint_dto.go
@@ -243,7 +256,9 @@ model_dispute_evidence_update.go
 model_dispute_file_upload.go
 model_dispute_list.go
 model_dispute_list_meta_dto.go
+model_entitlement_detail_response_dto.go
 model_entitlement_grant_response_dto.go
+model_framer_template_response_dto.go
 model_github_repos_response_dto.go
 model_instance.go
 model_invoice.go
@@ -257,6 +272,7 @@ model_licenses_deactivate_request.go
 model_licenses_update_instance_post_request.go
 model_licenses_update_request.go
 model_licenses_verify_request.go
+model_linked_product_dto.go
 model_meter_detail_response_dto.go
 model_meter_events_response_dto.go
 model_meter_ingest_event_dto.go
@@ -317,6 +333,8 @@ model_update_checkout_link_dto.go
 model_update_collection_dto.go
 model_update_collection_product_dto.go
 model_update_customer_dto.go
+model_update_entitlement_dto.go
+model_update_framer_template_dto.go
 model_update_instance_dto.go
 model_update_meter_dto.go
 model_update_webhook_endpoint_dto.go

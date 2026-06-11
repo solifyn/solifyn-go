@@ -20,284 +20,254 @@ import (
 )
 
 
-// EntitlementGrantsAPIService EntitlementGrantsAPI service
-type EntitlementGrantsAPIService service
+// FramerIntegrationAPIService FramerIntegrationAPI service
+type FramerIntegrationAPIService service
 
-type ApiEntitlementGrantsGetRequest struct {
+type ApiFramerCreateTemplateRequest struct {
 	ctx context.Context
-	ApiService *EntitlementGrantsAPIService
-	id string
+	ApiService *FramerIntegrationAPIService
+	createFramerTemplateDto *CreateFramerTemplateDto
 }
 
-func (r ApiEntitlementGrantsGetRequest) Execute() (*EntitlementGrantResponseDto, *http.Response, error) {
-	return r.ApiService.EntitlementGrantsGetExecute(r)
+func (r ApiFramerCreateTemplateRequest) CreateFramerTemplateDto(createFramerTemplateDto CreateFramerTemplateDto) ApiFramerCreateTemplateRequest {
+	r.createFramerTemplateDto = &createFramerTemplateDto
+	return r
+}
+
+func (r ApiFramerCreateTemplateRequest) Execute() (*FramerTemplateResponseDto, *http.Response, error) {
+	return r.ApiService.FramerCreateTemplateExecute(r)
 }
 
 /*
-EntitlementGrantsGet Retrieve Entitlement Grant
+FramerCreateTemplate Create Framer Template
 
-Retrieve details of a specific entitlement grant.
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The unique grant ID
- @return ApiEntitlementGrantsGetRequest
-*/
-func (a *EntitlementGrantsAPIService) EntitlementGrantsGet(ctx context.Context, id string) ApiEntitlementGrantsGetRequest {
-	return ApiEntitlementGrantsGetRequest{
-		ApiService: a,
-		ctx: ctx,
-		id: id,
-	}
-}
-
-// Execute executes the request
-//  @return EntitlementGrantResponseDto
-func (a *EntitlementGrantsAPIService) EntitlementGrantsGetExecute(r ApiEntitlementGrantsGetRequest) (*EntitlementGrantResponseDto, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *EntitlementGrantResponseDto
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementGrantsAPIService.EntitlementGrantsGet")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/entitlement-grants/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiEntitlementGrantsListRequest struct {
-	ctx context.Context
-	ApiService *EntitlementGrantsAPIService
-	status *string
-	entitlementId *string
-	productId *string
-}
-
-// Filter by status (PENDING, DELIVERED, FAILED, REVOKED)
-func (r ApiEntitlementGrantsListRequest) Status(status string) ApiEntitlementGrantsListRequest {
-	r.status = &status
-	return r
-}
-
-// Filter by entitlement config ID
-func (r ApiEntitlementGrantsListRequest) EntitlementId(entitlementId string) ApiEntitlementGrantsListRequest {
-	r.entitlementId = &entitlementId
-	return r
-}
-
-// Filter by product ID
-func (r ApiEntitlementGrantsListRequest) ProductId(productId string) ApiEntitlementGrantsListRequest {
-	r.productId = &productId
-	return r
-}
-
-func (r ApiEntitlementGrantsListRequest) Execute() ([]EntitlementGrantResponseDto, *http.Response, error) {
-	return r.ApiService.EntitlementGrantsListExecute(r)
-}
-
-/*
-EntitlementGrantsList List Entitlement Grants
-
-Retrieve all GitHub repository entitlement grants for the active business.
+Registers a new Framer template with its public remix link for the active business.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiEntitlementGrantsListRequest
+ @return ApiFramerCreateTemplateRequest
 */
-func (a *EntitlementGrantsAPIService) EntitlementGrantsList(ctx context.Context) ApiEntitlementGrantsListRequest {
-	return ApiEntitlementGrantsListRequest{
+func (a *FramerIntegrationAPIService) FramerCreateTemplate(ctx context.Context) ApiFramerCreateTemplateRequest {
+	return ApiFramerCreateTemplateRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []EntitlementGrantResponseDto
-func (a *EntitlementGrantsAPIService) EntitlementGrantsListExecute(r ApiEntitlementGrantsListRequest) ([]EntitlementGrantResponseDto, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []EntitlementGrantResponseDto
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementGrantsAPIService.EntitlementGrantsList")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/entitlement-grants"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.status != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "form", "")
-	}
-	if r.entitlementId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "entitlementId", r.entitlementId, "form", "")
-	}
-	if r.productId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "productId", r.productId, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiEntitlementGrantsRetryRequest struct {
-	ctx context.Context
-	ApiService *EntitlementGrantsAPIService
-	id string
-}
-
-func (r ApiEntitlementGrantsRetryRequest) Execute() (*EntitlementGrantResponseDto, *http.Response, error) {
-	return r.ApiService.EntitlementGrantsRetryExecute(r)
-}
-
-/*
-EntitlementGrantsRetry Retry Entitlement Grant Delivery
-
-Attempts to re-invite the collaborator if GitHub username is already connected, or resets the OAuth URL redirect.
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The unique grant ID
- @return ApiEntitlementGrantsRetryRequest
-*/
-func (a *EntitlementGrantsAPIService) EntitlementGrantsRetry(ctx context.Context, id string) ApiEntitlementGrantsRetryRequest {
-	return ApiEntitlementGrantsRetryRequest{
-		ApiService: a,
-		ctx: ctx,
-		id: id,
-	}
-}
-
-// Execute executes the request
-//  @return EntitlementGrantResponseDto
-func (a *EntitlementGrantsAPIService) EntitlementGrantsRetryExecute(r ApiEntitlementGrantsRetryRequest) (*EntitlementGrantResponseDto, *http.Response, error) {
+//  @return FramerTemplateResponseDto
+func (a *FramerIntegrationAPIService) FramerCreateTemplateExecute(r ApiFramerCreateTemplateRequest) (*FramerTemplateResponseDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *EntitlementGrantResponseDto
+		localVarReturnValue  *FramerTemplateResponseDto
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementGrantsAPIService.EntitlementGrantsRetry")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FramerIntegrationAPIService.FramerCreateTemplate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/entitlement-grants/{id}/retry"
+	localVarPath := localBasePath + "/v1/framer/templates"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.createFramerTemplateDto == nil {
+		return localVarReturnValue, nil, reportError("createFramerTemplateDto is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.createFramerTemplateDto
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiFramerDeleteTemplateRequest struct {
+	ctx context.Context
+	ApiService *FramerIntegrationAPIService
+	id string
+}
+
+func (r ApiFramerDeleteTemplateRequest) Execute() (*http.Response, error) {
+	return r.ApiService.FramerDeleteTemplateExecute(r)
+}
+
+/*
+FramerDeleteTemplate Delete Framer Template
+
+Deletes a registered Framer template for the active business.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id The Framer template ID
+ @return ApiFramerDeleteTemplateRequest
+*/
+func (a *FramerIntegrationAPIService) FramerDeleteTemplate(ctx context.Context, id string) ApiFramerDeleteTemplateRequest {
+	return ApiFramerDeleteTemplateRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+func (a *FramerIntegrationAPIService) FramerDeleteTemplateExecute(r ApiFramerDeleteTemplateRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FramerIntegrationAPIService.FramerDeleteTemplate")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/framer/templates/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiFramerGetTemplateRequest struct {
+	ctx context.Context
+	ApiService *FramerIntegrationAPIService
+	id string
+}
+
+func (r ApiFramerGetTemplateRequest) Execute() (*FramerTemplateResponseDto, *http.Response, error) {
+	return r.ApiService.FramerGetTemplateExecute(r)
+}
+
+/*
+FramerGetTemplate Retrieve Framer Template
+
+Retrieves details of a specific registered Framer template.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id The Framer template ID
+ @return ApiFramerGetTemplateRequest
+*/
+func (a *FramerIntegrationAPIService) FramerGetTemplate(ctx context.Context, id string) ApiFramerGetTemplateRequest {
+	return ApiFramerGetTemplateRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return FramerTemplateResponseDto
+func (a *FramerIntegrationAPIService) FramerGetTemplateExecute(r ApiFramerGetTemplateRequest) (*FramerTemplateResponseDto, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *FramerTemplateResponseDto
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FramerIntegrationAPIService.FramerGetTemplate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/framer/templates/{id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -358,50 +328,46 @@ func (a *EntitlementGrantsAPIService) EntitlementGrantsRetryExecute(r ApiEntitle
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiEntitlementGrantsRevokeRequest struct {
+type ApiFramerListTemplatesRequest struct {
 	ctx context.Context
-	ApiService *EntitlementGrantsAPIService
-	id string
+	ApiService *FramerIntegrationAPIService
 }
 
-func (r ApiEntitlementGrantsRevokeRequest) Execute() (*EntitlementGrantResponseDto, *http.Response, error) {
-	return r.ApiService.EntitlementGrantsRevokeExecute(r)
+func (r ApiFramerListTemplatesRequest) Execute() ([]FramerTemplateResponseDto, *http.Response, error) {
+	return r.ApiService.FramerListTemplatesExecute(r)
 }
 
 /*
-EntitlementGrantsRevoke Manually Revoke Entitlement Grant
+FramerListTemplates List Framer Templates
 
-Manually remove the customer collaborator access from the repository and revoke the grant.
+Retrieves all registered Framer templates for the active business.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The unique grant ID
- @return ApiEntitlementGrantsRevokeRequest
+ @return ApiFramerListTemplatesRequest
 */
-func (a *EntitlementGrantsAPIService) EntitlementGrantsRevoke(ctx context.Context, id string) ApiEntitlementGrantsRevokeRequest {
-	return ApiEntitlementGrantsRevokeRequest{
+func (a *FramerIntegrationAPIService) FramerListTemplates(ctx context.Context) ApiFramerListTemplatesRequest {
+	return ApiFramerListTemplatesRequest{
 		ApiService: a,
 		ctx: ctx,
-		id: id,
 	}
 }
 
 // Execute executes the request
-//  @return EntitlementGrantResponseDto
-func (a *EntitlementGrantsAPIService) EntitlementGrantsRevokeExecute(r ApiEntitlementGrantsRevokeRequest) (*EntitlementGrantResponseDto, *http.Response, error) {
+//  @return []FramerTemplateResponseDto
+func (a *FramerIntegrationAPIService) FramerListTemplatesExecute(r ApiFramerListTemplatesRequest) ([]FramerTemplateResponseDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *EntitlementGrantResponseDto
+		localVarReturnValue  []FramerTemplateResponseDto
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementGrantsAPIService.EntitlementGrantsRevoke")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FramerIntegrationAPIService.FramerListTemplates")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/entitlement-grants/{id}/revoke"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath := localBasePath + "/v1/framer/templates"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -424,6 +390,120 @@ func (a *EntitlementGrantsAPIService) EntitlementGrantsRevokeExecute(r ApiEntitl
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiFramerUpdateTemplateRequest struct {
+	ctx context.Context
+	ApiService *FramerIntegrationAPIService
+	id string
+	updateFramerTemplateDto *UpdateFramerTemplateDto
+}
+
+func (r ApiFramerUpdateTemplateRequest) UpdateFramerTemplateDto(updateFramerTemplateDto UpdateFramerTemplateDto) ApiFramerUpdateTemplateRequest {
+	r.updateFramerTemplateDto = &updateFramerTemplateDto
+	return r
+}
+
+func (r ApiFramerUpdateTemplateRequest) Execute() (*FramerTemplateResponseDto, *http.Response, error) {
+	return r.ApiService.FramerUpdateTemplateExecute(r)
+}
+
+/*
+FramerUpdateTemplate Update Framer Template
+
+Updates a registered Framer template for the active business.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id The Framer template ID
+ @return ApiFramerUpdateTemplateRequest
+*/
+func (a *FramerIntegrationAPIService) FramerUpdateTemplate(ctx context.Context, id string) ApiFramerUpdateTemplateRequest {
+	return ApiFramerUpdateTemplateRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return FramerTemplateResponseDto
+func (a *FramerIntegrationAPIService) FramerUpdateTemplateExecute(r ApiFramerUpdateTemplateRequest) (*FramerTemplateResponseDto, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *FramerTemplateResponseDto
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FramerIntegrationAPIService.FramerUpdateTemplate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/framer/templates/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.updateFramerTemplateDto == nil {
+		return localVarReturnValue, nil, reportError("updateFramerTemplateDto is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.updateFramerTemplateDto
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

@@ -33,6 +33,7 @@ Name | Type | Description | Notes
 **IsListed** | Pointer to **bool** | Whether the product is publicly visible. | [optional] [default to true]
 **IsFree** | Pointer to **bool** | Whether the product is free of charge. | [optional] [default to false]
 **Addons** | Pointer to [**[]ProductCreateAddonsInner**](ProductCreateAddonsInner.md) | Product addons configurations. | [optional] 
+**EntitlementIds** | Pointer to **[]string** | Array of independent entitlement IDs to link to this product. | [optional] 
 
 ## Methods
 
@@ -777,6 +778,31 @@ SetAddons sets Addons field to given value.
 `func (o *ProductUpdate) HasAddons() bool`
 
 HasAddons returns a boolean if a field has been set.
+
+### GetEntitlementIds
+
+`func (o *ProductUpdate) GetEntitlementIds() []string`
+
+GetEntitlementIds returns the EntitlementIds field if non-nil, zero value otherwise.
+
+### GetEntitlementIdsOk
+
+`func (o *ProductUpdate) GetEntitlementIdsOk() (*[]string, bool)`
+
+GetEntitlementIdsOk returns a tuple with the EntitlementIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEntitlementIds
+
+`func (o *ProductUpdate) SetEntitlementIds(v []string)`
+
+SetEntitlementIds sets EntitlementIds field to given value.
+
+### HasEntitlementIds
+
+`func (o *ProductUpdate) HasEntitlementIds() bool`
+
+HasEntitlementIds returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -20,284 +20,162 @@ import (
 )
 
 
-// EntitlementGrantsAPIService EntitlementGrantsAPI service
-type EntitlementGrantsAPIService service
+// EntitlementsAPIService EntitlementsAPI service
+type EntitlementsAPIService service
 
-type ApiEntitlementGrantsGetRequest struct {
+type ApiEntitlementsCreateRequest struct {
 	ctx context.Context
-	ApiService *EntitlementGrantsAPIService
-	id string
+	ApiService *EntitlementsAPIService
+	createEntitlementDto *CreateEntitlementDto
 }
 
-func (r ApiEntitlementGrantsGetRequest) Execute() (*EntitlementGrantResponseDto, *http.Response, error) {
-	return r.ApiService.EntitlementGrantsGetExecute(r)
+func (r ApiEntitlementsCreateRequest) CreateEntitlementDto(createEntitlementDto CreateEntitlementDto) ApiEntitlementsCreateRequest {
+	r.createEntitlementDto = &createEntitlementDto
+	return r
+}
+
+func (r ApiEntitlementsCreateRequest) Execute() (*EntitlementDetailResponseDto, *http.Response, error) {
+	return r.ApiService.EntitlementsCreateExecute(r)
 }
 
 /*
-EntitlementGrantsGet Retrieve Entitlement Grant
+EntitlementsCreate Create Entitlement
 
-Retrieve details of a specific entitlement grant.
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The unique grant ID
- @return ApiEntitlementGrantsGetRequest
-*/
-func (a *EntitlementGrantsAPIService) EntitlementGrantsGet(ctx context.Context, id string) ApiEntitlementGrantsGetRequest {
-	return ApiEntitlementGrantsGetRequest{
-		ApiService: a,
-		ctx: ctx,
-		id: id,
-	}
-}
-
-// Execute executes the request
-//  @return EntitlementGrantResponseDto
-func (a *EntitlementGrantsAPIService) EntitlementGrantsGetExecute(r ApiEntitlementGrantsGetRequest) (*EntitlementGrantResponseDto, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *EntitlementGrantResponseDto
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementGrantsAPIService.EntitlementGrantsGet")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/entitlement-grants/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiEntitlementGrantsListRequest struct {
-	ctx context.Context
-	ApiService *EntitlementGrantsAPIService
-	status *string
-	entitlementId *string
-	productId *string
-}
-
-// Filter by status (PENDING, DELIVERED, FAILED, REVOKED)
-func (r ApiEntitlementGrantsListRequest) Status(status string) ApiEntitlementGrantsListRequest {
-	r.status = &status
-	return r
-}
-
-// Filter by entitlement config ID
-func (r ApiEntitlementGrantsListRequest) EntitlementId(entitlementId string) ApiEntitlementGrantsListRequest {
-	r.entitlementId = &entitlementId
-	return r
-}
-
-// Filter by product ID
-func (r ApiEntitlementGrantsListRequest) ProductId(productId string) ApiEntitlementGrantsListRequest {
-	r.productId = &productId
-	return r
-}
-
-func (r ApiEntitlementGrantsListRequest) Execute() ([]EntitlementGrantResponseDto, *http.Response, error) {
-	return r.ApiService.EntitlementGrantsListExecute(r)
-}
-
-/*
-EntitlementGrantsList List Entitlement Grants
-
-Retrieve all GitHub repository entitlement grants for the active business.
+Create a new independent access entitlement.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiEntitlementGrantsListRequest
+ @return ApiEntitlementsCreateRequest
 */
-func (a *EntitlementGrantsAPIService) EntitlementGrantsList(ctx context.Context) ApiEntitlementGrantsListRequest {
-	return ApiEntitlementGrantsListRequest{
+func (a *EntitlementsAPIService) EntitlementsCreate(ctx context.Context) ApiEntitlementsCreateRequest {
+	return ApiEntitlementsCreateRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []EntitlementGrantResponseDto
-func (a *EntitlementGrantsAPIService) EntitlementGrantsListExecute(r ApiEntitlementGrantsListRequest) ([]EntitlementGrantResponseDto, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []EntitlementGrantResponseDto
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementGrantsAPIService.EntitlementGrantsList")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/entitlement-grants"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.status != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "form", "")
-	}
-	if r.entitlementId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "entitlementId", r.entitlementId, "form", "")
-	}
-	if r.productId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "productId", r.productId, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiEntitlementGrantsRetryRequest struct {
-	ctx context.Context
-	ApiService *EntitlementGrantsAPIService
-	id string
-}
-
-func (r ApiEntitlementGrantsRetryRequest) Execute() (*EntitlementGrantResponseDto, *http.Response, error) {
-	return r.ApiService.EntitlementGrantsRetryExecute(r)
-}
-
-/*
-EntitlementGrantsRetry Retry Entitlement Grant Delivery
-
-Attempts to re-invite the collaborator if GitHub username is already connected, or resets the OAuth URL redirect.
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The unique grant ID
- @return ApiEntitlementGrantsRetryRequest
-*/
-func (a *EntitlementGrantsAPIService) EntitlementGrantsRetry(ctx context.Context, id string) ApiEntitlementGrantsRetryRequest {
-	return ApiEntitlementGrantsRetryRequest{
-		ApiService: a,
-		ctx: ctx,
-		id: id,
-	}
-}
-
-// Execute executes the request
-//  @return EntitlementGrantResponseDto
-func (a *EntitlementGrantsAPIService) EntitlementGrantsRetryExecute(r ApiEntitlementGrantsRetryRequest) (*EntitlementGrantResponseDto, *http.Response, error) {
+//  @return EntitlementDetailResponseDto
+func (a *EntitlementsAPIService) EntitlementsCreateExecute(r ApiEntitlementsCreateRequest) (*EntitlementDetailResponseDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *EntitlementGrantResponseDto
+		localVarReturnValue  *EntitlementDetailResponseDto
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementGrantsAPIService.EntitlementGrantsRetry")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementsAPIService.EntitlementsCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/entitlement-grants/{id}/retry"
+	localVarPath := localBasePath + "/v1/entitlements"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.createEntitlementDto == nil {
+		return localVarReturnValue, nil, reportError("createEntitlementDto is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.createEntitlementDto
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiEntitlementsDeleteRequest struct {
+	ctx context.Context
+	ApiService *EntitlementsAPIService
+	id string
+}
+
+func (r ApiEntitlementsDeleteRequest) Execute() (*EntitlementDetailResponseDto, *http.Response, error) {
+	return r.ApiService.EntitlementsDeleteExecute(r)
+}
+
+/*
+EntitlementsDelete Delete Entitlement
+
+Delete an independent entitlement and unlink all mapped products.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id The unique entitlement ID.
+ @return ApiEntitlementsDeleteRequest
+*/
+func (a *EntitlementsAPIService) EntitlementsDelete(ctx context.Context, id string) ApiEntitlementsDeleteRequest {
+	return ApiEntitlementsDeleteRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return EntitlementDetailResponseDto
+func (a *EntitlementsAPIService) EntitlementsDeleteExecute(r ApiEntitlementsDeleteRequest) (*EntitlementDetailResponseDto, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *EntitlementDetailResponseDto
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementsAPIService.EntitlementsDelete")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/entitlements/{id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -358,27 +236,27 @@ func (a *EntitlementGrantsAPIService) EntitlementGrantsRetryExecute(r ApiEntitle
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiEntitlementGrantsRevokeRequest struct {
+type ApiEntitlementsGetRequest struct {
 	ctx context.Context
-	ApiService *EntitlementGrantsAPIService
+	ApiService *EntitlementsAPIService
 	id string
 }
 
-func (r ApiEntitlementGrantsRevokeRequest) Execute() (*EntitlementGrantResponseDto, *http.Response, error) {
-	return r.ApiService.EntitlementGrantsRevokeExecute(r)
+func (r ApiEntitlementsGetRequest) Execute() (*EntitlementDetailResponseDto, *http.Response, error) {
+	return r.ApiService.EntitlementsGetExecute(r)
 }
 
 /*
-EntitlementGrantsRevoke Manually Revoke Entitlement Grant
+EntitlementsGet Retrieve Entitlement
 
-Manually remove the customer collaborator access from the repository and revoke the grant.
+Retrieve a specific entitlement definition by ID.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The unique grant ID
- @return ApiEntitlementGrantsRevokeRequest
+ @param id The unique entitlement ID.
+ @return ApiEntitlementsGetRequest
 */
-func (a *EntitlementGrantsAPIService) EntitlementGrantsRevoke(ctx context.Context, id string) ApiEntitlementGrantsRevokeRequest {
-	return ApiEntitlementGrantsRevokeRequest{
+func (a *EntitlementsAPIService) EntitlementsGet(ctx context.Context, id string) ApiEntitlementsGetRequest {
+	return ApiEntitlementsGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -386,21 +264,21 @@ func (a *EntitlementGrantsAPIService) EntitlementGrantsRevoke(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return EntitlementGrantResponseDto
-func (a *EntitlementGrantsAPIService) EntitlementGrantsRevokeExecute(r ApiEntitlementGrantsRevokeRequest) (*EntitlementGrantResponseDto, *http.Response, error) {
+//  @return EntitlementDetailResponseDto
+func (a *EntitlementsAPIService) EntitlementsGetExecute(r ApiEntitlementsGetRequest) (*EntitlementDetailResponseDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *EntitlementGrantResponseDto
+		localVarReturnValue  *EntitlementDetailResponseDto
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementGrantsAPIService.EntitlementGrantsRevoke")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementsAPIService.EntitlementsGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/entitlement-grants/{id}/revoke"
+	localVarPath := localBasePath + "/v1/entitlements/{id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -424,6 +302,219 @@ func (a *EntitlementGrantsAPIService) EntitlementGrantsRevokeExecute(r ApiEntitl
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiEntitlementsListRequest struct {
+	ctx context.Context
+	ApiService *EntitlementsAPIService
+}
+
+func (r ApiEntitlementsListRequest) Execute() ([]EntitlementDetailResponseDto, *http.Response, error) {
+	return r.ApiService.EntitlementsListExecute(r)
+}
+
+/*
+EntitlementsList List Entitlements
+
+List all independent entitlements for the active business.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiEntitlementsListRequest
+*/
+func (a *EntitlementsAPIService) EntitlementsList(ctx context.Context) ApiEntitlementsListRequest {
+	return ApiEntitlementsListRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return []EntitlementDetailResponseDto
+func (a *EntitlementsAPIService) EntitlementsListExecute(r ApiEntitlementsListRequest) ([]EntitlementDetailResponseDto, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []EntitlementDetailResponseDto
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementsAPIService.EntitlementsList")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/entitlements"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiEntitlementsUpdateRequest struct {
+	ctx context.Context
+	ApiService *EntitlementsAPIService
+	id string
+	updateEntitlementDto *UpdateEntitlementDto
+}
+
+func (r ApiEntitlementsUpdateRequest) UpdateEntitlementDto(updateEntitlementDto UpdateEntitlementDto) ApiEntitlementsUpdateRequest {
+	r.updateEntitlementDto = &updateEntitlementDto
+	return r
+}
+
+func (r ApiEntitlementsUpdateRequest) Execute() (*EntitlementDetailResponseDto, *http.Response, error) {
+	return r.ApiService.EntitlementsUpdateExecute(r)
+}
+
+/*
+EntitlementsUpdate Update Entitlement
+
+Update details of an existing independent entitlement.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id The unique entitlement ID.
+ @return ApiEntitlementsUpdateRequest
+*/
+func (a *EntitlementsAPIService) EntitlementsUpdate(ctx context.Context, id string) ApiEntitlementsUpdateRequest {
+	return ApiEntitlementsUpdateRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return EntitlementDetailResponseDto
+func (a *EntitlementsAPIService) EntitlementsUpdateExecute(r ApiEntitlementsUpdateRequest) (*EntitlementDetailResponseDto, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *EntitlementDetailResponseDto
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementsAPIService.EntitlementsUpdate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/entitlements/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.updateEntitlementDto == nil {
+		return localVarReturnValue, nil, reportError("updateEntitlementDto is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.updateEntitlementDto
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

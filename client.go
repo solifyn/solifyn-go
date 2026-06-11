@@ -71,6 +71,10 @@ type APIClient struct {
 
 	EntitlementGrantsAPI *EntitlementGrantsAPIService
 
+	EntitlementsAPI *EntitlementsAPIService
+
+	FramerIntegrationAPI *FramerIntegrationAPIService
+
 	GitHubIntegrationAPI *GitHubIntegrationAPIService
 
 	LicenseAPI *LicenseAPIService
@@ -125,6 +129,8 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.DiscountsAPI = (*DiscountsAPIService)(&c.common)
 	c.DisputesAPI = (*DisputesAPIService)(&c.common)
 	c.EntitlementGrantsAPI = (*EntitlementGrantsAPIService)(&c.common)
+	c.EntitlementsAPI = (*EntitlementsAPIService)(&c.common)
+	c.FramerIntegrationAPI = (*FramerIntegrationAPIService)(&c.common)
 	c.GitHubIntegrationAPI = (*GitHubIntegrationAPIService)(&c.common)
 	c.LicenseAPI = (*LicenseAPIService)(&c.common)
 	c.LicenseKeysAPI = (*LicenseKeysAPIService)(&c.common)
