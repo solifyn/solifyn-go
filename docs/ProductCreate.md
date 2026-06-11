@@ -19,6 +19,8 @@ Name | Type | Description | Notes
 **HasDiscordAccess** | Pointer to **bool** | Whether the purchase includes Discord server role access. | [optional] [default to false]
 **DiscordGuildId** | Pointer to **string** | Discord Guild (Server) ID to grant access to. | [optional] 
 **DiscordRoleId** | Pointer to **string** | Discord Role ID to assign to the user. | [optional] 
+**HasFramerAccess** | Pointer to **bool** | Whether the purchase includes Framer Template access. | [optional] [default to false]
+**FramerTemplateId** | Pointer to **string** | Framer Template ID to grant access to. | [optional] 
 **IsTaxInclusive** | Pointer to **bool** | Whether tax is included in the base price. | [optional] [default to false]
 **ActivationLimit** | Pointer to **int32** | Maximum concurrent activated instances allowed per license key. | [optional] 
 **BrandId** | Pointer to **string** | Brand id for the product, if not provided will default to primary brand. | [optional] 
@@ -408,6 +410,56 @@ SetDiscordRoleId sets DiscordRoleId field to given value.
 `func (o *ProductCreate) HasDiscordRoleId() bool`
 
 HasDiscordRoleId returns a boolean if a field has been set.
+
+### GetHasFramerAccess
+
+`func (o *ProductCreate) GetHasFramerAccess() bool`
+
+GetHasFramerAccess returns the HasFramerAccess field if non-nil, zero value otherwise.
+
+### GetHasFramerAccessOk
+
+`func (o *ProductCreate) GetHasFramerAccessOk() (*bool, bool)`
+
+GetHasFramerAccessOk returns a tuple with the HasFramerAccess field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHasFramerAccess
+
+`func (o *ProductCreate) SetHasFramerAccess(v bool)`
+
+SetHasFramerAccess sets HasFramerAccess field to given value.
+
+### HasHasFramerAccess
+
+`func (o *ProductCreate) HasHasFramerAccess() bool`
+
+HasHasFramerAccess returns a boolean if a field has been set.
+
+### GetFramerTemplateId
+
+`func (o *ProductCreate) GetFramerTemplateId() string`
+
+GetFramerTemplateId returns the FramerTemplateId field if non-nil, zero value otherwise.
+
+### GetFramerTemplateIdOk
+
+`func (o *ProductCreate) GetFramerTemplateIdOk() (*string, bool)`
+
+GetFramerTemplateIdOk returns a tuple with the FramerTemplateId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFramerTemplateId
+
+`func (o *ProductCreate) SetFramerTemplateId(v string)`
+
+SetFramerTemplateId sets FramerTemplateId field to given value.
+
+### HasFramerTemplateId
+
+`func (o *ProductCreate) HasFramerTemplateId() bool`
+
+HasFramerTemplateId returns a boolean if a field has been set.
 
 ### GetIsTaxInclusive
 

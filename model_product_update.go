@@ -49,6 +49,10 @@ type ProductUpdate struct {
 	DiscordGuildId *string `json:"discordGuildId,omitempty"`
 	// Discord Role ID to assign to the user.
 	DiscordRoleId *string `json:"discordRoleId,omitempty"`
+	// Whether the purchase includes Framer Template access.
+	HasFramerAccess *bool `json:"hasFramerAccess,omitempty"`
+	// Framer Template ID to grant access to.
+	FramerTemplateId *string `json:"framerTemplateId,omitempty"`
 	// Whether tax is included in the base price.
 	IsTaxInclusive *bool `json:"isTaxInclusive,omitempty"`
 	// Maximum concurrent activated instances allowed per license key.
@@ -97,6 +101,8 @@ func NewProductUpdate() *ProductUpdate {
 	this.HasGithubAccess = &hasGithubAccess
 	var hasDiscordAccess bool = false
 	this.HasDiscordAccess = &hasDiscordAccess
+	var hasFramerAccess bool = false
+	this.HasFramerAccess = &hasFramerAccess
 	var isTaxInclusive bool = false
 	this.IsTaxInclusive = &isTaxInclusive
 	var payWhatYouWant bool = false
@@ -123,6 +129,8 @@ func NewProductUpdateWithDefaults() *ProductUpdate {
 	this.HasGithubAccess = &hasGithubAccess
 	var hasDiscordAccess bool = false
 	this.HasDiscordAccess = &hasDiscordAccess
+	var hasFramerAccess bool = false
+	this.HasFramerAccess = &hasFramerAccess
 	var isTaxInclusive bool = false
 	this.IsTaxInclusive = &isTaxInclusive
 	var payWhatYouWant bool = false
@@ -612,6 +620,70 @@ func (o *ProductUpdate) HasDiscordRoleId() bool {
 // SetDiscordRoleId gets a reference to the given string and assigns it to the DiscordRoleId field.
 func (o *ProductUpdate) SetDiscordRoleId(v string) {
 	o.DiscordRoleId = &v
+}
+
+// GetHasFramerAccess returns the HasFramerAccess field value if set, zero value otherwise.
+func (o *ProductUpdate) GetHasFramerAccess() bool {
+	if o == nil || IsNil(o.HasFramerAccess) {
+		var ret bool
+		return ret
+	}
+	return *o.HasFramerAccess
+}
+
+// GetHasFramerAccessOk returns a tuple with the HasFramerAccess field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductUpdate) GetHasFramerAccessOk() (*bool, bool) {
+	if o == nil || IsNil(o.HasFramerAccess) {
+		return nil, false
+	}
+	return o.HasFramerAccess, true
+}
+
+// HasHasFramerAccess returns a boolean if a field has been set.
+func (o *ProductUpdate) HasHasFramerAccess() bool {
+	if o != nil && !IsNil(o.HasFramerAccess) {
+		return true
+	}
+
+	return false
+}
+
+// SetHasFramerAccess gets a reference to the given bool and assigns it to the HasFramerAccess field.
+func (o *ProductUpdate) SetHasFramerAccess(v bool) {
+	o.HasFramerAccess = &v
+}
+
+// GetFramerTemplateId returns the FramerTemplateId field value if set, zero value otherwise.
+func (o *ProductUpdate) GetFramerTemplateId() string {
+	if o == nil || IsNil(o.FramerTemplateId) {
+		var ret string
+		return ret
+	}
+	return *o.FramerTemplateId
+}
+
+// GetFramerTemplateIdOk returns a tuple with the FramerTemplateId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductUpdate) GetFramerTemplateIdOk() (*string, bool) {
+	if o == nil || IsNil(o.FramerTemplateId) {
+		return nil, false
+	}
+	return o.FramerTemplateId, true
+}
+
+// HasFramerTemplateId returns a boolean if a field has been set.
+func (o *ProductUpdate) HasFramerTemplateId() bool {
+	if o != nil && !IsNil(o.FramerTemplateId) {
+		return true
+	}
+
+	return false
+}
+
+// SetFramerTemplateId gets a reference to the given string and assigns it to the FramerTemplateId field.
+func (o *ProductUpdate) SetFramerTemplateId(v string) {
+	o.FramerTemplateId = &v
 }
 
 // GetIsTaxInclusive returns the IsTaxInclusive field value if set, zero value otherwise.
@@ -1148,6 +1220,12 @@ func (o ProductUpdate) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.DiscordRoleId) {
 		toSerialize["discordRoleId"] = o.DiscordRoleId
+	}
+	if !IsNil(o.HasFramerAccess) {
+		toSerialize["hasFramerAccess"] = o.HasFramerAccess
+	}
+	if !IsNil(o.FramerTemplateId) {
+		toSerialize["framerTemplateId"] = o.FramerTemplateId
 	}
 	if !IsNil(o.IsTaxInclusive) {
 		toSerialize["isTaxInclusive"] = o.IsTaxInclusive
